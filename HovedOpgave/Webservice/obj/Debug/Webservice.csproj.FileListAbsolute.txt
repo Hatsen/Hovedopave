@@ -3,3 +3,9 @@ C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\Webservice
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\obj\Debug\Webservice.csprojResolveAssemblyReference.cache
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\obj\Debug\Webservice.dll
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\obj\Debug\Webservice.pdb
+C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\Webservice.dll.config
+C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\Webservice.dll
+C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\Webservice.pdb
+C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\obj\Debug\Webservice.csprojResolveAssemblyReference.cache
+C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\obj\Debug\Webservice.dll
+C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\obj\Debug\Webservice.pdb
