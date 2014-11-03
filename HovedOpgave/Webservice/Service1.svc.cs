@@ -13,6 +13,8 @@ namespace Webservice
 {
     public class Service1 : IService1
     {
+        DatabaseHandler dh = new DatabaseHandler();
+
         [WebMethod (EnableSession = true)]
         public bool GetLoginDetails(string username, string password)
         {
@@ -22,7 +24,8 @@ namespace Webservice
             switch(username.Substring(0, 2))
             {
                 case "te":
-                    if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][5])) //The fuck...
+                    dh.GetTeacherLogin(username, password);
+                    if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][5]))
                     {
                         context.Session["name"] = Holder.Instance.LoginDetails[0][1];
                         context.Session["rank"] = Holder.Instance.LoginDetails[0][6];
@@ -31,7 +34,8 @@ namespace Webservice
                     break;
 
                 case "pa":
-                    if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][5])) //The fuck...
+                    dh.GetParentLogin(username, password);
+                    if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][5]))
                     {
                         context.Session["name"] = Holder.Instance.LoginDetails[0][1];
                         loggedIn = true;
@@ -39,7 +43,8 @@ namespace Webservice
                     break;
 
                 case "st":
-                    if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][5])) //The fuck...
+                    dh.GetStudentLogin(username, password);
+                    if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][5]))
                     {
                         context.Session["name"] = Holder.Instance.LoginDetails[0][1];
                         loggedIn = true;

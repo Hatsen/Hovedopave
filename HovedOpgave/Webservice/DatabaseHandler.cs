@@ -60,5 +60,45 @@ namespace Webservice
             }
             return loginDetails;
         }
+
+        public string[][] GetParentLogin(string username)
+        {
+            string[][] loginDetails = null;
+
+            try
+            {
+                DB.Open();
+                loginDetails = DB.Query("SELECT * FROM Parent WHERE username = '" + username + "'");
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                DB.Close();
+                Holder.Instance.LoginDetails = loginDetails;
+            }
+            return loginDetails;
+        }
+
+        public string[][] GetStudentLogin(string username)
+        {
+            string[][] loginDetails = null;
+
+            try
+            {
+                DB.Open();
+                loginDetails = DB.Query("SELECT * FROM Student WHERE username = '" + username + "'");
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                DB.Close();
+                Holder.Instance.LoginDetails = loginDetails;
+            }
+            return loginDetails;
+        }
     }
 }
