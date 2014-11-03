@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Webservice.DB
 {
-    public class Student
+    public class Teacher
     {
         private int id;
         private string name;
@@ -13,7 +13,6 @@ namespace Webservice.DB
         private string postcode;
         private string username;
         private string password;
-        private int fkclassid;
         private DateTime lastlogin;
 
         public int Id
@@ -52,16 +51,11 @@ namespace Webservice.DB
             set { password = value; }
         }
 
-        public int FkClassid
-        {
-            get { return fkclassid; }
-            set { fkclassid = value; }
-        }
-
         public DateTime Lastlogin
         {
             get { return lastlogin; }
             set { lastlogin = value; }
         }
     }
+
 }
