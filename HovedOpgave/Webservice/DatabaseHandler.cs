@@ -57,26 +57,7 @@ namespace Webservice
             finally
             {
                 DB.Close();
-                return loginDetails;
-            }
-        }
-
-        public string[][] GetStudentLogin(string username)
-        {
-            string[][] loginDetails = "";
-
-            try
-            {
-                DB.Open();
-                loginDetails = DB.Query("SELECT * FROM Student WHERE username = '" + username + "'");
-            }
-            catch (Exception ex)
-            {
-            }
-            finally
-            {
-                DB.Close();
-                return loginDetails;
+                Holder.Instance.LoginDetails = loginDetails;
             }
         }
     }

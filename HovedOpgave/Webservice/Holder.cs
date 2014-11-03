@@ -9,12 +9,20 @@ namespace Webservice
     {
         private static Holder instance;
         public DatabaseHandler dh;
+
         private List<Announcement> announcements;
+        private string[][] loginDetails;
 
         public List<Announcement> Announcements
         {
             get { return announcements; }
             set { announcements = value; }
+        }
+
+        public string[][] LoginDetails
+        {
+            get { return loginDetails; }
+            set { loginDetails = value; }
         }
 
         private Holder()
