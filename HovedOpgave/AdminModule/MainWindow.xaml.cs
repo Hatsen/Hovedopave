@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AdminModule.ViewModel;
 
 namespace AdminModule
 {
@@ -20,9 +21,14 @@ namespace AdminModule
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainViewModel viewmodel;
         public MainWindow()
         {
             InitializeComponent();
+            if (viewmodel==null)
+            viewmodel= new MainViewModel();
+
+            this.DataContext = viewmodel;
         }
     }
 }
