@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using crypto;
 
 namespace Webservice
 {
@@ -26,7 +25,7 @@ namespace Webservice
 
                     anc.ID = Convert.ToInt32(getAnc[i][0]);
                     anc.Message = getAnc[i][1];
-                    anc.ancGroup = Convert.ToInt32(getAnc[i][2]);
+                    //anc.ancGroup = Convert.ToInt32(getAnc[i][2]);
 
                     Holder.Instance.Announcements.Add(anc);
                 }
@@ -44,7 +43,7 @@ namespace Webservice
 
         public string[][] GetTeacherLogin(string username)
         {
-            string[][] loginDetails = "";
+            string[][] loginDetails = null;
 
             try
             {
@@ -59,6 +58,7 @@ namespace Webservice
                 DB.Close();
                 Holder.Instance.LoginDetails = loginDetails;
             }
+            return loginDetails;
         }
     }
 }
