@@ -12,7 +12,7 @@ namespace Webservice
     [ServiceContract]
     public interface IService1
     {
-
+        // hej 
         [OperationContract]
         string GetData(int value);
 

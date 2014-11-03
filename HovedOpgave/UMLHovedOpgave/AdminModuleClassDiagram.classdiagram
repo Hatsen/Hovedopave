@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="e5ba5581-c516-48b1-ac17-11cb35c41d31" name="AdminModuleClassDiagram" linkedPackageId="2a1c2dd0-215c-4de2-8370-8fb0158f242e" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="3c892559-f44b-4c04-8552-92f196fa383e">
+      <profileInstance Id="0ae00371-f91e-4dc6-9491-5b5dd8933fef" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="d502ccae-1da9-41e8-bde3-121d16cb5331">
+      <profileInstance Id="368c45b6-8f84-4fa9-b2a3-8334a96f7e5f" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="0c0c785f-2841-4c11-9322-202f8aac817d" name="Student" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="42e7c946-692e-4f9d-8bcc-cb4a9618c800" />
+        <ownedAttributesInternal>
+          <property Id="a6fc9ff4-5ae3-4e71-9335-3b3fd04b0c2c" name="Id" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c055e1b7-3f52-46a1-bc6e-2181458a640c" />
+          </property>
+          <property Id="e45ed591-5adc-4805-9eb7-28df4e0cc43e" name="Id1" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f01f3dbe-41b9-4de1-aecb-32a63c637bfb" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="2a1c2dd0-215c-4de2-8370-8fb0158f242e" name="UMLHovedOpgave">
+    <elementDefinition Id="67869c91-c854-461c-9af5-744df4612f19" />
+  </package>
+</logicalClassDesignerModel>
