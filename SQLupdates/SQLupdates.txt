@@ -1,0 +1,13 @@
+SQL UPDATES LARS OG PATRICK
+_____________________________________________________
+
+CREATE TABLE [dbo].[Student]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] NVARCHAR(MAX) NOT NULL, 
+    [Adress] NVARCHAR(MAX) NOT NULL, 
+    [Postcode] NVARCHAR(50) NOT NULL, 
+    [Username] NVARCHAR(MAX) NOT NULL, 
+    [Password] NVARCHAR(MAX) NOT NULL, 
+    
+)

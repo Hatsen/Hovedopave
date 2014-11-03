@@ -1,0 +1,5 @@
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\SMSModule\bin\SMSModule.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\SMSModule\bin\SMSModule.pdb
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\SMSModule\obj\Debug\SMSModule.csprojResolveAssemblyReference.cache
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\SMSModule\obj\Debug\SMSModule.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\SMSModule\obj\Debug\SMSModule.pdb
