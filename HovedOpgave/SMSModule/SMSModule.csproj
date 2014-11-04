@@ -59,71 +59,51 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
-    <Content Include="Activities.aspx" />
-    <Content Include="Default.aspx" />
     <Content Include="images\blackboard.png" />
-    <Content Include="parentlogin.aspx" />
-    <Content Include="parents\Default.aspx" />
-    <Content Include="Service References\Webservice\Service1.disco" />
-    <Content Include="Service References\Webservice\configuration91.svcinfo" />
-    <Content Include="Service References\Webservice\configuration.svcinfo" />
-    <Content Include="Service References\Webservice\Reference.svcmap">
+    <Content Include="Master.Master" />
+    <Content Include="Default.aspx" />
+    <None Include="Service References\Webservice\Service1.disco" />
+    <None Include="Service References\Webservice\configuration91.svcinfo" />
+    <None Include="Service References\Webservice\configuration.svcinfo" />
+    <None Include="Service References\Webservice\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <Content Include="stafflogin.aspx" />
-    <Content Include="staff\Default.aspx" />
-    <Content Include="staff\Register.aspx" />
-    <Content Include="studentlogin.aspx" />
-    <Content Include="students\Default.aspx" />
-    <Content Include="students\Playzone.aspx" />
+    </None>
+    <Content Include="Login.aspx" />
     <Content Include="style\css.css" />
     <Content Include="style\parent.css" />
     <Content Include="style\staff.css" />
     <Content Include="style\student.css" />
     <Content Include="Web.config" />
-    <Content Include="Service References\Webservice\Service1.wsdl" />
-    <Content Include="MasterPage.master" />
-    <Content Include="parents\parent.master" />
+    <None Include="Service References\Webservice\Service1.wsdl" />
     <None Include="Service References\Webservice\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\Webservice\SMSModule.Webservice.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Activities.aspx.cs">
-      <DependentUpon>Activities.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Content Include="App_Code\ObjectHolder.cs" />
-    <Content Include="App_Code\ServiceProxy.cs" />
-    <Content Include="App_Code\UcController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MasterPage.master.cs">
-      <DependentUpon>MasterPage.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="parentlogin.aspx.cs">
-      <DependentUpon>parentlogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="parents\Default.aspx.cs">
+    <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Content Include="App_Code\ObjectHolder.cs" />
+    <Content Include="App_Code\ServiceProxy.cs" />
+    <Content Include="App_Code\UcController.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="parents\Parent.master.cs">
-      <DependentUpon>parent.master</DependentUpon>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master.Master.cs">
+      <DependentUpon>Master.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master.Master.designer.cs">
+      <DependentUpon>Master.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\Webservice\Reference.cs">
@@ -131,48 +111,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="stafflogin.aspx.cs">
-      <DependentUpon>stafflogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="staff\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="staff\Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="staff\Staff.master.cs">
-      <DependentUpon>staff.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="studentlogin.aspx.cs">
-      <DependentUpon>studentlogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="students\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="students\Playzone.aspx.cs">
-      <DependentUpon>Playzone.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="students\student.master.cs">
-      <DependentUpon>student.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Webservice\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\Webservice\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="staff\staff.master" />
-    <Content Include="students\student.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -185,6 +128,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\Webservice\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Intra\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
