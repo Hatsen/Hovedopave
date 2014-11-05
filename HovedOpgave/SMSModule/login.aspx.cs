@@ -5,17 +5,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+namespace SMSModule
+{
     public partial class Login : System.Web.UI.Page
     {
-        
-
         protected void Page_Load(object sender, EventArgs e)
         {
         }
 
         protected async void btnLogin_Click(object sender, EventArgs e)
         {
-            if ()
+            if (await ObjectHolder.Instance.UcController.GetLoginDetails(txtUsername.Text, txtPassword.Text))
             {
                 Response.Redirect("intra/Default.aspx");
             }
@@ -25,3 +25,4 @@ using System.Web.UI.WebControls;
             }
         }
     }
+}

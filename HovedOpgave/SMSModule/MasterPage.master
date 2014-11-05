@@ -19,9 +19,7 @@
             <a class="item" href="Articles.aspx">Nyheder</a>
             <a class="item" href="Informations.aspx">Informationer</a>
             <a class="item" href="Activities.aspx">Aktiviteter</a> 
-            <a class="loginitem" target="_blank" href="parentlogin.aspx">Forældreintra</a>
-            <a class="loginitem" target="_blank" href="stafflogin.aspx">Personaleintra</a>
-            <a class="loginitem" target="_blank" href="studentlogin.aspx">Elevintra</a> 
+            <a class="loginitem" target="_blank" href="login.aspx">Skolelogin</a>
         </nav>
         <section id="content">
             <asp:ContentPlaceHolder ID="contentarea" runat="server">

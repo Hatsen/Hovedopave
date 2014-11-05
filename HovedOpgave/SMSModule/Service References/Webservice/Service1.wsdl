@@ -4,35 +4,65 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Webservice" />
+      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Webservice.DB" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IService1_GetData_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetData" />
+  <wsdl:message name="IService1_GetLoginDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoginDetails" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetData_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  <wsdl:message name="IService1_GetLoginDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoginDetailsResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetDataUsingDataContract_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  <wsdl:message name="IService1_CreateTeacher_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTeacher" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetDataUsingDataContract_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  <wsdl:message name="IService1_CreateTeacher_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTeacherResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetTeacher_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeacher" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetTeacher_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeacherResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetTeachers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeachers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetTeachers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeachersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetStudents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudents" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetStudents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentsResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
-    <wsdl:operation name="GetData">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataResponse" message="tns:IService1_GetData_OutputMessage" />
+    <wsdl:operation name="GetLoginDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetLoginDetails" message="tns:IService1_GetLoginDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetLoginDetailsResponse" message="tns:IService1_GetLoginDetails_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContractResponse" message="tns:IService1_GetDataUsingDataContract_OutputMessage" />
+    <wsdl:operation name="CreateTeacher">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateTeacher" message="tns:IService1_CreateTeacher_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateTeacherResponse" message="tns:IService1_CreateTeacher_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeacher">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTeacher" message="tns:IService1_GetTeacher_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetTeacherResponse" message="tns:IService1_GetTeacher_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeachers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTeachers" message="tns:IService1_GetTeachers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetTeachersResponse" message="tns:IService1_GetTeachers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetStudents" message="tns:IService1_GetStudents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetStudentsResponse" message="tns:IService1_GetStudents_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetData">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetData" style="document" />
+    <wsdl:operation name="GetLoginDetails">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetLoginDetails" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -40,8 +70,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetDataUsingDataContract" style="document" />
+    <wsdl:operation name="CreateTeacher">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateTeacher" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeacher">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetTeacher" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeachers">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetTeachers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudents">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetStudents" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

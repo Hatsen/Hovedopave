@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Webservice.DB;
 
 namespace Webservice
 {
@@ -41,14 +42,30 @@ namespace Webservice
             return announcements;
         }
 
-        public string[][] GetTeacherLogin(string username)
+        public User GetLoginDetails(string username)
         {
-            string[][] loginDetails = null;
+            User user = new User();
 
             try
             {
                 DB.Open();
-                loginDetails = DB.Query("SELECT * FROM Teacher WHERE username = '" + username + "'");
+                string[][] loginDetails = DB.Query("SELECT * FROM User WHERE username = '" + username + "'");
+
+                for (int i = 0; i < loginDetails.Length; i++)
+                {
+                    user.Id = Convert.ToInt32(loginDetails[0][0]);
+                    user.Firstname = Convert.ToString(loginDetails[0][1]);
+                    user.Lastname = Convert.ToString(loginDetails[0][2]);
+                    user.City = Convert.ToString(loginDetails[0][3]);
+                    user.Address = Convert.ToString(loginDetails[0][4]);
+                    user.Birthdate = Convert.ToString(loginDetails[0][5]);
+                    user.Username = Convert.ToString(loginDetails[0][6]);
+                    user.Password = Convert.ToString(loginDetails[0][7]);
+                    user.Lastlogin = Convert.ToDateTime(loginDetails[0][8]);
+                    user.Userrole = Convert.ToInt32(loginDetails[0][9]);
+
+                    Holder.Instance.LoginDetails = user;
+                }
             }
             catch (Exception ex)
             {
@@ -56,49 +73,8 @@ namespace Webservice
             finally
             {
                 DB.Close();
-                Holder.Instance.LoginDetails = loginDetails;
             }
-            return loginDetails;
-        }
-
-        public string[][] GetParentLogin(string username)
-        {
-            string[][] loginDetails = null;
-
-            try
-            {
-                DB.Open();
-                loginDetails = DB.Query("SELECT * FROM Parent WHERE username = '" + username + "'");
-            }
-            catch (Exception ex)
-            {
-            }
-            finally
-            {
-                DB.Close();
-                Holder.Instance.LoginDetails = loginDetails;
-            }
-            return loginDetails;
-        }
-
-        public string[][] GetStudentLogin(string username)
-        {
-            string[][] loginDetails = null;
-
-            try
-            {
-                DB.Open();
-                loginDetails = DB.Query("SELECT * FROM Student WHERE username = '" + username + "'");
-            }
-            catch (Exception ex)
-            {
-            }
-            finally
-            {
-                DB.Close();
-                Holder.Instance.LoginDetails = loginDetails;
-            }
-            return loginDetails;
+            return user;
         }
     }
 }

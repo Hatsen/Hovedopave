@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
+using SMSModule.Webservice;
 
 /// <summary>
 /// Summary description for ServiceProxy
@@ -40,24 +41,24 @@ namespace SMSModule
             var tcs = new TaskCompletionSource<bool>();
             EventHandler<GetLoginDetailsCompletedEventArgs> handler = null;
             handler = (sender, args) =>
+            {
+                if (args.UserState == tcs)
                 {
-                    if (args.UserState == tcs)
+                    service.GetLoginDetailsCompleted -= handler;
+                    if (args.Error != null)
                     {
-                        service.GetLoginDetailsCompleted -= handler;
-                        if (args.Error != null)
-                        {
-                            tcs.TrySetException(args.Error);
-                        }
-                        else if (args.Cancelled)
-                        {
-                            tcs.TrySetCanceled();
-                        }
-                        else
-                        {
-                            tcs.TrySetResult(args.Result);
-                        }
+                        tcs.TrySetException(args.Error);
                     }
-                };
+                    else if (args.Cancelled)
+                    {
+                        tcs.TrySetCanceled();
+                    }
+                    else
+                    {
+                        tcs.TrySetResult(args.Result);
+                    }
+                }
+            };
 
             service.GetLoginDetailsCompleted += handler;
             service.GetLoginDetailsAsync(username, password, tcs);

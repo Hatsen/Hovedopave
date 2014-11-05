@@ -16,7 +16,7 @@ namespace Webservice.DB
         private string username;
         private string password;
         private DateTime lastlogin; // allow null.
-        private string userrole;
+        private int userrole;
 
         public int Id
         {
@@ -72,7 +72,7 @@ namespace Webservice.DB
             set { lastlogin = value; }
         }
 
-        public string Userrole
+        public int Userrole
         {
             get { return userrole; }
             set { userrole = value; }

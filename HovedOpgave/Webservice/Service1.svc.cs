@@ -22,6 +22,27 @@ namespace Webservice
             HttpContext context = HttpContext.Current;
             bool loggedIn = false;
 
+            dh.GetLoginDetails(username);
+            if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails.Password))
+            {
+                context.Session["fornavn"] = Holder.Instance.LoginDetails.Firstname;
+                context.Session["efternavn"] = Holder.Instance.LoginDetails.Lastname;
+                context.Session["userrole"] = Holder.Instance.LoginDetails.Userrole;
+
+                loggedIn = true;
+            }
+            else
+            {
+                loggedIn = false;
+            }
+            return loggedIn;
+        }
+        /*
+        public bool GetLoginDetails(string username, string password)
+        {
+            HttpContext context = HttpContext.Current;
+            bool loggedIn = false;
+
             switch(username.Substring(0, 2))
             {
                 case "te":
@@ -60,7 +81,7 @@ namespace Webservice
             }
             return loggedIn;
         }
-
+        */
 
 
 
