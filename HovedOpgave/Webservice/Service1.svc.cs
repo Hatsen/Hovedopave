@@ -86,8 +86,10 @@ namespace Webservice
             for (int i = 0; i < 100; i++)
             {
                 Student t = new Student();
-                t.Id = i; t.Firstname = "sssss " + i;
-                t.Adress = "sssssssssaasasas" + i;
+                t.Id = i;
+                t.Fkuserid = i;
+                t.Firstname = "sssss " + i;
+                t.Address = "sssssssssaasasas" + i;
 
                 listen.Add(t);
             }
@@ -106,7 +108,9 @@ namespace Webservice
             for (int i = 0; i < 100; i++)
             {
                 Teacher t = new Teacher();
-                t.Id = i; t.Firstname = "Hr "+i;
+                t.Id = i;
+                t.Fkuserid = i;
+                t.Firstname = "Hr "+i;
                 t.Lastname = "lol" + i;
 
                 listen.Add(t);

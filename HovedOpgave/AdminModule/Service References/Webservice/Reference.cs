@@ -15,18 +15,20 @@ namespace AdminModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Teacher", Namespace="http://schemas.datacontract.org/2004/07/Webservice.DB")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/Webservice.DB")]
     [System.SerializableAttribute()]
-    public partial class Teacher : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(AdminModule.Webservice.Student))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(AdminModule.Webservice.Teacher))]
+    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AdressField;
+        private string AddressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BirhtdateField;
+        private string BirthdateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CityField;
@@ -47,10 +49,10 @@ namespace AdminModule.Webservice {
         private string PasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int RankField;
+        private string UsernameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UsernameField;
+        private string UserroleField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -63,27 +65,27 @@ namespace AdminModule.Webservice {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Adress {
+        public string Address {
             get {
-                return this.AdressField;
+                return this.AddressField;
             }
             set {
-                if ((object.ReferenceEquals(this.AdressField, value) != true)) {
-                    this.AdressField = value;
-                    this.RaisePropertyChanged("Adress");
+                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
+                    this.AddressField = value;
+                    this.RaisePropertyChanged("Address");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Birhtdate {
+        public string Birthdate {
             get {
-                return this.BirhtdateField;
+                return this.BirthdateField;
             }
             set {
-                if ((object.ReferenceEquals(this.BirhtdateField, value) != true)) {
-                    this.BirhtdateField = value;
-                    this.RaisePropertyChanged("Birhtdate");
+                if ((object.ReferenceEquals(this.BirthdateField, value) != true)) {
+                    this.BirthdateField = value;
+                    this.RaisePropertyChanged("Birthdate");
                 }
             }
         }
@@ -167,19 +169,6 @@ namespace AdminModule.Webservice {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Rank {
-            get {
-                return this.RankField;
-            }
-            set {
-                if ((this.RankField.Equals(value) != true)) {
-                    this.RankField = value;
-                    this.RaisePropertyChanged("Rank");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Username {
             get {
                 return this.UsernameField;
@@ -188,6 +177,19 @@ namespace AdminModule.Webservice {
                 if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
                     this.UsernameField = value;
                     this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Userrole {
+            get {
+                return this.UserroleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserroleField, value) != true)) {
+                    this.UserroleField = value;
+                    this.RaisePropertyChanged("Userrole");
                 }
             }
         }
@@ -206,73 +208,13 @@ namespace AdminModule.Webservice {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Student", Namespace="http://schemas.datacontract.org/2004/07/Webservice.DB")]
     [System.SerializableAttribute()]
-    public partial class Student : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AdressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstnameField;
+    public partial class Student : AdminModule.Webservice.User {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int FkClassidField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime LastloginField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastnameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PasswordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PostcodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UsernameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Adress {
-            get {
-                return this.AdressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AdressField, value) != true)) {
-                    this.AdressField = value;
-                    this.RaisePropertyChanged("Adress");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Firstname {
-            get {
-                return this.FirstnameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstnameField, value) != true)) {
-                    this.FirstnameField = value;
-                    this.RaisePropertyChanged("Firstname");
-                }
-            }
-        }
+        private int FkuseridField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int FkClassid {
@@ -288,89 +230,54 @@ namespace AdminModule.Webservice {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
+        public int Fkuserid {
             get {
-                return this.IdField;
+                return this.FkuseridField;
             }
             set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
+                if ((this.FkuseridField.Equals(value) != true)) {
+                    this.FkuseridField = value;
+                    this.RaisePropertyChanged("Fkuserid");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Teacher", Namespace="http://schemas.datacontract.org/2004/07/Webservice.DB")]
+    [System.SerializableAttribute()]
+    public partial class Teacher : AdminModule.Webservice.User {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FkuseridField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RankField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Fkuserid {
+            get {
+                return this.FkuseridField;
+            }
+            set {
+                if ((this.FkuseridField.Equals(value) != true)) {
+                    this.FkuseridField = value;
+                    this.RaisePropertyChanged("Fkuserid");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Lastlogin {
+        public int Rank {
             get {
-                return this.LastloginField;
+                return this.RankField;
             }
             set {
-                if ((this.LastloginField.Equals(value) != true)) {
-                    this.LastloginField = value;
-                    this.RaisePropertyChanged("Lastlogin");
+                if ((this.RankField.Equals(value) != true)) {
+                    this.RankField = value;
+                    this.RaisePropertyChanged("Rank");
                 }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Lastname {
-            get {
-                return this.LastnameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastnameField, value) != true)) {
-                    this.LastnameField = value;
-                    this.RaisePropertyChanged("Lastname");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Password {
-            get {
-                return this.PasswordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
-                    this.PasswordField = value;
-                    this.RaisePropertyChanged("Password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Postcode {
-            get {
-                return this.PostcodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PostcodeField, value) != true)) {
-                    this.PostcodeField = value;
-                    this.RaisePropertyChanged("Postcode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Username {
-            get {
-                return this.UsernameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
-                    this.UsernameField = value;
-                    this.RaisePropertyChanged("Username");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }

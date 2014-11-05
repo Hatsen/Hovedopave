@@ -116,8 +116,8 @@ namespace AdminModule.ViewModels
                teacher.Firstname = firstname;
                teacher.Lastname = lastname;
                teacher.City = city;
-               teacher.Birhtdate = birthdate;
-               teacher.Adress = address;
+               teacher.Birthdate = birthdate;
+               teacher.Address = address;
                teacher.Rank = rank;
 
                BusinessLogic.Instance.CreateTeacher(teacher);

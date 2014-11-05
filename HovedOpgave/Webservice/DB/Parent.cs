@@ -5,57 +5,14 @@ using System.Web;
 
 namespace Webservice.DB
 {
-    public class Parent
+    public class Parent : User
     {
-        private int id;
-        private string name;
-        private string adress;
-        private string postcode;
-        private string username;
-        private string password;
-        private DateTime lastlogin;
+        private int fkuserid;
 
-        public int Id
+        public int Fkuserid
         {
-            get { return id; }
-            set { id = value; }
+            get { return fkuserid; }
+            set { fkuserid = value; }
         }
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public string Adress
-        {
-            get { return adress; }
-            set { adress = value; }
-        }
-
-        public string Postcode
-        {
-            get { return postcode; }
-            set { postcode = value; }
-        }
-
-        public string Username
-        {
-            get { return username; }
-            set { username = value; }
-        }
-
-        public string Password
-        {
-            get { return password; }
-            set { password = value; }
-        }
-
-        public DateTime Lastlogin
-        {
-            get { return lastlogin; }
-            set { lastlogin = value; }
-        }
-
     }
 }

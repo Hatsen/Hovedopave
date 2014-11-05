@@ -74,6 +74,7 @@
     <Compile Include="DatabaseHandler.cs" />
     <Compile Include="DB\StudentParent.cs" />
     <Compile Include="DB\Teacher.cs" />
+    <Compile Include="DB\User.cs" />
     <Compile Include="Holder.cs" />
     <Compile Include="PasswordHash.cs" />
     <Compile Include="Service1.svc.cs">

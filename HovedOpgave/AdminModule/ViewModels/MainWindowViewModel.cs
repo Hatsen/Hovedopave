@@ -143,8 +143,8 @@ namespace AdminModule.ViewModels
             t.Firstname = "a";
             t.Lastname = "!";
             t.City = "ss";
-            t.Birhtdate = "sss";
-            t.Adress = "sasdsda";
+            t.Birthdate = "sss";
+            t.Address = "sasdsda";
             t.Rank = 1;
 
             TeacherCuView tview = new TeacherCuView(t);

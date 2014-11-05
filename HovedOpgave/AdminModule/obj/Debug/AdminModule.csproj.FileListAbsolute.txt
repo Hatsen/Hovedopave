@@ -2,8 +2,6 @@ C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\Adm
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\AdminModule.exe
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\AdminModule.pdb
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\AdminModule.csprojResolveAssemblyReference.cache
-C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\MainWindow.baml
-C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\MainWindow.g.cs
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\App.g.cs
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\AdminModule_MarkupCompile.cache
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\AdminModule.g.resources
@@ -111,3 +109,7 @@ C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\Views\Teach
 C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\Views\TeacherCuView.g.cs
 C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\Views\MainWindowView.baml
 C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\Views\MainWindowView.g.cs
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\MainWindowView.baml
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\TeacherCuView.baml
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\MainWindowView.g.cs
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\TeacherCuView.g.cs
