@@ -8,7 +8,8 @@ namespace Webservice.DB
     public class Student
     {
         private int id;
-        private string name;
+        private string firstname;
+        private string lastname;
         private string adress;
         private string postcode;
         private string username;
@@ -22,11 +23,19 @@ namespace Webservice.DB
             set { id = value; }
         }
 
-        public string Name
+        public string Firstname
         {
-            get { return name; }
-            set { name = value; }
+            get { return firstname; }
+            set { firstname = value; }
         }
+
+        public string Lastname
+        {
+            get { return lastname; }
+            set { lastname = value; }
+        }
+
+
 
         public string Adress
         {

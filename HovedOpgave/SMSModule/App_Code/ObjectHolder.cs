@@ -6,32 +6,28 @@ using System.Web;
 /// <summary>
 /// Summary description for ObjectHolder
 /// </summary>
-
-namespace SMSModule
+public class ObjectHolder
 {
-    public class ObjectHolder
+    private static ObjectHolder instance;
+    private ObjectHolder() { }
+
+    public static ObjectHolder Instance
     {
-        private static ObjectHolder instance;
-        private ObjectHolder() { }
-
-        public static ObjectHolder Instance
+        get
         {
-            get
+            if (instance == null)
             {
-                if (instance == null)
-                {
-                    instance = new ObjectHolder();
-                }
-                return instance;
+                instance = new ObjectHolder();
             }
+            return instance;
         }
+    }
 
-        private UcController ucController;
+    private UcController ucController;
 
-        public UcController UcController
-        {
-            get { return ucController; }
-            set { ucController = value; }
-        }
+    public UcController UcController
+    {
+        get { return ucController; }
+        set { ucController = value; }
     }
 }

@@ -8,9 +8,12 @@ namespace Webservice.DB
     public class Teacher
     {
         private int id;
-        private string name;
+        private string firstname;
+        private string lastname;
+        private string city;
         private string adress;
-        private string postcode;
+        private string birhtdate;
+        private int rank;
         private string username;
         private string password;
         private DateTime lastlogin;
@@ -21,10 +24,22 @@ namespace Webservice.DB
             set { id = value; }
         }
 
-        public string Name
+        public string Firstname
         {
-            get { return name; }
-            set { name = value; }
+            get { return firstname; }
+            set { firstname = value; }
+        }
+
+        public string Lastname
+        {
+            get { return lastname; }
+            set { lastname = value; }
+        }
+
+        public string City
+        {
+            get { return city; }
+            set { city = value; }
         }
 
         public string Adress
@@ -33,10 +48,16 @@ namespace Webservice.DB
             set { adress = value; }
         }
 
-        public string Postcode
+        public string Birhtdate
         {
-            get { return postcode; }
-            set { postcode = value; }
+            get { return birhtdate; }
+            set { birhtdate = value; }
+        }
+
+        public int Rank
+        {
+            get { return rank; }
+            set { rank = value; }
         }
 
         public string Username

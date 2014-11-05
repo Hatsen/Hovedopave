@@ -15,18 +15,42 @@ namespace AdminModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/Webservice")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Teacher", Namespace="http://schemas.datacontract.org/2004/07/Webservice.DB")]
     [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Teacher : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
+        private string AdressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
+        private string BirhtdateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime LastloginField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RankField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -39,27 +63,304 @@ namespace AdminModule.Webservice {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
+        public string Adress {
             get {
-                return this.BoolValueField;
+                return this.AdressField;
             }
             set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
+                if ((object.ReferenceEquals(this.AdressField, value) != true)) {
+                    this.AdressField = value;
+                    this.RaisePropertyChanged("Adress");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
+        public string Birhtdate {
             get {
-                return this.StringValueField;
+                return this.BirhtdateField;
             }
             set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
+                if ((object.ReferenceEquals(this.BirhtdateField, value) != true)) {
+                    this.BirhtdateField = value;
+                    this.RaisePropertyChanged("Birhtdate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string City {
+            get {
+                return this.CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Firstname {
+            get {
+                return this.FirstnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstnameField, value) != true)) {
+                    this.FirstnameField = value;
+                    this.RaisePropertyChanged("Firstname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Lastlogin {
+            get {
+                return this.LastloginField;
+            }
+            set {
+                if ((this.LastloginField.Equals(value) != true)) {
+                    this.LastloginField = value;
+                    this.RaisePropertyChanged("Lastlogin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Lastname {
+            get {
+                return this.LastnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastnameField, value) != true)) {
+                    this.LastnameField = value;
+                    this.RaisePropertyChanged("Lastname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Rank {
+            get {
+                return this.RankField;
+            }
+            set {
+                if ((this.RankField.Equals(value) != true)) {
+                    this.RankField = value;
+                    this.RaisePropertyChanged("Rank");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Student", Namespace="http://schemas.datacontract.org/2004/07/Webservice.DB")]
+    [System.SerializableAttribute()]
+    public partial class Student : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AdressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FkClassidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime LastloginField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PostcodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Adress {
+            get {
+                return this.AdressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AdressField, value) != true)) {
+                    this.AdressField = value;
+                    this.RaisePropertyChanged("Adress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Firstname {
+            get {
+                return this.FirstnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstnameField, value) != true)) {
+                    this.FirstnameField = value;
+                    this.RaisePropertyChanged("Firstname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FkClassid {
+            get {
+                return this.FkClassidField;
+            }
+            set {
+                if ((this.FkClassidField.Equals(value) != true)) {
+                    this.FkClassidField = value;
+                    this.RaisePropertyChanged("FkClassid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Lastlogin {
+            get {
+                return this.LastloginField;
+            }
+            set {
+                if ((this.LastloginField.Equals(value) != true)) {
+                    this.LastloginField = value;
+                    this.RaisePropertyChanged("Lastlogin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Lastname {
+            get {
+                return this.LastnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastnameField, value) != true)) {
+                    this.LastnameField = value;
+                    this.RaisePropertyChanged("Lastname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Postcode {
+            get {
+                return this.PostcodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PostcodeField, value) != true)) {
+                    this.PostcodeField = value;
+                    this.RaisePropertyChanged("Postcode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
                 }
             }
         }
@@ -78,21 +379,45 @@ namespace AdminModule.Webservice {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Webservice.IService1")]
     public interface IService1 {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
-        string GetData(int value);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetLoginDetails", ReplyAction="http://tempuri.org/IService1/GetLoginDetailsResponse")]
+        bool GetLoginDetails(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
-        System.IAsyncResult BeginGetData(int value, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetLoginDetails", ReplyAction="http://tempuri.org/IService1/GetLoginDetailsResponse")]
+        System.IAsyncResult BeginGetLoginDetails(string username, string password, System.AsyncCallback callback, object asyncState);
         
-        string EndGetData(System.IAsyncResult result);
+        bool EndGetLoginDetails(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        AdminModule.Webservice.CompositeType GetDataUsingDataContract(AdminModule.Webservice.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateTeacher", ReplyAction="http://tempuri.org/IService1/CreateTeacherResponse")]
+        bool CreateTeacher();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.IAsyncResult BeginGetDataUsingDataContract(AdminModule.Webservice.CompositeType composite, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/CreateTeacher", ReplyAction="http://tempuri.org/IService1/CreateTeacherResponse")]
+        System.IAsyncResult BeginCreateTeacher(System.AsyncCallback callback, object asyncState);
         
-        AdminModule.Webservice.CompositeType EndGetDataUsingDataContract(System.IAsyncResult result);
+        bool EndCreateTeacher(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTeacher", ReplyAction="http://tempuri.org/IService1/GetTeacherResponse")]
+        AdminModule.Webservice.Teacher GetTeacher();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetTeacher", ReplyAction="http://tempuri.org/IService1/GetTeacherResponse")]
+        System.IAsyncResult BeginGetTeacher(System.AsyncCallback callback, object asyncState);
+        
+        AdminModule.Webservice.Teacher EndGetTeacher(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTeachers", ReplyAction="http://tempuri.org/IService1/GetTeachersResponse")]
+        System.Collections.Generic.List<AdminModule.Webservice.Teacher> GetTeachers();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetTeachers", ReplyAction="http://tempuri.org/IService1/GetTeachersResponse")]
+        System.IAsyncResult BeginGetTeachers(System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<AdminModule.Webservice.Teacher> EndGetTeachers(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetStudents", ReplyAction="http://tempuri.org/IService1/GetStudentsResponse")]
+        System.Collections.Generic.List<AdminModule.Webservice.Student> GetStudents();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetStudents", ReplyAction="http://tempuri.org/IService1/GetStudentsResponse")]
+        System.IAsyncResult BeginGetStudents(System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<AdminModule.Webservice.Student> EndGetStudents(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -101,38 +426,95 @@ namespace AdminModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetLoginDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public GetDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public GetLoginDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public string Result {
+        public bool Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetDataUsingDataContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class CreateTeacherCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public GetDataUsingDataContractCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public CreateTeacherCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public AdminModule.Webservice.CompositeType Result {
+        public bool Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((AdminModule.Webservice.CompositeType)(this.results[0]));
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetTeacherCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetTeacherCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public AdminModule.Webservice.Teacher Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((AdminModule.Webservice.Teacher)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetTeachersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetTeachersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<AdminModule.Webservice.Teacher> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<AdminModule.Webservice.Teacher>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetStudentsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetStudentsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<AdminModule.Webservice.Student> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<AdminModule.Webservice.Student>)(this.results[0]));
             }
         }
     }
@@ -141,17 +523,35 @@ namespace AdminModule.Webservice {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class Service1Client : System.ServiceModel.ClientBase<AdminModule.Webservice.IService1>, AdminModule.Webservice.IService1 {
         
-        private BeginOperationDelegate onBeginGetDataDelegate;
+        private BeginOperationDelegate onBeginGetLoginDetailsDelegate;
         
-        private EndOperationDelegate onEndGetDataDelegate;
+        private EndOperationDelegate onEndGetLoginDetailsDelegate;
         
-        private System.Threading.SendOrPostCallback onGetDataCompletedDelegate;
+        private System.Threading.SendOrPostCallback onGetLoginDetailsCompletedDelegate;
         
-        private BeginOperationDelegate onBeginGetDataUsingDataContractDelegate;
+        private BeginOperationDelegate onBeginCreateTeacherDelegate;
         
-        private EndOperationDelegate onEndGetDataUsingDataContractDelegate;
+        private EndOperationDelegate onEndCreateTeacherDelegate;
         
-        private System.Threading.SendOrPostCallback onGetDataUsingDataContractCompletedDelegate;
+        private System.Threading.SendOrPostCallback onCreateTeacherCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetTeacherDelegate;
+        
+        private EndOperationDelegate onEndGetTeacherDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetTeacherCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetTeachersDelegate;
+        
+        private EndOperationDelegate onEndGetTeachersDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetTeachersCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetStudentsDelegate;
+        
+        private EndOperationDelegate onEndGetStudentsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetStudentsCompletedDelegate;
         
         public Service1Client() {
         }
@@ -172,108 +572,258 @@ namespace AdminModule.Webservice {
                 base(binding, remoteAddress) {
         }
         
-        public event System.EventHandler<GetDataCompletedEventArgs> GetDataCompleted;
+        public event System.EventHandler<GetLoginDetailsCompletedEventArgs> GetLoginDetailsCompleted;
         
-        public event System.EventHandler<GetDataUsingDataContractCompletedEventArgs> GetDataUsingDataContractCompleted;
+        public event System.EventHandler<CreateTeacherCompletedEventArgs> CreateTeacherCompleted;
         
-        public string GetData(int value) {
-            return base.Channel.GetData(value);
+        public event System.EventHandler<GetTeacherCompletedEventArgs> GetTeacherCompleted;
+        
+        public event System.EventHandler<GetTeachersCompletedEventArgs> GetTeachersCompleted;
+        
+        public event System.EventHandler<GetStudentsCompletedEventArgs> GetStudentsCompleted;
+        
+        public bool GetLoginDetails(string username, string password) {
+            return base.Channel.GetLoginDetails(username, password);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetData(int value, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetData(value, callback, asyncState);
+        public System.IAsyncResult BeginGetLoginDetails(string username, string password, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetLoginDetails(username, password, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public string EndGetData(System.IAsyncResult result) {
-            return base.Channel.EndGetData(result);
+        public bool EndGetLoginDetails(System.IAsyncResult result) {
+            return base.Channel.EndGetLoginDetails(result);
         }
         
-        private System.IAsyncResult OnBeginGetData(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            int value = ((int)(inValues[0]));
-            return this.BeginGetData(value, callback, asyncState);
+        private System.IAsyncResult OnBeginGetLoginDetails(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string username = ((string)(inValues[0]));
+            string password = ((string)(inValues[1]));
+            return this.BeginGetLoginDetails(username, password, callback, asyncState);
         }
         
-        private object[] OnEndGetData(System.IAsyncResult result) {
-            string retVal = this.EndGetData(result);
+        private object[] OnEndGetLoginDetails(System.IAsyncResult result) {
+            bool retVal = this.EndGetLoginDetails(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnGetDataCompleted(object state) {
-            if ((this.GetDataCompleted != null)) {
+        private void OnGetLoginDetailsCompleted(object state) {
+            if ((this.GetLoginDetailsCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetDataCompleted(this, new GetDataCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.GetLoginDetailsCompleted(this, new GetLoginDetailsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void GetDataAsync(int value) {
-            this.GetDataAsync(value, null);
+        public void GetLoginDetailsAsync(string username, string password) {
+            this.GetLoginDetailsAsync(username, password, null);
         }
         
-        public void GetDataAsync(int value, object userState) {
-            if ((this.onBeginGetDataDelegate == null)) {
-                this.onBeginGetDataDelegate = new BeginOperationDelegate(this.OnBeginGetData);
+        public void GetLoginDetailsAsync(string username, string password, object userState) {
+            if ((this.onBeginGetLoginDetailsDelegate == null)) {
+                this.onBeginGetLoginDetailsDelegate = new BeginOperationDelegate(this.OnBeginGetLoginDetails);
             }
-            if ((this.onEndGetDataDelegate == null)) {
-                this.onEndGetDataDelegate = new EndOperationDelegate(this.OnEndGetData);
+            if ((this.onEndGetLoginDetailsDelegate == null)) {
+                this.onEndGetLoginDetailsDelegate = new EndOperationDelegate(this.OnEndGetLoginDetails);
             }
-            if ((this.onGetDataCompletedDelegate == null)) {
-                this.onGetDataCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetDataCompleted);
+            if ((this.onGetLoginDetailsCompletedDelegate == null)) {
+                this.onGetLoginDetailsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetLoginDetailsCompleted);
             }
-            base.InvokeAsync(this.onBeginGetDataDelegate, new object[] {
-                        value}, this.onEndGetDataDelegate, this.onGetDataCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginGetLoginDetailsDelegate, new object[] {
+                        username,
+                        password}, this.onEndGetLoginDetailsDelegate, this.onGetLoginDetailsCompletedDelegate, userState);
         }
         
-        public AdminModule.Webservice.CompositeType GetDataUsingDataContract(AdminModule.Webservice.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
+        public bool CreateTeacher() {
+            return base.Channel.CreateTeacher();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetDataUsingDataContract(AdminModule.Webservice.CompositeType composite, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetDataUsingDataContract(composite, callback, asyncState);
+        public System.IAsyncResult BeginCreateTeacher(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCreateTeacher(callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public AdminModule.Webservice.CompositeType EndGetDataUsingDataContract(System.IAsyncResult result) {
-            return base.Channel.EndGetDataUsingDataContract(result);
+        public bool EndCreateTeacher(System.IAsyncResult result) {
+            return base.Channel.EndCreateTeacher(result);
         }
         
-        private System.IAsyncResult OnBeginGetDataUsingDataContract(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            AdminModule.Webservice.CompositeType composite = ((AdminModule.Webservice.CompositeType)(inValues[0]));
-            return this.BeginGetDataUsingDataContract(composite, callback, asyncState);
+        private System.IAsyncResult OnBeginCreateTeacher(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginCreateTeacher(callback, asyncState);
         }
         
-        private object[] OnEndGetDataUsingDataContract(System.IAsyncResult result) {
-            AdminModule.Webservice.CompositeType retVal = this.EndGetDataUsingDataContract(result);
+        private object[] OnEndCreateTeacher(System.IAsyncResult result) {
+            bool retVal = this.EndCreateTeacher(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnGetDataUsingDataContractCompleted(object state) {
-            if ((this.GetDataUsingDataContractCompleted != null)) {
+        private void OnCreateTeacherCompleted(object state) {
+            if ((this.CreateTeacherCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetDataUsingDataContractCompleted(this, new GetDataUsingDataContractCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.CreateTeacherCompleted(this, new CreateTeacherCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void GetDataUsingDataContractAsync(AdminModule.Webservice.CompositeType composite) {
-            this.GetDataUsingDataContractAsync(composite, null);
+        public void CreateTeacherAsync() {
+            this.CreateTeacherAsync(null);
         }
         
-        public void GetDataUsingDataContractAsync(AdminModule.Webservice.CompositeType composite, object userState) {
-            if ((this.onBeginGetDataUsingDataContractDelegate == null)) {
-                this.onBeginGetDataUsingDataContractDelegate = new BeginOperationDelegate(this.OnBeginGetDataUsingDataContract);
+        public void CreateTeacherAsync(object userState) {
+            if ((this.onBeginCreateTeacherDelegate == null)) {
+                this.onBeginCreateTeacherDelegate = new BeginOperationDelegate(this.OnBeginCreateTeacher);
             }
-            if ((this.onEndGetDataUsingDataContractDelegate == null)) {
-                this.onEndGetDataUsingDataContractDelegate = new EndOperationDelegate(this.OnEndGetDataUsingDataContract);
+            if ((this.onEndCreateTeacherDelegate == null)) {
+                this.onEndCreateTeacherDelegate = new EndOperationDelegate(this.OnEndCreateTeacher);
             }
-            if ((this.onGetDataUsingDataContractCompletedDelegate == null)) {
-                this.onGetDataUsingDataContractCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetDataUsingDataContractCompleted);
+            if ((this.onCreateTeacherCompletedDelegate == null)) {
+                this.onCreateTeacherCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCreateTeacherCompleted);
             }
-            base.InvokeAsync(this.onBeginGetDataUsingDataContractDelegate, new object[] {
-                        composite}, this.onEndGetDataUsingDataContractDelegate, this.onGetDataUsingDataContractCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginCreateTeacherDelegate, null, this.onEndCreateTeacherDelegate, this.onCreateTeacherCompletedDelegate, userState);
+        }
+        
+        public AdminModule.Webservice.Teacher GetTeacher() {
+            return base.Channel.GetTeacher();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetTeacher(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetTeacher(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public AdminModule.Webservice.Teacher EndGetTeacher(System.IAsyncResult result) {
+            return base.Channel.EndGetTeacher(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetTeacher(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetTeacher(callback, asyncState);
+        }
+        
+        private object[] OnEndGetTeacher(System.IAsyncResult result) {
+            AdminModule.Webservice.Teacher retVal = this.EndGetTeacher(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetTeacherCompleted(object state) {
+            if ((this.GetTeacherCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetTeacherCompleted(this, new GetTeacherCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetTeacherAsync() {
+            this.GetTeacherAsync(null);
+        }
+        
+        public void GetTeacherAsync(object userState) {
+            if ((this.onBeginGetTeacherDelegate == null)) {
+                this.onBeginGetTeacherDelegate = new BeginOperationDelegate(this.OnBeginGetTeacher);
+            }
+            if ((this.onEndGetTeacherDelegate == null)) {
+                this.onEndGetTeacherDelegate = new EndOperationDelegate(this.OnEndGetTeacher);
+            }
+            if ((this.onGetTeacherCompletedDelegate == null)) {
+                this.onGetTeacherCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetTeacherCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetTeacherDelegate, null, this.onEndGetTeacherDelegate, this.onGetTeacherCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<AdminModule.Webservice.Teacher> GetTeachers() {
+            return base.Channel.GetTeachers();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetTeachers(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetTeachers(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<AdminModule.Webservice.Teacher> EndGetTeachers(System.IAsyncResult result) {
+            return base.Channel.EndGetTeachers(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetTeachers(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetTeachers(callback, asyncState);
+        }
+        
+        private object[] OnEndGetTeachers(System.IAsyncResult result) {
+            System.Collections.Generic.List<AdminModule.Webservice.Teacher> retVal = this.EndGetTeachers(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetTeachersCompleted(object state) {
+            if ((this.GetTeachersCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetTeachersCompleted(this, new GetTeachersCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetTeachersAsync() {
+            this.GetTeachersAsync(null);
+        }
+        
+        public void GetTeachersAsync(object userState) {
+            if ((this.onBeginGetTeachersDelegate == null)) {
+                this.onBeginGetTeachersDelegate = new BeginOperationDelegate(this.OnBeginGetTeachers);
+            }
+            if ((this.onEndGetTeachersDelegate == null)) {
+                this.onEndGetTeachersDelegate = new EndOperationDelegate(this.OnEndGetTeachers);
+            }
+            if ((this.onGetTeachersCompletedDelegate == null)) {
+                this.onGetTeachersCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetTeachersCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetTeachersDelegate, null, this.onEndGetTeachersDelegate, this.onGetTeachersCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<AdminModule.Webservice.Student> GetStudents() {
+            return base.Channel.GetStudents();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetStudents(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetStudents(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<AdminModule.Webservice.Student> EndGetStudents(System.IAsyncResult result) {
+            return base.Channel.EndGetStudents(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetStudents(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetStudents(callback, asyncState);
+        }
+        
+        private object[] OnEndGetStudents(System.IAsyncResult result) {
+            System.Collections.Generic.List<AdminModule.Webservice.Student> retVal = this.EndGetStudents(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetStudentsCompleted(object state) {
+            if ((this.GetStudentsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetStudentsCompleted(this, new GetStudentsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetStudentsAsync() {
+            this.GetStudentsAsync(null);
+        }
+        
+        public void GetStudentsAsync(object userState) {
+            if ((this.onBeginGetStudentsDelegate == null)) {
+                this.onBeginGetStudentsDelegate = new BeginOperationDelegate(this.OnBeginGetStudents);
+            }
+            if ((this.onEndGetStudentsDelegate == null)) {
+                this.onEndGetStudentsDelegate = new EndOperationDelegate(this.OnEndGetStudents);
+            }
+            if ((this.onGetStudentsCompletedDelegate == null)) {
+                this.onGetStudentsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetStudentsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetStudentsDelegate, null, this.onEndGetStudentsDelegate, this.onGetStudentsCompletedDelegate, userState);
         }
     }
 }

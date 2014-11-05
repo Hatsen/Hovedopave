@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using Webservice.DB;
 
 namespace Webservice
 {
@@ -13,6 +14,21 @@ namespace Webservice
     {
         [OperationContract]
         bool GetLoginDetails(string username, string password);
+
+
+        //lsj
+        [OperationContract]
+        bool CreateTeacher();
+
+        [OperationContract]
+        Teacher GetTeacher();
+
+        [OperationContract]
+        List<Teacher> GetTeachers();
+
+        [OperationContract]
+        List<Student> GetStudents();
+
     }
 
 

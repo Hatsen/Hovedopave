@@ -35,3 +35,79 @@ C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\ko\
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\ru\System.Windows.Interactivity.resources.dll
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\AdminModule.exe.config
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\AdminModule.exe
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\AdminModule.pdb
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\AdminModule.exe
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\AdminModule.pdb
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.Composition.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.Interactivity.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.Mvvm.Desktop.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.PubSubEvents.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.Composition.xml
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.Interactivity.xml
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.xml
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\AdminModule.csprojResolveAssemblyReference.cache
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\MainWindow.baml
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\MainWindow.g.cs
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\App.g.cs
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\AdminModule_MarkupCompile.cache
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\AdminModule.g.resources
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\AdminModule.Properties.Resources.resources
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\AdminModule.csproj.GenerateResource.Cache
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\AdminModule.exe.config
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\AdminModule.exe
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\AdminModule.pdb
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\AdminModule.exe
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\AdminModule.pdb
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.Composition.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.Interactivity.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.Mvvm.Desktop.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.PubSubEvents.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.Composition.xml
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.Interactivity.xml
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.xml
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\AdminModule.csprojResolveAssemblyReference.cache
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\App.g.cs
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\AdminModule_MarkupCompile.cache
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\AdminModule.g.resources
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\AdminModule.Properties.Resources.resources
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\AdminModule.csproj.GenerateResource.Cache
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\Views\TeacherCuView.baml
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\Views\TeacherCuView.g.cs
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\Views\MainWindowView.baml
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\Views\MainWindowView.g.cs
