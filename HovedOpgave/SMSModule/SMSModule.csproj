@@ -63,7 +63,7 @@
     <Content Include="Activities.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="images\blackboard.png" />
-    <Content Include="parentlogin.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="parents\Default.aspx" />
     <Content Include="Service References\Webservice\Service1.disco" />
     <Content Include="Service References\Webservice\configuration91.svcinfo" />
@@ -72,10 +72,8 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <Content Include="stafflogin.aspx" />
     <Content Include="staff\Default.aspx" />
     <Content Include="staff\Register.aspx" />
-    <Content Include="studentlogin.aspx" />
     <Content Include="students\Default.aspx" />
     <Content Include="students\Playzone.aspx" />
     <Content Include="style\css.css" />
@@ -109,12 +107,14 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage.master.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="parentlogin.aspx.cs">
-      <DependentUpon>parentlogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="parents\Default.aspx.cs">
@@ -131,10 +131,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="stafflogin.aspx.cs">
-      <DependentUpon>stafflogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="staff\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -145,10 +141,6 @@
     </Compile>
     <Compile Include="staff\Staff.master.cs">
       <DependentUpon>staff.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="studentlogin.aspx.cs">
-      <DependentUpon>studentlogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="students\Default.aspx.cs">

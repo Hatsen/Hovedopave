@@ -10,6 +10,7 @@ using Microsoft.Practices.Prism.Commands;
 
 namespace AdminModule.ViewModels
 {
+    //Patrick was here :-)
     public class MainWindowViewModel : ViewModelBase
     {
 
