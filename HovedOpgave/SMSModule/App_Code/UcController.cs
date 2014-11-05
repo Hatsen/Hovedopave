@@ -7,23 +7,27 @@ using System.Web;
 /// <summary>
 /// Summary description for UcController
 /// </summary>
-public class UcController
+
+namespace SMSModule
 {
-    /*
-    public async Task<string> GetAnnouncements(int ancGrp)
+    public class UcController
     {
-        string result = "";
+        /*
+        public async Task<string> GetAnnouncements(int ancGrp)
+        {
+            string result = "";
 
-        result = await ServiceProxy.Instance.GetAnnouncements(ancGrp);
-        return result;
+            result = await ServiceProxy.Instance.GetAnnouncements(ancGrp);
+            return result;
+        }
+        */
+
+        public async Task<bool> GetLoginDetails(string username, string password)
+        {
+            bool result = false;
+
+            result = await ServiceProxy.Instance.GetLoginDetails(username, password);
+            return result;
+        }
     }
-
-    public async Task<string> StudentLogin(string username, string password)
-    {
-        string result = "";
-
-        result = await ServiceProxy.Instance.StudentLogin(username, password);
-        return result;
-    }
-     */
 }

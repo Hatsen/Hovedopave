@@ -25,7 +25,7 @@ namespace Webservice
 
                     anc.ID = Convert.ToInt32(getAnc[i][0]);
                     anc.Message = getAnc[i][1];
-                    anc.ancGroup = Convert.ToInt32(getAnc[i][2]);
+                    //anc.ancGroup = Convert.ToInt32(getAnc[i][2]);
 
                     Holder.Instance.Announcements.Add(anc);
                 }
@@ -43,7 +43,7 @@ namespace Webservice
 
         public string[][] GetTeacherLogin(string username)
         {
-            string[][] loginDetails = "";
+            string[][] loginDetails = null;
 
             try
             {
@@ -58,6 +58,47 @@ namespace Webservice
                 DB.Close();
                 Holder.Instance.LoginDetails = loginDetails;
             }
+            return loginDetails;
+        }
+
+        public string[][] GetParentLogin(string username)
+        {
+            string[][] loginDetails = null;
+
+            try
+            {
+                DB.Open();
+                loginDetails = DB.Query("SELECT * FROM Parent WHERE username = '" + username + "'");
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                DB.Close();
+                Holder.Instance.LoginDetails = loginDetails;
+            }
+            return loginDetails;
+        }
+
+        public string[][] GetStudentLogin(string username)
+        {
+            string[][] loginDetails = null;
+
+            try
+            {
+                DB.Open();
+                loginDetails = DB.Query("SELECT * FROM Student WHERE username = '" + username + "'");
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                DB.Close();
+                Holder.Instance.LoginDetails = loginDetails;
+            }
+            return loginDetails;
         }
     }
 }
