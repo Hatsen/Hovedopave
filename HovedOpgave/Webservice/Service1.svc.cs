@@ -14,7 +14,7 @@ namespace Webservice
 {
     public class Service1 : IService1
     {
-        DatabaseHandler dh = new DatabaseHandler();
+        DatabaseHandler databaseHandler = new DatabaseHandler();
 
         [WebMethod (EnableSession = true)]
         public bool GetLoginDetails(string username, string password)
@@ -22,7 +22,7 @@ namespace Webservice
             HttpContext context = HttpContext.Current;
             bool loggedIn = false;
 
-            dh.GetLoginDetails(username);
+            databaseHandler.GetLoginDetails(username);
             if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails.Password))
             {
                 context.Session["fornavn"] = Holder.Instance.LoginDetails.Firstname;

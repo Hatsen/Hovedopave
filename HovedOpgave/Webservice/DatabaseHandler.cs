@@ -53,7 +53,7 @@ namespace Webservice
             try
             {
                 DB.Open();
-                string[][] loginDetails = DB.Query("SELECT * FROM User WHERE username = '" + username + "'");
+                string[][] loginDetails = DB.Query("SELECT * FROM [User] WHERE username = '" + username + "'");
 
                 for (int i = 0; i < loginDetails.Length; i++)
                 {

@@ -13,6 +13,8 @@ namespace SMSModule
     public class ObjectHolder
     {
         private static ObjectHolder instance;
+        private UcController ucController = new UcController();
+
         private ObjectHolder() { }
 
         public static ObjectHolder Instance
@@ -27,9 +29,7 @@ namespace SMSModule
             }
         }
 
-        private UcController ucController;
-
-        public UcController UcController
+        public UcController UcController 
         {
             get { return ucController; }
             set { ucController = value; }
