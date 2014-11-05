@@ -14,6 +14,8 @@ namespace Webservice
 {
     public class Service1 : IService1
     {
+        DatabaseHandler dh = new DatabaseHandler();
+
         [WebMethod (EnableSession = true)]
         public bool GetLoginDetails(string username, string password)
         {
@@ -23,32 +25,37 @@ namespace Webservice
             switch(username.Substring(0, 2))
             {
                 case "te":
-                    if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][5])) //The fuck...
+                    Holder.Instance.LoginDetails = dh.GetTeacherLogin(username);
+                    if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][6])) //The fuck...
                     {
-                        context.Session["name"] = Holder.Instance.LoginDetails[0][1];
+                        context.Session["fornavn"] = Holder.Instance.LoginDetails[0][1];
+                        context.Session["efternavn"] = Holder.Instance.LoginDetails[0][2];
                         context.Session["rank"] = Holder.Instance.LoginDetails[0][6];
                         loggedIn = true;
                     }
                     break;
 
                 case "pa":
+                    Holder.Instance.LoginDetails = dh.GetParentLogin(username);
                     if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][5])) //The fuck...
                     {
-                        context.Session["name"] = Holder.Instance.LoginDetails[0][1];
+                        context.Session["fornavn"] = Holder.Instance.LoginDetails[0][1];
+                        context.Session["efternavn"] = Holder.Instance.LoginDetails[0][2];
                         loggedIn = true;
                     }
                     break;
 
                 case "st":
+                    Holder.Instance.LoginDetails = dh.GetStudentLogin(username);
                     if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][5])) //The fuck...
                     {
-                        context.Session["name"] = Holder.Instance.LoginDetails[0][1];
+                        context.Session["fornavn"] = Holder.Instance.LoginDetails[0][1];
+                        context.Session["efternavn"] = Holder.Instance.LoginDetails[0][2];
                         loggedIn = true;
                     }
                     break;
 
                 default:
-                    loggedIn = false;
                     break;
             }
             return loggedIn;
