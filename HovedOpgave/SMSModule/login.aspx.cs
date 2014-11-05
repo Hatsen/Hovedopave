@@ -11,17 +11,18 @@ namespace SMSModule
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
         }
 
         protected async void btnLogin_Click(object sender, EventArgs e)
         {
-            if (await ObjectHolder.Instance.UcController.GetLoginDetails(txtUsername.Text, txtPassword.Text))
+            if (await ObjectHolder.Instance.UcController.GetLoginDetails(txtUsername.Text, txtPassword.Text) == true)
             {
                 Response.Redirect("intra/Default.aspx");
             }
             else
             {
-                lblError.Text = "En fejl opstod. Indtast venligst dit brugernavn og kodeord igen.";
+                lblError.Text = "En fejl opstod. Prøv at indtaste brugernavnet og kodeordet igen.";
             }
         }
     }

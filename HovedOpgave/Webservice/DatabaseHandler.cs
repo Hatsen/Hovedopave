@@ -42,6 +42,10 @@ namespace Webservice
             return announcements;
         }
 
+        /// <summary>
+        /// Gets a users informations from the database, and returns it as an User Object.
+        /// </summary>
+        /// <param name="username">The username of the user.</param>
         public User GetLoginDetails(string username)
         {
             User user = new User();
