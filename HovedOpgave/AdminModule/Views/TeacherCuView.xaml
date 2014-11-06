@@ -10,13 +10,13 @@
             <Label Content="Efternavn:"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Lastname}"   Margin="5,0,5,0"/>
             <Label Content="By:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text=""  Margin="5,0,5,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding City}"  Margin="5,0,5,0"/>
             <Label Content="Adresse:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="" Margin="5,0,5,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Address}" Margin="5,0,5,0"/>
             <Label Content="Fødselsdag:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="YYYY:MM:DD"  Margin="5,0,5,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Birthdate}"  Margin="5,0,5,0"/>
             <Label Content="Rang/stilling:"/>
-            <ComboBox  Margin="5,0,5,0"></ComboBox>
+            <ComboBox  Margin="5,0,5,0" ItemsSource="{Binding Rank, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedRank}"></ComboBox>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="61" VerticalAlignment="Top" Width="192" Margin="61,363,39,0">

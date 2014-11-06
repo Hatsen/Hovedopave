@@ -30,10 +30,10 @@ namespace Webservice
         List<Student> GetStudents();
 
         [OperationContract]
-        int GetUserCount();
+        bool InsertTeacher(Teacher teacher);
 
         [OperationContract]
-        bool InsertTeacher(Teacher teacher);
+        int GetMostRecentUserId();
 
     }
 

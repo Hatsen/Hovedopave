@@ -15,6 +15,9 @@ namespace AdminModule.ViewModels
        public TeacherCuViewModel()
        {
            ConfirmCommand = new DelegateCommand<object>(Confirm);
+           
+       
+
 
        }
 
@@ -27,8 +30,10 @@ namespace AdminModule.ViewModels
        private string city;
        private string birthdate;
        private string address;
-       private int rank;
+       private List<int> ranks;
        private Teacher currentTeacher;
+       private int selectedRank;
+
 
        #endregion
 
@@ -72,25 +77,51 @@ namespace AdminModule.ViewModels
        public string City
        {
            get { return city; }
-           set { city = value; }
+           set
+           {
+               city = value;
+               OnPropertyChanged("City");
+           }
        }
 
        public string Birthdate
        {
            get { return birthdate; }
-           set { birthdate = value; }
+           set
+           {
+               birthdate = value;
+               OnPropertyChanged("Birthdate");
+           }
        }
 
        public string Address
        {
            get { return address; }
-           set { address = value; }
+           set
+           {
+               address = value;
+               OnPropertyChanged("Address");
+           }
        }
 
-       public int Rank
+       public List<int> Ranks
        {
-           get { return rank; }
-           set { rank = value; }
+           get { return ranks; }
+           set
+           {
+               ranks = value;
+               OnPropertyChanged("Rank");
+           }
+       }
+
+       public int SelectedRank
+       {
+           get { return selectedRank; }
+           set
+           {
+               selectedRank = value;
+               OnPropertyChanged("SelectedRank");
+           }
        }
 
        #endregion
@@ -103,24 +134,29 @@ namespace AdminModule.ViewModels
        #region CommandMethods
 
 
-       public void Confirm(Object o)
+       public async void Confirm(Object o)
        {
+           bool success;
 
            // vurder ud fra viewstate om der skal oprettes en user deraf dets username password mm. 
            // eller om der skal oprettes en user.
 
            if (Viewstate==Enums.ViewState.Create)
            {
-
                Teacher teacher = new Teacher();
                teacher.Firstname = firstname;
                teacher.Lastname = lastname;
                teacher.City = city;
                teacher.Birthdate = birthdate;
                teacher.Address = address;
-               teacher.Userrole = rank;
+               teacher.Userrole = 1;
 
-               BusinessLogic.Instance.CreateTeacher(teacher);
+               success = await BusinessLogic.Instance.CreateTeacher(teacher);
+
+               if (success)
+               {
+                   // kast et event og sig han blev oprettet.
+               }
            }
 
            else if (Viewstate==Enums.ViewState.Edit)

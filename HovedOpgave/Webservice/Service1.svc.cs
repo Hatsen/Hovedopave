@@ -109,17 +109,29 @@ namespace Webservice
             return listen;
         }
 
-        public int GetUserCount()
+        public int GetMostRecentUserId()
         {
-            return DatabaseHandler.Instance.GetUserCount();
+            return DatabaseHandler.Instance.GetMostRecentUserId();
         }
 
 
         public bool InsertTeacher(Teacher teacher)
         {
+          
 
+            bool success = false;
 
-            return DatabaseHandler.Instance.InsertTeacher(teacher);
+            int recentId =  DatabaseHandler.Instance.GetMostRecentUserId();
+
+            if (recentId != -1)
+            {
+                teacher.Id = recentId;
+                teacher.Fkuserid = recentId;
+                teacher.Username = "Te_" + recentId;
+                success = DatabaseHandler.Instance.InsertTeacher(teacher); // will insert into User and Teacher.
+            }
+
+            return success;
         }
 
     }

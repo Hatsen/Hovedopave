@@ -34,6 +34,9 @@ namespace AdminModule.Views
             viewModel.CurrentTeacher = teacher; // vigtig eftersom jeg ikke får smidt de data som kom fra objektet med ind. Viewstate sættes i starten til create. Er efter linien ovenover blevet sat til edit.
            
             this.DataContext = viewModel;
+
+           /* viewModel.Ranks.Add(1);
+            viewModel.Ranks.Add(2);*/
       
         }
 

@@ -33,25 +33,38 @@ namespace AdminModule
         public async Task<bool> CreateTeacher(Teacher teacher)
         {
             //der mangler at blive genereteret id, username og password
+            // Husk at id og username skal genereres på servicesiden. (tynd klient)
+            // det behøver ikke forholde sig sådan med password. Den har sammen med de andre attributter
+            // ikke noget med tallet fra Id at gøre.
 
-            string username = "";
+          
+            //teacher.Firstname = "Lars";
+            //teacher.Lastname = "Larsen";
+            //teacher.City = "Kolding";
+          //  teacher.Address = "Hagevej 22";
+         //   teacher.Birthdate = "06/12-1992";
+           // teacher.Userrole = 1; // skoleleder, vikar, underviser
 
-            //int generatedCount = await ServiceProxy.Instance.GetUserCount();
+/*            List<int> listen = new List<int>(); listen.Add(1); listen.Add(2); 
 
-            teacher.Firstname = "Patrick";
-            teacher.Lastname = "Larsen";
-            teacher.City = "Kolding";
-            teacher.Address = "Hagevej 22";
-            teacher.Birthdate = "1991:14:06";
-            teacher.Id = 100;
-            teacher.Fkuserid = 100;
-            teacher.Username = "test";
-            teacher.Userrole = 1;
+            for (int i = 0; i < 3; i++)
+            {
+                listen.RemoveAt(i);
+            }
+            */
+
+
             teacher.Lastlogin = DateTime.Now;
-            teacher.Password = PasswordHash.CreateHash("test");
-            
+            teacher.Password = PasswordHash.CreateHash(teacher.Birthdate);
+
 
             await ServiceProxy.Instance.InsertTeacher(teacher);
+
+            //int generatedCount = await ServiceProxy.Instance.GetUserCount(); // begrund hvor vi ikke gør det her..
+            // generer id på service 
+            // smid id ind i teacher tabellen efterfølgende når der er success. BESKRIV HVORFOR I RAPPORTEN.
+
+
 
 
             //generer id og username og password inden du opretter. Når du updaterere skal der tjekkes om id allerede findes på objektet.

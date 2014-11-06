@@ -14,5 +14,12 @@ namespace AdminModule
            Edit = 1
        };
 
+       public enum Rank
+       {
+           Principal = 0,
+           Teacher = 1,
+           Substitute = 2
+       };
+
    }
 }

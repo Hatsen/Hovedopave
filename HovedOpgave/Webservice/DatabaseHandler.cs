@@ -12,8 +12,8 @@ namespace Webservice
     {
         SQLDatabase DB = new SQLDatabase("SchoolDB.mdf", "LocalDB", "", "");
         //string connectionString = "data source=LocalDB;initial catalog=SchoolDB;integrated security=SSPI"; // brug configuration manager her..
-       // private string connectionString =
-          //  "Data Source=(local);initial catalog=SchoolDB;Integrated Security=True";
+        // private string connectionString =
+        //  "Data Source=(local);initial catalog=SchoolDB;Integrated Security=True";
 
         private string connectionString = "Server=(local);Database=SchoolDB;Trusted_Connection=True;";
         private static DatabaseHandler instance;
@@ -21,7 +21,7 @@ namespace Webservice
 
         private DatabaseHandler()
         {
-       
+
         }
 
         public static DatabaseHandler Instance
@@ -113,11 +113,11 @@ namespace Webservice
         }
 
 
-        public int GetUserCount()
+        public int GetMostRecentUserId()
         {
-            string statement = "USE SchoolDB SELECT COUNT(*) FROM User";
-            int count = 0;
-            
+            string statement = "SELECT MAX(Id) AS RecentId FROM [User];"; // selects the highest id therefor the most recent generated id.
+            int count = -1;
+            /*
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand cmdCount = new SqlCommand(statement, connection))
@@ -126,11 +126,27 @@ namespace Webservice
                     count = (int)cmdCount.ExecuteScalar();
                 }
             }
+            */
+            try
+            {
+                DB.Open();
+                string[][] loginDetails = DB.Query("SELECT MAX(Id) FROM [User];");
 
+
+                for (int i = 0; i < loginDetails.Length; i++)
+                {
+                    count = Convert.ToInt32(loginDetails[0][0])+1; // recent could be 17 but the new id needs to be 18.
+                }
+
+            }
+            catch (Exception)
+            {
+                Debug.Write("fejl!");
+            }
 
 
             return count;
-            
+
 
         }
 
@@ -146,7 +162,8 @@ namespace Webservice
 
                 DB.Exec(
                     "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole) " +
-                    "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + teacher.Username + "','" + teacher.Password + "','"+teacher.Lastlogin+"'," + teacher.Userrole + ");");
+                    "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + teacher.Username + "','" + teacher.Password + "','" + teacher.Lastlogin + "'," + teacher.Userrole + ");");
+                DB.Exec("INSERT INTO [Teacher] (Id) VALUES (" + teacher.Id + ");");
             }
             catch (Exception)
             {
@@ -154,7 +171,7 @@ namespace Webservice
                 success = false;
             }
 
-          
+
 
 
             return success;

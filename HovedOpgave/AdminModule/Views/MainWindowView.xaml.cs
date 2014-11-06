@@ -33,6 +33,7 @@ namespace AdminModule.Views
             this.DataContext = viewmodel;
 
 
+
             combo.Items.Add("1");
             combo.Items.Add("2");
         }

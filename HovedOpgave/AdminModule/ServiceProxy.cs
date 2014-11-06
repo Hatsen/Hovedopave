@@ -128,7 +128,8 @@ namespace AdminModule
        }
 
 
-       public Task<int> GetUserCount()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       //SKAL NOK FJERNES. DU KAN IKKE VÆRE SIKKER PÅ AT DU FÅR DEN MOSTRECENT ID NÅR DU HAR HENTET DET. ALTSÅ SKAL ID, USERNAME OG PASSWORD GENERES PÅ WEBSERVICEN.
+     /*  public Task<int> GetMostRecentUserId()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {
            var tcs = new TaskCompletionSource<int>();
            EventHandler<GetUserCountCompletedEventArgs> handler = null;
@@ -157,7 +158,7 @@ namespace AdminModule
            service.GetUserCountAsync();
 
            return tcs.Task;
-       }
+       }*/  
 
 
 

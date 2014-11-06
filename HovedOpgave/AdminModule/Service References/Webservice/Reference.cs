@@ -310,14 +310,6 @@ namespace AdminModule.Webservice {
         
         System.Collections.Generic.List<AdminModule.Webservice.Student> EndGetStudents(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserCount", ReplyAction="http://tempuri.org/IService1/GetUserCountResponse")]
-        int GetUserCount();
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetUserCount", ReplyAction="http://tempuri.org/IService1/GetUserCountResponse")]
-        System.IAsyncResult BeginGetUserCount(System.AsyncCallback callback, object asyncState);
-        
-        int EndGetUserCount(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertTeacher", ReplyAction="http://tempuri.org/IService1/InsertTeacherResponse")]
         bool InsertTeacher(AdminModule.Webservice.Teacher teacher);
         
@@ -325,6 +317,14 @@ namespace AdminModule.Webservice {
         System.IAsyncResult BeginInsertTeacher(AdminModule.Webservice.Teacher teacher, System.AsyncCallback callback, object asyncState);
         
         bool EndInsertTeacher(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMostRecentUserId", ReplyAction="http://tempuri.org/IService1/GetMostRecentUserIdResponse")]
+        int GetMostRecentUserId();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetMostRecentUserId", ReplyAction="http://tempuri.org/IService1/GetMostRecentUserIdResponse")]
+        System.IAsyncResult BeginGetMostRecentUserId(System.AsyncCallback callback, object asyncState);
+        
+        int EndGetMostRecentUserId(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -428,25 +428,6 @@ namespace AdminModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetUserCountCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetUserCountCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public int Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class InsertTeacherCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -460,6 +441,25 @@ namespace AdminModule.Webservice {
             get {
                 base.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetMostRecentUserIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetMostRecentUserIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }
@@ -498,17 +498,17 @@ namespace AdminModule.Webservice {
         
         private System.Threading.SendOrPostCallback onGetStudentsCompletedDelegate;
         
-        private BeginOperationDelegate onBeginGetUserCountDelegate;
-        
-        private EndOperationDelegate onEndGetUserCountDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetUserCountCompletedDelegate;
-        
         private BeginOperationDelegate onBeginInsertTeacherDelegate;
         
         private EndOperationDelegate onEndInsertTeacherDelegate;
         
         private System.Threading.SendOrPostCallback onInsertTeacherCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetMostRecentUserIdDelegate;
+        
+        private EndOperationDelegate onEndGetMostRecentUserIdDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetMostRecentUserIdCompletedDelegate;
         
         public Service1Client() {
         }
@@ -539,9 +539,9 @@ namespace AdminModule.Webservice {
         
         public event System.EventHandler<GetStudentsCompletedEventArgs> GetStudentsCompleted;
         
-        public event System.EventHandler<GetUserCountCompletedEventArgs> GetUserCountCompleted;
-        
         public event System.EventHandler<InsertTeacherCompletedEventArgs> InsertTeacherCompleted;
+        
+        public event System.EventHandler<GetMostRecentUserIdCompletedEventArgs> GetMostRecentUserIdCompleted;
         
         public bool GetLoginDetails(string username, string password) {
             return base.Channel.GetLoginDetails(username, password);
@@ -787,54 +787,6 @@ namespace AdminModule.Webservice {
             base.InvokeAsync(this.onBeginGetStudentsDelegate, null, this.onEndGetStudentsDelegate, this.onGetStudentsCompletedDelegate, userState);
         }
         
-        public int GetUserCount() {
-            return base.Channel.GetUserCount();
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetUserCount(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetUserCount(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public int EndGetUserCount(System.IAsyncResult result) {
-            return base.Channel.EndGetUserCount(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetUserCount(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetUserCount(callback, asyncState);
-        }
-        
-        private object[] OnEndGetUserCount(System.IAsyncResult result) {
-            int retVal = this.EndGetUserCount(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetUserCountCompleted(object state) {
-            if ((this.GetUserCountCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetUserCountCompleted(this, new GetUserCountCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetUserCountAsync() {
-            this.GetUserCountAsync(null);
-        }
-        
-        public void GetUserCountAsync(object userState) {
-            if ((this.onBeginGetUserCountDelegate == null)) {
-                this.onBeginGetUserCountDelegate = new BeginOperationDelegate(this.OnBeginGetUserCount);
-            }
-            if ((this.onEndGetUserCountDelegate == null)) {
-                this.onEndGetUserCountDelegate = new EndOperationDelegate(this.OnEndGetUserCount);
-            }
-            if ((this.onGetUserCountCompletedDelegate == null)) {
-                this.onGetUserCountCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserCountCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetUserCountDelegate, null, this.onEndGetUserCountDelegate, this.onGetUserCountCompletedDelegate, userState);
-        }
-        
         public bool InsertTeacher(AdminModule.Webservice.Teacher teacher) {
             return base.Channel.InsertTeacher(teacher);
         }
@@ -883,6 +835,54 @@ namespace AdminModule.Webservice {
             }
             base.InvokeAsync(this.onBeginInsertTeacherDelegate, new object[] {
                         teacher}, this.onEndInsertTeacherDelegate, this.onInsertTeacherCompletedDelegate, userState);
+        }
+        
+        public int GetMostRecentUserId() {
+            return base.Channel.GetMostRecentUserId();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetMostRecentUserId(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetMostRecentUserId(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public int EndGetMostRecentUserId(System.IAsyncResult result) {
+            return base.Channel.EndGetMostRecentUserId(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetMostRecentUserId(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetMostRecentUserId(callback, asyncState);
+        }
+        
+        private object[] OnEndGetMostRecentUserId(System.IAsyncResult result) {
+            int retVal = this.EndGetMostRecentUserId(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetMostRecentUserIdCompleted(object state) {
+            if ((this.GetMostRecentUserIdCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetMostRecentUserIdCompleted(this, new GetMostRecentUserIdCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetMostRecentUserIdAsync() {
+            this.GetMostRecentUserIdAsync(null);
+        }
+        
+        public void GetMostRecentUserIdAsync(object userState) {
+            if ((this.onBeginGetMostRecentUserIdDelegate == null)) {
+                this.onBeginGetMostRecentUserIdDelegate = new BeginOperationDelegate(this.OnBeginGetMostRecentUserId);
+            }
+            if ((this.onEndGetMostRecentUserIdDelegate == null)) {
+                this.onEndGetMostRecentUserIdDelegate = new EndOperationDelegate(this.OnEndGetMostRecentUserId);
+            }
+            if ((this.onGetMostRecentUserIdCompletedDelegate == null)) {
+                this.onGetMostRecentUserIdCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetMostRecentUserIdCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetMostRecentUserIdDelegate, null, this.onEndGetMostRecentUserIdDelegate, this.onGetMostRecentUserIdCompletedDelegate, userState);
         }
     }
 }
