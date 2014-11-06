@@ -22,41 +22,24 @@ namespace Webservice
             HttpContext context = HttpContext.Current;
             bool loggedIn = false;
 
-            switch(username.Substring(0, 2))
+            DatabaseHandler.Instance.GetLoginDetails(username);
+            if (Holder.Instance.LoginDetails != null && PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails.Password) == true)
             {
-                case "te":
-                    Holder.Instance.LoginDetails = DatabaseHandler.Instance.GetTeacherLogin(username);
-                    if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][6])) //The fuck...
-                    {
-                        context.Session["fornavn"] = Holder.Instance.LoginDetails[0][1];
-                        context.Session["efternavn"] = Holder.Instance.LoginDetails[0][2];
-                        context.Session["rank"] = Holder.Instance.LoginDetails[0][6];
-                        loggedIn = true;
-                    }
-                    break;
-
-                case "pa":
-                    Holder.Instance.LoginDetails = DatabaseHandler.Instance.GetParentLogin(username);
-                    if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][5])) //The fuck...
-                    {
-                        context.Session["fornavn"] = Holder.Instance.LoginDetails[0][1];
-                        context.Session["efternavn"] = Holder.Instance.LoginDetails[0][2];
-                        loggedIn = true;
-                    }
-                    break;
-
-                case "st":
-                    Holder.Instance.LoginDetails = DatabaseHandler.Instance.GetStudentLogin(username);
-                    if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][5])) //The fuck...
-                    {
-                        context.Session["fornavn"] = Holder.Instance.LoginDetails[0][1];
-                        context.Session["efternavn"] = Holder.Instance.LoginDetails[0][2];
-                        loggedIn = true;
-                    }
-                    break;
-
-                default:
-                    break;
+                try
+                {
+                    context.Session["firstname"] = Holder.Instance.LoginDetails.Firstname;
+                    context.Session["lastname"] = Holder.Instance.LoginDetails.Lastname;
+                    context.Session["username"] = Holder.Instance.LoginDetails.Username;
+                    context.Session["userrole"] = Holder.Instance.LoginDetails.Userrole;
+                }
+                catch (Exception ex)
+                {
+                    loggedIn = false;
+                }
+            }
+            else
+            {
+                loggedIn = false;
             }
             return loggedIn;
         }
