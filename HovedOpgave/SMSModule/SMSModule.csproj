@@ -64,8 +64,8 @@
     <Content Include="Default.aspx" />
     <Content Include="images\blackboard.png" />
     <Content Include="Intrasystem\Default.aspx" />
+    <Content Include="Intrasystem\CreateAnnouncement.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="parents\Default.aspx" />
     <Content Include="Intrasystem\Intra.Master" />
     <None Include="Service References\Webservice\Service1.disco" />
     <None Include="Service References\Webservice\configuration91.svcinfo" />
@@ -74,16 +74,11 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="staff\Default.aspx" />
-    <Content Include="staff\Register.aspx" />
-    <Content Include="students\Default.aspx" />
-    <Content Include="students\Playzone.aspx" />
     <Content Include="style\css.css" />
     <Content Include="style\intra.css" />
     <Content Include="Web.config" />
     <None Include="Service References\Webservice\Service1.wsdl" />
     <Content Include="MasterPage.master" />
-    <Content Include="parents\parent.master" />
     <None Include="Service References\Webservice\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -115,6 +110,13 @@
     <Compile Include="Intrasystem\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Intrasystem\CreateAnnouncement.aspx.cs">
+      <DependentUpon>CreateAnnouncement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Intrasystem\CreateAnnouncement.aspx.designer.cs">
+      <DependentUpon>CreateAnnouncement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -127,14 +129,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ObjectHolder.cs" />
-    <Compile Include="parents\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="parents\Parent.master.cs">
-      <DependentUpon>parent.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\Webservice\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -142,30 +136,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ServiceProxy.cs" />
-    <Compile Include="staff\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="staff\Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="staff\Staff.master.cs">
-      <DependentUpon>staff.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="students\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="students\Playzone.aspx.cs">
-      <DependentUpon>Playzone.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="students\student.master.cs">
-      <DependentUpon>student.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="UcController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -175,8 +145,6 @@
     <None Include="Service References\Webservice\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="staff\staff.master" />
-    <Content Include="students\student.master" />
     <Content Include="Service References\Webservice\SMSModule.Webservice.Student.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>

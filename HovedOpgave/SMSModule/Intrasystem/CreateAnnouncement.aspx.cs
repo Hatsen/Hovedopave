@@ -7,11 +7,16 @@ using System.Web.UI.WebControls;
 
 namespace SMSModule.Intrasystem
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class WebForm2 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = Session["firstname"].ToString();
+
+        }
+
+        protected void btnCreate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
