@@ -43,6 +43,12 @@
   <wsdl:message name="IService1_GetUserCount_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserCountResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_InsertTeacher_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertTeacher" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertTeacher_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertTeacherResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetLoginDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetLoginDetails" message="tns:IService1_GetLoginDetails_InputMessage" />
@@ -67,6 +73,10 @@
     <wsdl:operation name="GetUserCount">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserCount" message="tns:IService1_GetUserCount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserCountResponse" message="tns:IService1_GetUserCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTeacher">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertTeacher" message="tns:IService1_InsertTeacher_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertTeacherResponse" message="tns:IService1_InsertTeacher_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -118,6 +128,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetUserCount">
       <soap:operation soapAction="http://tempuri.org/IService1/GetUserCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTeacher">
+      <soap:operation soapAction="http://tempuri.org/IService1/InsertTeacher" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

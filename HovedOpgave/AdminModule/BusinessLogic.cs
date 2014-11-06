@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AdminModule.Webservice;
+using Crypto;
 
 namespace AdminModule
 {
@@ -35,11 +36,27 @@ namespace AdminModule
 
             string username = "";
 
-            int generatedCount = await ServiceProxy.Instance.GetUserCount();
+            //int generatedCount = await ServiceProxy.Instance.GetUserCount();
+
+            teacher.Firstname = "Patrick";
+            teacher.Lastname = "Larsen";
+            teacher.City = "Kolding";
+            teacher.Address = "Hagevej 22";
+            teacher.Birthdate = "1991:14:06";
+            teacher.Id = 100;
+            teacher.Fkuserid = 100;
+            teacher.Username = "test";
+            teacher.Userrole = 1;
+            teacher.Lastlogin = DateTime.Now;
+            teacher.Password = PasswordHash.CreateHash("test");
+            
+
+            await ServiceProxy.Instance.InsertTeacher(teacher);
+
 
             //generer id og username og password inden du opretter. Når du updaterere skal der tjekkes om id allerede findes på objektet.
 
-          
+
 
 
             return true;

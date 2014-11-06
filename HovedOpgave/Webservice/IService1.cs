@@ -32,6 +32,9 @@ namespace Webservice
         [OperationContract]
         int GetUserCount();
 
+        [OperationContract]
+        bool InsertTeacher(Teacher teacher);
+
     }
 
 

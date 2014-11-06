@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using Webservice.DB;
@@ -35,8 +36,11 @@ namespace Webservice
             }
         }
 
-        
-        
+
+
+
+
+
         public List<Announcement> GetAnnouncements()
         {
             List<Announcement> announcements = new List<Announcement>();
@@ -130,6 +134,31 @@ namespace Webservice
 
         }
 
+
+
+        public bool InsertTeacher(Teacher teacher)
+        {
+            bool success = true;
+
+            try
+            {
+                DB.Open();
+
+                DB.Exec(
+                    "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole) " +
+                    "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + teacher.Username + "','" + teacher.Password + "','"+teacher.Lastlogin+"'," + teacher.Userrole + ");");
+            }
+            catch (Exception)
+            {
+                Debug.Write("Fejl!");
+                success = false;
+            }
+
+          
+
+
+            return success;
+        }
 
 
     }

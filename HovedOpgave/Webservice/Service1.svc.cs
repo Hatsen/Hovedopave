@@ -115,5 +115,12 @@ namespace Webservice
         }
 
 
+        public bool InsertTeacher(Teacher teacher)
+        {
+
+
+            return DatabaseHandler.Instance.InsertTeacher(teacher);
+        }
+
     }
 }

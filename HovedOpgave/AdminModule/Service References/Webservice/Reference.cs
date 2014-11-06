@@ -317,6 +317,14 @@ namespace AdminModule.Webservice {
         System.IAsyncResult BeginGetUserCount(System.AsyncCallback callback, object asyncState);
         
         int EndGetUserCount(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertTeacher", ReplyAction="http://tempuri.org/IService1/InsertTeacherResponse")]
+        bool InsertTeacher(AdminModule.Webservice.Teacher teacher);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/InsertTeacher", ReplyAction="http://tempuri.org/IService1/InsertTeacherResponse")]
+        System.IAsyncResult BeginInsertTeacher(AdminModule.Webservice.Teacher teacher, System.AsyncCallback callback, object asyncState);
+        
+        bool EndInsertTeacher(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -439,6 +447,25 @@ namespace AdminModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class InsertTeacherCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public InsertTeacherCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class Service1Client : System.ServiceModel.ClientBase<AdminModule.Webservice.IService1>, AdminModule.Webservice.IService1 {
         
         private BeginOperationDelegate onBeginGetLoginDetailsDelegate;
@@ -477,6 +504,12 @@ namespace AdminModule.Webservice {
         
         private System.Threading.SendOrPostCallback onGetUserCountCompletedDelegate;
         
+        private BeginOperationDelegate onBeginInsertTeacherDelegate;
+        
+        private EndOperationDelegate onEndInsertTeacherDelegate;
+        
+        private System.Threading.SendOrPostCallback onInsertTeacherCompletedDelegate;
+        
         public Service1Client() {
         }
         
@@ -507,6 +540,8 @@ namespace AdminModule.Webservice {
         public event System.EventHandler<GetStudentsCompletedEventArgs> GetStudentsCompleted;
         
         public event System.EventHandler<GetUserCountCompletedEventArgs> GetUserCountCompleted;
+        
+        public event System.EventHandler<InsertTeacherCompletedEventArgs> InsertTeacherCompleted;
         
         public bool GetLoginDetails(string username, string password) {
             return base.Channel.GetLoginDetails(username, password);
@@ -798,6 +833,56 @@ namespace AdminModule.Webservice {
                 this.onGetUserCountCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserCountCompleted);
             }
             base.InvokeAsync(this.onBeginGetUserCountDelegate, null, this.onEndGetUserCountDelegate, this.onGetUserCountCompletedDelegate, userState);
+        }
+        
+        public bool InsertTeacher(AdminModule.Webservice.Teacher teacher) {
+            return base.Channel.InsertTeacher(teacher);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginInsertTeacher(AdminModule.Webservice.Teacher teacher, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginInsertTeacher(teacher, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public bool EndInsertTeacher(System.IAsyncResult result) {
+            return base.Channel.EndInsertTeacher(result);
+        }
+        
+        private System.IAsyncResult OnBeginInsertTeacher(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            AdminModule.Webservice.Teacher teacher = ((AdminModule.Webservice.Teacher)(inValues[0]));
+            return this.BeginInsertTeacher(teacher, callback, asyncState);
+        }
+        
+        private object[] OnEndInsertTeacher(System.IAsyncResult result) {
+            bool retVal = this.EndInsertTeacher(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnInsertTeacherCompleted(object state) {
+            if ((this.InsertTeacherCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.InsertTeacherCompleted(this, new InsertTeacherCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void InsertTeacherAsync(AdminModule.Webservice.Teacher teacher) {
+            this.InsertTeacherAsync(teacher, null);
+        }
+        
+        public void InsertTeacherAsync(AdminModule.Webservice.Teacher teacher, object userState) {
+            if ((this.onBeginInsertTeacherDelegate == null)) {
+                this.onBeginInsertTeacherDelegate = new BeginOperationDelegate(this.OnBeginInsertTeacher);
+            }
+            if ((this.onEndInsertTeacherDelegate == null)) {
+                this.onEndInsertTeacherDelegate = new EndOperationDelegate(this.OnEndInsertTeacher);
+            }
+            if ((this.onInsertTeacherCompletedDelegate == null)) {
+                this.onInsertTeacherCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnInsertTeacherCompleted);
+            }
+            base.InvokeAsync(this.onBeginInsertTeacherDelegate, new object[] {
+                        teacher}, this.onEndInsertTeacherDelegate, this.onInsertTeacherCompletedDelegate, userState);
         }
     }
 }
