@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Webservice.DB;
 
 namespace Webservice
 {
@@ -11,7 +12,7 @@ namespace Webservice
         public DatabaseHandler databaseHandler;
 
         private List<Announcement> announcements;
-        private string[][] loginDetails;
+        private User loginDetails;
 
         public List<Announcement> Announcements
         {
@@ -19,7 +20,7 @@ namespace Webservice
             set { announcements = value; }
         }
 
-        public string[][] LoginDetails
+        public User LoginDetails
         {
             get { return loginDetails; }
             set { loginDetails = value; }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SMSModule.Login" %>
+﻿<%@ Page Language="C#" Async="true"  AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SMSModule.Login" %>
 
 <!DOCTYPE html>
 

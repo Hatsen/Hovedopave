@@ -7,7 +7,7 @@ using System.Web;
 /// <summary>
 /// Summary description for UcController
 /// </summary>
-/// 
+
 namespace SMSModule
 {
     public class UcController
