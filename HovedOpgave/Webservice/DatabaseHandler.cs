@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -8,7 +9,33 @@ namespace Webservice
     public class DatabaseHandler
     {
         SQLDatabase DB = new SQLDatabase("SchoolDB.mdf", "LocalDB", "", "");
+        //string connectionString = "data source=LocalDB;initial catalog=SchoolDB;integrated security=SSPI"; // brug configuration manager her..
+       // private string connectionString =
+          //  "Data Source=(local);initial catalog=SchoolDB;Integrated Security=True";
 
+        private string connectionString = "Server=(local);Database=SchoolDB;Trusted_Connection=True;";
+        private static DatabaseHandler instance;
+
+
+        private DatabaseHandler()
+        {
+       
+        }
+
+        public static DatabaseHandler Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DatabaseHandler();
+                }
+                return instance;
+            }
+        }
+
+        
+        
         public List<Announcement> GetAnnouncements()
         {
             List<Announcement> announcements = new List<Announcement>();
@@ -100,5 +127,30 @@ namespace Webservice
             }
             return loginDetails;
         }
+
+
+        public int GetUserCount()
+        {
+            string statement = "USE SchoolDB SELECT COUNT(*) FROM User";
+            int count = 0;
+            
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmdCount = new SqlCommand(statement, connection))
+                {
+                    connection.Open();
+                    count = (int)cmdCount.ExecuteScalar();
+                }
+            }
+
+
+
+            return count;
+            
+
+        }
+
+
+
     }
 }
