@@ -34,12 +34,10 @@ namespace Webservice
         bool InsertTeacher(Teacher teacher);
 
         [OperationContract]
-<<<<<<< HEAD
         int GetMostRecentUserId();
 
-=======
-        bool InsertTeacher(Teacher teacher);
->>>>>>> origin/master
+      
+
     }
 
 

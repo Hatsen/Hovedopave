@@ -11,7 +11,8 @@ namespace SMSModule.Intrasystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = Session["firstname"].ToString();
+            
+            Label1.Text = Session["firstname"].ToString(); // valider lige for om username og password
         }
     }
 }

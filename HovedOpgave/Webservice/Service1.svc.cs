@@ -101,8 +101,6 @@ namespace Webservice
 
         public bool InsertTeacher(Teacher teacher)
         {
-<<<<<<< HEAD
-          
 
             bool success = false;
 
@@ -112,14 +110,12 @@ namespace Webservice
             {
                 teacher.Id = recentId;
                 teacher.Fkuserid = recentId;
-                teacher.Username = "Te_" + recentId;
+               // teacher.Username = "Te_" + recentId;
                 success = DatabaseHandler.Instance.InsertTeacher(teacher); // will insert into User and Teacher.
             }
 
             return success;
-=======
-            return DatabaseHandler.Instance.InsertTeacher(teacher);
->>>>>>> origin/master
+
         }
 
     }

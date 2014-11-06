@@ -159,7 +159,7 @@ namespace AdminModule.ViewModels
                }
            }
 
-           else if (Viewstate==Enums.ViewState.Edit)
+           else if (Viewstate==Enums.ViewState.Edit) // for next week! 
            {
                // her vil det ikke være nødvendigt at oprette password, id og username.
                BusinessLogic.Instance.UpdateTeacher(CurrentTeacher);
