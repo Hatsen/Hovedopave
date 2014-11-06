@@ -99,8 +99,6 @@ namespace AdminModule.ViewModels
 
         }
 
-
-
         public void Update(Object o)
         {
          GetTeachers();
@@ -118,11 +116,7 @@ namespace AdminModule.ViewModels
 
         public DelegateCommand<object> UpdateStudentsCommand { get; set; }
 
-
-
-
         public DelegateCommand<object> UpdateCommand { get; set; }
-
 
         public DelegateCommand<object> CreateTeacherCommand { get; set; }
 
@@ -145,7 +139,7 @@ namespace AdminModule.ViewModels
             t.City = "ss";
             t.Birthdate = "sss";
             t.Address = "sasdsda";
-            t.Rank = 1;
+            t.Userrole = 1;
 
             TeacherCuView tview = new TeacherCuView(t);
             tview.WindowStartupLocation = WindowStartupLocation.CenterScreen;

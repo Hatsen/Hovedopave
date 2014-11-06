@@ -5,7 +5,6 @@
       <xs:extension base="tns:User">
         <xs:sequence>
           <xs:element minOccurs="0" name="Fkuserid" type="xs:int" />
-          <xs:element minOccurs="0" name="Rank" type="xs:int" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -22,7 +21,7 @@
       <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Userrole" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Userrole" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="User" nillable="true" type="tns:User" />

@@ -29,9 +29,13 @@ namespace AdminModule
 
 
 
-        public bool CreateTeacher(Teacher teacher)
+        public async Task<bool> CreateTeacher(Teacher teacher)
         {
             //der mangler at blive genereteret id, username og password
+
+            string username = "";
+
+            int generatedCount = await ServiceProxy.Instance.GetUserCount();
 
             //generer id og username og password inden du opretter. Når du updaterere skal der tjekkes om id allerede findes på objektet.
 

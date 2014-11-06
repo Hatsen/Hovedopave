@@ -128,6 +128,38 @@ namespace AdminModule
        }
 
 
+       public Task<int> GetUserCount()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       {
+           var tcs = new TaskCompletionSource<int>();
+           EventHandler<GetUserCountCompletedEventArgs> handler = null;
+           handler = (sender, args) =>
+           {
+               if (args.UserState == tcs)
+               {
+                   service.GetUserCountCompleted -= handler;
+                   if (args.Error != null)
+                   {
+                       tcs.TrySetException(args.Error);
+                   }
+                   else if (args.Cancelled)
+                   {
+                       tcs.TrySetCanceled();
+                   }
+                   else
+                   {
+                       tcs.TrySetResult(args.Result);
+                   }
+
+               }
+           };
+
+           service.GetUserCountCompleted += handler;
+           service.GetUserCountAsync();
+
+           return tcs.Task;
+       }
+
+
 
 
 

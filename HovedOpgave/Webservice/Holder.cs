@@ -8,7 +8,7 @@ namespace Webservice
     public class Holder
     {
         private static Holder instance;
-        public DatabaseHandler dh;
+        public DatabaseHandler databaseHandler;
 
         private List<Announcement> announcements;
         private string[][] loginDetails;
@@ -27,7 +27,7 @@ namespace Webservice
 
         private Holder()
         {
-            dh = new DatabaseHandler();
+            // databaseHandler = new DatabaseHandler();
         }
 
         public static Holder Instance

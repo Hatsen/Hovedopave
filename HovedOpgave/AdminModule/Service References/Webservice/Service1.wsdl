@@ -37,6 +37,12 @@
   <wsdl:message name="IService1_GetStudents_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetStudentsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetUserCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserCount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserCountResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetLoginDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetLoginDetails" message="tns:IService1_GetLoginDetails_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="GetStudents">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetStudents" message="tns:IService1_GetStudents_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetStudentsResponse" message="tns:IService1_GetStudents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserCount" message="tns:IService1_GetUserCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserCountResponse" message="tns:IService1_GetUserCount_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetStudents">
       <soap:operation soapAction="http://tempuri.org/IService1/GetStudents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserCount">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserCount" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

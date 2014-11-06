@@ -14,7 +14,7 @@ namespace Webservice
 {
     public class Service1 : IService1
     {
-        DatabaseHandler dh = new DatabaseHandler();
+       // DatabaseHandler databaseHandler = new DatabaseHandler();
 
         [WebMethod (EnableSession = true)]
         public bool GetLoginDetails(string username, string password)
@@ -25,7 +25,7 @@ namespace Webservice
             switch(username.Substring(0, 2))
             {
                 case "te":
-                    Holder.Instance.LoginDetails = dh.GetTeacherLogin(username);
+                    Holder.Instance.LoginDetails = DatabaseHandler.Instance.GetTeacherLogin(username);
                     if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][6])) //The fuck...
                     {
                         context.Session["fornavn"] = Holder.Instance.LoginDetails[0][1];
@@ -36,7 +36,7 @@ namespace Webservice
                     break;
 
                 case "pa":
-                    Holder.Instance.LoginDetails = dh.GetParentLogin(username);
+                    Holder.Instance.LoginDetails = DatabaseHandler.Instance.GetParentLogin(username);
                     if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][5])) //The fuck...
                     {
                         context.Session["fornavn"] = Holder.Instance.LoginDetails[0][1];
@@ -46,7 +46,7 @@ namespace Webservice
                     break;
 
                 case "st":
-                    Holder.Instance.LoginDetails = dh.GetStudentLogin(username);
+                    Holder.Instance.LoginDetails = DatabaseHandler.Instance.GetStudentLogin(username);
                     if (PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails[0][5])) //The fuck...
                     {
                         context.Session["fornavn"] = Holder.Instance.LoginDetails[0][1];
@@ -123,10 +123,12 @@ namespace Webservice
                 listen.Add(t);
             }
 
-           
-
             return listen;
+        }
 
+        public int GetUserCount()
+        {
+            return DatabaseHandler.Instance.GetUserCount();
         }
 
 

@@ -29,6 +29,9 @@ namespace Webservice
         [OperationContract]
         List<Student> GetStudents();
 
+        [OperationContract]
+        int GetUserCount();
+
     }
 
 

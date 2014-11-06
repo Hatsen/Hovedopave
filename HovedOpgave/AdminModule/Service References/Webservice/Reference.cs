@@ -52,7 +52,7 @@ namespace AdminModule.Webservice {
         private string UsernameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserroleField;
+        private int UserroleField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -182,12 +182,12 @@ namespace AdminModule.Webservice {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Userrole {
+        public int Userrole {
             get {
                 return this.UserroleField;
             }
             set {
-                if ((object.ReferenceEquals(this.UserroleField, value) != true)) {
+                if ((this.UserroleField.Equals(value) != true)) {
                     this.UserroleField = value;
                     this.RaisePropertyChanged("Userrole");
                 }
@@ -252,9 +252,6 @@ namespace AdminModule.Webservice {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int FkuseridField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int RankField;
-        
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int Fkuserid {
             get {
@@ -264,19 +261,6 @@ namespace AdminModule.Webservice {
                 if ((this.FkuseridField.Equals(value) != true)) {
                     this.FkuseridField = value;
                     this.RaisePropertyChanged("Fkuserid");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Rank {
-            get {
-                return this.RankField;
-            }
-            set {
-                if ((this.RankField.Equals(value) != true)) {
-                    this.RankField = value;
-                    this.RaisePropertyChanged("Rank");
                 }
             }
         }
@@ -325,6 +309,14 @@ namespace AdminModule.Webservice {
         System.IAsyncResult BeginGetStudents(System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<AdminModule.Webservice.Student> EndGetStudents(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserCount", ReplyAction="http://tempuri.org/IService1/GetUserCountResponse")]
+        int GetUserCount();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetUserCount", ReplyAction="http://tempuri.org/IService1/GetUserCountResponse")]
+        System.IAsyncResult BeginGetUserCount(System.AsyncCallback callback, object asyncState);
+        
+        int EndGetUserCount(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -428,6 +420,25 @@ namespace AdminModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetUserCountCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetUserCountCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class Service1Client : System.ServiceModel.ClientBase<AdminModule.Webservice.IService1>, AdminModule.Webservice.IService1 {
         
         private BeginOperationDelegate onBeginGetLoginDetailsDelegate;
@@ -460,6 +471,12 @@ namespace AdminModule.Webservice {
         
         private System.Threading.SendOrPostCallback onGetStudentsCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetUserCountDelegate;
+        
+        private EndOperationDelegate onEndGetUserCountDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetUserCountCompletedDelegate;
+        
         public Service1Client() {
         }
         
@@ -488,6 +505,8 @@ namespace AdminModule.Webservice {
         public event System.EventHandler<GetTeachersCompletedEventArgs> GetTeachersCompleted;
         
         public event System.EventHandler<GetStudentsCompletedEventArgs> GetStudentsCompleted;
+        
+        public event System.EventHandler<GetUserCountCompletedEventArgs> GetUserCountCompleted;
         
         public bool GetLoginDetails(string username, string password) {
             return base.Channel.GetLoginDetails(username, password);
@@ -731,6 +750,54 @@ namespace AdminModule.Webservice {
                 this.onGetStudentsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetStudentsCompleted);
             }
             base.InvokeAsync(this.onBeginGetStudentsDelegate, null, this.onEndGetStudentsDelegate, this.onGetStudentsCompletedDelegate, userState);
+        }
+        
+        public int GetUserCount() {
+            return base.Channel.GetUserCount();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetUserCount(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserCount(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public int EndGetUserCount(System.IAsyncResult result) {
+            return base.Channel.EndGetUserCount(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetUserCount(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetUserCount(callback, asyncState);
+        }
+        
+        private object[] OnEndGetUserCount(System.IAsyncResult result) {
+            int retVal = this.EndGetUserCount(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetUserCountCompleted(object state) {
+            if ((this.GetUserCountCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetUserCountCompleted(this, new GetUserCountCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetUserCountAsync() {
+            this.GetUserCountAsync(null);
+        }
+        
+        public void GetUserCountAsync(object userState) {
+            if ((this.onBeginGetUserCountDelegate == null)) {
+                this.onBeginGetUserCountDelegate = new BeginOperationDelegate(this.OnBeginGetUserCount);
+            }
+            if ((this.onEndGetUserCountDelegate == null)) {
+                this.onEndGetUserCountDelegate = new EndOperationDelegate(this.OnEndGetUserCount);
+            }
+            if ((this.onGetUserCountCompletedDelegate == null)) {
+                this.onGetUserCountCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserCountCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetUserCountDelegate, null, this.onEndGetUserCountDelegate, this.onGetUserCountCompletedDelegate, userState);
         }
     }
 }
