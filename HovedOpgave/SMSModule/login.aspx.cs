@@ -18,7 +18,7 @@ namespace SMSModule
         {
             if (await ObjectHolder.Instance.UcController.GetLoginDetails(txtUsername.Text, txtPassword.Text) == true)
             {
-                Response.Redirect("intra/Default.aspx");
+                Response.Redirect("Intrasystem/Default.aspx");
             }
             else
             {

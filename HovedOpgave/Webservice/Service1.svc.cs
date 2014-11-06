@@ -31,6 +31,7 @@ namespace Webservice
                     context.Session["lastname"] = Holder.Instance.LoginDetails.Lastname;
                     context.Session["username"] = Holder.Instance.LoginDetails.Username;
                     context.Session["userrole"] = Holder.Instance.LoginDetails.Userrole;
+                    loggedIn = true;
                 }
                 catch (Exception ex)
                 {
@@ -44,34 +45,23 @@ namespace Webservice
             return loggedIn;
         }
 
-
-
-
         //lsj
         public bool CreateTeacher()
         {
-
             return true;
-
         }
-
 
         public Teacher GetTeacher()
         {
-
             Teacher t = new Teacher();
             t.Id = 1; t.Firstname = "Hr Jensen";
 
             return t;
-
         }
-
 
         public List<Student> GetStudents()
         {
-
             List<Student> listen = new List<Student>();
-
 
             for (int i = 0; i < 100; i++)
             {
@@ -83,12 +73,8 @@ namespace Webservice
 
                 listen.Add(t);
             }
-
-
-
             return listen;
         }
-
 
         public List<Teacher> GetTeachers()
         {
@@ -105,7 +91,6 @@ namespace Webservice
 
                 listen.Add(t);
             }
-
             return listen;
         }
 
@@ -114,9 +99,9 @@ namespace Webservice
             return DatabaseHandler.Instance.GetMostRecentUserId();
         }
 
-
         public bool InsertTeacher(Teacher teacher)
         {
+<<<<<<< HEAD
           
 
             bool success = false;
@@ -132,6 +117,9 @@ namespace Webservice
             }
 
             return success;
+=======
+            return DatabaseHandler.Instance.InsertTeacher(teacher);
+>>>>>>> origin/master
         }
 
     }
