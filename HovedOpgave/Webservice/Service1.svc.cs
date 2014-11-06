@@ -31,6 +31,7 @@ namespace Webservice
                     context.Session["lastname"] = Holder.Instance.LoginDetails.Lastname;
                     context.Session["username"] = Holder.Instance.LoginDetails.Username;
                     context.Session["userrole"] = Holder.Instance.LoginDetails.Userrole;
+                    loggedIn = true;
                 }
                 catch (Exception ex)
                 {
@@ -43,9 +44,6 @@ namespace Webservice
             }
             return loggedIn;
         }
-
-
-
 
         //lsj
         public bool CreateTeacher()

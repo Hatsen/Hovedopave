@@ -63,8 +63,10 @@
     <Content Include="Activities.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="images\blackboard.png" />
+    <Content Include="Intrasystem\Default.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="parents\Default.aspx" />
+    <Content Include="Intrasystem\Intra.Master" />
     <None Include="Service References\Webservice\Service1.disco" />
     <None Include="Service References\Webservice\configuration91.svcinfo" />
     <None Include="Service References\Webservice\configuration.svcinfo" />
@@ -77,9 +79,7 @@
     <Content Include="students\Default.aspx" />
     <Content Include="students\Playzone.aspx" />
     <Content Include="style\css.css" />
-    <Content Include="style\parent.css" />
-    <Content Include="style\staff.css" />
-    <Content Include="style\student.css" />
+    <Content Include="style\intra.css" />
     <Content Include="Web.config" />
     <None Include="Service References\Webservice\Service1.wsdl" />
     <Content Include="MasterPage.master" />
@@ -100,6 +100,20 @@
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Intrasystem\Intra.Master.cs">
+      <DependentUpon>Intra.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Intrasystem\Intra.Master.designer.cs">
+      <DependentUpon>Intra.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Intrasystem\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Intrasystem\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -182,6 +196,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\Webservice\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
