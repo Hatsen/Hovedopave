@@ -5,14 +5,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link rel="stylesheet" href="../style/parent.css" type="text/css"/>
-    <title>Forældreintra</title>
+    <title>Skoleintra</title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
     <header id="banner">
-        <a href="Default.aspx" style="text-decoration: none"><h1 id="bannerTitle">Forældreintra</h1></a>
+        <a href="Default.aspx" style="text-decoration: none"><h1 id="bannerTitle">Skoleintra</h1></a>
         </header>
         <nav id="menu">
             <a class="item" href="http://www.google.com">Google</a> <a class="item" href="http://www.eal.dk">Eal</a>

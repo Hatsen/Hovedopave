@@ -48,28 +48,20 @@ namespace Webservice
         //lsj
         public bool CreateTeacher()
         {
-
             return true;
-
         }
-
 
         public Teacher GetTeacher()
         {
-
             Teacher t = new Teacher();
             t.Id = 1; t.Firstname = "Hr Jensen";
 
             return t;
-
         }
-
 
         public List<Student> GetStudents()
         {
-
             List<Student> listen = new List<Student>();
-
 
             for (int i = 0; i < 100; i++)
             {
@@ -81,12 +73,8 @@ namespace Webservice
 
                 listen.Add(t);
             }
-
-
-
             return listen;
         }
-
 
         public List<Teacher> GetTeachers()
         {
@@ -103,7 +91,6 @@ namespace Webservice
 
                 listen.Add(t);
             }
-
             return listen;
         }
 
@@ -112,11 +99,8 @@ namespace Webservice
             return DatabaseHandler.Instance.GetUserCount();
         }
 
-
         public bool InsertTeacher(Teacher teacher)
         {
-
-
             return DatabaseHandler.Instance.InsertTeacher(teacher);
         }
 
