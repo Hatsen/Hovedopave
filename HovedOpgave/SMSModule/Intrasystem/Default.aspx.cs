@@ -11,7 +11,7 @@ namespace SMSModule.Intrasystem
     {
         protected async void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = await ObjectHolder.Instance.UcController.GetUserDetails(0);
+            Label1.Text = await ObjectHolder.Instance.UcController.GetUserDetails(4);
         }
     }
 }
