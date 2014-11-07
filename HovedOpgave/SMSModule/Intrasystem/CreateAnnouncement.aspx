@@ -21,7 +21,7 @@
         <p>
             <asp:Button ID="btnCreate" runat="server" OnClick="btnCreate_Click" Text="Opret meddelelse" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:DropDownList ID="ddlGroup" runat="server">
+            <asp:DropDownList ID="ddlGroup" runat="server" style="margin-left: 0px">
             </asp:DropDownList>
         </p>
     </center>

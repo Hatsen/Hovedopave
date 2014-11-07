@@ -25,18 +25,7 @@ namespace Webservice
             DatabaseHandler.Instance.GetLoginDetails(username);
             if (Holder.Instance.LoginDetails != null && PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails.Password) == true)
             {
-                try
-                {
-                    context.Session["firstname"] = Holder.Instance.LoginDetails.Firstname;
-                    context.Session["lastname"] = Holder.Instance.LoginDetails.Lastname;
-                    context.Session["username"] = Holder.Instance.LoginDetails.Username;
-                    context.Session["userrole"] = Holder.Instance.LoginDetails.Userrole;
-                    loggedIn = true;
-                }
-                catch (Exception ex)
-                {
-                    loggedIn = false;
-                }
+                loggedIn = true;
             }
             else
             {
@@ -126,11 +115,6 @@ namespace Webservice
             Holder.Instance.UserDetails = userInformations;
 
             return userInformations[number].ToString();
-        }
-
-        public bool CreateAnnounement(string announcement, int group)
-        {
-
         }
     }
 }
