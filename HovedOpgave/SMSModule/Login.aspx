@@ -49,7 +49,7 @@
             <asp:Label ID="Label2" runat="server" Text="Kodeord:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
