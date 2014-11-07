@@ -9,10 +9,9 @@ namespace SMSModule.Intrasystem
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected async void Page_Load(object sender, EventArgs e)
         {
-            
-            Label1.Text = Session["firstname"].ToString(); // valider lige for om username og password
+            Label1.Text = Session["username"].ToString();
         }
     }
 }

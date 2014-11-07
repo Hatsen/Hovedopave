@@ -18,7 +18,12 @@ namespace SMSModule
         {
             if (await ObjectHolder.Instance.UcController.GetLoginDetails(txtUsername.Text, txtPassword.Text) == true)
             {
-                Response.Redirect("Intrasystem/Default.aspx");
+                Session["userid"] = await ObjectHolder.Instance.UcController.GetUserDetails(0);
+                Session["firstname"] = await ObjectHolder.Instance.UcController.GetUserDetails(1);
+                Session["lastname"] = await ObjectHolder.Instance.UcController.GetUserDetails(2);
+                Session["username"] = await ObjectHolder.Instance.UcController.GetUserDetails(3);
+                Session["userrole"] = await ObjectHolder.Instance.UcController.GetUserDetails(4);
+                Response.Redirect("Intrasystem/Default.aspx", false);
             }
             else
             {

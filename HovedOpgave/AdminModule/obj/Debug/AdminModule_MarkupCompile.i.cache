@@ -4,17 +4,26 @@
 winexe
 C#
 .cs
-C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\
+C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\
 AdminModule
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\App.xaml
 5-663988136
 
 23-840167759
 28515484018
 Views\CuView\ClassCuView.xaml;Views\MainWindowView.xaml;Views\CuView\ParentCuView.xaml;Views\CuView\StudentCuView.xaml;Views\CuView\TeacherCuView.xaml;
+=======
+C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\App.xaml
+2930608560
+
+18667529310
+28-1708417045
+Views\MainWindowView.xaml;Views\TeacherCuView.xaml;
+>>>>>>> origin/master
 
 False
 

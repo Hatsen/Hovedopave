@@ -70,7 +70,7 @@
     <Compile Include="DB\Class.cs" />
     <Compile Include="DB\Parent.cs" />
     <Compile Include="DB\Student.cs" />
-    <Compile Include="Announcement.cs" />
+    <Compile Include="DB\Announcement.cs" />
     <Compile Include="DatabaseHandler.cs" />
     <Compile Include="DB\StudentParent.cs" />
     <Compile Include="DB\Teacher.cs" />
