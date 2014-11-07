@@ -37,22 +37,7 @@ namespace AdminModule
             // det behøver ikke forholde sig sådan med password. Den har sammen med de andre attributter
             // ikke noget med tallet fra Id at gøre.
 
-          
-            //teacher.Firstname = "Lars";
-            //teacher.Lastname = "Larsen";
-            //teacher.City = "Kolding";
-          //  teacher.Address = "Hagevej 22";
-         //   teacher.Birthdate = "06/12-1992";
-           // teacher.Userrole = 1; // skoleleder, vikar, underviser
-
-/*            List<int> listen = new List<int>(); listen.Add(1); listen.Add(2); 
-
-            for (int i = 0; i < 3; i++)
-            {
-                listen.RemoveAt(i);
-            }
-            */
-
+        
 
             teacher.Lastlogin = DateTime.Now;
             teacher.Password = PasswordHash.CreateHash(teacher.Birthdate);
@@ -89,6 +74,85 @@ namespace AdminModule
 
             return true;
         }
+
+
+        #region ParentMethods
+
+
+        public async Task<bool> CreateParent(Parent parent)
+        {
+            //der mangler at blive genereteret id, username og password
+            // Husk at id og username skal genereres på servicesiden. (tynd klient)
+            // det behøver ikke forholde sig sådan med password. Den har sammen med de andre attributter
+            // ikke noget med tallet fra Id at gøre.
+
+
+
+            parent.Lastlogin = DateTime.Now;
+            parent.Password = PasswordHash.CreateHash(parent.Birthdate);
+
+
+            await ServiceProxy.Instance.InsertParent(parent);
+
+            //int generatedCount = await ServiceProxy.Instance.GetUserCount(); // begrund hvor vi ikke gør det her..
+            // generer id på service 
+            // smid id ind i teacher tabellen efterfølgende når der er success. BESKRIV HVORFOR I RAPPORTEN.
+
+
+
+
+            //generer id og username og password inden du opretter. Når du updaterere skal der tjekkes om id allerede findes på objektet.
+
+
+
+
+            return true;
+        }
+
+
+
+        #endregion
+
+
+
+
+
+        #region StudentMethods
+
+
+        public async Task<bool> CreateStudent(Student student)
+        {
+            //der mangler at blive genereteret id, username og password
+            // Husk at id og username skal genereres på servicesiden. (tynd klient)
+            // det behøver ikke forholde sig sådan med password. Den har sammen med de andre attributter
+            // ikke noget med tallet fra Id at gøre.
+
+
+
+            student.Lastlogin = DateTime.Now;
+            student.Password = PasswordHash.CreateHash(student.Birthdate);
+
+
+            await ServiceProxy.Instance.InsertStudent(student);
+
+            //int generatedCount = await ServiceProxy.Instance.GetUserCount(); // begrund hvor vi ikke gør det her..
+            // generer id på service 
+            // smid id ind i teacher tabellen efterfølgende når der er success. BESKRIV HVORFOR I RAPPORTEN.
+
+
+
+
+            //generer id og username og password inden du opretter. Når du updaterere skal der tjekkes om id allerede findes på objektet.
+
+
+
+
+            return true;
+        }
+
+
+
+        #endregion
 
 
 

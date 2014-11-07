@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\App.xaml
-2930608560
+5-663988136
 
-141045244106
+19-1839768801
 78-740688316
-Views\MainWindowView.xaml;Views\TeacherCuView.xaml;
+Views\CuView\ClassCuView.xaml;Views\MainWindowView.xaml;Views\CuView\ParentCuView.xaml;Views\CuView\StudentCuView.xaml;Views\CuView\TeacherCuView.xaml;
 
 False
 

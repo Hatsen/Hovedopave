@@ -195,7 +195,84 @@ namespace AdminModule
 
 
 
+        #region ParentMethods
 
+
+
+
+       public Task<bool> InsertParent(Parent parent)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       {
+           var tcs = new TaskCompletionSource<bool>();
+           EventHandler<InsertParentCompletedEventArgs> handler = null;
+           handler = (sender, args) =>
+           {
+               if (args.UserState == tcs)
+               {
+                   service.InsertParentCompleted -= handler;
+                   if (args.Error != null)
+                   {
+                       tcs.TrySetException(args.Error);
+                   }
+                   else if (args.Cancelled)
+                   {
+                       tcs.TrySetCanceled();
+                   }
+                   else
+                   {
+                       tcs.TrySetResult(args.Result);
+                   }
+
+               }
+           };
+
+           service.InsertParentCompleted += handler;
+           service.InsertParentAsync(parent, tcs);
+
+           return tcs.Task;
+       }
+ 
+        #endregion 
+
+
+
+           
+        #region ParentMethods
+
+
+
+
+       public Task<bool> InsertStudent(Student student)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       {
+           var tcs = new TaskCompletionSource<bool>();
+           EventHandler<InsertStudentCompletedEventArgs> handler = null;
+           handler = (sender, args) =>
+           {
+               if (args.UserState == tcs)
+               {
+                   service.InsertStudentCompleted -= handler;
+                   if (args.Error != null)
+                   {
+                       tcs.TrySetException(args.Error);
+                   }
+                   else if (args.Cancelled)
+                   {
+                       tcs.TrySetCanceled();
+                   }
+                   else
+                   {
+                       tcs.TrySetResult(args.Result);
+                   }
+
+               }
+           };
+
+           service.InsertStudentCompleted += handler;
+           service.InsertStudentAsync(student, tcs);
+
+           return tcs.Task;
+       }
+    
+        #endregion 
 
 
 

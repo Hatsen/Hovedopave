@@ -110,6 +110,12 @@ C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\Views\Teach
 C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\Views\MainWindowView.baml
 C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\Views\MainWindowView.g.cs
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\MainWindowView.baml
-C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\TeacherCuView.baml
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\MainWindowView.g.cs
-C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\TeacherCuView.g.cs
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\CuView\ClassCuView.baml
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\CuView\ParentCuView.baml
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\CuView\StudentCuView.baml
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\CuView\TeacherCuView.baml
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\CuView\ClassCuView.g.cs
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\CuView\ParentCuView.g.cs
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\CuView\StudentCuView.g.cs
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\CuView\TeacherCuView.g.cs

@@ -21,5 +21,21 @@ namespace AdminModule
            Substitute = 2
        };
 
+       public enum Userrole
+       {
+           Teacher = 0,
+           Parent = 1,
+           Student = 2
+       };
+
+
+       public enum ViewstateObject
+       {
+           Teacher = 0,
+           Student = 1,
+           Parent = 2,
+
+       };
+
    }
 }

@@ -59,22 +59,6 @@ namespace Webservice
             return t;
         }
 
-        public List<Student> GetStudents()
-        {
-            List<Student> listen = new List<Student>();
-
-            for (int i = 0; i < 100; i++)
-            {
-                Student t = new Student();
-                t.Id = i;
-                t.Fkuserid = i;
-                t.Firstname = "sssss " + i;
-                t.Address = "sssssssssaasasas" + i;
-
-                listen.Add(t);
-            }
-            return listen;
-        }
 
         public List<Teacher> GetTeachers()
         {
@@ -92,6 +76,9 @@ namespace Webservice
                 listen.Add(t);
             }
             return listen;
+
+
+            
         }
 
         public int GetMostRecentUserId()
@@ -110,13 +97,108 @@ namespace Webservice
             {
                 teacher.Id = recentId;
                 teacher.Fkuserid = recentId;
-               // teacher.Username = "Te_" + recentId;
+                teacher.Username = "Te_" + recentId;
                 success = DatabaseHandler.Instance.InsertTeacher(teacher); // will insert into User and Teacher.
             }
 
             return success;
 
         }
+
+
+        #region ParentMethods
+
+
+
+        public bool InsertParent(Parent parent)
+        {
+
+            bool success = false;
+
+            int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
+
+            if (recentId != -1)
+            {
+                parent.Id = recentId;
+                parent.Fkuserid = recentId;
+                parent.Username = "Pa_" + recentId;
+                success = DatabaseHandler.Instance.InsertParent(parent); // will insert into User and Teacher.
+            }
+
+            return success;
+
+        }
+
+
+        public List<Parent> GetParents()
+        {
+            List<Parent> listen = new List<Parent>();
+
+
+            for (int i = 0; i < 100; i++)
+            {
+                Parent t = new Parent();
+                t.Id = i;
+                t.Fkuserid = i;
+                t.Firstname = "Hr " + i;
+                t.Lastname = "lol" + i;
+
+                listen.Add(t);
+            }
+            return listen;
+        }
+
+
+        #endregion
+
+
+
+        #region ParentMethods
+
+
+
+        public bool InsertStudent(Student student)
+        {
+
+            bool success = false;
+
+            int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
+
+            if (recentId != -1)
+            {
+                student.Id = recentId;
+                student.Fkuserid = recentId;
+                student.Username = "St_" + recentId;
+                success = DatabaseHandler.Instance.InsertStudent(student); // will insert into User and Teacher.
+            }
+
+            return success;
+
+        }
+
+
+        public List<Student> GetStudents()
+        {
+            List<Student> listen = new List<Student>();
+
+
+            for (int i = 0; i < 100; i++)
+            {
+                Student t = new Student();
+                t.Id = i;
+                t.Fkuserid = i;
+                t.Firstname = "Hr " + i;
+                t.Lastname = "lol" + i;
+
+                listen.Add(t);
+            }
+            return listen;
+        }
+
+
+        #endregion
+
+
 
     }
 }

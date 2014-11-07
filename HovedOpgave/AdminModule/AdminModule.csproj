@@ -97,22 +97,45 @@
     <Compile Include="ServiceProxy.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\ParentCuViewModel.cs" />
+    <Compile Include="ViewModels\StudentCuViewModel.cs" />
     <Compile Include="ViewModels\TeacherCuViewModel.cs" />
+    <Compile Include="Views\CuView\ClassCuView.xaml.cs">
+      <DependentUpon>ClassCuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TeacherCuView.xaml.cs">
+    <Compile Include="Views\CuView\ParentCuView.xaml.cs">
+      <DependentUpon>ParentCuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CuView\StudentCuView.xaml.cs">
+      <DependentUpon>StudentCuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CuView\TeacherCuView.xaml.cs">
       <DependentUpon>TeacherCuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CuView\ClassCuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TeacherCuView.xaml">
+    <Page Include="Views\CuView\ParentCuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CuView\StudentCuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CuView\TeacherCuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,6 +164,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\Webservice\AdminModule.Webservice.Parent.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\Webservice\AdminModule.Webservice.Student.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

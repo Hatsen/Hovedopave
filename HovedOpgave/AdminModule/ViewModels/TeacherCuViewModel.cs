@@ -14,14 +14,21 @@ namespace AdminModule.ViewModels
 
        public TeacherCuViewModel()
        {
-           ConfirmCommand = new DelegateCommand<object>(Confirm);
-           
-       
+           ConfirmCommand = new DelegateCommand<object>(Confirm, IsEnable);
+           CancelCommand = new DelegateCommand<object>(Cancel);
 
-
+           if (ranks==null)
+           {
+               Ranks = new List<string>();
+               Ranks.Add("Skoleleder"); Ranks.Add("Underviser");Ranks.Add("Vikar");
+            
+           }
+         
        }
 
+       public Action OnTeacherViewClose;
        public Enums.ViewState Viewstate; // bliver altid sat til Create til at starte med.
+     //  public Enums.ViewState ViewstateObject; // bliver altid sat til Create til at starte med.
 
        #region PrivateMembers
 
@@ -30,9 +37,9 @@ namespace AdminModule.ViewModels
        private string city;
        private string birthdate;
        private string address;
-       private List<int> ranks;
+       private List<string> ranks;
        private Teacher currentTeacher;
-       private int selectedRank;
+       private string selectedRank;
 
 
        #endregion
@@ -45,10 +52,16 @@ namespace AdminModule.ViewModels
            get { return currentTeacher; }
            set
            {
-               currentTeacher = value ?? new Teacher(); // hvis value er null bliver den sat til en ny. Burde ikke blive ramt hvis der ikke allerede er en currentTeacher.
+              // currentTeacher = value ?? new Teacher(); // hvis value er null bliver den sat til en ny. Burde ikke blive ramt hvis der ikke allerede er en currentTeacher.
+
+               currentTeacher = value;
 
                Firstname = currentTeacher.Firstname;
                Lastname = currentTeacher.Lastname;
+               City = currentTeacher.City;
+               Address = currentTeacher.Address;
+               Birthdate = currentTeacher.Birthdate;
+               // rank mangler for teacher.
 
            }
        }
@@ -61,6 +74,7 @@ namespace AdminModule.ViewModels
            {
                firstname = value;
                OnPropertyChanged("Firstname");
+               ConfirmCommand.RaiseCanExecuteChanged();
            }
        }
 
@@ -71,6 +85,7 @@ namespace AdminModule.ViewModels
            {
                lastname = value;
                OnPropertyChanged("Lastname");
+               ConfirmCommand.RaiseCanExecuteChanged();
            }
        }
 
@@ -81,6 +96,7 @@ namespace AdminModule.ViewModels
            {
                city = value;
                OnPropertyChanged("City");
+               ConfirmCommand.RaiseCanExecuteChanged();
            }
        }
 
@@ -91,6 +107,7 @@ namespace AdminModule.ViewModels
            {
                birthdate = value;
                OnPropertyChanged("Birthdate");
+               ConfirmCommand.RaiseCanExecuteChanged();
            }
        }
 
@@ -101,26 +118,30 @@ namespace AdminModule.ViewModels
            {
                address = value;
                OnPropertyChanged("Address");
+               ConfirmCommand.RaiseCanExecuteChanged();
            }
        }
 
-       public List<int> Ranks
+       public List<string> Ranks
        {
            get { return ranks; }
            set
            {
                ranks = value;
-               OnPropertyChanged("Rank");
+              // Ranks.Add(1); Ranks.Add(2);
+               OnPropertyChanged("Ranks");
+              
            }
        }
 
-       public int SelectedRank
+       public string SelectedRank
        {
            get { return selectedRank; }
            set
            {
                selectedRank = value;
                OnPropertyChanged("SelectedRank");
+               ConfirmCommand.RaiseCanExecuteChanged();
            }
        }
 
@@ -128,11 +149,17 @@ namespace AdminModule.ViewModels
 
        #region Commands
        public DelegateCommand<object> ConfirmCommand { get; set; }
+       public DelegateCommand<object> CancelCommand { get; set; }
 
        #endregion
 
        #region CommandMethods
 
+
+       public void Cancel(Object o)
+       {
+           RaiseOnProjectViewClose();
+       }
 
        public async void Confirm(Object o)
        {
@@ -140,6 +167,8 @@ namespace AdminModule.ViewModels
 
            // vurder ud fra viewstate om der skal oprettes en user deraf dets username password mm. 
            // eller om der skal oprettes en user.
+
+           // her skal der tjekkes på hvad type objektet er. 
 
            if (Viewstate==Enums.ViewState.Create)
            {
@@ -149,6 +178,8 @@ namespace AdminModule.ViewModels
                teacher.City = city;
                teacher.Birthdate = birthdate;
                teacher.Address = address;
+               // vi mangler rank på teacher.
+               
                teacher.Userrole = 1;
 
                success = await BusinessLogic.Instance.CreateTeacher(teacher);
@@ -167,19 +198,25 @@ namespace AdminModule.ViewModels
            }
         
 
-
-
-
            //tjek med id.findes id allerede på user skal der ikke genereres username eller password.
            
        }
 
 
+
        public bool IsEnable(Object o)
        {
-           return false;
-       }
+           // validerer om alle felter er blevet udfyldt.
+           bool enable = true;
+           if (string.IsNullOrEmpty(Firstname) || string.IsNullOrEmpty(Lastname) || string.IsNullOrEmpty(City) || string.IsNullOrEmpty(Birthdate) || string.IsNullOrEmpty(Address))
+           {
+               enable = false;
+           }
 
+
+
+           return enable;
+       }
        #endregion
 
 
@@ -188,6 +225,14 @@ namespace AdminModule.ViewModels
 
        #region Methods
 
+       private void RaiseOnProjectViewClose()
+       {
+           if (OnTeacherViewClose != null)
+           {
+               OnTeacherViewClose();
+           }
+
+       }
 
 
        #endregion

@@ -177,6 +177,101 @@ namespace Webservice
             return success;
         }
 
+       /* public List<Teacher> GetTeachers()
+        {
+           List<Teacher> announcements = new List<Teacher>();
+
+            try
+            {
+                DB.Open();
+
+                string[][] getAnc = DB.Query("SELECT * FROM [");
+
+                for (int i = 0; i < getAnc.Length; i++)
+                {
+                    Teacher anc = new Teacher();
+
+                    anc.ID = Convert.ToInt32(getAnc[i][0]);
+                    anc.Message = getAnc[i][1];
+                    //anc.ancGroup = Convert.ToInt32(getAnc[i][2]);
+
+                    Holder.Instance.Announcements.Add(anc);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                DB.Close();
+            }
+            return announcements;
+        }*/
+
+
+
+        public bool InsertParent(Parent parent)
+        {
+            bool success = true;
+
+            try
+            {
+                DB.Open();
+
+                DB.Exec(
+                    "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole) " +
+                    "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" + parent.Address + "','" + parent.Birthdate + "','" + parent.Username + "','" + parent.Password + "','" + parent.Lastlogin + "'," + parent.Userrole + ");");
+                DB.Exec("INSERT INTO [Parent] (Id) VALUES (" + parent.Id + ");");
+            }
+            catch (Exception)
+            {
+                Debug.Write("Fejl!");
+                success = false;
+            }
+
+
+
+
+            return success;
+        }
+
+
+
+
+
+
+        public bool InsertStudent(Student student)
+        {
+            bool success = true;
+
+            try
+            {
+                DB.Open();
+                
+                // lav en tranaction.
+
+               int a = DB.Exec(
+                    "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole) " +
+                    "VALUES('" + student.Firstname + "','" + student.Lastname + "','" + student.City + "','" + student.Address + "','" + student.Birthdate + "','" + student.Username + "','" + student.Password + "','" + student.Lastlogin + "'," + student.Userrole + ");");
+              int b =  DB.Exec("INSERT INTO [Student] (Id, fk_ClassId) VALUES (" + student.Id+"," + student.FkClassid+ ");");
+
+                if (a==-1||b==-1)
+                {
+                    throw new Exception();
+                }
+            }
+            catch (SqlException sqlException)
+            {
+                Debug.Write(sqlException.ToString());
+                success = false;
+            }
+
+
+
+
+            return success;
+        }
 
     }
 }

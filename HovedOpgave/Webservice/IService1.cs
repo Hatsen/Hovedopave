@@ -27,16 +27,28 @@ namespace Webservice
         [OperationContract]
         List<Teacher> GetTeachers();
 
-        [OperationContract]
-        List<Student> GetStudents();
-
+  
         [OperationContract]
         bool InsertTeacher(Teacher teacher);
 
         [OperationContract]
         int GetMostRecentUserId();
 
-      
+        [OperationContract]
+        List<Parent> GetParents();
+
+        [OperationContract]
+        bool InsertParent(Parent parent);
+
+
+        [OperationContract]
+        List<Student> GetStudents();
+
+
+        [OperationContract]
+        bool InsertStudent(Student parent);
+
+
 
     }
 

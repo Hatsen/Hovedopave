@@ -5,16 +5,16 @@
 
     <Grid>
         <Button Content="Button" HorizontalAlignment="Left" Margin="429,70,0,0" VerticalAlignment="Top" Width="75" Command="{Binding UpdateCommand}" Height="24" Click="Button_Click"/>
-        <DataGrid Name="datagridTeacher" HorizontalAlignment="Left" VerticalAlignment="Top" Height="292" Width="542" Margin="131,97,0,0" ItemsSource="{Binding ObjectList, Mode=OneWay}">
-        <DataGrid.Columns>
-            <DataGridTextColumn Header="Fornavn" Binding="{Binding Firstname}" IsReadOnly="True" SortMemberPath="Ignore"/>
-            <DataGridTextColumn Header="Efternavn" Binding="{Binding Lastname}" IsReadOnly="True" />
-            <DataGridTextColumn Header="Adresse" Binding="{Binding Address}" IsReadOnly="True" />
-            <DataGridTextColumn Header="Username" Binding="{Binding UpdatedByUserName}" IsReadOnly="True" />
-        </DataGrid.Columns>
+        <DataGrid Name="datagridTeacher" HorizontalAlignment="Left" VerticalAlignment="Top" Height="292" Width="542" Margin="131,97,0,0" ItemsSource="{Binding StudentList, Mode=OneWay}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Fornavn" Binding="{Binding Firstname}" IsReadOnly="True" SortMemberPath="Ignore"/>
+                <DataGridTextColumn Header="Efternavn" Binding="{Binding Lastname}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Adresse" Binding="{Binding Address}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Username" Binding="{Binding UpdatedByUserName}" IsReadOnly="True" />
+            </DataGrid.Columns>
         </DataGrid>
 
-        <DataGrid Name="datagridStudent" HorizontalAlignment="Left" VerticalAlignment="Top" Height="292" Width="542" Margin="131,97,0,0" ItemsSource="{Binding LarsSource1, Mode=OneWay}">
+        <DataGrid Name="datagridStudent" HorizontalAlignment="Left" VerticalAlignment="Top" Height="292" Width="542" Margin="131,97,0,0" ItemsSource="{Binding StudentList, Mode=OneWay}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Fornavn" Binding="{Binding Firstname}" IsReadOnly="True" SortMemberPath="Ignore"/>
                 <DataGridTextColumn Header="Efternavn" Binding="{Binding Lastname}" IsReadOnly="True" />
@@ -25,10 +25,10 @@
 
         <ComboBox Name="combo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="293" Margin="131,70,0,0" ItemsSource="{Binding TeacherList, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedPerson, Mode=TwoWay}" SelectionChanged="ComboBox_SelectionChanged"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="509,71,0,0" TextWrapping="Wrap" Text="Søg..."  VerticalAlignment="Top" Width="164"/>
-        <Button Content="CU_Teacher" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Command="{Binding EditTeacherCommand}"/>
-        <Button Content="CU_Class" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="75" Command="{Binding CreateTeacherCommand}"/>
-        <Button Content="CU_Student" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="75" Command="{Binding UpdateProjectsCommand}"/>
-        <Button Content="CU_Parent" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="75" Command="{Binding UpdateProjectsCommand}"/>
+        <Button Content="Rediger Person" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="105" Command="{Binding EditUserCommand}"/>
+        <Button Content="Opret Underviser" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Width="105" Command="{Binding CreateTeacherCommand}"/>
+        <Button Content="Opret Elev" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="105" Command="{Binding CreateStudentCommand}"/>
+        <Button Content="Opret Forældre" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="105" Command="{Binding CreateParentCommand}"/>
         <DataGrid HorizontalAlignment="Left" VerticalAlignment="Top" Height="292" Width="191" Margin="747,97,0,0"/>
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="101" Margin="747,68,0,0" ItemsSource="{Binding TeacherList, Mode=TwoWay}" SelectedItem="{Binding SelectedProject, Mode=TwoWay}"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="853,67,0,0" TextWrapping="Wrap" Text="Søg..."  VerticalAlignment="Top" Width="85"/>

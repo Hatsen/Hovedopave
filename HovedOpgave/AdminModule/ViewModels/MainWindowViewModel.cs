@@ -18,105 +18,87 @@ namespace AdminModule.ViewModels
 
             UpdateCommand = new DelegateCommand<object>(Update);
             CreateTeacherCommand = new DelegateCommand<object>(CreateTeacher);
-            EditTeacherCommand = new DelegateCommand<object>(EditTeacher);
+            EditUserCommand = new DelegateCommand<object>(EditUser);
             UpdateStudentsCommand = new DelegateCommand<object>(UpdateStudents);
+
+            CreateParentCommand = new DelegateCommand<object>(CreateParent);
+
+            CreateStudentCommand = new DelegateCommand<object>(CreateStudent);
+
         }
 
-        private string selectedPerson;
+        #region PrivateMembers
+
+        private string selectedUser;
+        private List<Teacher> teacherList;
+        private List<Student> studentList;
+
+        #endregion
 
 
-        public string ObjectListstring = "ObjectList";
-        public string Larsstring = "LarsSource1";
-
-        private List<string> teacherList;
-
-        public List<string> TeacherList
+        #region Proberties
+        public List<Teacher> TeacherList
         {
             get { return teacherList; }
             set
             {
                
-                teacherList.Add("Teacher");
-                teacherList.Add("Student"); // skal self hentes fra service
+              /*  teacherList.Add("Teacher");
+                teacherList.Add("Student"); // skal self hentes fra service*/
                 teacherList = value;
                 OnPropertyChanged("TeacherList");
 
             }
         }
 
-        public string SelectedPerson
+        public string SelectedUser // forskel mellem selecteduser fra comboboksen og datagriddet.
         {
-            get { return selectedPerson; }
+            get { return selectedUser; }
             set
             {
-                selectedPerson = value;
+                selectedUser = value;
                 GetTeachers();
             }
         }
 
-        private List<Student> LarsSource;
+    
 
-        public List<Student> LarsSource1
+        public List<Student> StudentList
         {
-            get { return LarsSource; }
+            get { return studentList; }
             set
             {
-             //   GetStudents();
-                
-                LarsSource = value;
-                OnPropertyChanged("LarsSource1");
+
+                studentList = value;
+                OnPropertyChanged("StudentList");
             }
         }
 
-        private List<Teacher> objectList;
 
-        public List<Teacher> ObjectList
-        {
-            get { return objectList; }
-            set
-            {
-              //  GetTeachers();
-                objectList = value;
-              
-                OnPropertyChanged("ObjectList");
+        #endregion
 
-            } 
-
-        }
+        #region Commands
 
 
-        private async void GetTeachers()
-        {
-
-            ObjectList = await ServiceProxy.Instance.GetTeachers();
-
-        }
-
-        private async void GetStudents()
-        {
-
-            LarsSource1 = await ServiceProxy.Instance.GetStudents();
-
-        }
-
-        public void Update(Object o)
-        {
-         GetTeachers();
-        }
-
-        public bool MayiWrite(Object o)
-        {
-            return true;
-        }
+        public DelegateCommand<object> UpdateStudentsCommand { get; set; }
 
         public void UpdateStudents(Object o)
         {
             GetStudents();
         }
 
-        public DelegateCommand<object> UpdateStudentsCommand { get; set; }
-
         public DelegateCommand<object> UpdateCommand { get; set; }
+
+        public void Update(Object o)
+        {
+            GetTeachers();
+        }
+
+
+        public bool MayiWrite(Object o)
+        {
+            return true;
+        }
 
         public DelegateCommand<object> CreateTeacherCommand { get; set; }
 
@@ -128,10 +110,39 @@ namespace AdminModule.ViewModels
 
         }
 
-        public DelegateCommand<object> EditTeacherCommand { get; set; }
 
-        public void EditTeacher(Object o)
+        public DelegateCommand<object> CreateParentCommand { get; set; }
+
+        public void CreateParent(Object o)
         {
+            ParentCuView pview = new ParentCuView();
+            pview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            pview.ShowDialog();
+
+        }
+
+
+        public DelegateCommand<object> CreateStudentCommand { get; set; }
+
+        public void CreateStudent(Object o)
+        {
+            Views.StudentCuView sview = new Views.StudentCuView();
+            sview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            sview.ShowDialog();
+
+        }
+
+
+
+
+
+
+        public DelegateCommand<object> EditUserCommand { get; set; }
+
+        public void EditUser(Object o)
+        {
+            // hvis teacer er selecteret så ved du det er objekt teacher der skal sendes ind.
+            // bare kald den edit og vurder hvilket object der er selecteret.
 
             Teacher t = new Teacher();
             t.Firstname = "a";
@@ -145,12 +156,30 @@ namespace AdminModule.ViewModels
             tview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             tview.ShowDialog();
 
+        } // next week
+
+
+
+        #endregion
+
+
+        #region Methods
+
+        private async void GetTeachers()
+        {
+            StudentList = await ServiceProxy.Instance.GetStudents();
+           // TeacherList = await ServiceProxy.Instance.GetTeachers();
+
         }
 
+        private async void GetStudents()
+        {
 
+            StudentList = await ServiceProxy.Instance.GetStudents();
 
+        }
 
-
+        #endregion
 
 
 
