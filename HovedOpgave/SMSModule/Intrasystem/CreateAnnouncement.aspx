@@ -4,6 +4,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="contentarea" runat="server">
     <center><h1>Opret informationsmeddelelse</h1>
         <p>
+            <asp:Label ID="Label2" runat="server" Font-Bold="True" Text="Overskrift:"></asp:Label>
+        </p>
+        <p>
+            &nbsp;<asp:TextBox ID="txtHeader" runat="server" Font-Bold="False" Width="400px"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Label ID="Label3" runat="server" Font-Bold="True" Text="Meddelelse:"></asp:Label>
+        </p>
+        <p>
             <asp:TextBox ID="txtMessage" runat="server" Height="191px" Width="405px"></asp:TextBox>
         </p>
         <p style="margin-left: 320px">

@@ -127,5 +127,10 @@ namespace Webservice
 
             return userInformations[number].ToString();
         }
+
+        public bool CreateAnnounement(string announcement, int group)
+        {
+
+        }
     }
 }

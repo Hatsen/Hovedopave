@@ -16,8 +16,6 @@ namespace Webservice
         [OperationContract]
         bool GetLoginDetails(string username, string password);
 
-
-        //lsj
         [OperationContract]
         bool CreateTeacher();
 
@@ -38,6 +36,9 @@ namespace Webservice
 
         [OperationContract]
         string GetUserDetails(int number);
+
+        [OperationContract]
+        string CreateAnnouncement(string announcement, int group);
     }
 
 
