@@ -37,17 +37,23 @@
   <wsdl:message name="IService1_GetStudents_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetStudentsResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetUserCount_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserCount" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUserCount_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserCountResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_InsertTeacher_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertTeacher" />
   </wsdl:message>
   <wsdl:message name="IService1_InsertTeacher_OutputMessage">
     <wsdl:part name="parameters" element="tns:InsertTeacherResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMostRecentUserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMostRecentUserId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMostRecentUserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMostRecentUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDetails" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDetailsResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetLoginDetails">
@@ -70,13 +76,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetStudents" message="tns:IService1_GetStudents_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetStudentsResponse" message="tns:IService1_GetStudents_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetUserCount">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserCount" message="tns:IService1_GetUserCount_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserCountResponse" message="tns:IService1_GetUserCount_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="InsertTeacher">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertTeacher" message="tns:IService1_InsertTeacher_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertTeacherResponse" message="tns:IService1_InsertTeacher_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMostRecentUserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMostRecentUserId" message="tns:IService1_GetMostRecentUserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMostRecentUserIdResponse" message="tns:IService1_GetMostRecentUserId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserDetails" message="tns:IService1_GetUserDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserDetailsResponse" message="tns:IService1_GetUserDetails_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -126,8 +136,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetUserCount">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetUserCount" style="document" />
+    <wsdl:operation name="InsertTeacher">
+      <soap:operation soapAction="http://tempuri.org/IService1/InsertTeacher" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -135,8 +145,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InsertTeacher">
-      <soap:operation soapAction="http://tempuri.org/IService1/InsertTeacher" style="document" />
+    <wsdl:operation name="GetMostRecentUserId">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetMostRecentUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDetails">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserDetails" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

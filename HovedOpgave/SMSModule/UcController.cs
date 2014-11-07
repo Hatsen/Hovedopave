@@ -19,6 +19,13 @@ namespace SMSModule
             return result;
         }
 
+        public async Task<string> GetUserDetails(int number)
+        {
+            string result = "";
+            result = await ServiceProxy.Instance.GetUserDetails(number);
+            return result;
+        }
+
         /*
         public async Task<string> GetAnnouncements(int ancGrp)
         {

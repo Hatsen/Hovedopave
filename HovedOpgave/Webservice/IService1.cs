@@ -36,8 +36,8 @@ namespace Webservice
         [OperationContract]
         int GetMostRecentUserId();
 
-      
-
+        [OperationContract]
+        string GetUserDetails(int number);
     }
 
 

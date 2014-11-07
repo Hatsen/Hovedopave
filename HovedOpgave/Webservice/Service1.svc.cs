@@ -45,7 +45,6 @@ namespace Webservice
             return loggedIn;
         }
 
-        //lsj
         public bool CreateTeacher()
         {
             return true;
@@ -101,9 +100,7 @@ namespace Webservice
 
         public bool InsertTeacher(Teacher teacher)
         {
-
             bool success = false;
-
             int recentId =  DatabaseHandler.Instance.GetMostRecentUserId();
 
             if (recentId != -1)
@@ -113,10 +110,22 @@ namespace Webservice
                // teacher.Username = "Te_" + recentId;
                 success = DatabaseHandler.Instance.InsertTeacher(teacher); // will insert into User and Teacher.
             }
-
             return success;
-
         }
 
+        public string GetUserDetails(int number)
+        {
+            string[] userInformations = new string[5];
+
+            userInformations[0] = Convert.ToString(Holder.Instance.LoginDetails.Id);
+            userInformations[1] = Holder.Instance.LoginDetails.Firstname;
+            userInformations[2] = Holder.Instance.LoginDetails.Lastname;
+            userInformations[3] = Holder.Instance.LoginDetails.Username;
+            userInformations[4] = Convert.ToString(Holder.Instance.LoginDetails.Userrole);
+
+            Holder.Instance.UserDetails = userInformations;
+
+            return userInformations[number].ToString();
+        }
     }
 }
