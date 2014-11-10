@@ -16,6 +16,8 @@ namespace Webservice
         [OperationContract]
         bool GetLoginDetails(string username, string password);
 
+
+        //lsj
         [OperationContract]
         bool CreateTeacher();
 
@@ -33,7 +35,6 @@ namespace Webservice
         int GetMostRecentUserId();
 
         [OperationContract]
-<<<<<<< HEAD
         List<Parent> GetParents();
 
         [OperationContract]
@@ -49,9 +50,6 @@ namespace Webservice
 
 
 
-=======
-        string GetUserDetails(int number);
->>>>>>> origin/master
     }
 
 

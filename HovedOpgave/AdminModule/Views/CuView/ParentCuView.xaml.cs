@@ -20,7 +20,7 @@ namespace AdminModule.Views
     /// </summary>
     public partial class ParentCuView : Window
     {
-        private ParentCuViewModel viewModel = new ParentCuViewModel();
+        private ParentCuViewModel viewModel;
 
         public ParentCuView(object teacher = null) // se nok mere teacher som generics objekt
         {
@@ -32,18 +32,6 @@ namespace AdminModule.Views
 
             viewModel.Viewstate = teacher == null ? Enums.ViewState.Create : Enums.ViewState.Edit;
             
-         /*   if (teacher.GetType()==typeof(Teacher))
-            {
-                teacher = (Teacher) teacher;
-            }
-            else if (teacher.GetType()==typeof(Student))
-            {
-                
-            }
-            else if (teacher.GetType() == typeof(Parent))
-            {
-
-            }*/
 
             // her skal tjekkes hvilken type object der skal sættes ind i viewmodel.
 

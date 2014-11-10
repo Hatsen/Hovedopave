@@ -65,35 +65,5 @@ namespace SMSModule
 
             return tcs.Task;
         }
-
-        public Task<string> GetUserDetails(int number)
-        {
-            var tcs = new TaskCompletionSource<string>();
-            EventHandler<GetUserDetailsCompletedEventArgs> handler = null;
-            handler = (sender, args) =>
-            {
-                if (args.UserState == tcs)
-                {
-                    service.GetUserDetailsCompleted -= handler;
-                    if (args.Error != null)
-                    {
-                        tcs.TrySetException(args.Error);
-                    }
-                    else if (args.Cancelled)
-                    {
-                        tcs.TrySetCanceled();
-                    }
-                    else
-                    {
-                        tcs.TrySetResult(args.Result);
-                    }
-                }
-            };
-
-            service.GetUserDetailsCompleted += handler;
-            service.GetUserDetailsAsync(number, tcs);
-
-            return tcs.Task;
-        }
     }
 }

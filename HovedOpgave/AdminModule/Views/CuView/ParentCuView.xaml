@@ -1,19 +1,23 @@
 ﻿<Window x:Class="AdminModule.Views.ParentCuView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="ParentCuView" Height="415.875" Width="300" Closing="Window_Closing">
-    <Grid>
+
+    <xctk:BusyIndicator IsBusy="{Binding Isloading}" BusyContent="Vent venligst..." >
+
+        <Grid Background="CadetBlue">
         <StackPanel HorizontalAlignment="Center" Height="258" VerticalAlignment="Top" Width="192" Margin="61,33,39,0">
             <Label Content="Fornavn:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Firstname}" Margin="5,0,5,0" />
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Firstname, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0" />
             <Label Content="Efternavn:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Lastname}"   Margin="5,0,5,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Lastname, UpdateSourceTrigger=PropertyChanged}"   Margin="5,0,5,0"/>
             <Label Content="By:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding City}"  Margin="5,0,5,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding City, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
             <Label Content="Adresse:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Address}" Margin="5,0,5,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0"/>
             <Label Content="Fødselsdag:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Birthdate}"  Margin="5,0,5,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Birthdate, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="61" VerticalAlignment="Top" Width="192" Margin="61,296,39,0">
@@ -22,5 +26,5 @@
         </StackPanel>
 
     </Grid>
-
+        </xctk:BusyIndicator>
 </Window>

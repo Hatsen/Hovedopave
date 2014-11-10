@@ -20,8 +20,8 @@ namespace AdminModule.Views
     /// </summary>
     public partial class StudentCuView : Window
     {
-       
-        private StudentCuViewModel viewModel = new StudentCuViewModel();
+
+        private StudentCuViewModel viewModel;
 
         public StudentCuView(object teacher = null) // se nok mere teacher som generics objekt
         {
@@ -59,10 +59,6 @@ namespace AdminModule.Views
             InitializeEvents();
 
         }
-
-
-
-
 
 
         private void InitializeEvents()

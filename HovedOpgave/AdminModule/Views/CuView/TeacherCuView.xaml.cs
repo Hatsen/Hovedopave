@@ -79,19 +79,13 @@ namespace AdminModule.Views
         }
 
      
-
-
         private void RemoveEvents()
         {
-
             if (viewModel != null)
             {
                 viewModel.OnTeacherViewClose -= viewModel_OnTeacherViewClose;
             }
-
         }
-
-
 
         void viewModel_OnTeacherViewClose()
         {

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using AdminModule.Views;
@@ -29,6 +31,7 @@ namespace AdminModule.ViewModels
 
         #region PrivateMembers
 
+        private bool isloading;
         private string selectedUser;
         private List<Teacher> teacherList;
         private List<Student> studentList;
@@ -42,12 +45,18 @@ namespace AdminModule.ViewModels
             get { return teacherList; }
             set
             {
-               
-              /*  teacherList.Add("Teacher");
-                teacherList.Add("Student"); // skal self hentes fra service*/
                 teacherList = value;
                 OnPropertyChanged("TeacherList");
+            }
+        }
 
+        public bool Isloading
+        {
+            get { return isloading; }
+            set
+            {
+                isloading = value;
+                OnPropertyChanged("Isloading");
             }
         }
 
@@ -61,13 +70,13 @@ namespace AdminModule.ViewModels
             }
         }
 
-    
 
         public List<Student> StudentList
         {
             get { return studentList; }
             set
             {
+
 
                 studentList = value;
                 OnPropertyChanged("StudentList");
@@ -84,14 +93,15 @@ namespace AdminModule.ViewModels
 
         public void UpdateStudents(Object o)
         {
-            GetStudents();
+         GetStudents();
         }
 
         public DelegateCommand<object> UpdateCommand { get; set; }
 
         public void Update(Object o)
         {
-            GetTeachers();
+            Thread thread = new Thread(GetTeachers); // samler det i metoden.
+            thread.Start(); 
         }
 
 
@@ -133,10 +143,6 @@ namespace AdminModule.ViewModels
         }
 
 
-
-
-
-
         public DelegateCommand<object> EditUserCommand { get; set; }
 
         public void EditUser(Object o)
@@ -167,9 +173,12 @@ namespace AdminModule.ViewModels
 
         private async void GetTeachers()
         {
-            StudentList = await ServiceProxy.Instance.GetStudents();
-           // TeacherList = await ServiceProxy.Instance.GetTeachers();
+            Isloading = true;
 
+            TeacherList = await ServiceProxy.Instance.GetTeachers();
+
+            Isloading = false;
+        
         }
 
         private async void GetStudents()

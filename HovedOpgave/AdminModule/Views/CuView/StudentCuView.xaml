@@ -1,19 +1,23 @@
 ﻿<Window x:Class="AdminModule.Views.StudentCuView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="StudentCuView" Height="448.711" Width="300" Closing="Window_Closing">
-    <Grid>
+
+    <xctk:BusyIndicator IsBusy="{Binding Isloading}" BusyContent="Vent venligst..." >
+
+        <Grid Background="CadetBlue">
         <StackPanel HorizontalAlignment="Center" Height="295" VerticalAlignment="Top" Width="192" Margin="61,33,39,0">
             <Label Content="Fornavn:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Firstname}" Margin="5,0,5,0" />
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Firstname, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0" />
             <Label Content="Efternavn:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Lastname}"   Margin="5,0,5,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Lastname, UpdateSourceTrigger=PropertyChanged}"   Margin="5,0,5,0"/>
             <Label Content="By:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding City}"  Margin="5,0,5,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding City, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
             <Label Content="Adresse:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Address}" Margin="5,0,5,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0"/>
             <Label Content="Fødselsdag:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Birthdate}"  Margin="5,0,5,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Birthdate, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
             <Label Content="Klasse:"/>
             <ComboBox  Margin="5,0,5,0" ItemsSource="{Binding Classes, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedClass}"></ComboBox>
         </StackPanel>
@@ -24,4 +28,5 @@
         </StackPanel>
 
     </Grid>
+    </xctk:BusyIndicator>
 </Window>

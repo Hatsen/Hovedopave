@@ -13,7 +13,6 @@ namespace Webservice
 
         private List<Announcement> announcements;
         private User loginDetails;
-        private string[] userDetails;
 
         public List<Announcement> Announcements
         {
@@ -25,12 +24,6 @@ namespace Webservice
         {
             get { return loginDetails; }
             set { loginDetails = value; }
-        }
-
-        public string[] UserDetails
-        {
-            get { return userDetails; }
-            set { userDetails = value; }
         }
 
         private Holder()

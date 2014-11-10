@@ -40,31 +40,63 @@ namespace AdminModule.Views
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-         /*   datagridet.ItemsSource = null;
-            datagridet.ItemsSource = viewmodel.Larsstring;
-            datagridet.Items.Refresh();*/
 
-        
+            /*   datagridet.ItemsSource = null;
+               datagridet.ItemsSource = viewmodel.Larsstring;
+               datagridet.Items.Refresh();*/
+
+
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //datagridet.Visibility = Visibility.Visible;
-          //  datagridet.ItemsSource = viewmodel.ObjectListstring;
-            datagridTeacher.Visibility = Visibility.Visible;
-            datagridStudent.Visibility = Visibility.Hidden;
+            //  datagridet.ItemsSource = viewmodel.ObjectListstring;
+            datagridTeacheren.Visibility = Visibility.Visible;
+            
+            //datagridStudent.Visibility = Visibility.Hidden;
             
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            datagridTeacher.Visibility = Visibility.Hidden;
-            datagridStudent.Visibility = Visibility.Visible;
+            /*datagridTeacheren.Visibility = Visibility.Hidden;
+            datagridStudent.Visibility = Visibility.Visible;*/
         }
 
-   
+      
+
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            // husk at tryk på button ud for comboboks først.
+
+            DataGrid gridInTemplate = (DataGrid)FindName("datagridTeacheren");
+
+            string a = gridInTemplate.ItemsSource.ToString();
+
+        
+            gridInTemplate.DataContext = null;
+
+            gridInTemplate.ItemsSource = viewmodel.StudentList;
+
+          
+
+           // gridInTemplate.ItemsSource = b;
+
+         /*   gridInTemplate2.ItemsSource = "StudentList";
+
+            string b = gridInTemplate2.ItemsSource.ToString();*/
+
+
+           /* string a = datagridTeacheren.ItemsSource.ToString();
+
+            string b = "System.Collections.Generic.List`1[AdminModule.Webservice.Student]";
+            
+            datagridTeacheren.ItemsSource = b;*/
+        }
+
 
     }
 }

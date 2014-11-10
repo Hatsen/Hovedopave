@@ -310,6 +310,14 @@ namespace SMSModule.Webservice {
         
         System.Collections.Generic.List<SMSModule.Webservice.Student> EndGetStudents(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserCount", ReplyAction="http://tempuri.org/IService1/GetUserCountResponse")]
+        int GetUserCount();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetUserCount", ReplyAction="http://tempuri.org/IService1/GetUserCountResponse")]
+        System.IAsyncResult BeginGetUserCount(System.AsyncCallback callback, object asyncState);
+        
+        int EndGetUserCount(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertTeacher", ReplyAction="http://tempuri.org/IService1/InsertTeacherResponse")]
         bool InsertTeacher(SMSModule.Webservice.Teacher teacher);
         
@@ -317,22 +325,6 @@ namespace SMSModule.Webservice {
         System.IAsyncResult BeginInsertTeacher(SMSModule.Webservice.Teacher teacher, System.AsyncCallback callback, object asyncState);
         
         bool EndInsertTeacher(System.IAsyncResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMostRecentUserId", ReplyAction="http://tempuri.org/IService1/GetMostRecentUserIdResponse")]
-        int GetMostRecentUserId();
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetMostRecentUserId", ReplyAction="http://tempuri.org/IService1/GetMostRecentUserIdResponse")]
-        System.IAsyncResult BeginGetMostRecentUserId(System.AsyncCallback callback, object asyncState);
-        
-        int EndGetMostRecentUserId(System.IAsyncResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserDetails", ReplyAction="http://tempuri.org/IService1/GetUserDetailsResponse")]
-        string GetUserDetails(int number);
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetUserDetails", ReplyAction="http://tempuri.org/IService1/GetUserDetailsResponse")]
-        System.IAsyncResult BeginGetUserDetails(int number, System.AsyncCallback callback, object asyncState);
-        
-        string EndGetUserDetails(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -436,30 +428,11 @@ namespace SMSModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class InsertTeacherCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetUserCountCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public InsertTeacherCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public bool Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetMostRecentUserIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetMostRecentUserIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public GetUserCountCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -474,19 +447,19 @@ namespace SMSModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetUserDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class InsertTeacherCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public GetUserDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public InsertTeacherCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public string Result {
+        public bool Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
     }
@@ -525,23 +498,17 @@ namespace SMSModule.Webservice {
         
         private System.Threading.SendOrPostCallback onGetStudentsCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetUserCountDelegate;
+        
+        private EndOperationDelegate onEndGetUserCountDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetUserCountCompletedDelegate;
+        
         private BeginOperationDelegate onBeginInsertTeacherDelegate;
         
         private EndOperationDelegate onEndInsertTeacherDelegate;
         
         private System.Threading.SendOrPostCallback onInsertTeacherCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetMostRecentUserIdDelegate;
-        
-        private EndOperationDelegate onEndGetMostRecentUserIdDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetMostRecentUserIdCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetUserDetailsDelegate;
-        
-        private EndOperationDelegate onEndGetUserDetailsDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetUserDetailsCompletedDelegate;
         
         public Service1Client() {
         }
@@ -572,11 +539,9 @@ namespace SMSModule.Webservice {
         
         public event System.EventHandler<GetStudentsCompletedEventArgs> GetStudentsCompleted;
         
+        public event System.EventHandler<GetUserCountCompletedEventArgs> GetUserCountCompleted;
+        
         public event System.EventHandler<InsertTeacherCompletedEventArgs> InsertTeacherCompleted;
-        
-        public event System.EventHandler<GetMostRecentUserIdCompletedEventArgs> GetMostRecentUserIdCompleted;
-        
-        public event System.EventHandler<GetUserDetailsCompletedEventArgs> GetUserDetailsCompleted;
         
         public bool GetLoginDetails(string username, string password) {
             return base.Channel.GetLoginDetails(username, password);
@@ -822,6 +787,54 @@ namespace SMSModule.Webservice {
             base.InvokeAsync(this.onBeginGetStudentsDelegate, null, this.onEndGetStudentsDelegate, this.onGetStudentsCompletedDelegate, userState);
         }
         
+        public int GetUserCount() {
+            return base.Channel.GetUserCount();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetUserCount(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserCount(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public int EndGetUserCount(System.IAsyncResult result) {
+            return base.Channel.EndGetUserCount(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetUserCount(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetUserCount(callback, asyncState);
+        }
+        
+        private object[] OnEndGetUserCount(System.IAsyncResult result) {
+            int retVal = this.EndGetUserCount(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetUserCountCompleted(object state) {
+            if ((this.GetUserCountCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetUserCountCompleted(this, new GetUserCountCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetUserCountAsync() {
+            this.GetUserCountAsync(null);
+        }
+        
+        public void GetUserCountAsync(object userState) {
+            if ((this.onBeginGetUserCountDelegate == null)) {
+                this.onBeginGetUserCountDelegate = new BeginOperationDelegate(this.OnBeginGetUserCount);
+            }
+            if ((this.onEndGetUserCountDelegate == null)) {
+                this.onEndGetUserCountDelegate = new EndOperationDelegate(this.OnEndGetUserCount);
+            }
+            if ((this.onGetUserCountCompletedDelegate == null)) {
+                this.onGetUserCountCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserCountCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetUserCountDelegate, null, this.onEndGetUserCountDelegate, this.onGetUserCountCompletedDelegate, userState);
+        }
+        
         public bool InsertTeacher(SMSModule.Webservice.Teacher teacher) {
             return base.Channel.InsertTeacher(teacher);
         }
@@ -870,104 +883,6 @@ namespace SMSModule.Webservice {
             }
             base.InvokeAsync(this.onBeginInsertTeacherDelegate, new object[] {
                         teacher}, this.onEndInsertTeacherDelegate, this.onInsertTeacherCompletedDelegate, userState);
-        }
-        
-        public int GetMostRecentUserId() {
-            return base.Channel.GetMostRecentUserId();
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetMostRecentUserId(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetMostRecentUserId(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public int EndGetMostRecentUserId(System.IAsyncResult result) {
-            return base.Channel.EndGetMostRecentUserId(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetMostRecentUserId(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetMostRecentUserId(callback, asyncState);
-        }
-        
-        private object[] OnEndGetMostRecentUserId(System.IAsyncResult result) {
-            int retVal = this.EndGetMostRecentUserId(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetMostRecentUserIdCompleted(object state) {
-            if ((this.GetMostRecentUserIdCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetMostRecentUserIdCompleted(this, new GetMostRecentUserIdCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetMostRecentUserIdAsync() {
-            this.GetMostRecentUserIdAsync(null);
-        }
-        
-        public void GetMostRecentUserIdAsync(object userState) {
-            if ((this.onBeginGetMostRecentUserIdDelegate == null)) {
-                this.onBeginGetMostRecentUserIdDelegate = new BeginOperationDelegate(this.OnBeginGetMostRecentUserId);
-            }
-            if ((this.onEndGetMostRecentUserIdDelegate == null)) {
-                this.onEndGetMostRecentUserIdDelegate = new EndOperationDelegate(this.OnEndGetMostRecentUserId);
-            }
-            if ((this.onGetMostRecentUserIdCompletedDelegate == null)) {
-                this.onGetMostRecentUserIdCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetMostRecentUserIdCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetMostRecentUserIdDelegate, null, this.onEndGetMostRecentUserIdDelegate, this.onGetMostRecentUserIdCompletedDelegate, userState);
-        }
-        
-        public string GetUserDetails(int number) {
-            return base.Channel.GetUserDetails(number);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetUserDetails(int number, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetUserDetails(number, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public string EndGetUserDetails(System.IAsyncResult result) {
-            return base.Channel.EndGetUserDetails(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetUserDetails(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            int number = ((int)(inValues[0]));
-            return this.BeginGetUserDetails(number, callback, asyncState);
-        }
-        
-        private object[] OnEndGetUserDetails(System.IAsyncResult result) {
-            string retVal = this.EndGetUserDetails(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetUserDetailsCompleted(object state) {
-            if ((this.GetUserDetailsCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetUserDetailsCompleted(this, new GetUserDetailsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetUserDetailsAsync(int number) {
-            this.GetUserDetailsAsync(number, null);
-        }
-        
-        public void GetUserDetailsAsync(int number, object userState) {
-            if ((this.onBeginGetUserDetailsDelegate == null)) {
-                this.onBeginGetUserDetailsDelegate = new BeginOperationDelegate(this.OnBeginGetUserDetails);
-            }
-            if ((this.onEndGetUserDetailsDelegate == null)) {
-                this.onEndGetUserDetailsDelegate = new EndOperationDelegate(this.OnEndGetUserDetails);
-            }
-            if ((this.onGetUserDetailsCompletedDelegate == null)) {
-                this.onGetUserDetailsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserDetailsCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetUserDetailsDelegate, new object[] {
-                        number}, this.onEndGetUserDetailsDelegate, this.onGetUserDetailsCompletedDelegate, userState);
         }
     }
 }
