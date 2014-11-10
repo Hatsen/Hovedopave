@@ -25,24 +25,26 @@ namespace Webservice
             DatabaseHandler.Instance.GetLoginDetails(username);
             if (Holder.Instance.LoginDetails != null && PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails.Password) == true)
             {
-                try
-                {
-                    context.Session["firstname"] = Holder.Instance.LoginDetails.Firstname;
-                    context.Session["lastname"] = Holder.Instance.LoginDetails.Lastname;
-                    context.Session["username"] = Holder.Instance.LoginDetails.Username;
-                    context.Session["userrole"] = Holder.Instance.LoginDetails.Userrole;
-                    loggedIn = true;
-                }
-                catch (Exception ex)
-                {
-                    loggedIn = false;
-                }
+                loggedIn = true;
             }
             else
             {
                 loggedIn = false;
             }
             return loggedIn;
+        }
+
+        public string GetUserDetails (int number)
+        {
+            string[] userDetails = new string[5];
+
+            userDetails[0] = Convert.ToString(Holder.Instance.LoginDetails.Id);
+            userDetails[1] = Holder.Instance.LoginDetails.Firstname;
+            userDetails[2] = Holder.Instance.LoginDetails.Lastname;
+            userDetails[3] = Holder.Instance.LoginDetails.Username;
+            userDetails[4] = Convert.ToString(Holder.Instance.LoginDetails.Userrole);
+
+            return userDetails[number];
         }
 
         //lsj
