@@ -16,6 +16,8 @@ namespace Webservice
         [OperationContract]
         bool GetLoginDetails(string username, string password);
 
+        [OperationContract]
+        string GetUserDetails(int number);
 
         //lsj
         [OperationContract]
