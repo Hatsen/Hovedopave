@@ -46,3 +46,6 @@ C:\Users\LarsS\Documents\Backup hovedopgave\MandagMorgen10nov\Fredag7novpåvejhj
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\System.Windows.Controls.Input.Toolkit.dll
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\System.Windows.Controls.Layout.Toolkit.dll
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\WPFToolkit.dll
+C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\System.Windows.Controls.Input.Toolkit.dll
+C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\System.Windows.Controls.Layout.Toolkit.dll
+C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\WPFToolkit.dll

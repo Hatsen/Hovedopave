@@ -19,6 +19,12 @@ namespace Webservice
         [OperationContract]
         string GetUserDetails(int number);
 
+        [OperationContract]
+        bool CreateAnnouncement(int creator, string header, string message, int group, int classID);
+
+        [OperationContract]
+        int GetAnnouncements(int group, int classID);
+
         //lsj
         [OperationContract]
         bool CreateTeacher();

@@ -47,6 +47,23 @@ namespace Webservice
             return userDetails[number];
         }
 
+        public bool CreateAnnouncement(int creator, string header, string message, int groupID, int classID)
+        {
+            if (DatabaseHandler.Instance.CreateAnnouncement(creator, header, message, groupID, classID) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public int GetAnnouncements(int group, int classID)
+        {
+            return 0;
+        }
+
         //lsj
         public bool CreateTeacher()
         {

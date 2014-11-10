@@ -26,6 +26,13 @@ namespace SMSModule
             return result;
         }
 
+        public async Task<bool> CreateAnnouncement(int creator, string header, string message, int groupID, int classID)
+        {
+            bool result = false;
+            result = await ServiceProxy.Instance.CreateAnnouncement(creator, header, message, groupID, classID);
+            return result;
+        }
+
         /*
         public async Task<string> GetAnnouncements(int ancGrp)
         {

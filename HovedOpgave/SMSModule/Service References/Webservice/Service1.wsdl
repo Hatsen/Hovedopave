@@ -19,6 +19,18 @@
   <wsdl:message name="IService1_GetUserDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserDetailsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_CreateAnnouncement_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAnnouncement" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateAnnouncement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAnnouncementResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnnouncements_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnouncements" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnnouncements_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnouncementsResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_CreateTeacher_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateTeacher" />
   </wsdl:message>
@@ -82,6 +94,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserDetails" message="tns:IService1_GetUserDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserDetailsResponse" message="tns:IService1_GetUserDetails_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CreateAnnouncement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateAnnouncement" message="tns:IService1_CreateAnnouncement_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateAnnouncementResponse" message="tns:IService1_CreateAnnouncement_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnnouncements">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAnnouncements" message="tns:IService1_GetAnnouncements_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAnnouncementsResponse" message="tns:IService1_GetAnnouncements_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CreateTeacher">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateTeacher" message="tns:IService1_CreateTeacher_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateTeacherResponse" message="tns:IService1_CreateTeacher_OutputMessage" />
@@ -132,6 +152,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetUserDetails">
       <soap:operation soapAction="http://tempuri.org/IService1/GetUserDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAnnouncement">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateAnnouncement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnnouncements">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAnnouncements" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
