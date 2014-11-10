@@ -311,3 +311,22 @@ C:\Users\LarsS\Documents\Backup hovedopgave\MandagMorgen10nov\Fredag7novpåvejhj
 C:\Users\LarsS\Documents\Backup hovedopgave\MandagMorgen10nov\Fredag7novpåvejhjem\Hovedopave\HovedOpgave\AdminModule\obj\Debug\AdminModule.g.resources
 C:\Users\LarsS\Documents\Backup hovedopgave\MandagMorgen10nov\Fredag7novpåvejhjem\Hovedopave\HovedOpgave\AdminModule\obj\Debug\AdminModule.Properties.Resources.resources
 C:\Users\LarsS\Documents\Backup hovedopgave\MandagMorgen10nov\Fredag7novpåvejhjem\Hovedopave\HovedOpgave\AdminModule\obj\Debug\AdminModule.csproj.GenerateResource.Cache
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\System.Windows.Controls.Input.Toolkit.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\System.Windows.Controls.Layout.Toolkit.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\WPFToolkit.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\Xceed.Wpf.AvalonDock.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\Xceed.Wpf.DataGrid.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll

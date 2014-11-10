@@ -43,3 +43,6 @@ C:\Users\LarsS\Documents\Backup hovedopgave\MandagMorgen10nov\Fredag7novpåvejhj
 C:\Users\LarsS\Documents\Backup hovedopgave\MandagMorgen10nov\Fredag7novpåvejhjem\Hovedopave\HovedOpgave\Webservice\obj\Debug\Webservice.csprojResolveAssemblyReference.cache
 C:\Users\LarsS\Documents\Backup hovedopgave\MandagMorgen10nov\Fredag7novpåvejhjem\Hovedopave\HovedOpgave\Webservice\obj\Debug\Webservice.dll
 C:\Users\LarsS\Documents\Backup hovedopgave\MandagMorgen10nov\Fredag7novpåvejhjem\Hovedopave\HovedOpgave\Webservice\obj\Debug\Webservice.pdb
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\System.Windows.Controls.Input.Toolkit.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\System.Windows.Controls.Layout.Toolkit.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\WPFToolkit.dll
