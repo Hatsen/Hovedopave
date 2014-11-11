@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SMSModule.Webservice;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,14 +34,10 @@ namespace SMSModule
             return result;
         }
 
-        /*
-        public async Task<string> GetAnnouncements(int ancGrp)
+        public async Task<List<Announcement>> GetAnnouncements(int groupID, int classID)
         {
-            string result = "";
-
-            result = await ServiceProxy.Instance.GetAnnouncements(ancGrp);
+            List<Announcement> result = await ServiceProxy.Instance.GetAnnouncements(groupID, classID);
             return result;
         }
-         */
     }
 }

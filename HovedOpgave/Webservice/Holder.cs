@@ -11,7 +11,7 @@ namespace Webservice
         private static Holder instance;
         public DatabaseHandler databaseHandler;
 
-        private List<Announcement> announcements;
+        private List<Announcement> announcements = new List<Announcement>();
         private User loginDetails;
 
         public List<Announcement> Announcements

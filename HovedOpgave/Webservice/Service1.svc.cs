@@ -14,9 +14,6 @@ namespace Webservice
 {
     public class Service1 : IService1
     {
-       // DatabaseHandler databaseHandler = new DatabaseHandler();
-
-        [WebMethod (EnableSession = true)]
         public bool GetLoginDetails(string username, string password)
         {
             HttpContext context = HttpContext.Current;
@@ -59,9 +56,20 @@ namespace Webservice
             }
         }
 
-        public int GetAnnouncements(int group, int classID)
+        public List<Announcement> GetAnnouncements(int groupID, int classID)
         {
-            return 0;
+            DatabaseHandler.Instance.GetAnnouncements(groupID);
+            List<Announcement> announcements = new List<Announcement>();
+
+            foreach (Announcement anc in Holder.Instance.Announcements)
+            {
+                if (groupID <= anc.GroupID || classID == anc.ClassID)
+                {
+                    announcements.Add(anc);
+                }
+            }
+
+            return announcements;
         }
 
         //lsj
@@ -81,7 +89,7 @@ namespace Webservice
 
         public List<Teacher> GetTeachers()
         {
-          /*  List<Teacher> listen = new List<Teacher>();
+            List<Teacher> listen = new List<Teacher>();
 
 
             for (int i = 0; i < 100; i++)
@@ -94,13 +102,10 @@ namespace Webservice
 
                 listen.Add(t);
             }
-            return listen;*/
+            return listen;
 
 
            return DatabaseHandler.Instance.GetTeachers();
-
-
-
         }
 
         public int GetMostRecentUserId()
@@ -126,7 +131,6 @@ namespace Webservice
             return success;
 
         }
-
 
         #region ParentMethods
 
@@ -173,9 +177,7 @@ namespace Webservice
 
         #endregion
 
-
-
-        #region ParentMethods
+        #region StudentMethods
 
 
 

@@ -97,3 +97,10 @@
     margin-left: 40%;
     margin-right: 40%;
 }
+
+#announcementTable 
+{
+    border: 1px solid #000;
+    width: 20%;
+    min-width: 100px;
+}

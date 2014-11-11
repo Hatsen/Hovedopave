@@ -52,7 +52,7 @@ namespace Webservice
             return success;
         }
 
-        public List<Announcement> GetAnnouncements(int group, int classID)
+        public List<Announcement> GetAnnouncements(int groupID)
         {
             List<Announcement> announcements = new List<Announcement>();
 
@@ -60,7 +60,7 @@ namespace Webservice
             {
                 DB.Open();
 
-                string[][] getAnc = DB.Query("SELECT * FROM [Announcement] WHERE Group = " + group + " AND ClassId = " + classID);
+                string[][] getAnc = DB.Query("SELECT * FROM [Announcement]");
 
                 for (int i = 0; i < getAnc.Length; i++)
                 {
@@ -71,7 +71,15 @@ namespace Webservice
                     anc.Header = getAnc[i][2];
                     anc.Message = getAnc[i][3];
                     anc.GroupID = Convert.ToInt32(getAnc[i][4]);
-                    anc.ClassID = Convert.ToInt32(getAnc[i][5]);
+
+                    if (anc.ClassID == null)
+                    {
+                        anc.ClassID = 0;
+                    }
+                    else
+                    {
+                        anc.ClassID = Convert.ToInt32(getAnc[i][5]);
+                    }
 
                     Holder.Instance.Announcements.Add(anc);
                 }

@@ -1,6 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Intrasystem/Intra.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SMSModule.Intrasystem.WebForm1" %>
+﻿<%@ Page Title="Skoleintra" Language="C#" Async="true" MasterPageFile="~/Intrasystem/Intra.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SMSModule.Intrasystem.WebForm1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentarea" runat="server">
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    <div id="announcements" runat="server">
+        
+    </div>
 </asp:Content>

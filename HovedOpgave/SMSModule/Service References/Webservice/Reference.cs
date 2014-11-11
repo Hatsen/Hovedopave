@@ -15,6 +15,131 @@ namespace SMSModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Announcement", Namespace="http://schemas.datacontract.org/2004/07/Webservice")]
+    [System.SerializableAttribute()]
+    public partial class Announcement : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ClassIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CreatorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int GroupIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HeaderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ClassID {
+            get {
+                return this.ClassIDField;
+            }
+            set {
+                if ((this.ClassIDField.Equals(value) != true)) {
+                    this.ClassIDField = value;
+                    this.RaisePropertyChanged("ClassID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Creator {
+            get {
+                return this.CreatorField;
+            }
+            set {
+                if ((this.CreatorField.Equals(value) != true)) {
+                    this.CreatorField = value;
+                    this.RaisePropertyChanged("Creator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int GroupID {
+            get {
+                return this.GroupIDField;
+            }
+            set {
+                if ((this.GroupIDField.Equals(value) != true)) {
+                    this.GroupIDField = value;
+                    this.RaisePropertyChanged("GroupID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Header {
+            get {
+                return this.HeaderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HeaderField, value) != true)) {
+                    this.HeaderField = value;
+                    this.RaisePropertyChanged("Header");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/Webservice.DB")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SMSModule.Webservice.Parent))]
@@ -335,12 +460,12 @@ namespace SMSModule.Webservice {
         bool EndCreateAnnouncement(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAnnouncements", ReplyAction="http://tempuri.org/IService1/GetAnnouncementsResponse")]
-        int GetAnnouncements(int group, int classID);
+        System.Collections.Generic.List<SMSModule.Webservice.Announcement> GetAnnouncements(int group, int classID);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetAnnouncements", ReplyAction="http://tempuri.org/IService1/GetAnnouncementsResponse")]
         System.IAsyncResult BeginGetAnnouncements(int group, int classID, System.AsyncCallback callback, object asyncState);
         
-        int EndGetAnnouncements(System.IAsyncResult result);
+        System.Collections.Generic.List<SMSModule.Webservice.Announcement> EndGetAnnouncements(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateTeacher", ReplyAction="http://tempuri.org/IService1/CreateTeacherResponse")]
         bool CreateTeacher();
@@ -487,10 +612,10 @@ namespace SMSModule.Webservice {
             this.results = results;
         }
         
-        public int Result {
+        public System.Collections.Generic.List<SMSModule.Webservice.Announcement> Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
+                return ((System.Collections.Generic.List<SMSModule.Webservice.Announcement>)(this.results[0]));
             }
         }
     }
@@ -953,7 +1078,7 @@ namespace SMSModule.Webservice {
                         classID}, this.onEndCreateAnnouncementDelegate, this.onCreateAnnouncementCompletedDelegate, userState);
         }
         
-        public int GetAnnouncements(int group, int classID) {
+        public System.Collections.Generic.List<SMSModule.Webservice.Announcement> GetAnnouncements(int group, int classID) {
             return base.Channel.GetAnnouncements(group, classID);
         }
         
@@ -963,7 +1088,7 @@ namespace SMSModule.Webservice {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public int EndGetAnnouncements(System.IAsyncResult result) {
+        public System.Collections.Generic.List<SMSModule.Webservice.Announcement> EndGetAnnouncements(System.IAsyncResult result) {
             return base.Channel.EndGetAnnouncements(result);
         }
         
@@ -974,7 +1099,7 @@ namespace SMSModule.Webservice {
         }
         
         private object[] OnEndGetAnnouncements(System.IAsyncResult result) {
-            int retVal = this.EndGetAnnouncements(result);
+            System.Collections.Generic.List<SMSModule.Webservice.Announcement> retVal = this.EndGetAnnouncements(result);
             return new object[] {
                     retVal};
         }
