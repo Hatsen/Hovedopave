@@ -59,15 +59,6 @@
     margin-right: 10%;
 }
 
-.item 
-{
-    background-color: #255180;
-    border: 1px solid #032472;
-    color: #FFF;
-    font-family: Arial;
-    padding: 0px 2px;
-    text-decoration: none;
-}
 
 
 #bannerTitle
@@ -103,4 +94,19 @@
     border: 1px solid #000;
     width: 20%;
     min-width: 100px;
+}
+
+.item 
+{
+    background-color: #255180;
+    border: 1px solid #032472;
+    color: #FFF;
+    font-family: Arial;
+    padding: 0px 2px;
+    text-decoration: none;
+}
+
+.headerItem 
+{
+    background-color: #ebe7e7;
 }
