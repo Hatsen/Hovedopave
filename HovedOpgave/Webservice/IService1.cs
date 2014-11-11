@@ -19,19 +19,25 @@ namespace Webservice
         [OperationContract]
         string GetUserDetails(int number);
 
+        [OperationContract]
+        bool CreateAnnouncement(int creator, string header, string message, int group, int classID);
+
+        [OperationContract]
+        List<Announcement> GetAnnouncements(int group, int classID);
+
         //lsj
         [OperationContract]
         bool CreateTeacher();
 
-        [OperationContract]
-        Teacher GetTeacher();
+         [OperationContract]
+          Teacher GetTeacher();
 
-        [OperationContract]
-        List<Teacher> GetTeachers();
-
+          [OperationContract]
+          List<Teacher> GetTeachers();
+        
   
-        [OperationContract]
-        bool InsertTeacher(Teacher teacher);
+          [OperationContract]
+          bool InsertTeacher(Teacher teacher);
 
         [OperationContract]
         int GetMostRecentUserId();

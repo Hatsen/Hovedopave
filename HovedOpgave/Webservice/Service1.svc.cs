@@ -14,9 +14,12 @@ namespace Webservice
 {
     public class Service1 : IService1
     {
+<<<<<<< HEAD
         // DatabaseHandler databaseHandler = new DatabaseHandler();
 
         [WebMethod(EnableSession = true)]
+=======
+>>>>>>> origin/master
         public bool GetLoginDetails(string username, string password)
         {
             HttpContext context = HttpContext.Current;
@@ -47,6 +50,34 @@ namespace Webservice
             return userDetails[number];
         }
 
+        public bool CreateAnnouncement(int creator, string header, string message, int groupID, int classID)
+        {
+            if (DatabaseHandler.Instance.CreateAnnouncement(creator, header, message, groupID, classID) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public List<Announcement> GetAnnouncements(int groupID, int classID)
+        {
+            DatabaseHandler.Instance.GetAnnouncements(groupID);
+            List<Announcement> announcements = new List<Announcement>();
+
+            foreach (Announcement anc in Holder.Instance.Announcements)
+            {
+                if (groupID <= anc.GroupID || classID == anc.ClassID)
+                {
+                    announcements.Add(anc);
+                }
+            }
+
+            return announcements;
+        }
+
         //lsj
         public bool CreateTeacher()
         {
@@ -66,7 +97,27 @@ namespace Webservice
         }
         public List<Teacher> GetTeachers()
         {
+<<<<<<< HEAD
             return DatabaseHandler.Instance.GetTeachers();
+=======
+            List<Teacher> listen = new List<Teacher>();
+
+
+            for (int i = 0; i < 100; i++)
+            {
+                Teacher t = new Teacher();
+                t.Id = i;
+                t.Fkuserid = i;
+                t.Firstname = "Hr "+i;
+                t.Lastname = "lol" + i;
+
+                listen.Add(t);
+            }
+            return listen;
+
+
+           return DatabaseHandler.Instance.GetTeachers();
+>>>>>>> origin/master
         }
         public int GetMostRecentUserId()
         {
@@ -96,9 +147,12 @@ namespace Webservice
             return success;
         }
 
+<<<<<<< HEAD
         #endregion
 
 
+=======
+>>>>>>> origin/master
         #region ParentMethods
 
 
@@ -144,9 +198,7 @@ namespace Webservice
 
         #endregion
 
-
-
-        #region ParentMethods
+        #region StudentMethods
 
 
 

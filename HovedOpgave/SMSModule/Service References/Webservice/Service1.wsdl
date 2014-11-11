@@ -4,7 +4,8 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Webservice.DB" />
+      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Webservice" />
+      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Webservice.DB" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetLoginDetails_InputMessage">
@@ -18,6 +19,18 @@
   </wsdl:message>
   <wsdl:message name="IService1_GetUserDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateAnnouncement_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAnnouncement" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateAnnouncement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAnnouncementResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnnouncements_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnouncements" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnnouncements_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnouncementsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_CreateTeacher_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateTeacher" />
@@ -82,6 +95,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserDetails" message="tns:IService1_GetUserDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserDetailsResponse" message="tns:IService1_GetUserDetails_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CreateAnnouncement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateAnnouncement" message="tns:IService1_CreateAnnouncement_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateAnnouncementResponse" message="tns:IService1_CreateAnnouncement_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnnouncements">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAnnouncements" message="tns:IService1_GetAnnouncements_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAnnouncementsResponse" message="tns:IService1_GetAnnouncements_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CreateTeacher">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateTeacher" message="tns:IService1_CreateTeacher_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateTeacherResponse" message="tns:IService1_CreateTeacher_OutputMessage" />
@@ -132,6 +153,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetUserDetails">
       <soap:operation soapAction="http://tempuri.org/IService1/GetUserDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAnnouncement">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateAnnouncement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnnouncements">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAnnouncements" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

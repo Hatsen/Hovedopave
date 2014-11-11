@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Webservice.DB" />
+  <xs:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Webservice" />
+  <xs:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Webservice.DB" />
   <xs:element name="GetLoginDetails">
     <xs:complexType>
       <xs:sequence>
@@ -30,6 +31,39 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CreateAnnouncement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="creator" type="xs:int" />
+        <xs:element minOccurs="0" name="header" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="group" type="xs:int" />
+        <xs:element minOccurs="0" name="classID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateAnnouncementResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateAnnouncementResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAnnouncements">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="group" type="xs:int" />
+        <xs:element minOccurs="0" name="classID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAnnouncementsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Webservice" minOccurs="0" name="GetAnnouncementsResult" nillable="true" type="q1:ArrayOfAnnouncement" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CreateTeacher">
     <xs:complexType>
       <xs:sequence />
@@ -50,7 +84,7 @@
   <xs:element name="GetTeacherResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="GetTeacherResult" nillable="true" type="q1:Teacher" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="GetTeacherResult" nillable="true" type="q2:Teacher" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -62,14 +96,14 @@
   <xs:element name="GetTeachersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="GetTeachersResult" nillable="true" type="q2:ArrayOfTeacher" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="GetTeachersResult" nillable="true" type="q3:ArrayOfTeacher" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertTeacher">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="teacher" nillable="true" type="q3:Teacher" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="teacher" nillable="true" type="q4:Teacher" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -100,14 +134,14 @@
   <xs:element name="GetParentsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="GetParentsResult" nillable="true" type="q4:ArrayOfParent" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="GetParentsResult" nillable="true" type="q5:ArrayOfParent" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertParent">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="parent" nillable="true" type="q5:Parent" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="parent" nillable="true" type="q6:Parent" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -126,14 +160,14 @@
   <xs:element name="GetStudentsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="GetStudentsResult" nillable="true" type="q6:ArrayOfStudent" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="GetStudentsResult" nillable="true" type="q7:ArrayOfStudent" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertStudent">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="parent" nillable="true" type="q7:Student" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="parent" nillable="true" type="q8:Student" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -15,6 +15,131 @@ namespace SMSModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Announcement", Namespace="http://schemas.datacontract.org/2004/07/Webservice")]
+    [System.SerializableAttribute()]
+    public partial class Announcement : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ClassIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CreatorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int GroupIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HeaderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ClassID {
+            get {
+                return this.ClassIDField;
+            }
+            set {
+                if ((this.ClassIDField.Equals(value) != true)) {
+                    this.ClassIDField = value;
+                    this.RaisePropertyChanged("ClassID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Creator {
+            get {
+                return this.CreatorField;
+            }
+            set {
+                if ((this.CreatorField.Equals(value) != true)) {
+                    this.CreatorField = value;
+                    this.RaisePropertyChanged("Creator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int GroupID {
+            get {
+                return this.GroupIDField;
+            }
+            set {
+                if ((this.GroupIDField.Equals(value) != true)) {
+                    this.GroupIDField = value;
+                    this.RaisePropertyChanged("GroupID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Header {
+            get {
+                return this.HeaderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HeaderField, value) != true)) {
+                    this.HeaderField = value;
+                    this.RaisePropertyChanged("Header");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/Webservice.DB")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SMSModule.Webservice.Parent))]
@@ -326,6 +451,22 @@ namespace SMSModule.Webservice {
         
         string EndGetUserDetails(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateAnnouncement", ReplyAction="http://tempuri.org/IService1/CreateAnnouncementResponse")]
+        bool CreateAnnouncement(int creator, string header, string message, int group, int classID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/CreateAnnouncement", ReplyAction="http://tempuri.org/IService1/CreateAnnouncementResponse")]
+        System.IAsyncResult BeginCreateAnnouncement(int creator, string header, string message, int group, int classID, System.AsyncCallback callback, object asyncState);
+        
+        bool EndCreateAnnouncement(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAnnouncements", ReplyAction="http://tempuri.org/IService1/GetAnnouncementsResponse")]
+        System.Collections.Generic.List<SMSModule.Webservice.Announcement> GetAnnouncements(int group, int classID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetAnnouncements", ReplyAction="http://tempuri.org/IService1/GetAnnouncementsResponse")]
+        System.IAsyncResult BeginGetAnnouncements(int group, int classID, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<SMSModule.Webservice.Announcement> EndGetAnnouncements(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateTeacher", ReplyAction="http://tempuri.org/IService1/CreateTeacherResponse")]
         bool CreateTeacher();
         
@@ -437,6 +578,44 @@ namespace SMSModule.Webservice {
             get {
                 base.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CreateAnnouncementCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public CreateAnnouncementCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetAnnouncementsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetAnnouncementsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<SMSModule.Webservice.Announcement> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<SMSModule.Webservice.Announcement>)(this.results[0]));
             }
         }
     }
@@ -628,6 +807,18 @@ namespace SMSModule.Webservice {
         
         private System.Threading.SendOrPostCallback onGetUserDetailsCompletedDelegate;
         
+        private BeginOperationDelegate onBeginCreateAnnouncementDelegate;
+        
+        private EndOperationDelegate onEndCreateAnnouncementDelegate;
+        
+        private System.Threading.SendOrPostCallback onCreateAnnouncementCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetAnnouncementsDelegate;
+        
+        private EndOperationDelegate onEndGetAnnouncementsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetAnnouncementsCompletedDelegate;
+        
         private BeginOperationDelegate onBeginCreateTeacherDelegate;
         
         private EndOperationDelegate onEndCreateTeacherDelegate;
@@ -704,6 +895,10 @@ namespace SMSModule.Webservice {
         public event System.EventHandler<GetLoginDetailsCompletedEventArgs> GetLoginDetailsCompleted;
         
         public event System.EventHandler<GetUserDetailsCompletedEventArgs> GetUserDetailsCompleted;
+        
+        public event System.EventHandler<CreateAnnouncementCompletedEventArgs> CreateAnnouncementCompleted;
+        
+        public event System.EventHandler<GetAnnouncementsCompletedEventArgs> GetAnnouncementsCompleted;
         
         public event System.EventHandler<CreateTeacherCompletedEventArgs> CreateTeacherCompleted;
         
@@ -823,6 +1018,116 @@ namespace SMSModule.Webservice {
             }
             base.InvokeAsync(this.onBeginGetUserDetailsDelegate, new object[] {
                         number}, this.onEndGetUserDetailsDelegate, this.onGetUserDetailsCompletedDelegate, userState);
+        }
+        
+        public bool CreateAnnouncement(int creator, string header, string message, int group, int classID) {
+            return base.Channel.CreateAnnouncement(creator, header, message, group, classID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginCreateAnnouncement(int creator, string header, string message, int group, int classID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCreateAnnouncement(creator, header, message, group, classID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public bool EndCreateAnnouncement(System.IAsyncResult result) {
+            return base.Channel.EndCreateAnnouncement(result);
+        }
+        
+        private System.IAsyncResult OnBeginCreateAnnouncement(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int creator = ((int)(inValues[0]));
+            string header = ((string)(inValues[1]));
+            string message = ((string)(inValues[2]));
+            int group = ((int)(inValues[3]));
+            int classID = ((int)(inValues[4]));
+            return this.BeginCreateAnnouncement(creator, header, message, group, classID, callback, asyncState);
+        }
+        
+        private object[] OnEndCreateAnnouncement(System.IAsyncResult result) {
+            bool retVal = this.EndCreateAnnouncement(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnCreateAnnouncementCompleted(object state) {
+            if ((this.CreateAnnouncementCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.CreateAnnouncementCompleted(this, new CreateAnnouncementCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void CreateAnnouncementAsync(int creator, string header, string message, int group, int classID) {
+            this.CreateAnnouncementAsync(creator, header, message, group, classID, null);
+        }
+        
+        public void CreateAnnouncementAsync(int creator, string header, string message, int group, int classID, object userState) {
+            if ((this.onBeginCreateAnnouncementDelegate == null)) {
+                this.onBeginCreateAnnouncementDelegate = new BeginOperationDelegate(this.OnBeginCreateAnnouncement);
+            }
+            if ((this.onEndCreateAnnouncementDelegate == null)) {
+                this.onEndCreateAnnouncementDelegate = new EndOperationDelegate(this.OnEndCreateAnnouncement);
+            }
+            if ((this.onCreateAnnouncementCompletedDelegate == null)) {
+                this.onCreateAnnouncementCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCreateAnnouncementCompleted);
+            }
+            base.InvokeAsync(this.onBeginCreateAnnouncementDelegate, new object[] {
+                        creator,
+                        header,
+                        message,
+                        group,
+                        classID}, this.onEndCreateAnnouncementDelegate, this.onCreateAnnouncementCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<SMSModule.Webservice.Announcement> GetAnnouncements(int group, int classID) {
+            return base.Channel.GetAnnouncements(group, classID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetAnnouncements(int group, int classID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetAnnouncements(group, classID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<SMSModule.Webservice.Announcement> EndGetAnnouncements(System.IAsyncResult result) {
+            return base.Channel.EndGetAnnouncements(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetAnnouncements(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int group = ((int)(inValues[0]));
+            int classID = ((int)(inValues[1]));
+            return this.BeginGetAnnouncements(group, classID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetAnnouncements(System.IAsyncResult result) {
+            System.Collections.Generic.List<SMSModule.Webservice.Announcement> retVal = this.EndGetAnnouncements(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetAnnouncementsCompleted(object state) {
+            if ((this.GetAnnouncementsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetAnnouncementsCompleted(this, new GetAnnouncementsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetAnnouncementsAsync(int group, int classID) {
+            this.GetAnnouncementsAsync(group, classID, null);
+        }
+        
+        public void GetAnnouncementsAsync(int group, int classID, object userState) {
+            if ((this.onBeginGetAnnouncementsDelegate == null)) {
+                this.onBeginGetAnnouncementsDelegate = new BeginOperationDelegate(this.OnBeginGetAnnouncements);
+            }
+            if ((this.onEndGetAnnouncementsDelegate == null)) {
+                this.onEndGetAnnouncementsDelegate = new EndOperationDelegate(this.OnEndGetAnnouncements);
+            }
+            if ((this.onGetAnnouncementsCompletedDelegate == null)) {
+                this.onGetAnnouncementsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetAnnouncementsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetAnnouncementsDelegate, new object[] {
+                        group,
+                        classID}, this.onEndGetAnnouncementsDelegate, this.onGetAnnouncementsCompletedDelegate, userState);
         }
         
         public bool CreateTeacher() {

@@ -11,13 +11,7 @@ namespace Webservice
     public class DatabaseHandler
     {
         SQLDatabase DB = new SQLDatabase("SchoolDB.mdf", "LocalDB", "", "");
-        //string connectionString = "data source=LocalDB;initial catalog=SchoolDB;integrated security=SSPI"; // brug configuration manager her..
-        // private string connectionString =
-        //  "Data Source=(local);initial catalog=SchoolDB;Integrated Security=True";
-
-        private string connectionString = "Server=(local);Database=SchoolDB;Trusted_Connection=True;";
         private static DatabaseHandler instance;
-
 
         private DatabaseHandler()
         {
@@ -36,7 +30,29 @@ namespace Webservice
             }
         }
 
-        public List<Announcement> GetAnnouncements()
+        public bool CreateAnnouncement(int creator, string header, string message, int groupID, int classID)
+        {
+            bool success = false;
+
+            try
+            {
+                DB.Open();
+                DB.Exec("INSERT INTO [Announcement] (Creator, Header, Message, GroupId, ClassId) VALUES (" + creator + ", '" + header + "', '" + message + "', " + groupID + ", " + classID + ")");
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                success = false;
+            }
+            finally
+            {
+                DB.Close();
+            }
+
+            return success;
+        }
+
+        public List<Announcement> GetAnnouncements(int groupID)
         {
             List<Announcement> announcements = new List<Announcement>();
 
@@ -44,15 +60,26 @@ namespace Webservice
             {
                 DB.Open();
 
-                string[][] getAnc = DB.Query("SELECT * FROM announcements");
+                string[][] getAnc = DB.Query("SELECT * FROM [Announcement]");
 
                 for (int i = 0; i < getAnc.Length; i++)
                 {
                     Announcement anc = new Announcement();
 
                     anc.ID = Convert.ToInt32(getAnc[i][0]);
-                    anc.Message = getAnc[i][1];
-                    //anc.ancGroup = Convert.ToInt32(getAnc[i][2]);
+                    anc.Creator = Convert.ToInt32(getAnc[i][1]);
+                    anc.Header = getAnc[i][2];
+                    anc.Message = getAnc[i][3];
+                    anc.GroupID = Convert.ToInt32(getAnc[i][4]);
+
+                    if (anc.ClassID == null)
+                    {
+                        anc.ClassID = 0;
+                    }
+                    else
+                    {
+                        anc.ClassID = Convert.ToInt32(getAnc[i][5]);
+                    }
 
                     Holder.Instance.Announcements.Add(anc);
                 }

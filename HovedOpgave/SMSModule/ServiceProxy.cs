@@ -95,5 +95,65 @@ namespace SMSModule
  
              return tcs.Task;
          }
+
+         public Task<bool> CreateAnnouncement(int creator, string header, string message, int group, int classID)
+         {
+             var tcs = new TaskCompletionSource<bool>();
+             EventHandler<CreateAnnouncementCompletedEventArgs> handler = null;
+             handler = (sender, args) =>
+             {
+                 if (args.UserState == tcs)
+                 {
+                     service.CreateAnnouncementCompleted -= handler;
+                     if (args.Error != null)
+                     {
+                         tcs.TrySetException(args.Error);
+                     }
+                     else if (args.Cancelled)
+                     {
+                         tcs.TrySetCanceled();
+                     }
+                     else
+                     {
+                         tcs.TrySetResult(args.Result);
+                     }
+                 }
+             };
+
+             service.CreateAnnouncementCompleted += handler;
+             service.CreateAnnouncementAsync(creator, header, message, group, classID, tcs);
+
+             return tcs.Task;
+         }
+
+        public Task<List<Announcement>> GetAnnouncements(int groupID, int classID)
+         {
+             var tcs = new TaskCompletionSource<List<Announcement>>();
+             EventHandler<GetAnnouncementsCompletedEventArgs> handler = null;
+             handler = (sender, args) =>
+             {
+                 if (args.UserState == tcs)
+                 {
+                     service.GetAnnouncementsCompleted -= handler;
+                     if (args.Error != null)
+                     {
+                         tcs.TrySetException(args.Error);
+                     }
+                     else if (args.Cancelled)
+                     {
+                         tcs.TrySetCanceled();
+                     }
+                     else
+                     {
+                         tcs.TrySetResult(args.Result);
+                     }
+                 }
+             };
+
+             service.GetAnnouncementsCompleted += handler;
+             service.GetAnnouncementsAsync(groupID, classID, tcs);
+
+             return tcs.Task;
+         }
     }
 }
