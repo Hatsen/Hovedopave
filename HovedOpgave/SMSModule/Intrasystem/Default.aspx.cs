@@ -20,12 +20,12 @@ namespace SMSModule.Intrasystem
             foreach(Announcement anc in announcementList)
             {
                 html += "<tr>";
-                html += "<td><b>" + anc.Header + "</b></td>";
+                html += "<td>Skrevet af: <b>" + anc.Header + "</b></td>";
                 html += "<td>" + anc.Message + "</td>";
                 html += "</tr>";
             }
             html += "</table>";
-            html = announcements.InnerHtml;
+            announcements.InnerHtml = html;
         }
     }
 }
