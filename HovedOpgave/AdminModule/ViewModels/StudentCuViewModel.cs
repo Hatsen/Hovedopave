@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdminModule.Views;
 using AdminModule.Webservice;
 using Microsoft.Practices.Prism.Commands;
 
@@ -29,8 +30,8 @@ namespace AdminModule.ViewModels
         private string birthdate;
         private string address;
         private string fkClassId;
-        // private Student currentStudent;
-
+        private Student currentStudent;
+    //    private List<Class> classes;
 
 
         #endregion
@@ -38,22 +39,25 @@ namespace AdminModule.ViewModels
         #region PublicMembers
 
 
-        /* public Student CurrentStudent
-       {
-           get { return currentStudent; }
-           set
-           {
-              // currentStudent = value ?? new Student(); // hvis value er null bliver den sat til en ny. Burde ikke blive ramt hvis der ikke allerede er en currentStudent.
+        public Student CurrentStudent
+        {
+            get { return currentStudent; }
+            set
+            {
+                // currentStudent = value ?? new Student(); // hvis value er null bliver den sat til en ny. Burde ikke blive ramt hvis der ikke allerede er en currentStudent.
 
-               Firstname = currentStudent.Firstname;
-               Lastname = currentStudent.Lastname;
-               City = currentStudent.City;
-               Address = currentStudent.Address;
-               Birthdate = currentStudent.Birthdate;
-               // rank mangler for Student.
+                currentStudent = value;
 
-           }
-       }*/
+                Firstname = currentStudent.Firstname;
+                Lastname = currentStudent.Lastname;
+                City = currentStudent.City;
+                Address = currentStudent.Address;
+                Birthdate = currentStudent.Birthdate;
+               // FkClassId = currentStudent.FkClassid.ToString(); // hardcoded
+                FkClassId = "-1";
+
+            }
+        }
 
 
         public string Firstname

@@ -32,71 +32,43 @@ namespace AdminModule.Views
 
             this.DataContext = viewmodel;
 
-
-
-            combo.Items.Add("1");
-            combo.Items.Add("2");
+            InitializeEvents();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void InitializeEvents()
+        {
+            viewmodel.OnselectedPersonChanged += UpdateDatagrid;
+        }
+
+        private void UpdateDatagrid(string selectedUserString)
         {
 
-            /*   datagridet.ItemsSource = null;
-               datagridet.ItemsSource = viewmodel.Larsstring;
-               datagridet.Items.Refresh();*/
+            datagridUser.ItemsSource = null; // hvis itemssource er null må selecteditem også være null. Dette sørger VS selv for. (smart)
 
+            if (datagridUser.Columns.Count > 8) // grundet rank på teacher. Kommer også til at gælde for elev.
+            {
+                datagridUser.Columns.RemoveAt(8);
+            }
 
+            if (selectedUserString == "Elev")
+            {
+                datagridUser.ItemsSource = viewmodel.StudentList;
+            }
+            else if (selectedUserString == "Underviser")
+            {
+                DataGridTextColumn col = new DataGridTextColumn();
+                col.Header = "Rank";
+                col.Binding = new Binding("Rank");
+                datagridUser.Columns.Add(col);
 
+                datagridUser.ItemsSource = viewmodel.TeacherList;
+
+            }
+            else if (selectedUserString == "Forældre")
+            {
+                datagridUser.ItemsSource = viewmodel.TeacherList;
+            }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //datagridet.Visibility = Visibility.Visible;
-            //  datagridet.ItemsSource = viewmodel.ObjectListstring;
-            datagridTeacheren.Visibility = Visibility.Visible;
-            
-            //datagridStudent.Visibility = Visibility.Hidden;
-            
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            /*datagridTeacheren.Visibility = Visibility.Hidden;
-            datagridStudent.Visibility = Visibility.Visible;*/
-        }
-
-      
-
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            // husk at tryk på button ud for comboboks først.
-
-            DataGrid gridInTemplate = (DataGrid)FindName("datagridTeacheren");
-
-            string a = gridInTemplate.ItemsSource.ToString();
-
-        
-            gridInTemplate.DataContext = null;
-
-            gridInTemplate.ItemsSource = viewmodel.StudentList;
-
-          
-
-           // gridInTemplate.ItemsSource = b;
-
-         /*   gridInTemplate2.ItemsSource = "StudentList";
-
-            string b = gridInTemplate2.ItemsSource.ToString();*/
-
-
-           /* string a = datagridTeacheren.ItemsSource.ToString();
-
-            string b = "System.Collections.Generic.List`1[AdminModule.Webservice.Student]";
-            
-            datagridTeacheren.ItemsSource = b;*/
-        }
-
 
     }
 }

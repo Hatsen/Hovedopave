@@ -276,6 +276,9 @@ namespace AdminModule.Webservice {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int FkuseridField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RankField;
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int Fkuserid {
             get {
@@ -285,6 +288,19 @@ namespace AdminModule.Webservice {
                 if ((this.FkuseridField.Equals(value) != true)) {
                     this.FkuseridField = value;
                     this.RaisePropertyChanged("Fkuserid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Rank {
+            get {
+                return this.RankField;
+            }
+            set {
+                if ((this.RankField.Equals(value) != true)) {
+                    this.RankField = value;
+                    this.RaisePropertyChanged("Rank");
                 }
             }
         }
@@ -301,6 +317,14 @@ namespace AdminModule.Webservice {
         System.IAsyncResult BeginGetLoginDetails(string username, string password, System.AsyncCallback callback, object asyncState);
         
         bool EndGetLoginDetails(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserDetails", ReplyAction="http://tempuri.org/IService1/GetUserDetailsResponse")]
+        string GetUserDetails(int number);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetUserDetails", ReplyAction="http://tempuri.org/IService1/GetUserDetailsResponse")]
+        System.IAsyncResult BeginGetUserDetails(int number, System.AsyncCallback callback, object asyncState);
+        
+        string EndGetUserDetails(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateTeacher", ReplyAction="http://tempuri.org/IService1/CreateTeacherResponse")]
         bool CreateTeacher();
@@ -394,6 +418,25 @@ namespace AdminModule.Webservice {
             get {
                 base.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetUserDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetUserDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }
@@ -579,6 +622,12 @@ namespace AdminModule.Webservice {
         
         private System.Threading.SendOrPostCallback onGetLoginDetailsCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetUserDetailsDelegate;
+        
+        private EndOperationDelegate onEndGetUserDetailsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetUserDetailsCompletedDelegate;
+        
         private BeginOperationDelegate onBeginCreateTeacherDelegate;
         
         private EndOperationDelegate onEndCreateTeacherDelegate;
@@ -654,6 +703,8 @@ namespace AdminModule.Webservice {
         
         public event System.EventHandler<GetLoginDetailsCompletedEventArgs> GetLoginDetailsCompleted;
         
+        public event System.EventHandler<GetUserDetailsCompletedEventArgs> GetUserDetailsCompleted;
+        
         public event System.EventHandler<CreateTeacherCompletedEventArgs> CreateTeacherCompleted;
         
         public event System.EventHandler<GetTeacherCompletedEventArgs> GetTeacherCompleted;
@@ -722,6 +773,56 @@ namespace AdminModule.Webservice {
             base.InvokeAsync(this.onBeginGetLoginDetailsDelegate, new object[] {
                         username,
                         password}, this.onEndGetLoginDetailsDelegate, this.onGetLoginDetailsCompletedDelegate, userState);
+        }
+        
+        public string GetUserDetails(int number) {
+            return base.Channel.GetUserDetails(number);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetUserDetails(int number, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserDetails(number, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public string EndGetUserDetails(System.IAsyncResult result) {
+            return base.Channel.EndGetUserDetails(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetUserDetails(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int number = ((int)(inValues[0]));
+            return this.BeginGetUserDetails(number, callback, asyncState);
+        }
+        
+        private object[] OnEndGetUserDetails(System.IAsyncResult result) {
+            string retVal = this.EndGetUserDetails(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetUserDetailsCompleted(object state) {
+            if ((this.GetUserDetailsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetUserDetailsCompleted(this, new GetUserDetailsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetUserDetailsAsync(int number) {
+            this.GetUserDetailsAsync(number, null);
+        }
+        
+        public void GetUserDetailsAsync(int number, object userState) {
+            if ((this.onBeginGetUserDetailsDelegate == null)) {
+                this.onBeginGetUserDetailsDelegate = new BeginOperationDelegate(this.OnBeginGetUserDetails);
+            }
+            if ((this.onEndGetUserDetailsDelegate == null)) {
+                this.onEndGetUserDetailsDelegate = new EndOperationDelegate(this.OnEndGetUserDetails);
+            }
+            if ((this.onGetUserDetailsCompletedDelegate == null)) {
+                this.onGetUserDetailsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserDetailsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetUserDetailsDelegate, new object[] {
+                        number}, this.onEndGetUserDetailsDelegate, this.onGetUserDetailsCompletedDelegate, userState);
         }
         
         public bool CreateTeacher() {

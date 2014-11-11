@@ -1,4 +1,5 @@
-﻿using AdminModule.Webservice;
+﻿using AdminModule.ViewModels;
+using AdminModule.Webservice;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,8 @@ namespace AdminModule
 
 
 
+
+      
 
        public Task<Teacher> GetTeacher()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {
@@ -64,8 +67,18 @@ namespace AdminModule
 
 
 
+      /* public List<Teacher> GetTeachers()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       {
+           var tcs = new TaskCompletionSource<List<Teacher>>();
+      
 
-       public  Task<List<Teacher>> GetTeachers()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+           service.GetTeachersAsync(tcs);
+
+           return tcs.Task;
+       }*/
+
+
+        public  Task<List<Teacher>> GetTeachers()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {
            var tcs = new TaskCompletionSource<List<Teacher>>();
            EventHandler<GetTeachersCompletedEventArgs> handler = null;
@@ -73,10 +86,12 @@ namespace AdminModule
            {
                if (args.UserState == tcs)
                {
-                   service.GetTeachersCompleted -= handler;
+                  
+                   service.GetTeachersCompleted -= handler;               
                    if (args.Error != null)
                    {
                        tcs.TrySetException(args.Error);
+                 
                    }
                    else if (args.Cancelled)
                    {
@@ -85,16 +100,23 @@ namespace AdminModule
                    else
                    {
                        tcs.TrySetResult(args.Result);
+                  
+                  
                    }
 
                }
+             
            };
-
+          // viewModel.RaiseOnselectedPersonChanged("Underviser");
            service.GetTeachersCompleted += handler;
            service.GetTeachersAsync(tcs);
+      
 
            return tcs.Task;
+          
        }
+
+
 
        public Task<List<Student>> GetStudents()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {

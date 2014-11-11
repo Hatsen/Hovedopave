@@ -10,30 +10,30 @@ namespace AdminModule
    {
        public enum ViewState
        {
-           Create = 0,
-           Edit = 1
+           Create = 1,
+           Edit = 2
        };
 
        public enum Rank
        {
-           Principal = 0,
-           Teacher = 1,
-           Substitute = 2
+           Principal = 1,
+           Teacher = 2,
+           Substitute = 3
        };
 
        public enum Userrole
        {
-           Teacher = 0,
-           Parent = 1,
-           Student = 2
+           Teacher = 1,
+           Parent = 2,
+           Student = 3
        };
 
 
        public enum ViewstateObject
        {
-           Teacher = 0,
-           Student = 1,
-           Parent = 2,
+           Teacher = 1,
+           Student = 2,
+           Parent = 3,
 
        };
 

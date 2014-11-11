@@ -5,6 +5,7 @@
       <xs:extension base="tns:User">
         <xs:sequence>
           <xs:element minOccurs="0" name="Fkuserid" type="xs:int" />
+          <xs:element minOccurs="0" name="Rank" type="xs:int" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

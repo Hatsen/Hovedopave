@@ -18,37 +18,35 @@ namespace AdminModule.ViewModels
         public MainWindowViewModel()
         {
 
-            UpdateCommand = new DelegateCommand<object>(Update);
             CreateTeacherCommand = new DelegateCommand<object>(CreateTeacher);
-            EditUserCommand = new DelegateCommand<object>(EditUser);
+            EditUserCommand = new DelegateCommand<object>(EditUser, MayiWrite);
             UpdateStudentsCommand = new DelegateCommand<object>(UpdateStudents);
-
             CreateParentCommand = new DelegateCommand<object>(CreateParent);
-
             CreateStudentCommand = new DelegateCommand<object>(CreateStudent);
 
+            List<string> listofpersons = new List<string>();
+            listofpersons.Add("Underviser");
+            listofpersons.Add("Elev");
+            listofpersons.Add("Forældre");
+            PersonStringList = listofpersons;
+
         }
+
+        public event Action<string> OnselectedPersonChanged;
 
         #region PrivateMembers
 
         private bool isloading;
-        private string selectedUser;
+        private Object selectedUser;
         private List<Teacher> teacherList;
         private List<Student> studentList;
+        private List<Parent> parentList;
+        private List<string> personStringList;
+        private string selectedStringPerson;
 
         #endregion
 
-
         #region Proberties
-        public List<Teacher> TeacherList
-        {
-            get { return teacherList; }
-            set
-            {
-                teacherList = value;
-                OnPropertyChanged("TeacherList");
-            }
-        }
 
         public bool Isloading
         {
@@ -60,29 +58,93 @@ namespace AdminModule.ViewModels
             }
         }
 
-        public string SelectedUser // forskel mellem selecteduser fra comboboksen og datagriddet.
+        public Object SelectedUser // forskel mellem selecteduser fra comboboksen og datagriddet.
         {
             get { return selectedUser; }
             set
             {
                 selectedUser = value;
-                GetTeachers();
+                OnPropertyChanged("SelectedUser");
+                EditUserCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+        public List<Teacher> TeacherList
+        {
+            get { return teacherList; }
+            set
+            {
+                teacherList = value;
+                OnPropertyChanged("TeacherList");
+            }
+        }
+
+
+        public List<Parent> ParentList
+        {
+            get { return parentList; }
+            set
+            {
+                parentList = value;
+                OnPropertyChanged("ParentList");
             }
         }
 
 
         public List<Student> StudentList
         {
-            get { return studentList; }
+            get
+            {
+                return studentList;
+            }
             set
             {
-
 
                 studentList = value;
                 OnPropertyChanged("StudentList");
             }
         }
 
+
+        public List<string> PersonStringList
+        {
+            get
+            {
+                return personStringList;
+            }
+            set
+            {
+                personStringList = value;
+                OnPropertyChanged("PersonStringList");
+            }
+        }
+
+
+        public string SelectedStringPerson
+        {
+            get { return selectedStringPerson; }
+            set
+            {
+                // når den bliver sat skal den hente listen af den selecterede persontype. 
+                //Herefter skal der sendes et event ud til view for at ændre på itemsource for datagriddet.
+
+                selectedStringPerson = value;
+
+                if (selectedStringPerson == "Underviser")
+                    GetTeachers(); // async metode
+
+                else if (selectedStringPerson == "Elev")
+                    GetStudents();
+
+                else if (selectedStringPerson == "Forældre")
+                {
+                    //GetParents();
+                }
+
+                //    RaiseOnselectedPersonChanged(selectedStringPerson); må ikke bruges her da der ikke er blevet tilføjet noget til listen endnu.
+                OnPropertyChanged("SelectedStringPerson");
+            }
+        }
 
         #endregion
 
@@ -93,21 +155,17 @@ namespace AdminModule.ViewModels
 
         public void UpdateStudents(Object o)
         {
-         GetStudents();
-        }
-
-        public DelegateCommand<object> UpdateCommand { get; set; }
-
-        public void Update(Object o)
-        {
-            Thread thread = new Thread(GetTeachers); // samler det i metoden.
-            thread.Start(); 
+            GetStudents();
         }
 
 
         public bool MayiWrite(Object o)
         {
-            return true;
+            bool boolen = false;
+
+            if (selectedUser != null)
+                boolen = true;
+            return boolen;
         }
 
         public DelegateCommand<object> CreateTeacherCommand { get; set; }
@@ -117,7 +175,6 @@ namespace AdminModule.ViewModels
             TeacherCuView tview = new TeacherCuView();
             tview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             tview.ShowDialog();
-
         }
 
 
@@ -149,44 +206,58 @@ namespace AdminModule.ViewModels
         {
             // hvis teacer er selecteret så ved du det er objekt teacher der skal sendes ind.
             // bare kald den edit og vurder hvilket object der er selecteret.
+            if (selectedStringPerson == "Underviser")
+            {
 
-            Teacher t = new Teacher();
-            t.Firstname = "a";
-            t.Lastname = "!";
-            t.City = "ss";
-            t.Birthdate = "sss";
-            t.Address = "sasdsda";
-            t.Userrole = 1;
+                Teacher te = (Teacher)SelectedUser;
+                TeacherCuView tview = new TeacherCuView(te);
+                tview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                tview.ShowDialog();
+            }
 
-            TeacherCuView tview = new TeacherCuView(t);
-            tview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            tview.ShowDialog();
+            if (selectedStringPerson == "Elev")
+            {
 
-        } // next week
+                Student st = (Student)SelectedUser;
+                StudentCuView sview = new StudentCuView(st);
+                sview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                sview.ShowDialog();
+            }
 
+        } 
 
 
         #endregion
-
 
         #region Methods
 
         private async void GetTeachers()
         {
             Isloading = true;
-
             TeacherList = await ServiceProxy.Instance.GetTeachers();
-
             Isloading = false;
-        
+            RaiseOnselectedPersonChanged("Underviser");
         }
 
         private async void GetStudents()
         {
-
+            Isloading = true;
             StudentList = await ServiceProxy.Instance.GetStudents();
+            Isloading = false;
+            RaiseOnselectedPersonChanged("Elev");
+        }
+
+
+
+        public void RaiseOnselectedPersonChanged(string theSelectedPersonString)
+        {
+            if (OnselectedPersonChanged != null) // er der nogle som  lytter på den. Ikke om den er instansieret.
+            {
+                OnselectedPersonChanged(theSelectedPersonString);
+            }
 
         }
+
 
         #endregion
 

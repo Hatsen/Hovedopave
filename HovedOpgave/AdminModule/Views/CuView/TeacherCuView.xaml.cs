@@ -30,35 +30,15 @@ namespace AdminModule.Views
             if (viewModel == null)
                   viewModel = new TeacherCuViewModel();
 
-
             viewModel.Viewstate = teacher == null ? Enums.ViewState.Create : Enums.ViewState.Edit;
             
-         /*   if (teacher.GetType()==typeof(Teacher))
-            {
-                teacher = (Teacher) teacher;
-            }
-            else if (teacher.GetType()==typeof(Student))
-            {
-                
-            }
-            else if (teacher.GetType() == typeof(Parent))
-            {
 
-            }*/
-
-            // her skal tjekkes hvilken type object der skal sættes ind i viewmodel.
-
-            if (teacher!=null ) // object!=null for at dele samme viewmodel. ELLER vær kold og tjek for objectypen i viewmodel?
+            if (teacher!=null ) 
             {
                 viewModel.CurrentTeacher = (Teacher)teacher; // vigtig eftersom jeg ikke får smidt de data som kom fra objektet med ind. Viewstate sættes i starten til create. Er efter linien ovenover blevet sat til edit.
             }
 
-            
-           
             this.DataContext = viewModel;
-
-           /* viewModel.Ranks.Add(1);
-            viewModel.Ranks.Add(2);*/
 
             InitializeEvents();
         }
@@ -72,9 +52,7 @@ namespace AdminModule.Views
         {
             if (viewModel != null)
             {
-
                 viewModel.OnTeacherViewClose += viewModel_OnTeacherViewClose;
-
             }
         }
 

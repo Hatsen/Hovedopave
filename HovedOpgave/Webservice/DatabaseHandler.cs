@@ -159,7 +159,7 @@ namespace Webservice
                 DB.Exec(
                     "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole) " +
                     "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + teacher.Username + "','" + teacher.Password + "','" + teacher.Lastlogin + "'," + teacher.Userrole + ");");
-                DB.Exec("INSERT INTO [Teacher] (Id) VALUES (" + teacher.Id + ");");
+                DB.Exec("INSERT INTO [Teacher] (Id, Rank) VALUES (" + teacher.Id + ", "+teacher.Rank+");");
             }
             catch (Exception)
             {
@@ -167,13 +167,28 @@ namespace Webservice
                 success = false;
             }
 
-
-
-
             return success;
         }
+        public bool UpdateTeacher(Teacher teacher)
+        {
+            bool success = true;
 
+            try
+            {
+                DB.Open();
+                DB.Exec("UPDATE [User] SET Firstname ='"+teacher.Firstname+"', Lastname='"+teacher.Lastname+"', City='"+teacher.City+"', Address='"+teacher.Address+"',"+
+                  "Birthdate='"+teacher.Birthdate+"', Username='"+teacher.Username+"', Password='"+teacher.Password+"', Lastlogin ='"+teacher.Lastlogin+"', Userrole="+teacher.Userrole+" WHERE Id="+teacher.Id+";");
+                DB.Exec("UPDATE [Teacher] SET [Rank]=" + teacher.Rank + " WHERE Id="+teacher.Id+";");
+            }
+            catch (Exception)
+            {
+                Debug.Write("Fejl!");
+                success = false;
+            }
 
+            return success;
+            
+        }
         public List<Teacher> GetTeachers()
         {
             List<Teacher> teachers = new List<Teacher>();
@@ -183,12 +198,12 @@ namespace Webservice
                 DB.Open();
 
                 string[][] getTeachers = DB.Query("SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
-                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole" +
+                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole,  [Teacher].Rank" +
                                                   " FROM [Teacher] INNER JOIN [User] ON  [Teacher].Id=[User].Id ORDER BY [User].Firstname;");
 
                 for (int i = 0; i < getTeachers.Length; i++)
                 {
-                    Teacher teacher = new Teacher();
+                    Teacher teacher = new Teacher(); 
 
                     teacher.Id = Convert.ToInt32(getTeachers[i][0]);
                     teacher.Fkuserid = Convert.ToInt32(getTeachers[i][0]);
@@ -205,6 +220,7 @@ namespace Webservice
                     }
                     teacher.Lastlogin = Convert.ToDateTime(getTeachers[i][8]);
                     teacher.Userrole = Convert.ToInt32(getTeachers[i][9]);
+                    teacher.Rank= Convert.ToInt32(getTeachers[i][10]);
                     teachers.Add(teacher);
                 }
             }
@@ -247,6 +263,71 @@ namespace Webservice
 
 
             return success;
+        }
+
+
+        public bool UpdateParent(Parent parent)
+        {
+            bool success = true;
+
+            try
+            {
+                DB.Open();
+                DB.Exec("UPDATE [User] SET Firstname ='" + parent.Firstname + "', Lastname='" + parent.Lastname + "', City='" + parent.City + "', Address='" + parent.Address + "'," +
+                  "Birthdate='" + parent.Birthdate + "', Username='" + parent.Username + "', Password='" + parent.Password + "', Lastlogin ='" + parent.Lastlogin + "', Userrole=" + parent.Userrole + " WHERE Id=" + parent.Id + ";");
+            }
+            catch (Exception)
+            {
+                Debug.Write("Fejl!");
+                success = false;
+            }
+
+            return success;
+
+        }
+        public List<Parent> GetParents()
+        {
+            List<Parent> parents = new List<Parent>();
+
+            try
+            {
+                DB.Open();
+
+                string[][] getTeachers = DB.Query("SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
+                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole,  [Teacher].Rank" +
+                                                  " FROM [Teacher] INNER JOIN [User] ON  [Teacher].Id=[User].Id ORDER BY [User].Firstname;");
+
+                for (int i = 0; i < getTeachers.Length; i++)
+                {
+                    Parent parent = new Parent();
+
+                    parent.Id = Convert.ToInt32(getTeachers[i][0]);
+                    parent.Fkuserid = Convert.ToInt32(getTeachers[i][0]);
+                    parent.Firstname = getTeachers[i][1];
+                    parent.Lastname = getTeachers[i][2];
+                    parent.City = getTeachers[i][3];
+                    parent.Address = getTeachers[i][4];
+                    parent.Birthdate = getTeachers[i][5];
+                    parent.Username = getTeachers[i][6];
+                    parent.Password = getTeachers[i][7];
+                    if (getTeachers[i][8] == "")
+                    {
+                        getTeachers[i][8] = DateTime.MinValue.ToString();
+                    }
+                    parent.Lastlogin = Convert.ToDateTime(getTeachers[i][8]);
+                    parent.Userrole = Convert.ToInt32(getTeachers[i][9]);
+                    parents.Add(parent);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                DB.Close();
+            }
+            return parents;
         }
 
         #endregion

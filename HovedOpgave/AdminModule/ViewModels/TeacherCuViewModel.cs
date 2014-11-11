@@ -12,12 +12,8 @@ namespace AdminModule.ViewModels
 {
     public class TeacherCuViewModel : ViewModelBase
     {
-
-
         public TeacherCuViewModel()
         {
-
-
             ConfirmCommand = new DelegateCommand<object>(Confirm, IsEnable);
             CancelCommand = new DelegateCommand<object>(Cancel);
 
@@ -25,12 +21,11 @@ namespace AdminModule.ViewModels
             {
                 Ranks = new List<string>();
                 Ranks.Add("Skoleleder"); Ranks.Add("Underviser"); Ranks.Add("Vikar");
-
             }
-
         }
 
         public Action OnTeacherViewClose;
+        
         public Enums.ViewState Viewstate; // bliver altid sat til Create til at starte med.
         //  public Enums.ViewState ViewstateObject; // bliver altid sat til Create til at starte med.
 
@@ -67,8 +62,19 @@ namespace AdminModule.ViewModels
                 City = currentTeacher.City;
                 Address = currentTeacher.Address;
                 Birthdate = currentTeacher.Birthdate;
-                // rank mangler for teacher.
 
+                if (currentTeacher.Rank == (int)Enums.Rank.Principal) // lige her skal jeg kende til værdierne for enums
+                {
+                    SelectedRank = "Skoleleder";
+                }
+                else if (currentTeacher.Rank == (int)Enums.Rank.Teacher)
+                {
+                    SelectedRank = "Underviser";
+                }
+                else if (currentTeacher.Rank == (int)Enums.Rank.Substitute)
+                {
+                    SelectedRank = "Vikar";
+                }
             }
         }
 
@@ -163,6 +169,8 @@ namespace AdminModule.ViewModels
             }
         }
 
+
+
         #endregion
 
         #region Commands
@@ -192,41 +200,60 @@ namespace AdminModule.ViewModels
                 teacher.City = city;
                 teacher.Birthdate = birthdate;
                 teacher.Address = address;
-                // vi mangler rank på teacher.
+                if (selectedRank == "Underviser")
+                    teacher.Rank = (int)Enums.Rank.Teacher;
 
-                teacher.Userrole = 1;
+                else if (selectedRank == "Vikar")
+                    teacher.Rank = (int)Enums.Rank.Substitute;
+
+                else if (selectedRank == "Skoleleder")
+                    teacher.Rank = (int)Enums.Rank.Principal;
+
+                teacher.Userrole = (int)Enums.Userrole.Teacher; // it's in the view of teacher meaning the userrole will be 1.
 
                 success = await BusinessLogic.Instance.CreateTeacher(teacher);
-
-                MessageBox.Show(success
-                    ? "Underviser er oprettet! Vinduet lukkes."
-                    : "Noget gik galt. Underviseren er ikke blevet oprettet. Vinduet lukkes.");
-
-                OnTeacherViewClose();
             }
 
             else if (Viewstate == Enums.ViewState.Edit) // for next week! 
             {
                 // her vil det ikke være nødvendigt at oprette password, id og username.
-                BusinessLogic.Instance.UpdateTeacher(CurrentTeacher);
+                // der skal tjekkes på om værdierne i tekstboksene er blevet ændret.
+
+                // sørg for at currentteacher kan være en ny instans. Så sparer du dette redudante udtryk.. saml attributterne der bliver sat til objektet.
+                CurrentTeacher.Firstname = firstname;
+                CurrentTeacher.Lastname = lastname;
+                CurrentTeacher.City = city;
+                CurrentTeacher.Birthdate = birthdate;
+                CurrentTeacher.Address = address;
+                if (selectedRank == "Underviser")
+                    CurrentTeacher.Rank = (int)Enums.Rank.Teacher;
+
+                else if (selectedRank == "Vikar")
+                    CurrentTeacher.Rank = (int)Enums.Rank.Substitute;
+
+                else if (selectedRank == "Skoleleder")
+                    CurrentTeacher.Rank = (int)Enums.Rank.Principal;
+
+                success = await BusinessLogic.Instance.UpdateTeacher(CurrentTeacher);
 
             }
 
-
-            //tjek med id.findes id allerede på user skal der ikke genereres username eller password.
-
             Isloading = false;
+            MessageBox.Show(success
+               ? "Underviser er oprettet/opdateret! Vinduet lukkes."
+               : "Noget gik galt. Underviseren er ikke blevet oprettet/opdateret. Vinduet lukkes.");
+
+            OnTeacherViewClose();
         }
 
         public bool IsEnable(Object o)
         {
             // validerer om alle felter er blevet udfyldt.
             bool enable = true;
-            if (string.IsNullOrEmpty(Firstname) || string.IsNullOrEmpty(Lastname) || string.IsNullOrEmpty(City) || string.IsNullOrEmpty(Birthdate) || string.IsNullOrEmpty(Address))
+            if (string.IsNullOrEmpty(Firstname) || string.IsNullOrEmpty(Lastname) || string.IsNullOrEmpty(City) || string.IsNullOrEmpty(Birthdate) || string.IsNullOrEmpty(Address)||string.IsNullOrEmpty(selectedRank))
             {
                 enable = false;
             }
-
 
 
             return enable;
@@ -249,7 +276,7 @@ namespace AdminModule.ViewModels
 
         }
 
-   
+
         #endregion
 
 

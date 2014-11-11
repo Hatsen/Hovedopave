@@ -40,7 +40,7 @@ namespace AdminModule
         
 
             teacher.Lastlogin = DateTime.Now;
-            teacher.Password = PasswordHash.CreateHash(teacher.Birthdate);
+            teacher.Password = PasswordHash.CreateHash(teacher.Birthdate); // spørgsmålet er om det hele ikke bare skal være på webservicen?? altså genereing af pass og lastlogin.
 
 
             await ServiceProxy.Instance.InsertTeacher(teacher);
@@ -63,13 +63,9 @@ namespace AdminModule
 
 
 
-        public bool UpdateTeacher(Teacher teacher)
+        public async Task<bool> UpdateTeacher(Teacher teacher)
         {
-            //der mangler at blive genereteret id, username og password
-
-            //generer id og username og password inden du opretter. Når du updaterere skal der tjekkes om id allerede findes på objektet.
-
-            // finder ud af fra id hvilken user der er tale om.
+            await ServiceProxy.Instance.InsertTeacher(teacher);
 
 
             return true;

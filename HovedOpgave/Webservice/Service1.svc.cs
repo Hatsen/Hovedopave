@@ -14,9 +14,9 @@ namespace Webservice
 {
     public class Service1 : IService1
     {
-       // DatabaseHandler databaseHandler = new DatabaseHandler();
+        // DatabaseHandler databaseHandler = new DatabaseHandler();
 
-        [WebMethod (EnableSession = true)]
+        [WebMethod(EnableSession = true)]
         public bool GetLoginDetails(string username, string password)
         {
             HttpContext context = HttpContext.Current;
@@ -34,7 +34,7 @@ namespace Webservice
             return loggedIn;
         }
 
-        public string GetUserDetails (int number)
+        public string GetUserDetails(int number)
         {
             string[] userDetails = new string[5];
 
@@ -53,6 +53,10 @@ namespace Webservice
             return true;
         }
 
+
+
+        #region TeacherMethods
+
         public Teacher GetTeacher()
         {
             Teacher t = new Teacher();
@@ -60,55 +64,39 @@ namespace Webservice
 
             return t;
         }
-
-
         public List<Teacher> GetTeachers()
         {
-          /*  List<Teacher> listen = new List<Teacher>();
-
-
-            for (int i = 0; i < 100; i++)
-            {
-                Teacher t = new Teacher();
-                t.Id = i;
-                t.Fkuserid = i;
-                t.Firstname = "Hr "+i;
-                t.Lastname = "lol" + i;
-
-                listen.Add(t);
-            }
-            return listen;*/
-
-
-           return DatabaseHandler.Instance.GetTeachers();
-
-
-
+            return DatabaseHandler.Instance.GetTeachers();
         }
-
         public int GetMostRecentUserId()
         {
             return DatabaseHandler.Instance.GetMostRecentUserId();
         }
-
         public bool InsertTeacher(Teacher teacher)
         {
-
             bool success = false;
 
-            int recentId =  DatabaseHandler.Instance.GetMostRecentUserId();
-
-            if (recentId != -1)
+            if (teacher.Id != 0) // update
             {
-                teacher.Id = recentId;
-                teacher.Fkuserid = recentId;
-                teacher.Username = "Te_" + recentId;
-                success = DatabaseHandler.Instance.InsertTeacher(teacher); // will insert into User and Teacher.
+                success = DatabaseHandler.Instance.UpdateTeacher(teacher);
             }
 
-            return success;
+            else
+            {
+                int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
 
+                if (recentId != -1)
+                {
+                    teacher.Id = recentId;
+                    teacher.Fkuserid = recentId;
+                    teacher.Username = "Te_" + recentId;
+                    success = DatabaseHandler.Instance.InsertTeacher(teacher); // will insert into User and Teacher.
+                }
+            }
+            return success;
         }
+
+        #endregion
 
 
         #region ParentMethods
