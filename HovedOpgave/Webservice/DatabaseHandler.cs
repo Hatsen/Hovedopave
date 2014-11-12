@@ -81,10 +81,10 @@ namespace Webservice
                         anc.ClassID = Convert.ToInt32(getAnc[i][5]);
                     }
 
-                    if (Holder.Instance.Announcements.Contains(anc))
-                    {
-                        
-                    }
+                    bool containsItem = Holder.Instance.Announcements.Any(announcement => announcement.ID == anc.ID);
+
+                    if(containsItem == true)
+                    {}
                     else
                     {
                         Holder.Instance.Announcements.Add(anc);
