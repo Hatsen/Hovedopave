@@ -91,6 +91,8 @@
 
 #announcementTable
 {
+    margin-left: 20px;
+    margin-top: 20px;
     border: 1px solid #000;
     width: 20%;
     min-width: 100px;
@@ -106,7 +108,12 @@
     text-decoration: none;
 }
 
-.headerItem
+.ancHeaderItem
 {
     background-color: #ebe7e7;
+}
+
+.ancMessageItem 
+{
+    background-color: #FFFFCC;
 }

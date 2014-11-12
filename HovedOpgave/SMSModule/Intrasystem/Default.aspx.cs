@@ -20,10 +20,10 @@ namespace SMSModule.Intrasystem
             foreach(Announcement anc in announcementList)
             {
                 html += "<tr>";
-                html += "<td class='headerItem'><b>" + anc.Header + "</b></td>";
+                html += "<td class='ancHeaderItem'><b>" + anc.Header + "</b></td>";
                 html += "</tr>";
                 html += "<tr>";
-                html += "<td>" + anc.Message + "</td>";
+                html += "<td class='ancMessageItem'>" + anc.Message + "</td>";
                 html += "</tr>";
             }
             html += "</table>";
