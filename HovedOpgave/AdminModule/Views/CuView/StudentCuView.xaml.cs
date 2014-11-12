@@ -24,7 +24,7 @@ namespace AdminModule.Views
 
         private StudentCuViewModel viewModel;
 
-        public StudentCuView(object student = null) // se nok mere teacher som generics objekt
+        public StudentCuView(Student student = null) // se nok mere teacher som generics objekt
         {
             InitializeComponent();
 
@@ -37,7 +37,7 @@ namespace AdminModule.Views
 
             if (student != null)
             {
-                viewModel.CurrentStudent = (Student)student; // vigtig eftersom jeg ikke får smidt de data som kom fra objektet med ind. Viewstate sættes i starten til create. Er efter linien ovenover blevet sat til edit.
+                viewModel.CurrentStudent = student; // vigtig eftersom jeg ikke får smidt de data som kom fra objektet med ind. Viewstate sættes i starten til create. Er efter linien ovenover blevet sat til edit.
             }
         
             this.DataContext = viewModel;

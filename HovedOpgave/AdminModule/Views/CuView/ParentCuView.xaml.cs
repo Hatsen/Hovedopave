@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AdminModule.ViewModels;
+using AdminModule.Webservice;
 
 namespace AdminModule.Views
 {
@@ -22,7 +23,7 @@ namespace AdminModule.Views
     {
         private ParentCuViewModel viewModel;
 
-        public ParentCuView(object teacher = null) // se nok mere teacher som generics objekt
+        public ParentCuView(Parent parent = null) // se nok mere teacher som generics objekt
         {
             InitializeComponent();
 
@@ -30,8 +31,12 @@ namespace AdminModule.Views
                 viewModel = new ParentCuViewModel();
 
 
-            viewModel.Viewstate = teacher == null ? Enums.ViewState.Create : Enums.ViewState.Edit;
-            
+            viewModel.Viewstate = parent == null ? Enums.ViewState.Create : Enums.ViewState.Edit;
+
+            if (parent!=null)
+            {
+                viewModel.CurrentParent = parent;
+            }
 
             // her skal tjekkes hvilken type object der skal sættes ind i viewmodel.
 
@@ -53,7 +58,7 @@ namespace AdminModule.Views
         {
             if (viewModel != null)
             {
-                viewModel.OnProjectViewClose += viewModel_OnParentViewClose;
+                viewModel.OnParentViewClose += viewModel_OnParentViewClose;
 
             }
         }
@@ -64,7 +69,7 @@ namespace AdminModule.Views
 
             if (viewModel != null)
             {
-                viewModel.OnProjectViewClose -= viewModel_OnParentViewClose;
+                viewModel.OnParentViewClose -= viewModel_OnParentViewClose;
             }
 
         }

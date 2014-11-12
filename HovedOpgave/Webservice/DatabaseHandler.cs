@@ -264,7 +264,6 @@ namespace Webservice
 
         #endregion
 
-
         #region ParentCRUD
 
         public bool InsertParent(Parent parent)
@@ -286,13 +285,8 @@ namespace Webservice
                 success = false;
             }
 
-
-
-
             return success;
         }
-
-
         public bool UpdateParent(Parent parent)
         {
             bool success = true;
@@ -321,8 +315,8 @@ namespace Webservice
                 DB.Open();
 
                 string[][] getTeachers = DB.Query("SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
-                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole,  [Teacher].Rank" +
-                                                  " FROM [Teacher] INNER JOIN [User] ON  [Teacher].Id=[User].Id ORDER BY [User].Firstname;");
+                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole" +
+                                                  " FROM [Parent] INNER JOIN [User] ON  [Parent].Id=[User].Id ORDER BY [User].Firstname;");
 
                 for (int i = 0; i < getTeachers.Length; i++)
                 {

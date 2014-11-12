@@ -30,11 +30,7 @@ namespace AdminModule
        }
 
 
-
-
-      
-
-       public Task<Teacher> GetTeacher()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+/*       public Task<Teacher> GetTeacher()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {
            var tcs = new TaskCompletionSource<Teacher>();
            EventHandler<GetTeacherCompletedEventArgs> handler = null;
@@ -64,7 +60,7 @@ namespace AdminModule
 
            return tcs.Task;
        }
-
+*/
 
 
       /* public List<Teacher> GetTeachers()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
@@ -150,16 +146,16 @@ namespace AdminModule
        }
 
 
-       //SKAL NOK FJERNES. DU KAN IKKE VÆRE SIKKER PÅ AT DU FÅR DEN MOSTRECENT ID NÅR DU HAR HENTET DET. ALTSÅ SKAL ID, USERNAME OG PASSWORD GENERES PÅ WEBSERVICEN.
-     /*  public Task<int> GetMostRecentUserId()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+
+       public Task<List<Parent>> GetParents()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {
-           var tcs = new TaskCompletionSource<int>();
-           EventHandler<GetUserCountCompletedEventArgs> handler = null;
+           var tcs = new TaskCompletionSource<List<Parent>>();
+           EventHandler<GetParentsCompletedEventArgs> handler = null;
            handler = (sender, args) =>
            {
                if (args.UserState == tcs)
                {
-                   service.GetUserCountCompleted -= handler;
+                   service.GetParentsCompleted -= handler;
                    if (args.Error != null)
                    {
                        tcs.TrySetException(args.Error);
@@ -176,11 +172,11 @@ namespace AdminModule
                }
            };
 
-           service.GetUserCountCompleted += handler;
-           service.GetUserCountAsync();
+           service.GetParentsCompleted += handler;
+           service.GetParentsAsync(tcs);
 
            return tcs.Task;
-       }*/  
+       }
 
 
 

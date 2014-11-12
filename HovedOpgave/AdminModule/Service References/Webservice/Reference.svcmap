@@ -23,11 +23,12 @@
     <MetadataSource Address="http://localhost:10643/Service1.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="7d7c1880-c644-43f9-83f5-698e46f8b51b" SourceId="1" SourceUrl="http://localhost:10643/Service1.svc?xsd=xsd2" />
-    <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="bd117852-2639-476b-8fbd-6dbd53d25a1b" SourceId="1" SourceUrl="http://localhost:10643/Service1.svc?xsd=xsd1" />
-    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="ba9680b6-2658-4348-b1b9-7b7800b66520" SourceId="1" SourceUrl="http://localhost:10643/Service1.svc?disco" />
-    <MetadataFile FileName="Service12.xsd" MetadataType="Schema" ID="58a0f3b8-f26f-4c10-b1c9-baa57bad5278" SourceId="1" SourceUrl="http://localhost:10643/Service1.svc?xsd=xsd0" />
     <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="a14b7404-39a3-4bfc-bba3-3deb72a045c1" SourceId="1" SourceUrl="http://localhost:10643/Service1.svc?wsdl" />
+    <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="bd117852-2639-476b-8fbd-6dbd53d25a1b" SourceId="1" SourceUrl="http://localhost:10643/Service1.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service12.xsd" MetadataType="Schema" ID="58a0f3b8-f26f-4c10-b1c9-baa57bad5278" SourceId="1" SourceUrl="http://localhost:10643/Service1.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="7d7c1880-c644-43f9-83f5-698e46f8b51b" SourceId="1" SourceUrl="http://localhost:10643/Service1.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="ba9680b6-2658-4348-b1b9-7b7800b66520" SourceId="1" SourceUrl="http://localhost:10643/Service1.svc?disco" />
+    <MetadataFile FileName="Service13.xsd" MetadataType="Schema" ID="39e4fd08-98e1-4a70-9c3f-0e829591fb2a" SourceId="1" SourceUrl="http://localhost:10643/Service1.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

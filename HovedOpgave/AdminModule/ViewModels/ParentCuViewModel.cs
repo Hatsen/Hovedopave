@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AdminModule.Webservice;
 using Microsoft.Practices.Prism.Commands;
+using System.Windows;
 
 namespace AdminModule.ViewModels
 {
@@ -17,7 +18,7 @@ namespace AdminModule.ViewModels
             CancelCommand = new DelegateCommand<object>(Cancel);
         }
 
-        public event Action OnProjectViewClose;
+        public Action OnParentViewClose;
         public Enums.ViewState Viewstate; // bliver altid sat til Create til at starte med.
         //  public Enums.ViewState ViewstateObject; // bliver altid sat til Create til at starte med.
 
@@ -28,7 +29,8 @@ namespace AdminModule.ViewModels
         private string city;
         private string birthdate;
         private string address;
-        // private Parent currentParent;
+        private Parent currentParent;
+        private bool isLoading;
 
 
 
@@ -94,7 +96,32 @@ namespace AdminModule.ViewModels
             }
         }
 
+        public Parent CurrentParent
+        {
+            get { return currentParent; }
+            set
+            {
 
+                currentParent = value;
+                Firstname = currentParent.Firstname;
+                Lastname = currentParent.Lastname;
+                City = currentParent.City;
+                Address = currentParent.Address;
+                Birthdate = currentParent.Birthdate;
+
+            }
+        }
+
+
+        public bool Isloading
+        {
+            get { return isLoading; }
+            set
+            {
+                isLoading = value;
+                OnPropertyChanged("Isloading");
+            }
+        }
 
 
         #endregion
@@ -111,7 +138,7 @@ namespace AdminModule.ViewModels
 
         public async void Confirm(Object o)
         {
-            bool success;
+            bool success = false;
 
             // vurder ud fra viewstate om der skal oprettes en user deraf dets username password mm. 
             // eller om der skal oprettes en user.
@@ -130,10 +157,6 @@ namespace AdminModule.ViewModels
 
                 success = await BusinessLogic.Instance.CreateParent(Parent);
 
-                if (success)
-                {
-                    // kast et event og sig han blev oprettet.
-                }
             }
 
             else if (Viewstate == Enums.ViewState.Edit) // for next week! 
@@ -141,8 +164,21 @@ namespace AdminModule.ViewModels
                 // her vil det ikke være nødvendigt at oprette password, id og username.
                 //  BusinessLogic.Instance.UpdateParent(CurrentParent);
 
+                CurrentParent.Firstname = firstname;
+                CurrentParent.Lastname = lastname;
+                CurrentParent.City = city;
+                CurrentParent.Birthdate = birthdate;
+                CurrentParent.Address = address;
+                success = await BusinessLogic.Instance.UpdateParent(CurrentParent);
             }
 
+
+            Isloading = false;
+            MessageBox.Show(success
+               ? "Underviser er oprettet/opdateret! Vinduet lukkes."
+               : "Noget gik galt. Underviseren er ikke blevet oprettet/opdateret. Vinduet lukkes.");
+
+            OnParentViewClose();
             //tjek med id.findes id allerede på user skal der ikke genereres username eller password.
 
         }
@@ -180,9 +216,9 @@ namespace AdminModule.ViewModels
 
         private void RaiseOnProjectViewClose()
         {
-            if (OnProjectViewClose != null)
+            if (OnParentViewClose != null)
             {
-                OnProjectViewClose();
+                OnParentViewClose();
             }
 
         }

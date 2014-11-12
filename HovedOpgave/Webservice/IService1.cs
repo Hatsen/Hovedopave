@@ -25,36 +25,43 @@ namespace Webservice
         [OperationContract]
         List<Announcement> GetAnnouncements(int group, int classID);
 
-        //lsj
-        [OperationContract]
-        bool CreateTeacher();
-
-         [OperationContract]
-          Teacher GetTeacher();
-
-          [OperationContract]
-          List<Teacher> GetTeachers();
-        
-  
-          [OperationContract]
-          bool InsertTeacher(Teacher teacher);
+        #region Teacher
+    
 
         [OperationContract]
-        int GetMostRecentUserId();
+        bool InsertTeacher(Teacher teacher);
+
+     /*   [OperationContract]
+        Teacher GetTeacher(); // bruges ikke endnu..*/
 
         [OperationContract]
-        List<Parent> GetParents();
+        List<Teacher> GetTeachers();
+
+        #endregion
+
+
+        #region Parent
 
         [OperationContract]
         bool InsertParent(Parent parent);
 
+        [OperationContract]
+        List<Parent> GetParents();
+
+
+        #endregion
+
+        #region Student
+        [OperationContract]
+        bool InsertStudent(Student parent);
 
         [OperationContract]
         List<Student> GetStudents();
 
+        #endregion
 
         [OperationContract]
-        bool InsertStudent(Student parent);
+        int GetMostRecentUserId();
 
 
 

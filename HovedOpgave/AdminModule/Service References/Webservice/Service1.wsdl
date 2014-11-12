@@ -4,7 +4,8 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Webservice.DB" />
+      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Webservice" />
+      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Webservice.DB" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetLoginDetails_InputMessage">
@@ -19,23 +20,17 @@
   <wsdl:message name="IService1_GetUserDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserDetailsResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_CreateTeacher_InputMessage">
-    <wsdl:part name="parameters" element="tns:CreateTeacher" />
+  <wsdl:message name="IService1_CreateAnnouncement_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAnnouncement" />
   </wsdl:message>
-  <wsdl:message name="IService1_CreateTeacher_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CreateTeacherResponse" />
+  <wsdl:message name="IService1_CreateAnnouncement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAnnouncementResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetTeacher_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetTeacher" />
+  <wsdl:message name="IService1_GetAnnouncements_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnouncements" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetTeacher_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetTeacherResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetTeachers_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetTeachers" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetTeachers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetTeachersResponse" />
+  <wsdl:message name="IService1_GetAnnouncements_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnouncementsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_InsertTeacher_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertTeacher" />
@@ -43,17 +38,11 @@
   <wsdl:message name="IService1_InsertTeacher_OutputMessage">
     <wsdl:part name="parameters" element="tns:InsertTeacherResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetMostRecentUserId_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetMostRecentUserId" />
+  <wsdl:message name="IService1_GetTeachers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeachers" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetMostRecentUserId_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetMostRecentUserIdResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetParents_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetParents" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetParents_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetParentsResponse" />
+  <wsdl:message name="IService1_GetTeachers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeachersResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_InsertParent_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertParent" />
@@ -61,17 +50,29 @@
   <wsdl:message name="IService1_InsertParent_OutputMessage">
     <wsdl:part name="parameters" element="tns:InsertParentResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetStudents_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetStudents" />
+  <wsdl:message name="IService1_GetParents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetParents" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetStudents_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetStudentsResponse" />
+  <wsdl:message name="IService1_GetParents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetParentsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_InsertStudent_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertStudent" />
   </wsdl:message>
   <wsdl:message name="IService1_InsertStudent_OutputMessage">
     <wsdl:part name="parameters" element="tns:InsertStudentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetStudents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudents" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetStudents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMostRecentUserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMostRecentUserId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMostRecentUserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMostRecentUserIdResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetLoginDetails">
@@ -82,41 +83,41 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserDetails" message="tns:IService1_GetUserDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserDetailsResponse" message="tns:IService1_GetUserDetails_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CreateTeacher">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateTeacher" message="tns:IService1_CreateTeacher_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateTeacherResponse" message="tns:IService1_CreateTeacher_OutputMessage" />
+    <wsdl:operation name="CreateAnnouncement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateAnnouncement" message="tns:IService1_CreateAnnouncement_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateAnnouncementResponse" message="tns:IService1_CreateAnnouncement_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetTeacher">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTeacher" message="tns:IService1_GetTeacher_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetTeacherResponse" message="tns:IService1_GetTeacher_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetTeachers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTeachers" message="tns:IService1_GetTeachers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetTeachersResponse" message="tns:IService1_GetTeachers_OutputMessage" />
+    <wsdl:operation name="GetAnnouncements">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAnnouncements" message="tns:IService1_GetAnnouncements_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAnnouncementsResponse" message="tns:IService1_GetAnnouncements_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="InsertTeacher">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertTeacher" message="tns:IService1_InsertTeacher_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertTeacherResponse" message="tns:IService1_InsertTeacher_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetMostRecentUserId">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMostRecentUserId" message="tns:IService1_GetMostRecentUserId_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMostRecentUserIdResponse" message="tns:IService1_GetMostRecentUserId_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetParents">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetParents" message="tns:IService1_GetParents_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetParentsResponse" message="tns:IService1_GetParents_OutputMessage" />
+    <wsdl:operation name="GetTeachers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTeachers" message="tns:IService1_GetTeachers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetTeachersResponse" message="tns:IService1_GetTeachers_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="InsertParent">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertParent" message="tns:IService1_InsertParent_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertParentResponse" message="tns:IService1_InsertParent_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetStudents">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetStudents" message="tns:IService1_GetStudents_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetStudentsResponse" message="tns:IService1_GetStudents_OutputMessage" />
+    <wsdl:operation name="GetParents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetParents" message="tns:IService1_GetParents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetParentsResponse" message="tns:IService1_GetParents_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="InsertStudent">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertStudent" message="tns:IService1_InsertStudent_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertStudentResponse" message="tns:IService1_InsertStudent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetStudents" message="tns:IService1_GetStudents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetStudentsResponse" message="tns:IService1_GetStudents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMostRecentUserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMostRecentUserId" message="tns:IService1_GetMostRecentUserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMostRecentUserIdResponse" message="tns:IService1_GetMostRecentUserId_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -139,8 +140,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CreateTeacher">
-      <soap:operation soapAction="http://tempuri.org/IService1/CreateTeacher" style="document" />
+    <wsdl:operation name="CreateAnnouncement">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateAnnouncement" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -148,17 +149,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetTeacher">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetTeacher" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetTeachers">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetTeachers" style="document" />
+    <wsdl:operation name="GetAnnouncements">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAnnouncements" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -175,17 +167,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetMostRecentUserId">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetMostRecentUserId" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParents">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetParents" style="document" />
+    <wsdl:operation name="GetTeachers">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetTeachers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -202,8 +185,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetStudents">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetStudents" style="document" />
+    <wsdl:operation name="GetParents">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetParents" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -213,6 +196,24 @@
     </wsdl:operation>
     <wsdl:operation name="InsertStudent">
       <soap:operation soapAction="http://tempuri.org/IService1/InsertStudent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudents">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetStudents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMostRecentUserId">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetMostRecentUserId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

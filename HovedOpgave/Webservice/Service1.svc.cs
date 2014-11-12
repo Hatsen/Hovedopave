@@ -74,23 +74,16 @@ namespace Webservice
             return announcements;
         }
 
-        //lsj
-        public bool CreateTeacher()
-        {
-            return true;
-        }
-
-
 
         #region TeacherMethods
 
-        public Teacher GetTeacher()
+    /*    public Teacher GetTeacher()
         {
             Teacher t = new Teacher();
             t.Id = 1; t.Firstname = "Hr Jensen";
 
             return t;
-        }
+        }*/
         public List<Teacher> GetTeachers()
         {
 
@@ -130,44 +123,45 @@ namespace Webservice
 
         #region ParentMethods
 
+        public bool CreateParent(Parent parent)
+        {
 
+            return true;
+        }
 
         public bool InsertParent(Parent parent)
         {
 
+
+
+
             bool success = false;
 
-            int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
-
-            if (recentId != -1)
+            if (parent.Id != 0) // update
             {
-                parent.Id = recentId;
-                parent.Fkuserid = recentId;
-                parent.Username = "Pa_" + recentId;
-                success = DatabaseHandler.Instance.InsertParent(parent); // will insert into User and Teacher.
+                success = DatabaseHandler.Instance.UpdateParent(parent);
             }
 
-            return success;
+            else
+            {
+                int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
 
+                if (recentId != -1)
+                {
+                    parent.Id = recentId;
+                    parent.Fkuserid = recentId;
+                    parent.Username = "Pa_" + recentId;
+                    success = DatabaseHandler.Instance.InsertParent(parent); 
+                }
+            }
+            return success;
         }
 
 
         public List<Parent> GetParents()
         {
-            List<Parent> listen = new List<Parent>();
-
-
-            for (int i = 0; i < 100; i++)
-            {
-                Parent t = new Parent();
-                t.Id = i;
-                t.Fkuserid = i;
-                t.Firstname = "Hr " + i;
-                t.Lastname = "lol" + i;
-
-                listen.Add(t);
-            }
-            return listen;
+          
+            return DatabaseHandler.Instance.GetParents();
         }
 
 

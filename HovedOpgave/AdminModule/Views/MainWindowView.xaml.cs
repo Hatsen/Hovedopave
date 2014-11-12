@@ -66,7 +66,7 @@ namespace AdminModule.Views
             }
             else if (selectedUserString == "Forældre")
             {
-                datagridUser.ItemsSource = viewmodel.TeacherList;
+                datagridUser.ItemsSource = viewmodel.ParentList;
             }
         }
 

@@ -138,7 +138,7 @@ namespace AdminModule.ViewModels
 
                 else if (selectedStringPerson == "Forældre")
                 {
-                    //GetParents();
+                    GetParents();
                 }
 
                 //    RaiseOnselectedPersonChanged(selectedStringPerson); må ikke bruges her da der ikke er blevet tilføjet noget til listen endnu.
@@ -204,26 +204,26 @@ namespace AdminModule.ViewModels
 
         public void EditUser(Object o)
         {
-            // hvis teacer er selecteret så ved du det er objekt teacher der skal sendes ind.
-            // bare kald den edit og vurder hvilket object der er selecteret.
             if (selectedStringPerson == "Underviser")
             {
-
-                Teacher te = (Teacher)SelectedUser;
-                TeacherCuView tview = new TeacherCuView(te);
+                TeacherCuView tview = new TeacherCuView((Teacher)SelectedUser);
                 tview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 tview.ShowDialog();
             }
 
             if (selectedStringPerson == "Elev")
             {
-
-                Student st = (Student)SelectedUser;
-                StudentCuView sview = new StudentCuView(st);
+                StudentCuView sview = new StudentCuView((Student)SelectedUser);
                 sview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 sview.ShowDialog();
             }
 
+            if (selectedStringPerson == "Forældre")
+            {
+                ParentCuView paview = new ParentCuView((Parent)SelectedUser);
+                paview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                paview.ShowDialog();
+            }
         } 
 
 
@@ -246,6 +246,15 @@ namespace AdminModule.ViewModels
             Isloading = false;
             RaiseOnselectedPersonChanged("Elev");
         }
+
+        private async void GetParents()
+        {
+            Isloading = true;
+            ParentList = await ServiceProxy.Instance.GetParents();
+            Isloading = false;
+            RaiseOnselectedPersonChanged("Forældre");
+        }
+
 
 
 

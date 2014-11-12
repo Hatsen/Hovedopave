@@ -15,6 +15,131 @@ namespace AdminModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Announcement", Namespace="http://schemas.datacontract.org/2004/07/Webservice")]
+    [System.SerializableAttribute()]
+    public partial class Announcement : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ClassIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CreatorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int GroupIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HeaderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ClassID {
+            get {
+                return this.ClassIDField;
+            }
+            set {
+                if ((this.ClassIDField.Equals(value) != true)) {
+                    this.ClassIDField = value;
+                    this.RaisePropertyChanged("ClassID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Creator {
+            get {
+                return this.CreatorField;
+            }
+            set {
+                if ((this.CreatorField.Equals(value) != true)) {
+                    this.CreatorField = value;
+                    this.RaisePropertyChanged("Creator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int GroupID {
+            get {
+                return this.GroupIDField;
+            }
+            set {
+                if ((this.GroupIDField.Equals(value) != true)) {
+                    this.GroupIDField = value;
+                    this.RaisePropertyChanged("GroupID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Header {
+            get {
+                return this.HeaderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HeaderField, value) != true)) {
+                    this.HeaderField = value;
+                    this.RaisePropertyChanged("Header");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/Webservice.DB")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(AdminModule.Webservice.Parent))]
@@ -326,29 +451,21 @@ namespace AdminModule.Webservice {
         
         string EndGetUserDetails(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateTeacher", ReplyAction="http://tempuri.org/IService1/CreateTeacherResponse")]
-        bool CreateTeacher();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateAnnouncement", ReplyAction="http://tempuri.org/IService1/CreateAnnouncementResponse")]
+        bool CreateAnnouncement(int creator, string header, string message, int group, int classID);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/CreateTeacher", ReplyAction="http://tempuri.org/IService1/CreateTeacherResponse")]
-        System.IAsyncResult BeginCreateTeacher(System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/CreateAnnouncement", ReplyAction="http://tempuri.org/IService1/CreateAnnouncementResponse")]
+        System.IAsyncResult BeginCreateAnnouncement(int creator, string header, string message, int group, int classID, System.AsyncCallback callback, object asyncState);
         
-        bool EndCreateTeacher(System.IAsyncResult result);
+        bool EndCreateAnnouncement(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTeacher", ReplyAction="http://tempuri.org/IService1/GetTeacherResponse")]
-        AdminModule.Webservice.Teacher GetTeacher();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAnnouncements", ReplyAction="http://tempuri.org/IService1/GetAnnouncementsResponse")]
+        System.Collections.Generic.List<AdminModule.Webservice.Announcement> GetAnnouncements(int group, int classID);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetTeacher", ReplyAction="http://tempuri.org/IService1/GetTeacherResponse")]
-        System.IAsyncResult BeginGetTeacher(System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetAnnouncements", ReplyAction="http://tempuri.org/IService1/GetAnnouncementsResponse")]
+        System.IAsyncResult BeginGetAnnouncements(int group, int classID, System.AsyncCallback callback, object asyncState);
         
-        AdminModule.Webservice.Teacher EndGetTeacher(System.IAsyncResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTeachers", ReplyAction="http://tempuri.org/IService1/GetTeachersResponse")]
-        System.Collections.Generic.List<AdminModule.Webservice.Teacher> GetTeachers();
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetTeachers", ReplyAction="http://tempuri.org/IService1/GetTeachersResponse")]
-        System.IAsyncResult BeginGetTeachers(System.AsyncCallback callback, object asyncState);
-        
-        System.Collections.Generic.List<AdminModule.Webservice.Teacher> EndGetTeachers(System.IAsyncResult result);
+        System.Collections.Generic.List<AdminModule.Webservice.Announcement> EndGetAnnouncements(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertTeacher", ReplyAction="http://tempuri.org/IService1/InsertTeacherResponse")]
         bool InsertTeacher(AdminModule.Webservice.Teacher teacher);
@@ -358,21 +475,13 @@ namespace AdminModule.Webservice {
         
         bool EndInsertTeacher(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMostRecentUserId", ReplyAction="http://tempuri.org/IService1/GetMostRecentUserIdResponse")]
-        int GetMostRecentUserId();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTeachers", ReplyAction="http://tempuri.org/IService1/GetTeachersResponse")]
+        System.Collections.Generic.List<AdminModule.Webservice.Teacher> GetTeachers();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetMostRecentUserId", ReplyAction="http://tempuri.org/IService1/GetMostRecentUserIdResponse")]
-        System.IAsyncResult BeginGetMostRecentUserId(System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetTeachers", ReplyAction="http://tempuri.org/IService1/GetTeachersResponse")]
+        System.IAsyncResult BeginGetTeachers(System.AsyncCallback callback, object asyncState);
         
-        int EndGetMostRecentUserId(System.IAsyncResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetParents", ReplyAction="http://tempuri.org/IService1/GetParentsResponse")]
-        System.Collections.Generic.List<AdminModule.Webservice.Parent> GetParents();
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetParents", ReplyAction="http://tempuri.org/IService1/GetParentsResponse")]
-        System.IAsyncResult BeginGetParents(System.AsyncCallback callback, object asyncState);
-        
-        System.Collections.Generic.List<AdminModule.Webservice.Parent> EndGetParents(System.IAsyncResult result);
+        System.Collections.Generic.List<AdminModule.Webservice.Teacher> EndGetTeachers(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertParent", ReplyAction="http://tempuri.org/IService1/InsertParentResponse")]
         bool InsertParent(AdminModule.Webservice.Parent parent);
@@ -382,13 +491,13 @@ namespace AdminModule.Webservice {
         
         bool EndInsertParent(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetStudents", ReplyAction="http://tempuri.org/IService1/GetStudentsResponse")]
-        System.Collections.Generic.List<AdminModule.Webservice.Student> GetStudents();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetParents", ReplyAction="http://tempuri.org/IService1/GetParentsResponse")]
+        System.Collections.Generic.List<AdminModule.Webservice.Parent> GetParents();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetStudents", ReplyAction="http://tempuri.org/IService1/GetStudentsResponse")]
-        System.IAsyncResult BeginGetStudents(System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetParents", ReplyAction="http://tempuri.org/IService1/GetParentsResponse")]
+        System.IAsyncResult BeginGetParents(System.AsyncCallback callback, object asyncState);
         
-        System.Collections.Generic.List<AdminModule.Webservice.Student> EndGetStudents(System.IAsyncResult result);
+        System.Collections.Generic.List<AdminModule.Webservice.Parent> EndGetParents(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertStudent", ReplyAction="http://tempuri.org/IService1/InsertStudentResponse")]
         bool InsertStudent(AdminModule.Webservice.Student parent);
@@ -397,6 +506,22 @@ namespace AdminModule.Webservice {
         System.IAsyncResult BeginInsertStudent(AdminModule.Webservice.Student parent, System.AsyncCallback callback, object asyncState);
         
         bool EndInsertStudent(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetStudents", ReplyAction="http://tempuri.org/IService1/GetStudentsResponse")]
+        System.Collections.Generic.List<AdminModule.Webservice.Student> GetStudents();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetStudents", ReplyAction="http://tempuri.org/IService1/GetStudentsResponse")]
+        System.IAsyncResult BeginGetStudents(System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<AdminModule.Webservice.Student> EndGetStudents(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMostRecentUserId", ReplyAction="http://tempuri.org/IService1/GetMostRecentUserIdResponse")]
+        int GetMostRecentUserId();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetMostRecentUserId", ReplyAction="http://tempuri.org/IService1/GetMostRecentUserIdResponse")]
+        System.IAsyncResult BeginGetMostRecentUserId(System.AsyncCallback callback, object asyncState);
+        
+        int EndGetMostRecentUserId(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -443,11 +568,11 @@ namespace AdminModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class CreateTeacherCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class CreateAnnouncementCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public CreateTeacherCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public CreateAnnouncementCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -462,38 +587,19 @@ namespace AdminModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetTeacherCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetAnnouncementsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public GetTeacherCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public GetAnnouncementsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public AdminModule.Webservice.Teacher Result {
+        public System.Collections.Generic.List<AdminModule.Webservice.Announcement> Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((AdminModule.Webservice.Teacher)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetTeachersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetTeachersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public System.Collections.Generic.List<AdminModule.Webservice.Teacher> Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((System.Collections.Generic.List<AdminModule.Webservice.Teacher>)(this.results[0]));
+                return ((System.Collections.Generic.List<AdminModule.Webservice.Announcement>)(this.results[0]));
             }
         }
     }
@@ -519,19 +625,38 @@ namespace AdminModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetMostRecentUserIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetTeachersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public GetMostRecentUserIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public GetTeachersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public int Result {
+        public System.Collections.Generic.List<AdminModule.Webservice.Teacher> Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
+                return ((System.Collections.Generic.List<AdminModule.Webservice.Teacher>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class InsertParentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public InsertParentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }
@@ -557,11 +682,11 @@ namespace AdminModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class InsertParentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class InsertStudentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public InsertParentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public InsertStudentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -595,19 +720,19 @@ namespace AdminModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class InsertStudentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetMostRecentUserIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public InsertStudentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public GetMostRecentUserIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public bool Result {
+        public int Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
+                return ((int)(this.results[0]));
             }
         }
     }
@@ -628,23 +753,17 @@ namespace AdminModule.Webservice {
         
         private System.Threading.SendOrPostCallback onGetUserDetailsCompletedDelegate;
         
-        private BeginOperationDelegate onBeginCreateTeacherDelegate;
+        private BeginOperationDelegate onBeginCreateAnnouncementDelegate;
         
-        private EndOperationDelegate onEndCreateTeacherDelegate;
+        private EndOperationDelegate onEndCreateAnnouncementDelegate;
         
-        private System.Threading.SendOrPostCallback onCreateTeacherCompletedDelegate;
+        private System.Threading.SendOrPostCallback onCreateAnnouncementCompletedDelegate;
         
-        private BeginOperationDelegate onBeginGetTeacherDelegate;
+        private BeginOperationDelegate onBeginGetAnnouncementsDelegate;
         
-        private EndOperationDelegate onEndGetTeacherDelegate;
+        private EndOperationDelegate onEndGetAnnouncementsDelegate;
         
-        private System.Threading.SendOrPostCallback onGetTeacherCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetTeachersDelegate;
-        
-        private EndOperationDelegate onEndGetTeachersDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetTeachersCompletedDelegate;
+        private System.Threading.SendOrPostCallback onGetAnnouncementsCompletedDelegate;
         
         private BeginOperationDelegate onBeginInsertTeacherDelegate;
         
@@ -652,17 +771,11 @@ namespace AdminModule.Webservice {
         
         private System.Threading.SendOrPostCallback onInsertTeacherCompletedDelegate;
         
-        private BeginOperationDelegate onBeginGetMostRecentUserIdDelegate;
+        private BeginOperationDelegate onBeginGetTeachersDelegate;
         
-        private EndOperationDelegate onEndGetMostRecentUserIdDelegate;
+        private EndOperationDelegate onEndGetTeachersDelegate;
         
-        private System.Threading.SendOrPostCallback onGetMostRecentUserIdCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetParentsDelegate;
-        
-        private EndOperationDelegate onEndGetParentsDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetParentsCompletedDelegate;
+        private System.Threading.SendOrPostCallback onGetTeachersCompletedDelegate;
         
         private BeginOperationDelegate onBeginInsertParentDelegate;
         
@@ -670,17 +783,29 @@ namespace AdminModule.Webservice {
         
         private System.Threading.SendOrPostCallback onInsertParentCompletedDelegate;
         
-        private BeginOperationDelegate onBeginGetStudentsDelegate;
+        private BeginOperationDelegate onBeginGetParentsDelegate;
         
-        private EndOperationDelegate onEndGetStudentsDelegate;
+        private EndOperationDelegate onEndGetParentsDelegate;
         
-        private System.Threading.SendOrPostCallback onGetStudentsCompletedDelegate;
+        private System.Threading.SendOrPostCallback onGetParentsCompletedDelegate;
         
         private BeginOperationDelegate onBeginInsertStudentDelegate;
         
         private EndOperationDelegate onEndInsertStudentDelegate;
         
         private System.Threading.SendOrPostCallback onInsertStudentCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetStudentsDelegate;
+        
+        private EndOperationDelegate onEndGetStudentsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetStudentsCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetMostRecentUserIdDelegate;
+        
+        private EndOperationDelegate onEndGetMostRecentUserIdDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetMostRecentUserIdCompletedDelegate;
         
         public Service1Client() {
         }
@@ -705,23 +830,23 @@ namespace AdminModule.Webservice {
         
         public event System.EventHandler<GetUserDetailsCompletedEventArgs> GetUserDetailsCompleted;
         
-        public event System.EventHandler<CreateTeacherCompletedEventArgs> CreateTeacherCompleted;
+        public event System.EventHandler<CreateAnnouncementCompletedEventArgs> CreateAnnouncementCompleted;
         
-        public event System.EventHandler<GetTeacherCompletedEventArgs> GetTeacherCompleted;
-        
-        public event System.EventHandler<GetTeachersCompletedEventArgs> GetTeachersCompleted;
+        public event System.EventHandler<GetAnnouncementsCompletedEventArgs> GetAnnouncementsCompleted;
         
         public event System.EventHandler<InsertTeacherCompletedEventArgs> InsertTeacherCompleted;
         
-        public event System.EventHandler<GetMostRecentUserIdCompletedEventArgs> GetMostRecentUserIdCompleted;
-        
-        public event System.EventHandler<GetParentsCompletedEventArgs> GetParentsCompleted;
+        public event System.EventHandler<GetTeachersCompletedEventArgs> GetTeachersCompleted;
         
         public event System.EventHandler<InsertParentCompletedEventArgs> InsertParentCompleted;
         
-        public event System.EventHandler<GetStudentsCompletedEventArgs> GetStudentsCompleted;
+        public event System.EventHandler<GetParentsCompletedEventArgs> GetParentsCompleted;
         
         public event System.EventHandler<InsertStudentCompletedEventArgs> InsertStudentCompleted;
+        
+        public event System.EventHandler<GetStudentsCompletedEventArgs> GetStudentsCompleted;
+        
+        public event System.EventHandler<GetMostRecentUserIdCompletedEventArgs> GetMostRecentUserIdCompleted;
         
         public bool GetLoginDetails(string username, string password) {
             return base.Channel.GetLoginDetails(username, password);
@@ -825,148 +950,114 @@ namespace AdminModule.Webservice {
                         number}, this.onEndGetUserDetailsDelegate, this.onGetUserDetailsCompletedDelegate, userState);
         }
         
-        public bool CreateTeacher() {
-            return base.Channel.CreateTeacher();
+        public bool CreateAnnouncement(int creator, string header, string message, int group, int classID) {
+            return base.Channel.CreateAnnouncement(creator, header, message, group, classID);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginCreateTeacher(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginCreateTeacher(callback, asyncState);
+        public System.IAsyncResult BeginCreateAnnouncement(int creator, string header, string message, int group, int classID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCreateAnnouncement(creator, header, message, group, classID, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public bool EndCreateTeacher(System.IAsyncResult result) {
-            return base.Channel.EndCreateTeacher(result);
+        public bool EndCreateAnnouncement(System.IAsyncResult result) {
+            return base.Channel.EndCreateAnnouncement(result);
         }
         
-        private System.IAsyncResult OnBeginCreateTeacher(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginCreateTeacher(callback, asyncState);
+        private System.IAsyncResult OnBeginCreateAnnouncement(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int creator = ((int)(inValues[0]));
+            string header = ((string)(inValues[1]));
+            string message = ((string)(inValues[2]));
+            int group = ((int)(inValues[3]));
+            int classID = ((int)(inValues[4]));
+            return this.BeginCreateAnnouncement(creator, header, message, group, classID, callback, asyncState);
         }
         
-        private object[] OnEndCreateTeacher(System.IAsyncResult result) {
-            bool retVal = this.EndCreateTeacher(result);
+        private object[] OnEndCreateAnnouncement(System.IAsyncResult result) {
+            bool retVal = this.EndCreateAnnouncement(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnCreateTeacherCompleted(object state) {
-            if ((this.CreateTeacherCompleted != null)) {
+        private void OnCreateAnnouncementCompleted(object state) {
+            if ((this.CreateAnnouncementCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.CreateTeacherCompleted(this, new CreateTeacherCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.CreateAnnouncementCompleted(this, new CreateAnnouncementCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void CreateTeacherAsync() {
-            this.CreateTeacherAsync(null);
+        public void CreateAnnouncementAsync(int creator, string header, string message, int group, int classID) {
+            this.CreateAnnouncementAsync(creator, header, message, group, classID, null);
         }
         
-        public void CreateTeacherAsync(object userState) {
-            if ((this.onBeginCreateTeacherDelegate == null)) {
-                this.onBeginCreateTeacherDelegate = new BeginOperationDelegate(this.OnBeginCreateTeacher);
+        public void CreateAnnouncementAsync(int creator, string header, string message, int group, int classID, object userState) {
+            if ((this.onBeginCreateAnnouncementDelegate == null)) {
+                this.onBeginCreateAnnouncementDelegate = new BeginOperationDelegate(this.OnBeginCreateAnnouncement);
             }
-            if ((this.onEndCreateTeacherDelegate == null)) {
-                this.onEndCreateTeacherDelegate = new EndOperationDelegate(this.OnEndCreateTeacher);
+            if ((this.onEndCreateAnnouncementDelegate == null)) {
+                this.onEndCreateAnnouncementDelegate = new EndOperationDelegate(this.OnEndCreateAnnouncement);
             }
-            if ((this.onCreateTeacherCompletedDelegate == null)) {
-                this.onCreateTeacherCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCreateTeacherCompleted);
+            if ((this.onCreateAnnouncementCompletedDelegate == null)) {
+                this.onCreateAnnouncementCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCreateAnnouncementCompleted);
             }
-            base.InvokeAsync(this.onBeginCreateTeacherDelegate, null, this.onEndCreateTeacherDelegate, this.onCreateTeacherCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginCreateAnnouncementDelegate, new object[] {
+                        creator,
+                        header,
+                        message,
+                        group,
+                        classID}, this.onEndCreateAnnouncementDelegate, this.onCreateAnnouncementCompletedDelegate, userState);
         }
         
-        public AdminModule.Webservice.Teacher GetTeacher() {
-            return base.Channel.GetTeacher();
+        public System.Collections.Generic.List<AdminModule.Webservice.Announcement> GetAnnouncements(int group, int classID) {
+            return base.Channel.GetAnnouncements(group, classID);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetTeacher(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetTeacher(callback, asyncState);
+        public System.IAsyncResult BeginGetAnnouncements(int group, int classID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetAnnouncements(group, classID, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public AdminModule.Webservice.Teacher EndGetTeacher(System.IAsyncResult result) {
-            return base.Channel.EndGetTeacher(result);
+        public System.Collections.Generic.List<AdminModule.Webservice.Announcement> EndGetAnnouncements(System.IAsyncResult result) {
+            return base.Channel.EndGetAnnouncements(result);
         }
         
-        private System.IAsyncResult OnBeginGetTeacher(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetTeacher(callback, asyncState);
+        private System.IAsyncResult OnBeginGetAnnouncements(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int group = ((int)(inValues[0]));
+            int classID = ((int)(inValues[1]));
+            return this.BeginGetAnnouncements(group, classID, callback, asyncState);
         }
         
-        private object[] OnEndGetTeacher(System.IAsyncResult result) {
-            AdminModule.Webservice.Teacher retVal = this.EndGetTeacher(result);
+        private object[] OnEndGetAnnouncements(System.IAsyncResult result) {
+            System.Collections.Generic.List<AdminModule.Webservice.Announcement> retVal = this.EndGetAnnouncements(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnGetTeacherCompleted(object state) {
-            if ((this.GetTeacherCompleted != null)) {
+        private void OnGetAnnouncementsCompleted(object state) {
+            if ((this.GetAnnouncementsCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetTeacherCompleted(this, new GetTeacherCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.GetAnnouncementsCompleted(this, new GetAnnouncementsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void GetTeacherAsync() {
-            this.GetTeacherAsync(null);
+        public void GetAnnouncementsAsync(int group, int classID) {
+            this.GetAnnouncementsAsync(group, classID, null);
         }
         
-        public void GetTeacherAsync(object userState) {
-            if ((this.onBeginGetTeacherDelegate == null)) {
-                this.onBeginGetTeacherDelegate = new BeginOperationDelegate(this.OnBeginGetTeacher);
+        public void GetAnnouncementsAsync(int group, int classID, object userState) {
+            if ((this.onBeginGetAnnouncementsDelegate == null)) {
+                this.onBeginGetAnnouncementsDelegate = new BeginOperationDelegate(this.OnBeginGetAnnouncements);
             }
-            if ((this.onEndGetTeacherDelegate == null)) {
-                this.onEndGetTeacherDelegate = new EndOperationDelegate(this.OnEndGetTeacher);
+            if ((this.onEndGetAnnouncementsDelegate == null)) {
+                this.onEndGetAnnouncementsDelegate = new EndOperationDelegate(this.OnEndGetAnnouncements);
             }
-            if ((this.onGetTeacherCompletedDelegate == null)) {
-                this.onGetTeacherCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetTeacherCompleted);
+            if ((this.onGetAnnouncementsCompletedDelegate == null)) {
+                this.onGetAnnouncementsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetAnnouncementsCompleted);
             }
-            base.InvokeAsync(this.onBeginGetTeacherDelegate, null, this.onEndGetTeacherDelegate, this.onGetTeacherCompletedDelegate, userState);
-        }
-        
-        public System.Collections.Generic.List<AdminModule.Webservice.Teacher> GetTeachers() {
-            return base.Channel.GetTeachers();
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetTeachers(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetTeachers(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.Collections.Generic.List<AdminModule.Webservice.Teacher> EndGetTeachers(System.IAsyncResult result) {
-            return base.Channel.EndGetTeachers(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetTeachers(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetTeachers(callback, asyncState);
-        }
-        
-        private object[] OnEndGetTeachers(System.IAsyncResult result) {
-            System.Collections.Generic.List<AdminModule.Webservice.Teacher> retVal = this.EndGetTeachers(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetTeachersCompleted(object state) {
-            if ((this.GetTeachersCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetTeachersCompleted(this, new GetTeachersCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetTeachersAsync() {
-            this.GetTeachersAsync(null);
-        }
-        
-        public void GetTeachersAsync(object userState) {
-            if ((this.onBeginGetTeachersDelegate == null)) {
-                this.onBeginGetTeachersDelegate = new BeginOperationDelegate(this.OnBeginGetTeachers);
-            }
-            if ((this.onEndGetTeachersDelegate == null)) {
-                this.onEndGetTeachersDelegate = new EndOperationDelegate(this.OnEndGetTeachers);
-            }
-            if ((this.onGetTeachersCompletedDelegate == null)) {
-                this.onGetTeachersCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetTeachersCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetTeachersDelegate, null, this.onEndGetTeachersDelegate, this.onGetTeachersCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginGetAnnouncementsDelegate, new object[] {
+                        group,
+                        classID}, this.onEndGetAnnouncementsDelegate, this.onGetAnnouncementsCompletedDelegate, userState);
         }
         
         public bool InsertTeacher(AdminModule.Webservice.Teacher teacher) {
@@ -1019,100 +1110,52 @@ namespace AdminModule.Webservice {
                         teacher}, this.onEndInsertTeacherDelegate, this.onInsertTeacherCompletedDelegate, userState);
         }
         
-        public int GetMostRecentUserId() {
-            return base.Channel.GetMostRecentUserId();
+        public System.Collections.Generic.List<AdminModule.Webservice.Teacher> GetTeachers() {
+            return base.Channel.GetTeachers();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetMostRecentUserId(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetMostRecentUserId(callback, asyncState);
+        public System.IAsyncResult BeginGetTeachers(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetTeachers(callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public int EndGetMostRecentUserId(System.IAsyncResult result) {
-            return base.Channel.EndGetMostRecentUserId(result);
+        public System.Collections.Generic.List<AdminModule.Webservice.Teacher> EndGetTeachers(System.IAsyncResult result) {
+            return base.Channel.EndGetTeachers(result);
         }
         
-        private System.IAsyncResult OnBeginGetMostRecentUserId(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetMostRecentUserId(callback, asyncState);
+        private System.IAsyncResult OnBeginGetTeachers(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetTeachers(callback, asyncState);
         }
         
-        private object[] OnEndGetMostRecentUserId(System.IAsyncResult result) {
-            int retVal = this.EndGetMostRecentUserId(result);
+        private object[] OnEndGetTeachers(System.IAsyncResult result) {
+            System.Collections.Generic.List<AdminModule.Webservice.Teacher> retVal = this.EndGetTeachers(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnGetMostRecentUserIdCompleted(object state) {
-            if ((this.GetMostRecentUserIdCompleted != null)) {
+        private void OnGetTeachersCompleted(object state) {
+            if ((this.GetTeachersCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetMostRecentUserIdCompleted(this, new GetMostRecentUserIdCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.GetTeachersCompleted(this, new GetTeachersCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void GetMostRecentUserIdAsync() {
-            this.GetMostRecentUserIdAsync(null);
+        public void GetTeachersAsync() {
+            this.GetTeachersAsync(null);
         }
         
-        public void GetMostRecentUserIdAsync(object userState) {
-            if ((this.onBeginGetMostRecentUserIdDelegate == null)) {
-                this.onBeginGetMostRecentUserIdDelegate = new BeginOperationDelegate(this.OnBeginGetMostRecentUserId);
+        public void GetTeachersAsync(object userState) {
+            if ((this.onBeginGetTeachersDelegate == null)) {
+                this.onBeginGetTeachersDelegate = new BeginOperationDelegate(this.OnBeginGetTeachers);
             }
-            if ((this.onEndGetMostRecentUserIdDelegate == null)) {
-                this.onEndGetMostRecentUserIdDelegate = new EndOperationDelegate(this.OnEndGetMostRecentUserId);
+            if ((this.onEndGetTeachersDelegate == null)) {
+                this.onEndGetTeachersDelegate = new EndOperationDelegate(this.OnEndGetTeachers);
             }
-            if ((this.onGetMostRecentUserIdCompletedDelegate == null)) {
-                this.onGetMostRecentUserIdCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetMostRecentUserIdCompleted);
+            if ((this.onGetTeachersCompletedDelegate == null)) {
+                this.onGetTeachersCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetTeachersCompleted);
             }
-            base.InvokeAsync(this.onBeginGetMostRecentUserIdDelegate, null, this.onEndGetMostRecentUserIdDelegate, this.onGetMostRecentUserIdCompletedDelegate, userState);
-        }
-        
-        public System.Collections.Generic.List<AdminModule.Webservice.Parent> GetParents() {
-            return base.Channel.GetParents();
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetParents(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetParents(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.Collections.Generic.List<AdminModule.Webservice.Parent> EndGetParents(System.IAsyncResult result) {
-            return base.Channel.EndGetParents(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetParents(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetParents(callback, asyncState);
-        }
-        
-        private object[] OnEndGetParents(System.IAsyncResult result) {
-            System.Collections.Generic.List<AdminModule.Webservice.Parent> retVal = this.EndGetParents(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetParentsCompleted(object state) {
-            if ((this.GetParentsCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetParentsCompleted(this, new GetParentsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetParentsAsync() {
-            this.GetParentsAsync(null);
-        }
-        
-        public void GetParentsAsync(object userState) {
-            if ((this.onBeginGetParentsDelegate == null)) {
-                this.onBeginGetParentsDelegate = new BeginOperationDelegate(this.OnBeginGetParents);
-            }
-            if ((this.onEndGetParentsDelegate == null)) {
-                this.onEndGetParentsDelegate = new EndOperationDelegate(this.OnEndGetParents);
-            }
-            if ((this.onGetParentsCompletedDelegate == null)) {
-                this.onGetParentsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetParentsCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetParentsDelegate, null, this.onEndGetParentsDelegate, this.onGetParentsCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginGetTeachersDelegate, null, this.onEndGetTeachersDelegate, this.onGetTeachersCompletedDelegate, userState);
         }
         
         public bool InsertParent(AdminModule.Webservice.Parent parent) {
@@ -1165,52 +1208,52 @@ namespace AdminModule.Webservice {
                         parent}, this.onEndInsertParentDelegate, this.onInsertParentCompletedDelegate, userState);
         }
         
-        public System.Collections.Generic.List<AdminModule.Webservice.Student> GetStudents() {
-            return base.Channel.GetStudents();
+        public System.Collections.Generic.List<AdminModule.Webservice.Parent> GetParents() {
+            return base.Channel.GetParents();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetStudents(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetStudents(callback, asyncState);
+        public System.IAsyncResult BeginGetParents(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetParents(callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.Collections.Generic.List<AdminModule.Webservice.Student> EndGetStudents(System.IAsyncResult result) {
-            return base.Channel.EndGetStudents(result);
+        public System.Collections.Generic.List<AdminModule.Webservice.Parent> EndGetParents(System.IAsyncResult result) {
+            return base.Channel.EndGetParents(result);
         }
         
-        private System.IAsyncResult OnBeginGetStudents(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetStudents(callback, asyncState);
+        private System.IAsyncResult OnBeginGetParents(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetParents(callback, asyncState);
         }
         
-        private object[] OnEndGetStudents(System.IAsyncResult result) {
-            System.Collections.Generic.List<AdminModule.Webservice.Student> retVal = this.EndGetStudents(result);
+        private object[] OnEndGetParents(System.IAsyncResult result) {
+            System.Collections.Generic.List<AdminModule.Webservice.Parent> retVal = this.EndGetParents(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnGetStudentsCompleted(object state) {
-            if ((this.GetStudentsCompleted != null)) {
+        private void OnGetParentsCompleted(object state) {
+            if ((this.GetParentsCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetStudentsCompleted(this, new GetStudentsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.GetParentsCompleted(this, new GetParentsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void GetStudentsAsync() {
-            this.GetStudentsAsync(null);
+        public void GetParentsAsync() {
+            this.GetParentsAsync(null);
         }
         
-        public void GetStudentsAsync(object userState) {
-            if ((this.onBeginGetStudentsDelegate == null)) {
-                this.onBeginGetStudentsDelegate = new BeginOperationDelegate(this.OnBeginGetStudents);
+        public void GetParentsAsync(object userState) {
+            if ((this.onBeginGetParentsDelegate == null)) {
+                this.onBeginGetParentsDelegate = new BeginOperationDelegate(this.OnBeginGetParents);
             }
-            if ((this.onEndGetStudentsDelegate == null)) {
-                this.onEndGetStudentsDelegate = new EndOperationDelegate(this.OnEndGetStudents);
+            if ((this.onEndGetParentsDelegate == null)) {
+                this.onEndGetParentsDelegate = new EndOperationDelegate(this.OnEndGetParents);
             }
-            if ((this.onGetStudentsCompletedDelegate == null)) {
-                this.onGetStudentsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetStudentsCompleted);
+            if ((this.onGetParentsCompletedDelegate == null)) {
+                this.onGetParentsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetParentsCompleted);
             }
-            base.InvokeAsync(this.onBeginGetStudentsDelegate, null, this.onEndGetStudentsDelegate, this.onGetStudentsCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginGetParentsDelegate, null, this.onEndGetParentsDelegate, this.onGetParentsCompletedDelegate, userState);
         }
         
         public bool InsertStudent(AdminModule.Webservice.Student parent) {
@@ -1261,6 +1304,102 @@ namespace AdminModule.Webservice {
             }
             base.InvokeAsync(this.onBeginInsertStudentDelegate, new object[] {
                         parent}, this.onEndInsertStudentDelegate, this.onInsertStudentCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<AdminModule.Webservice.Student> GetStudents() {
+            return base.Channel.GetStudents();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetStudents(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetStudents(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<AdminModule.Webservice.Student> EndGetStudents(System.IAsyncResult result) {
+            return base.Channel.EndGetStudents(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetStudents(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetStudents(callback, asyncState);
+        }
+        
+        private object[] OnEndGetStudents(System.IAsyncResult result) {
+            System.Collections.Generic.List<AdminModule.Webservice.Student> retVal = this.EndGetStudents(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetStudentsCompleted(object state) {
+            if ((this.GetStudentsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetStudentsCompleted(this, new GetStudentsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetStudentsAsync() {
+            this.GetStudentsAsync(null);
+        }
+        
+        public void GetStudentsAsync(object userState) {
+            if ((this.onBeginGetStudentsDelegate == null)) {
+                this.onBeginGetStudentsDelegate = new BeginOperationDelegate(this.OnBeginGetStudents);
+            }
+            if ((this.onEndGetStudentsDelegate == null)) {
+                this.onEndGetStudentsDelegate = new EndOperationDelegate(this.OnEndGetStudents);
+            }
+            if ((this.onGetStudentsCompletedDelegate == null)) {
+                this.onGetStudentsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetStudentsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetStudentsDelegate, null, this.onEndGetStudentsDelegate, this.onGetStudentsCompletedDelegate, userState);
+        }
+        
+        public int GetMostRecentUserId() {
+            return base.Channel.GetMostRecentUserId();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetMostRecentUserId(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetMostRecentUserId(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public int EndGetMostRecentUserId(System.IAsyncResult result) {
+            return base.Channel.EndGetMostRecentUserId(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetMostRecentUserId(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetMostRecentUserId(callback, asyncState);
+        }
+        
+        private object[] OnEndGetMostRecentUserId(System.IAsyncResult result) {
+            int retVal = this.EndGetMostRecentUserId(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetMostRecentUserIdCompleted(object state) {
+            if ((this.GetMostRecentUserIdCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetMostRecentUserIdCompleted(this, new GetMostRecentUserIdCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetMostRecentUserIdAsync() {
+            this.GetMostRecentUserIdAsync(null);
+        }
+        
+        public void GetMostRecentUserIdAsync(object userState) {
+            if ((this.onBeginGetMostRecentUserIdDelegate == null)) {
+                this.onBeginGetMostRecentUserIdDelegate = new BeginOperationDelegate(this.OnBeginGetMostRecentUserId);
+            }
+            if ((this.onEndGetMostRecentUserIdDelegate == null)) {
+                this.onEndGetMostRecentUserIdDelegate = new EndOperationDelegate(this.OnEndGetMostRecentUserId);
+            }
+            if ((this.onGetMostRecentUserIdCompletedDelegate == null)) {
+                this.onGetMostRecentUserIdCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetMostRecentUserIdCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetMostRecentUserIdDelegate, null, this.onEndGetMostRecentUserIdDelegate, this.onGetMostRecentUserIdCompletedDelegate, userState);
         }
     }
 }

@@ -194,6 +194,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\Webservice\AdminModule.Webservice.Announcement.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\Webservice\AdminModule.Webservice.Parent.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -211,6 +214,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Webservice\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Webservice\Service13.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

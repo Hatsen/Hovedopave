@@ -106,6 +106,14 @@ namespace AdminModule
         }
 
 
+        public async Task<bool> UpdateParent(Parent parent)
+        {
+            await ServiceProxy.Instance.InsertParent(parent);
+
+
+            return true;
+        }
+
 
         #endregion
 
