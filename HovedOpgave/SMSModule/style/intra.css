@@ -89,11 +89,20 @@
     margin-right: 40%;
 }
 
+#leftMenu 
+{
+    text-align: center;
+    width:20%;
+    min-width: 100px;
+}
+
 #announcementTable
 {
+    float: right;
+    text-align: center;
     border: 1px solid #000;
-    width: 20%;
-    min-width: 100px;
+    width: 80%;
+    min-width: 200px;
 }
 
 .item 

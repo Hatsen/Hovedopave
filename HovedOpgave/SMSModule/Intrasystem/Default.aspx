@@ -2,6 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentarea" runat="server">
+    <div id="leftMenu" runat="server">
+        <a href="Default.aspx">Test</a>
+    </div>
     <div id="announcements" runat="server">
         
     </div>
