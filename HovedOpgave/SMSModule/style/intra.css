@@ -11,6 +11,7 @@
 
 #banner
 {
+    position:relative;
     border-radius: 20px 20px 0px 0px;
 	border: 1px solid;
     background-image: url('../images/blackboard.png');
@@ -21,39 +22,46 @@
     margin-right: 10%;
 }
 
-#menu
+#leftMenu 
 {
-    border-left: 1px solid;
-	border-right: 1px solid;
+    position: absolute;
     background-color: #2c66a5;
-    min-height: 20px;
-    height: 10%;
-    width: 80%;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    height: 65%;
+    min-height: 650px;
     margin-left: 10%;
-    margin-right: 10%;
+    text-align: center;
+    width:10%;
+    min-width: 100px;
+    float: left;
 }
 
 #content
 {
+    position: inherit;
+    float: right;
     background-color:white;
     border-left: 1px solid;
 	border-right: 1px solid;
+    border-bottom: 1px solid;
     min-height: 650px;
     height: 65%; 
-    width: 80%;
-    margin-left: 10%;
+    width: 70%;
     margin-right: 10%;
     overflow: auto;
 }
 
 #footer
 {
+    position: absolute;
+    bottom: 20px;
     border-left: 1px solid;
 	border-right: 1px solid;
 	border-bottom: 1px solid;
     background-color: #2c66a5;
     min-height: 20px;
-    height: 10%;
+    height: 5%;
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
@@ -91,9 +99,12 @@
 
 #announcementTable
 {
+    background-color: #ededbd;
     border: 1px solid #000;
-    width: 20%;
-    min-width: 100px;
+    float: right;
+    text-align: center;
+    width: 80%;
+    min-width: 200px;
 }
 
 .item 
@@ -106,7 +117,12 @@
     text-decoration: none;
 }
 
-.headerItem
+.ancHeaderItem
 {
     background-color: #ebe7e7;
+}
+
+.ancMessageItem
+{
+    background-color: #FFFFCC;
 }
