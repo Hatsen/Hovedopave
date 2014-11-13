@@ -14,7 +14,7 @@
     <header id="banner">
         <a href="Default.aspx" style="text-decoration: none"><h1 id="bannerTitle">Skoleintra</h1></a>
         </header>
-        <nav id="menu">
+        <nav id="leftMenu">
             <a class="item" href="http://www.google.com">Google</a> <a class="item" href="http://www.eal.dk">Eal</a>
         </nav>
         <section id="content">
