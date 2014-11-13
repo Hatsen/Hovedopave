@@ -98,8 +98,13 @@
 
 #announcementTable
 {
+<<<<<<< HEAD
     float: right;
     text-align: center;
+=======
+    margin-left: 20px;
+    margin-top: 20px;
+>>>>>>> origin/master
     border: 1px solid #000;
     width: 80%;
     min-width: 200px;
@@ -115,7 +120,12 @@
     text-decoration: none;
 }
 
-.headerItem
+.ancHeaderItem
 {
     background-color: #ebe7e7;
+}
+
+.ancMessageItem 
+{
+    background-color: #FFFFCC;
 }
