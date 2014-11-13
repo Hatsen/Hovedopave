@@ -8,7 +8,7 @@
     <xctk:BusyIndicator IsBusy="{Binding Isloading}" BusyContent="Opretter Underviser..." >
 
         <Grid Background="CadetBlue">
-        <StackPanel HorizontalAlignment="Center" Height="322" VerticalAlignment="Top" Width="192" Margin="61,33,39,0">
+        <StackPanel HorizontalAlignment="Center" Height="351" VerticalAlignment="Top" Width="192" Margin="61,33,39,0">
             <Label Content="Fornavn:"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Firstname, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0" />
             <Label Content="Efternavn:"/>
@@ -19,16 +19,18 @@
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0"/>
             <Label Content="Fødselsdag:"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Birthdate, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
-            <Label Content="Rang/stilling:"/>
+                <Label Content="Telefon nummer:"/>
+                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Phonenumber, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
+                <Label Content="Rang/stilling:"/>
             <ComboBox  Margin="5,0,5,0" ItemsSource="{Binding Ranks, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedRank}"></ComboBox>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="61" VerticalAlignment="Top" Width="192" Margin="61,363,39,0">
-            <Button Content="Bekræft" Height="23" Width="70"  Margin="10,0,0,0" Command="{Binding ConfirmCommand}" />
-            <Button Content="Annuller" Height="23" Width="70" Margin="30,0,0,0" Command="{Binding CancelCommand}" />
-        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="61" VerticalAlignment="Top" Width="192" Margin="61,384,39,0">
+                <Button Content="Bekræft" Height="23" Width="70"  Margin="10,19,0,19" Command="{Binding ConfirmCommand}" />
+                <Button Content="Annuller" Height="23" Width="70" Margin="30,19,0,19" Command="{Binding CancelCommand}" />
+            </StackPanel>
 
-    </Grid>
+        </Grid>
 </xctk:BusyIndicator>
 
 

@@ -31,6 +31,7 @@ namespace AdminModule.ViewModels
         private string address;
         private Parent currentParent;
         private bool isLoading;
+        private int phonenumber;
 
 
 
@@ -108,10 +109,21 @@ namespace AdminModule.ViewModels
                 City = currentParent.City;
                 Address = currentParent.Address;
                 Birthdate = currentParent.Birthdate;
+                Phonenumber = currentParent.Phonenumber;
 
             }
         }
 
+        public int Phonenumber
+        {
+            get { return phonenumber; }
+            set
+            {
+                phonenumber = value;
+                OnPropertyChanged("Phonenumber");
+                ConfirmCommand.RaiseCanExecuteChanged();
+            }
+        }
 
         public bool Isloading
         {
@@ -154,6 +166,7 @@ namespace AdminModule.ViewModels
                 Parent.Birthdate = birthdate;
                 Parent.Address = address;
                 Parent.Userrole = (int)Enums.Userrole.Parent;
+                Parent.Phonenumber = phonenumber;
 
                 success = await BusinessLogic.Instance.CreateParent(Parent);
 
@@ -169,13 +182,14 @@ namespace AdminModule.ViewModels
                 CurrentParent.City = city;
                 CurrentParent.Birthdate = birthdate;
                 CurrentParent.Address = address;
+                CurrentParent.Phonenumber = phonenumber;
                 success = await BusinessLogic.Instance.UpdateParent(CurrentParent);
             }
 
 
             Isloading = false;
             MessageBox.Show(success
-               ? "Underviser er oprettet/opdateret! Vinduet lukkes."
+               ? "Forældre er oprettet/opdateret! Vinduet lukkes."
                : "Noget gik galt. Underviseren er ikke blevet oprettet/opdateret. Vinduet lukkes.");
 
             OnParentViewClose();

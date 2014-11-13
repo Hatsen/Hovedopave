@@ -65,3 +65,9 @@ C:\Users\LarsS\Dropbox\Datamatiker\Hovedopgave2\HovedOpgave\Webservice\obj\Debug
 C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\System.Windows.Controls.Input.Toolkit.dll
 C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\System.Windows.Controls.Layout.Toolkit.dll
 C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\WPFToolkit.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\Webservice\bin\System.Windows.Controls.Input.Toolkit.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\Webservice\bin\System.Windows.Controls.Layout.Toolkit.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\Webservice\bin\WPFToolkit.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\Webservice\bin\System.Windows.Controls.Input.Toolkit.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\Webservice\bin\System.Windows.Controls.Layout.Toolkit.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\Webservice\bin\WPFToolkit.dll

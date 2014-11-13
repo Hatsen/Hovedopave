@@ -32,8 +32,9 @@
                         <DataGridTextColumn Binding="{Binding City}" Header="By" IsReadOnly="True"/>
                         <DataGridTextColumn Binding="{Binding Address}" Header="Adresse" IsReadOnly="True"/>
                         <DataGridTextColumn Binding="{Binding Username}" Header="Username" IsReadOnly="True"/>
-                        <DataGridTextColumn Binding="{Binding Lastlogin}" Header="Lastlogin" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Lastlogin}" Header="Sidst login" IsReadOnly="True"/>
                         <DataGridTextColumn Binding="{Binding Userrole}" Header="Userrole" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Phonenumber}" Header="Telefon nummer" IsReadOnly="True"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="350" Height="25" Margin="131,70,0,0" ItemsSource="{Binding PersonStringList, Mode=TwoWay}" SelectedItem="{Binding SelectedStringPerson, Mode=TwoWay}"/>
@@ -42,9 +43,19 @@
                 <Button Content="Opret Underviser" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding CreateTeacherCommand}"/>
                 <Button Content="Opret Elev" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding CreateStudentCommand}"/>
                 <Button Content="Opret Forældre" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding CreateParentCommand}"/>
-                <DataGrid HorizontalAlignment="Left" VerticalAlignment="Top" Height="352" Width="191" Margin="915,97,0,-54"/>
-                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="101" Height="25" Margin="915,70,0,0" ItemsSource="{Binding TeacherListen, Mode=TwoWay}" SelectedItem="{Binding SelectedProject, Mode=TwoWay}"/>
-                <TextBox HorizontalAlignment="Left" Height="25" Margin="1021,70,0,0" TextWrapping="Wrap" Text="Søg..."  VerticalAlignment="Top" Width="85"/>
+                <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left" VerticalAlignment="Top" Height="352" Width="191" Margin="915,97,0,-54" ItemsSource="{Binding ClassList, Mode=TwoWay}" SelectedItem="{Binding SelectedClass}">
+                <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Id}" Header="KlasseId" IsReadOnly="True"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Name}" Header="Navn" IsReadOnly="True"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Fkteacherid}" Header="Underviser" IsReadOnly="True"></DataGridTextColumn>
+                    </DataGrid.Columns>    
+                
+                </DataGrid>
+                <TextBox HorizontalAlignment="Left" Height="25" Margin="915,70,0,0" TextWrapping="Wrap" Text="Søg..."  VerticalAlignment="Top" Width="111"/>
+                <Button Content="Opret klasse" HorizontalAlignment="Left" Margin="805,98,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding CreateClassCommand}"/>
+                <Button Content="Hent klasser" HorizontalAlignment="Left" Margin="805,127,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding GetClassesCommand}"/>
+                <Button Content="Søg" HorizontalAlignment="Left" Margin="1031,70,0,0" VerticalAlignment="Top" Width="75" Height="25" Command="{Binding UpdateCommand}"/>
+                <Button Content="Rediger klasse" HorizontalAlignment="Left" Margin="805,157,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding EditClassCommand}"/>
             </Grid>
         </Grid>
     </toolkit:BusyIndicator>

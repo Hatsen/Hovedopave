@@ -9,3 +9,8 @@ C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\SMSModule\bin\SMSModule
 C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\SMSModule\obj\Debug\SMSModule.csprojResolveAssemblyReference.cache
 C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\SMSModule\obj\Debug\SMSModule.dll
 C:\Users\Patrick\Documents\GitHub\Hovedopave\HovedOpgave\SMSModule\obj\Debug\SMSModule.pdb
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\SMSModule\bin\SMSModule.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\SMSModule\bin\SMSModule.pdb
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\SMSModule\obj\Debug\SMSModule.csprojResolveAssemblyReference.cache
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\SMSModule\obj\Debug\SMSModule.dll
+C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\SMSModule\obj\Debug\SMSModule.pdb

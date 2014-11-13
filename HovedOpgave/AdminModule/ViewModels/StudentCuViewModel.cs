@@ -32,6 +32,7 @@ namespace AdminModule.ViewModels
         private string fkClassId;
         private Student currentStudent;
     //    private List<Class> classes;
+        private int phonenumber;
 
 
         #endregion
@@ -53,6 +54,7 @@ namespace AdminModule.ViewModels
                 City = currentStudent.City;
                 Address = currentStudent.Address;
                 Birthdate = currentStudent.Birthdate;
+                Phonenumber = currentStudent.Phonenumber;
                // FkClassId = currentStudent.FkClassid.ToString(); // hardcoded
                 FkClassId = "-1";
 
@@ -122,6 +124,18 @@ namespace AdminModule.ViewModels
         }
 
 
+        public int Phonenumber
+        {
+            get { return phonenumber; }
+            set
+            {
+                phonenumber = value;
+                OnPropertyChanged("Phonenumber");
+                ConfirmCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+
 
         #endregion
 
@@ -157,7 +171,10 @@ namespace AdminModule.ViewModels
                 student.Birthdate = birthdate;
                 student.Address = address;
                 student.Userrole = (int)Enums.Userrole.Student;
+                student.Phonenumber=phonenumber;
                 student.FkClassid = 3;
+                
+                // eleven skal knyttes til nogle forældre.
 
                 success = await BusinessLogic.Instance.CreateStudent(student);
 

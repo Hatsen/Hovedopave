@@ -158,6 +158,55 @@ namespace AdminModule
 
         #endregion
 
+        #region Class
+
+
+        public async Task<bool> CreateClass(Class theClass)
+        {
+           
+
+            await ServiceProxy.Instance.InsertClass(theClass);
+
+            //int generatedCount = await ServiceProxy.Instance.GetUserCount(); // begrund hvor vi ikke gør det her..
+            // generer id på service 
+            // smid id ind i teacher tabellen efterfølgende når der er success. BESKRIV HVORFOR I RAPPORTEN.
+
+
+
+
+            //generer id og username og password inden du opretter. Når du updaterere skal der tjekkes om id allerede findes på objektet.
+
+
+
+
+            return true;
+        }
+
+
+
+        public async Task<bool> UpdateClass(Class theClass)
+        {
+
+
+            await ServiceProxy.Instance.InsertClass(theClass);
+
+            //int generatedCount = await ServiceProxy.Instance.GetUserCount(); // begrund hvor vi ikke gør det her..
+            // generer id på service 
+            // smid id ind i teacher tabellen efterfølgende når der er success. BESKRIV HVORFOR I RAPPORTEN.
+
+
+
+
+            //generer id og username og password inden du opretter. Når du updaterere skal der tjekkes om id allerede findes på objektet.
+
+
+
+
+            return true;
+        }
+
+        #endregion
+
 
 
     }

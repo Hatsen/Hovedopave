@@ -10,8 +10,8 @@ namespace Webservice.DB
 
         private int id;
         private string name;
-        private string year;
         private int fkteacherid;
+        private int fkschoolid;
 
 
         public int Id
@@ -26,16 +26,17 @@ namespace Webservice.DB
             set { name = value; }
         }
 
-        public string Year
-        {
-            get { return year; }
-            set { year = value; }
-        }
-
         public int Fkteacherid
         {
             get { return fkteacherid; }
             set { fkteacherid = value; }
+        }
+
+
+        public int Fkschoolid
+        {
+            get { return fkschoolid; }
+            set { fkschoolid = value; }
         }
     }
 }

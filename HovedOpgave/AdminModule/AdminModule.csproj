@@ -117,7 +117,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BusinessLogic.cs" />
+    <Compile Include="Entities\Teacher.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="ObjectHolder.cs" />
     <Compile Include="PasswordHash.cs" />
     <Compile Include="Service References\Webservice\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -126,6 +128,7 @@
     </Compile>
     <Compile Include="ServiceProxy.cs" />
     <Compile Include="ViewModelBase.cs" />
+    <Compile Include="ViewModels\ClassCuViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ParentCuViewModel.cs" />
     <Compile Include="ViewModels\StudentCuViewModel.cs" />
@@ -195,6 +198,9 @@
     </None>
     <AppDesigner Include="Properties\" />
     <None Include="Service References\Webservice\AdminModule.Webservice.Announcement.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Webservice\AdminModule.Webservice.Class.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Webservice\AdminModule.Webservice.Parent.datasource">

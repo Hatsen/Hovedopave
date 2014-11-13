@@ -45,9 +45,9 @@ namespace AdminModule.Views
 
             datagridUser.ItemsSource = null; // hvis itemssource er null må selecteditem også være null. Dette sørger VS selv for. (smart)
 
-            if (datagridUser.Columns.Count > 8) // grundet rank på teacher. Kommer også til at gælde for elev.
+            if (datagridUser.Columns.Count > 9) // grundet rank på teacher. Kommer også til at gælde for elev.
             {
-                datagridUser.Columns.RemoveAt(8);
+                datagridUser.Columns.RemoveAt(9);
             }
 
             if (selectedUserString == "Elev")

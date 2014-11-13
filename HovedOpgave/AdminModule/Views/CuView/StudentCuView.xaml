@@ -2,31 +2,34 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        Title="StudentCuView" Height="448.711" Width="300" Closing="Window_Closing">
+        Title="StudentCuView" Height="486.95" Width="300" Closing="Window_Closing">
 
     <xctk:BusyIndicator IsBusy="{Binding Isloading}" BusyContent="Vent venligst..." >
 
         <Grid Background="CadetBlue">
-        <StackPanel HorizontalAlignment="Center" Height="295" VerticalAlignment="Top" Width="192" Margin="61,33,39,0">
-            <Label Content="Fornavn:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Firstname, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0" />
-            <Label Content="Efternavn:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Lastname, UpdateSourceTrigger=PropertyChanged}"   Margin="5,0,5,0"/>
-            <Label Content="By:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding City, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
-            <Label Content="Adresse:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0"/>
-            <Label Content="Fødselsdag:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Birthdate, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
-            <Label Content="Klasse:"/>
-            <ComboBox  Margin="5,0,5,0" ItemsSource="{Binding Classes, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedClass}"></ComboBox>
-        </StackPanel>
+            <StackPanel HorizontalAlignment="Center" Height="352" VerticalAlignment="Top" Width="192" Margin="61,33,39,0">
+                <Label Content="Fornavn:"/>
+                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Firstname, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0" />
+                <Label Content="Efternavn:"/>
+                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Lastname, UpdateSourceTrigger=PropertyChanged}"   Margin="5,0,5,0"/>
+                <Label Content="By:"/>
+                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding City, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
+                <Label Content="Adresse:"/>
+                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0"/>
+                <Label Content="Fødselsdag:"/>
+                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Birthdate, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
+                <Label Content="Telefon nummer:"/>
+                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Phonenumber, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="61" VerticalAlignment="Top" Width="192" Margin="61,347,39,0">
-            <Button Content="Bekræft" Height="23" Width="70"  Margin="10,0,0,0" Command="{Binding ConfirmCommand}" />
-            <Button Content="Annuller" Height="23" Width="70" Margin="30,0,0,0" Command="{Binding CancelCommand}" />
-        </StackPanel>
+                <Label Content="Klasse:"/>
+                <ComboBox  Margin="5,0,5,0" ItemsSource="{Binding Classes, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedClass}"></ComboBox>
+            </StackPanel>
 
-    </Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="61" VerticalAlignment="Top" Width="192" Margin="61,385,39,0">
+                <Button Content="Bekræft" Height="23" Width="70"  Margin="10,19,0,19" Command="{Binding ConfirmCommand}" />
+                <Button Content="Annuller" Height="23" Width="70" Margin="30,19,0,19" Command="{Binding CancelCommand}" />
+            </StackPanel>
+
+        </Grid>
     </xctk:BusyIndicator>
 </Window>

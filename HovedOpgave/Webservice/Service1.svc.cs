@@ -132,9 +132,6 @@ namespace Webservice
         public bool InsertParent(Parent parent)
         {
 
-
-
-
             bool success = false;
 
             if (parent.Id != 0) // update
@@ -212,6 +209,36 @@ namespace Webservice
 
         #endregion
 
+
+
+        #region Class
+
+
+        public List<Class> GetClasses()
+        {
+
+         /*   List<Class> listen = new List<Class>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                Class c = new Class();
+                c.Fkschoolid = 1;
+                c.Fkteacherid = 1;
+                c.Name = "hej";
+                c.Id = i;
+                listen.Add(c);
+            }*/
+
+          return  DatabaseHandler.Instance.GetClasses();
+
+        }
+
+        public bool InsertClass(Class theClass)
+        {
+
+            return true;
+        }
+        #endregion
 
 
     }

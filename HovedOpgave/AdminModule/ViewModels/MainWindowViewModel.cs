@@ -17,12 +17,15 @@ namespace AdminModule.ViewModels
 
         public MainWindowViewModel()
         {
-
+            //ObjectHolder.Instance.PropertyChanged += (sender, args) => OnPropertyChanged(args.PropertyName); // viewmodel lytter på objectholderen.
             CreateTeacherCommand = new DelegateCommand<object>(CreateTeacher);
             EditUserCommand = new DelegateCommand<object>(EditUser, MayiWrite);
             UpdateStudentsCommand = new DelegateCommand<object>(UpdateStudents);
             CreateParentCommand = new DelegateCommand<object>(CreateParent);
             CreateStudentCommand = new DelegateCommand<object>(CreateStudent);
+            CreateClassCommand = new DelegateCommand<object>(CreateClass);
+            GetClassesCommand = new DelegateCommand<object>(GetClasses);
+            EditClassCommand = new DelegateCommand<object>(EditClass);
 
             List<string> listofpersons = new List<string>();
             listofpersons.Add("Underviser");
@@ -43,6 +46,8 @@ namespace AdminModule.ViewModels
         private List<Parent> parentList;
         private List<string> personStringList;
         private string selectedStringPerson;
+        private List<Class> classList;
+        private Class selectedClass;
 
         #endregion
 
@@ -71,10 +76,10 @@ namespace AdminModule.ViewModels
 
         public List<Teacher> TeacherList
         {
-            get { return teacherList; }
+            get { return ObjectHolder.Instance.TeacherList; }
             set
             {
-                teacherList = value;
+                ObjectHolder.Instance.TeacherList = value;
                 OnPropertyChanged("TeacherList");
             }
         }
@@ -104,6 +109,35 @@ namespace AdminModule.ViewModels
                 OnPropertyChanged("StudentList");
             }
         }
+
+
+        public List<Class> ClassList
+        {
+            get
+            {
+                return classList;
+            }
+            set
+            {
+                classList = value;
+                OnPropertyChanged("ClassList");
+            }
+        }
+
+
+        public Class SelectedClass
+        {
+            get
+            {
+                return selectedClass;
+            }
+            set
+            {
+                selectedClass = value;
+                OnPropertyChanged("SelectedClass");
+            }
+        }
+
 
 
         public List<string> PersonStringList
@@ -196,7 +230,16 @@ namespace AdminModule.ViewModels
             Views.StudentCuView sview = new Views.StudentCuView();
             sview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             sview.ShowDialog();
+        }
 
+
+        public DelegateCommand<object> CreateClassCommand { get; set; }
+
+        public void CreateClass(Object o)
+        {
+            Views.ClassCuView cview = new Views.ClassCuView();
+            cview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            cview.ShowDialog();
         }
 
 
@@ -227,6 +270,25 @@ namespace AdminModule.ViewModels
         } 
 
 
+        public DelegateCommand<object> GetClassesCommand { get; set; }
+
+        public void GetClasses(Object o)
+        {
+            GetClasses();//overloading.
+
+        }
+
+
+        public DelegateCommand<object> EditClassCommand { get; set; }
+
+        public void EditClass(Object o)
+        {
+            ClassCuView cview = new ClassCuView(SelectedClass);
+            cview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            cview.ShowDialog();
+
+        } 
+
         #endregion
 
         #region Methods
@@ -237,6 +299,15 @@ namespace AdminModule.ViewModels
             TeacherList = await ServiceProxy.Instance.GetTeachers();
             Isloading = false;
             RaiseOnselectedPersonChanged("Underviser");
+        }
+
+
+        private async void GetClasses()
+        {
+            Isloading = true;
+            ClassList = await ServiceProxy.Instance.GetClasses();
+            Isloading = false;
+           // RaiseOnselectedPersonChanged("Underviser");  ikke være nødvendig for klasse.
         }
 
         private async void GetStudents()

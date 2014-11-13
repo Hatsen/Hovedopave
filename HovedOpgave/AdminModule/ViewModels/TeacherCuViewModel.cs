@@ -41,6 +41,7 @@ namespace AdminModule.ViewModels
         private string selectedRank;
 
         private bool isLoading;
+        private int phonenumber;
 
 
         #endregion
@@ -62,6 +63,7 @@ namespace AdminModule.ViewModels
                 City = currentTeacher.City;
                 Address = currentTeacher.Address;
                 Birthdate = currentTeacher.Birthdate;
+                Phonenumber = currentTeacher.Phonenumber;
 
                 if (currentTeacher.Rank == (int)Enums.Rank.Principal) // lige her skal jeg kende til værdierne for enums
                 {
@@ -169,6 +171,16 @@ namespace AdminModule.ViewModels
             }
         }
 
+        public int Phonenumber
+        {
+            get { return phonenumber; }
+            set
+            {
+                phonenumber = value;
+                OnPropertyChanged("Phonenumber");
+            }
+        }
+
 
 
         #endregion
@@ -210,6 +222,7 @@ namespace AdminModule.ViewModels
                     teacher.Rank = (int)Enums.Rank.Principal;
 
                 teacher.Userrole = (int)Enums.Userrole.Teacher; // it's in the view of teacher meaning the userrole will be 1.
+                teacher.Phonenumber = phonenumber;
 
                 success = await BusinessLogic.Instance.CreateTeacher(teacher);
             }
@@ -233,6 +246,8 @@ namespace AdminModule.ViewModels
 
                 else if (selectedRank == "Skoleleder")
                     CurrentTeacher.Rank = (int)Enums.Rank.Principal;
+
+                CurrentTeacher.Phonenumber = phonenumber;
 
                 success = await BusinessLogic.Instance.UpdateTeacher(CurrentTeacher);
 

@@ -97,7 +97,6 @@ namespace AdminModule
                    {
                        tcs.TrySetResult(args.Result);
                   
-                  
                    }
 
                }
@@ -251,10 +250,78 @@ namespace AdminModule
  
         #endregion 
 
+       #region Class
+
+       public Task<bool> InsertClass(Class theClass)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       {
+           var tcs = new TaskCompletionSource<bool>();
+           EventHandler<InsertClassCompletedEventArgs> handler = null;
+           handler = (sender, args) =>
+           {
+               if (args.UserState == tcs)
+               {
+                   service.InsertClassCompleted -= handler;
+                   if (args.Error != null)
+                   {
+                       tcs.TrySetException(args.Error);
+                   }
+                   else if (args.Cancelled)
+                   {
+                       tcs.TrySetCanceled();
+                   }
+                   else
+                   {
+                       tcs.TrySetResult(args.Result);
+                   }
+
+               }
+           };
+
+           service.InsertClassCompleted += handler;
+           service.InsertClassAsync(theClass, tcs);
+
+           return tcs.Task;
+       }
 
 
-           
-        #region ParentMethods
+
+
+       public Task<List<Class>> GetClasses()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       {
+           var tcs = new TaskCompletionSource<List<Class>>();
+           EventHandler<GetClassesCompletedEventArgs> handler = null;
+           handler = (sender, args) =>
+           {
+               if (args.UserState == tcs)
+               {
+                   service.GetClassesCompleted -= handler;
+                   if (args.Error != null)
+                   {
+                       tcs.TrySetException(args.Error);
+                   }
+                   else if (args.Cancelled)
+                   {
+                       tcs.TrySetCanceled();
+                   }
+                   else
+                   {
+                       tcs.TrySetResult(args.Result);
+                   }
+
+               }
+           };
+
+           service.GetClassesCompleted += handler;
+           service.GetClassesAsync(tcs);
+
+           return tcs.Task;
+       }
+
+
+       #endregion
+
+
+       #region ParentMethods
 
 
 

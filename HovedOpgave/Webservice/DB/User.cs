@@ -17,6 +17,8 @@ namespace Webservice.DB
         private string password;
         private DateTime lastlogin; // allow null.
         private int userrole;
+        private int phonenumber;
+        private int fkschoolid;
 
         public int Id
         {
@@ -76,6 +78,20 @@ namespace Webservice.DB
         {
             get { return userrole; }
             set { userrole = value; }
+        }
+
+        public int Phonenumber
+        {
+            get { return phonenumber; }
+            set { phonenumber= value; }
+        }
+
+
+
+        public int Fkschoolid
+        {
+            get { return fkschoolid; }
+            set { fkschoolid = value; }
         }
     }
 }

@@ -83,7 +83,7 @@ namespace Webservice
 
                     if (Holder.Instance.Announcements.Contains(anc))
                     {
-                        
+
                     }
                     else
                     {
@@ -146,16 +146,7 @@ namespace Webservice
         {
             string statement = "SELECT MAX(Id) AS RecentId FROM [User];"; // selects the highest id therefor the most recent generated id.
             int count = -1;
-            /*
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand cmdCount = new SqlCommand(statement, connection))
-                {
-                    connection.Open();
-                    count = (int)cmdCount.ExecuteScalar();
-                }
-            }
-            */
+   
             try
             {
                 DB.Open();
@@ -173,10 +164,7 @@ namespace Webservice
                 Debug.Write("fejl!");
             }
 
-
             return count;
-
-
         }
 
 
@@ -191,9 +179,9 @@ namespace Webservice
                 DB.Open();
 
                 DB.Exec(
-                    "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole) " +
-                    "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + teacher.Username + "','" + teacher.Password + "','" + teacher.Lastlogin + "'," + teacher.Userrole + ");");
-                DB.Exec("INSERT INTO [Teacher] (Id, Rank) VALUES (" + teacher.Id + ", "+teacher.Rank+");");
+                    "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole, PhoneNumber, fk_SchoolId) " +
+                    "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + teacher.Username + "','" + teacher.Password + "','" + teacher.Lastlogin + "'," + teacher.Userrole + ", " + teacher.Phonenumber + "," + 1 + ");");
+                DB.Exec("INSERT INTO [Teacher] (Id, Rank) VALUES (" + teacher.Id + ", " + teacher.Rank + ");");
             }
             catch (Exception)
             {
@@ -210,9 +198,9 @@ namespace Webservice
             try
             {
                 DB.Open();
-                DB.Exec("UPDATE [User] SET Firstname ='"+teacher.Firstname+"', Lastname='"+teacher.Lastname+"', City='"+teacher.City+"', Address='"+teacher.Address+"',"+
-                  "Birthdate='"+teacher.Birthdate+"', Username='"+teacher.Username+"', Password='"+teacher.Password+"', Lastlogin ='"+teacher.Lastlogin+"', Userrole="+teacher.Userrole+" WHERE Id="+teacher.Id+";");
-                DB.Exec("UPDATE [Teacher] SET [Rank]=" + teacher.Rank + " WHERE Id="+teacher.Id+";");
+                DB.Exec("UPDATE [User] SET Firstname ='" + teacher.Firstname + "', Lastname='" + teacher.Lastname + "', City='" + teacher.City + "', Address='" + teacher.Address + "'," +
+                  "Birthdate='" + teacher.Birthdate + "', Username='" + teacher.Username + "', Password='" + teacher.Password + "', Lastlogin ='" + teacher.Lastlogin + "', Userrole=" + teacher.Userrole + ", PhoneNumber=" + teacher.Phonenumber + " WHERE Id=" + teacher.Id + ";");
+                DB.Exec("UPDATE [Teacher] SET [Rank]=" + teacher.Rank + " WHERE Id=" + teacher.Id + ";");
             }
             catch (Exception)
             {
@@ -221,7 +209,7 @@ namespace Webservice
             }
 
             return success;
-            
+
         }
         public List<Teacher> GetTeachers()
         {
@@ -232,12 +220,12 @@ namespace Webservice
                 DB.Open();
 
                 string[][] getTeachers = DB.Query("SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
-                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole,  [Teacher].Rank" +
+                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole, [User].PhoneNumber, [Teacher].Rank" +
                                                   " FROM [Teacher] INNER JOIN [User] ON  [Teacher].Id=[User].Id ORDER BY [User].Firstname;");
 
                 for (int i = 0; i < getTeachers.Length; i++)
                 {
-                    Teacher teacher = new Teacher(); 
+                    Teacher teacher = new Teacher();
 
                     teacher.Id = Convert.ToInt32(getTeachers[i][0]);
                     teacher.Fkuserid = Convert.ToInt32(getTeachers[i][0]);
@@ -254,7 +242,12 @@ namespace Webservice
                     }
                     teacher.Lastlogin = Convert.ToDateTime(getTeachers[i][8]);
                     teacher.Userrole = Convert.ToInt32(getTeachers[i][9]);
-                    teacher.Rank= Convert.ToInt32(getTeachers[i][10]);
+                    if (getTeachers[i][10] == "")
+                    {
+                        getTeachers[i][10] = "-1";
+                    }
+                    teacher.Phonenumber = Convert.ToInt32(getTeachers[i][10]);
+                    teacher.Rank = Convert.ToInt32(getTeachers[i][11]);
                     teachers.Add(teacher);
                 }
             }
@@ -276,17 +269,16 @@ namespace Webservice
         public bool InsertParent(Parent parent)
         {
             bool success = true;
+            int result;
 
-            try
-            {
-                DB.Open();
+            DB.Open();
 
-                DB.Exec(
-                    "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole) " +
-                    "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" + parent.Address + "','" + parent.Birthdate + "','" + parent.Username + "','" + parent.Password + "','" + parent.Lastlogin + "'," + parent.Userrole + ");");
-                DB.Exec("INSERT INTO [Parent] (Id) VALUES (" + parent.Id + ");");
-            }
-            catch (Exception)
+            result = DB.Exec(
+                    "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole, PhoneNumber, fk_SchoolId) " +
+                    "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" + parent.Address + "','" + parent.Birthdate + "','" + parent.Username + "','" + parent.Password + "','" + parent.Lastlogin + "'," + parent.Userrole + ", " + parent.Phonenumber + ", " + 1 + ");");
+            DB.Exec("INSERT INTO [Parent] (Id) VALUES (" + parent.Id + ");");
+
+            if (result == -1)
             {
                 Debug.Write("Fejl!");
                 success = false;
@@ -297,14 +289,13 @@ namespace Webservice
         public bool UpdateParent(Parent parent)
         {
             bool success = true;
+            int result;
 
-            try
-            {
-                DB.Open();
-                DB.Exec("UPDATE [User] SET Firstname ='" + parent.Firstname + "', Lastname='" + parent.Lastname + "', City='" + parent.City + "', Address='" + parent.Address + "'," +
-                  "Birthdate='" + parent.Birthdate + "', Username='" + parent.Username + "', Password='" + parent.Password + "', Lastlogin ='" + parent.Lastlogin + "', Userrole=" + parent.Userrole + " WHERE Id=" + parent.Id + ";");
-            }
-            catch (Exception)
+            DB.Open();
+            result = DB.Exec("UPDATE [User] SET Firstname ='" + parent.Firstname + "', Lastname='" + parent.Lastname + "', City='" + parent.City + "', Address='" + parent.Address + "'," +
+             "Birthdate='" + parent.Birthdate + "', Username='" + parent.Username + "', Password='" + parent.Password + "', Lastlogin ='" + parent.Lastlogin + "', Userrole=" + parent.Userrole + ", PhoneNumber=" + parent.Phonenumber + " WHERE Id=" + parent.Id + ";");
+
+            if (result == -1)
             {
                 Debug.Write("Fejl!");
                 success = false;
@@ -322,7 +313,7 @@ namespace Webservice
                 DB.Open();
 
                 string[][] getTeachers = DB.Query("SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
-                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole" +
+                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole, [User].PhoneNumber" +
                                                   " FROM [Parent] INNER JOIN [User] ON  [Parent].Id=[User].Id ORDER BY [User].Firstname;");
 
                 for (int i = 0; i < getTeachers.Length; i++)
@@ -344,6 +335,11 @@ namespace Webservice
                     }
                     parent.Lastlogin = Convert.ToDateTime(getTeachers[i][8]);
                     parent.Userrole = Convert.ToInt32(getTeachers[i][9]);
+                    if (getTeachers[i][10] == "")
+                    {
+                        getTeachers[i][10] = "-1";
+                    }
+                    parent.Phonenumber = Convert.ToInt32(getTeachers[i][10]);
                     parents.Add(parent);
                 }
             }
@@ -393,6 +389,71 @@ namespace Webservice
 
             return success;
         }
+
+        #endregion
+
+        #region ClassCRUD
+
+      /*  public bool InsertClass(Class theClass)
+        {
+            bool success = true;
+            int result;
+
+            DB.Open();
+
+            result = DB.Exec(
+                    "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole, PhoneNumber, fk_SchoolId) " +
+                    "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" + parent.Address + "','" + parent.Birthdate + "','" + parent.Username + "','" + parent.Password + "','" + parent.Lastlogin + "'," + parent.Userrole + ", " + parent.Phonenumber + ", " + 1 + ");");
+            DB.Exec("INSERT INTO [Parent] (Id) VALUES (" + parent.Id + ");");
+
+
+
+
+            if (result == -1)
+            {
+                Debug.Write("Fejl!");
+                success = false;
+            }
+
+            return success;
+        }*/
+
+
+        public List<Class> GetClasses()
+        {
+            List<Class> classes = new List<Class>();
+
+            try
+            {
+                DB.Open();
+
+                string[][] getClasses = DB.Query("SELECT [Class].Id, [Class].Name, [Class].fk_TeacherId,[Class].fk_SchoolId" +
+                                                  " FROM [Class]");
+
+                for (int i = 0; i < getClasses.Length; i++)
+                {
+                    Class theClass = new Class();
+                    theClass.Id = Convert.ToInt32(getClasses[i][0]);
+                    theClass.Name = (getClasses[i][1]);
+                    theClass.Fkteacherid = Convert.ToInt32((getClasses[i][2]));
+                    theClass.Fkschoolid = Convert.ToInt32(getClasses[i][3]);
+                    classes.Add(theClass);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                DB.Close();
+            }
+            return classes;
+        }
+
+
+
+
 
         #endregion
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AdminModule.ViewModels;
+using AdminModule.Webservice;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,64 @@ namespace AdminModule.Views
     /// </summary>
     public partial class ClassCuView : Window
     {
-        public ClassCuView()
+
+        private ClassCuViewModel viewModel;
+
+        public ClassCuView(Class classe = null) // se nok mere teacher som generics objekt
         {
+          
+            if (viewModel == null)
+                viewModel = new ClassCuViewModel();
+
+            viewModel.Viewstate = classe == null ? Enums.ViewState.Create : Enums.ViewState.Edit;
+
+            if (classe!=null)
+            {
+                viewModel.CurrentClass = classe;
+            }
+
+           
+            this.DataContext = viewModel;
             InitializeComponent();
+
+            InitializeEvents();
+
         }
+
+
+        private void InitializeEvents()
+        {
+            if (viewModel != null)
+            {
+                viewModel.OnClassViewClose += viewModel_OnClassViewClose;
+
+            }
+        }
+
+
+        private void RemoveEvents()
+        {
+
+            if (viewModel != null)
+            {
+                viewModel.OnClassViewClose-= viewModel_OnClassViewClose;
+            }
+
+        }
+
+
+
+
+        void viewModel_OnClassViewClose()
+        {
+            this.Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            RemoveEvents();
+
+        }
+
     }
 }

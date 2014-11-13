@@ -60,6 +60,20 @@ namespace Webservice
 
         #endregion
 
+
+        #region Class
+
+        [OperationContract]
+        List<Class> GetClasses();
+
+
+        [OperationContract]
+        bool InsertClass(Class theClass);
+
+
+        #endregion
+
+
         [OperationContract]
         int GetMostRecentUserId();
 

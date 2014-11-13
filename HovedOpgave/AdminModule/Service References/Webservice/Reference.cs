@@ -163,6 +163,9 @@ namespace AdminModule.Webservice {
         private string FirstnameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FkschoolidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -173,6 +176,9 @@ namespace AdminModule.Webservice {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PhonenumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UsernameField;
@@ -243,6 +249,19 @@ namespace AdminModule.Webservice {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Fkschoolid {
+            get {
+                return this.FkschoolidField;
+            }
+            set {
+                if ((this.FkschoolidField.Equals(value) != true)) {
+                    this.FkschoolidField = value;
+                    this.RaisePropertyChanged("Fkschoolid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Id {
             get {
                 return this.IdField;
@@ -290,6 +309,19 @@ namespace AdminModule.Webservice {
                 if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
                     this.PasswordField = value;
                     this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Phonenumber {
+            get {
+                return this.PhonenumberField;
+            }
+            set {
+                if ((this.PhonenumberField.Equals(value) != true)) {
+                    this.PhonenumberField = value;
+                    this.RaisePropertyChanged("Phonenumber");
                 }
             }
         }
@@ -431,6 +463,115 @@ namespace AdminModule.Webservice {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Class", Namespace="http://schemas.datacontract.org/2004/07/Webservice.DB")]
+    [System.SerializableAttribute()]
+    public partial class Class : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FkschoolidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FkteacheridField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string YearField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Fkschoolid {
+            get {
+                return this.FkschoolidField;
+            }
+            set {
+                if ((this.FkschoolidField.Equals(value) != true)) {
+                    this.FkschoolidField = value;
+                    this.RaisePropertyChanged("Fkschoolid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Fkteacherid {
+            get {
+                return this.FkteacheridField;
+            }
+            set {
+                if ((this.FkteacheridField.Equals(value) != true)) {
+                    this.FkteacheridField = value;
+                    this.RaisePropertyChanged("Fkteacherid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Year {
+            get {
+                return this.YearField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.YearField, value) != true)) {
+                    this.YearField = value;
+                    this.RaisePropertyChanged("Year");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Webservice.IService1")]
     public interface IService1 {
@@ -514,6 +655,22 @@ namespace AdminModule.Webservice {
         System.IAsyncResult BeginGetStudents(System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<AdminModule.Webservice.Student> EndGetStudents(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetClasses", ReplyAction="http://tempuri.org/IService1/GetClassesResponse")]
+        System.Collections.Generic.List<AdminModule.Webservice.Class> GetClasses();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetClasses", ReplyAction="http://tempuri.org/IService1/GetClassesResponse")]
+        System.IAsyncResult BeginGetClasses(System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<AdminModule.Webservice.Class> EndGetClasses(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertClass", ReplyAction="http://tempuri.org/IService1/InsertClassResponse")]
+        bool InsertClass(AdminModule.Webservice.Class theClass);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/InsertClass", ReplyAction="http://tempuri.org/IService1/InsertClassResponse")]
+        System.IAsyncResult BeginInsertClass(AdminModule.Webservice.Class theClass, System.AsyncCallback callback, object asyncState);
+        
+        bool EndInsertClass(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMostRecentUserId", ReplyAction="http://tempuri.org/IService1/GetMostRecentUserIdResponse")]
         int GetMostRecentUserId();
@@ -720,6 +877,44 @@ namespace AdminModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetClassesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetClassesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<AdminModule.Webservice.Class> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<AdminModule.Webservice.Class>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class InsertClassCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public InsertClassCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GetMostRecentUserIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -801,6 +996,18 @@ namespace AdminModule.Webservice {
         
         private System.Threading.SendOrPostCallback onGetStudentsCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetClassesDelegate;
+        
+        private EndOperationDelegate onEndGetClassesDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetClassesCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginInsertClassDelegate;
+        
+        private EndOperationDelegate onEndInsertClassDelegate;
+        
+        private System.Threading.SendOrPostCallback onInsertClassCompletedDelegate;
+        
         private BeginOperationDelegate onBeginGetMostRecentUserIdDelegate;
         
         private EndOperationDelegate onEndGetMostRecentUserIdDelegate;
@@ -845,6 +1052,10 @@ namespace AdminModule.Webservice {
         public event System.EventHandler<InsertStudentCompletedEventArgs> InsertStudentCompleted;
         
         public event System.EventHandler<GetStudentsCompletedEventArgs> GetStudentsCompleted;
+        
+        public event System.EventHandler<GetClassesCompletedEventArgs> GetClassesCompleted;
+        
+        public event System.EventHandler<InsertClassCompletedEventArgs> InsertClassCompleted;
         
         public event System.EventHandler<GetMostRecentUserIdCompletedEventArgs> GetMostRecentUserIdCompleted;
         
@@ -1352,6 +1563,104 @@ namespace AdminModule.Webservice {
                 this.onGetStudentsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetStudentsCompleted);
             }
             base.InvokeAsync(this.onBeginGetStudentsDelegate, null, this.onEndGetStudentsDelegate, this.onGetStudentsCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<AdminModule.Webservice.Class> GetClasses() {
+            return base.Channel.GetClasses();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetClasses(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetClasses(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<AdminModule.Webservice.Class> EndGetClasses(System.IAsyncResult result) {
+            return base.Channel.EndGetClasses(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetClasses(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetClasses(callback, asyncState);
+        }
+        
+        private object[] OnEndGetClasses(System.IAsyncResult result) {
+            System.Collections.Generic.List<AdminModule.Webservice.Class> retVal = this.EndGetClasses(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetClassesCompleted(object state) {
+            if ((this.GetClassesCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetClassesCompleted(this, new GetClassesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetClassesAsync() {
+            this.GetClassesAsync(null);
+        }
+        
+        public void GetClassesAsync(object userState) {
+            if ((this.onBeginGetClassesDelegate == null)) {
+                this.onBeginGetClassesDelegate = new BeginOperationDelegate(this.OnBeginGetClasses);
+            }
+            if ((this.onEndGetClassesDelegate == null)) {
+                this.onEndGetClassesDelegate = new EndOperationDelegate(this.OnEndGetClasses);
+            }
+            if ((this.onGetClassesCompletedDelegate == null)) {
+                this.onGetClassesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetClassesCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetClassesDelegate, null, this.onEndGetClassesDelegate, this.onGetClassesCompletedDelegate, userState);
+        }
+        
+        public bool InsertClass(AdminModule.Webservice.Class theClass) {
+            return base.Channel.InsertClass(theClass);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginInsertClass(AdminModule.Webservice.Class theClass, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginInsertClass(theClass, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public bool EndInsertClass(System.IAsyncResult result) {
+            return base.Channel.EndInsertClass(result);
+        }
+        
+        private System.IAsyncResult OnBeginInsertClass(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            AdminModule.Webservice.Class theClass = ((AdminModule.Webservice.Class)(inValues[0]));
+            return this.BeginInsertClass(theClass, callback, asyncState);
+        }
+        
+        private object[] OnEndInsertClass(System.IAsyncResult result) {
+            bool retVal = this.EndInsertClass(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnInsertClassCompleted(object state) {
+            if ((this.InsertClassCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.InsertClassCompleted(this, new InsertClassCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void InsertClassAsync(AdminModule.Webservice.Class theClass) {
+            this.InsertClassAsync(theClass, null);
+        }
+        
+        public void InsertClassAsync(AdminModule.Webservice.Class theClass, object userState) {
+            if ((this.onBeginInsertClassDelegate == null)) {
+                this.onBeginInsertClassDelegate = new BeginOperationDelegate(this.OnBeginInsertClass);
+            }
+            if ((this.onEndInsertClassDelegate == null)) {
+                this.onEndInsertClassDelegate = new EndOperationDelegate(this.OnEndInsertClass);
+            }
+            if ((this.onInsertClassCompletedDelegate == null)) {
+                this.onInsertClassCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnInsertClassCompleted);
+            }
+            base.InvokeAsync(this.onBeginInsertClassDelegate, new object[] {
+                        theClass}, this.onEndInsertClassDelegate, this.onInsertClassCompletedDelegate, userState);
         }
         
         public int GetMostRecentUserId() {
