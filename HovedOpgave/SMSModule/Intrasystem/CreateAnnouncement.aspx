@@ -27,6 +27,12 @@
                 <asp:ListItem Value="4">Elever</asp:ListItem>
             </asp:DropDownList>
         </p>
+        <p>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Du skal indtaste en overskrift." ControlToValidate="txtHeader" Font-Bold="True" ForeColor="Red"></asp:RequiredFieldValidator>  
+        </p>
+        <p>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Du skal indtaste en meddelelse." ControlToValidate="txtMessage" Font-Bold="True" ForeColor="Red"></asp:RequiredFieldValidator>
+        </p>
     </center>
 
 </asp:Content>

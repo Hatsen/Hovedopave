@@ -11,7 +11,6 @@ namespace SMSModule.Intrasystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected async void btnCreate_Click(object sender, EventArgs e)
