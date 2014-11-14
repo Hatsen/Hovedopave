@@ -79,7 +79,6 @@
       <xs:element minOccurs="0" name="Fkteacherid" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Year" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Class" nillable="true" type="tns:Class" />

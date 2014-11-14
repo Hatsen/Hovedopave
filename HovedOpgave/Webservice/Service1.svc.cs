@@ -89,10 +89,14 @@ namespace Webservice
 
             return DatabaseHandler.Instance.GetTeachers();
         }
-        public int GetMostRecentUserId()
+
+
+    /*    public int GetMostRecentUserId()
         {
             return DatabaseHandler.Instance.GetMostRecentUserId();
-        }
+        }*/
+
+
         public bool InsertTeacher(Teacher teacher)
         {
             bool success = false;
@@ -104,15 +108,15 @@ namespace Webservice
 
             else
             {
-                int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
+             //   int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
 
-                if (recentId != -1)
-                {
-                    teacher.Id = recentId;
+              //  if (recentId != -1)
+               // {
+                /*    teacher.Id = recentId;
                     teacher.Fkuserid = recentId;
-                    teacher.Username = "Te_" + recentId;
+                    teacher.Username = "Te_" + recentId;*/
                     success = DatabaseHandler.Instance.InsertTeacher(teacher); // will insert into User and Teacher.
-                }
+                //}
             }
             return success;
         }
@@ -141,15 +145,15 @@ namespace Webservice
 
             else
             {
-                int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
+                //int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
 
-                if (recentId != -1)
-                {
-                    parent.Id = recentId;
+               // if (recentId != -1)
+                //{
+                 /*   parent.Id = recentId;
                     parent.Fkuserid = recentId;
-                    parent.Username = "Pa_" + recentId;
+                    parent.Username = "Pa_" + recentId;*/
                     success = DatabaseHandler.Instance.InsertParent(parent); 
-                }
+                //}
             }
             return success;
         }
@@ -167,22 +171,27 @@ namespace Webservice
         #region StudentMethods
 
 
-
         public bool InsertStudent(Student student)
         {
 
             bool success = false;
 
-            int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
-
-            if (recentId != -1)
+            if (student.Id!=0)
             {
-                student.Id = recentId;
-                student.Fkuserid = recentId;
-                student.Username = "St_" + recentId;
-                success = DatabaseHandler.Instance.InsertStudent(student); // will insert into User and Teacher.
+                success = DatabaseHandler.Instance.UpdateStudent(student);
             }
+            else
+            {
+            //int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
 
+           // if (recentId != -1)
+            //{
+              /*  student.Id = recentId;
+                student.Fkuserid = recentId;
+                student.Username = "St_" + recentId;*/
+                success = DatabaseHandler.Instance.InsertStudent(student); // will insert into User and Teacher.
+          //  }
+            }
             return success;
 
         }
@@ -190,20 +199,10 @@ namespace Webservice
 
         public List<Student> GetStudents()
         {
-            List<Student> listen = new List<Student>();
 
 
-            for (int i = 0; i < 100; i++)
-            {
-                Student t = new Student();
-                t.Id = i;
-                t.Fkuserid = i;
-                t.Firstname = "Hr " + i;
-                t.Lastname = "lol" + i;
-
-                listen.Add(t);
-            }
-            return listen;
+            return DatabaseHandler.Instance.GetStudents();
+          
         }
 
 
@@ -235,9 +234,23 @@ namespace Webservice
 
         public bool InsertClass(Class theClass)
         {
+            bool success;
 
-            return true;
+            if (theClass.Id != 0) // update
+            {
+                success = DatabaseHandler.Instance.UpdateClass(theClass);
+            }
+
+            else
+            {
+                success = DatabaseHandler.Instance.InsertClass(theClass);
+            }
+
+            return success;
         }
+
+      
+
         #endregion
 
 

@@ -22,7 +22,7 @@
                 <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Phonenumber, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
 
                 <Label Content="Klasse:"/>
-                <ComboBox  Margin="5,0,5,0" ItemsSource="{Binding Classes, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedClass}"></ComboBox>
+                <ComboBox  Margin="5,0,5,0" ItemsSource="{Binding ClassList, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedClass}"></ComboBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="61" VerticalAlignment="Top" Width="192" Margin="61,385,39,0">

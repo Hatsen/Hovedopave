@@ -13,6 +13,29 @@ namespace AdminModule.ViewModels
     {
         public StudentCuViewModel()
         {
+
+
+            ObjectHolder.Instance.PropertyChanged += (sender, args) =>
+            {
+                if (args.PropertyName == "CurrentStudent") // bliver ramt når den er ændret i teacherlist på objetholder. er nødt til at gøre dette da properien currentclass ikke vil blive ramt i setteren.
+                {
+                    SetTheClassInCombobox();
+                }
+                OnPropertyChanged(args.PropertyName); // viewmodel lytter på objectholderen.
+
+            };
+
+
+            if (ObjectHolder.Instance.ClassList != null)
+            {
+                ClassList = ObjectHolder.Instance.ClassList;
+            }
+            else
+            {
+                ObjectHolder.Instance.GetClasses();
+            }
+
+
             ConfirmCommand = new DelegateCommand<object>(Confirm, IsEnable);
             CancelCommand = new DelegateCommand<object>(Cancel);
 
@@ -29,10 +52,12 @@ namespace AdminModule.ViewModels
         private string city;
         private string birthdate;
         private string address;
-        private string fkClassId;
+        private int fkClassId;
         private Student currentStudent;
-    //    private List<Class> classes;
+        //    private List<Class> classes;
         private int phonenumber;
+        private Class selectedClass;
+        private List<Class> classList;
 
 
         #endregion
@@ -49,14 +74,17 @@ namespace AdminModule.ViewModels
 
                 currentStudent = value;
 
-                Firstname = currentStudent.Firstname;
-                Lastname = currentStudent.Lastname;
-                City = currentStudent.City;
-                Address = currentStudent.Address;
-                Birthdate = currentStudent.Birthdate;
-                Phonenumber = currentStudent.Phonenumber;
-               // FkClassId = currentStudent.FkClassid.ToString(); // hardcoded
-                FkClassId = "-1";
+                if (currentStudent != null)
+                {
+                    Firstname = currentStudent.Firstname;
+                    Lastname = currentStudent.Lastname;
+                    City = currentStudent.City;
+                    Address = currentStudent.Address;
+                    Birthdate = currentStudent.Birthdate;
+                    Phonenumber = currentStudent.Phonenumber;
+                    // FkClassId = currentStudent.FkClassid.ToString(); // hardcoded
+                    FkClassId = currentStudent.FkClassid;
+                }
 
             }
         }
@@ -113,7 +141,7 @@ namespace AdminModule.ViewModels
         }
 
 
-        public string FkClassId
+        public int FkClassId
         {
             get { return fkClassId; }
             set
@@ -131,6 +159,28 @@ namespace AdminModule.ViewModels
             {
                 phonenumber = value;
                 OnPropertyChanged("Phonenumber");
+                ConfirmCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+        public List<Class> ClassList
+        {
+            get { return ObjectHolder.Instance.ClassList; }
+            set
+            {
+                ObjectHolder.Instance.ClassList = value;
+                OnPropertyChanged("ClassList");
+               // ConfirmCommand.RaiseCanExecuteChanged(); den giver et null problem hvis du trykker opret elev og derefter trykker annuller og så igen opret elev??
+            }
+        }
+
+        public Class SelectedClass
+        {
+            get { return selectedClass; }
+            set
+            {
+                selectedClass = value;
+                OnPropertyChanged("SelectedClass");
                 ConfirmCommand.RaiseCanExecuteChanged();
             }
         }
@@ -171,9 +221,9 @@ namespace AdminModule.ViewModels
                 student.Birthdate = birthdate;
                 student.Address = address;
                 student.Userrole = (int)Enums.Userrole.Student;
-                student.Phonenumber=phonenumber;
-                student.FkClassid = 3;
-                
+                student.Phonenumber = phonenumber;
+                student.FkClassid = SelectedClass.Id;
+
                 // eleven skal knyttes til nogle forældre.
 
                 success = await BusinessLogic.Instance.CreateStudent(student);
@@ -187,7 +237,7 @@ namespace AdminModule.ViewModels
             else if (Viewstate == Enums.ViewState.Edit) // for next week! 
             {
                 // her vil det ikke være nødvendigt at oprette password, id og username.
-                //  BusinessLogic.Instance.UpdateStudent(CurrentStudent);
+                 BusinessLogic.Instance.UpdateStudent(CurrentStudent);
 
             }
 
@@ -204,7 +254,7 @@ namespace AdminModule.ViewModels
         {
             // validerer om alle felter er blevet udfyldt.
             bool enable = true;
-            if (string.IsNullOrEmpty(Firstname) || string.IsNullOrEmpty(Lastname) || string.IsNullOrEmpty(City) || string.IsNullOrEmpty(Birthdate) || string.IsNullOrEmpty(Address) || string.IsNullOrEmpty(FkClassId))
+            if (string.IsNullOrEmpty(Firstname) || string.IsNullOrEmpty(Lastname) || string.IsNullOrEmpty(City) || string.IsNullOrEmpty(Birthdate) || string.IsNullOrEmpty(Address) || SelectedClass ==null)
             {
                 enable = false;
             }
@@ -231,6 +281,15 @@ namespace AdminModule.ViewModels
                 OnProjectViewClose();
             }
 
+        }
+
+
+        private void SetTheClassInCombobox()
+        {
+            if (ObjectHolder.Instance.ClassList != null&&currentStudent!=null)
+            {
+                SelectedClass = ClassList.FirstOrDefault(theclass => theclass.Id == currentStudent.FkClassid);
+            }
         }
 
         #endregion

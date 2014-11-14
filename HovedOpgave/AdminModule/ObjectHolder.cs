@@ -7,7 +7,7 @@ using AdminModule.Webservice;
 
 namespace AdminModule
 {
-    public class ObjectHolder:ViewModelBase
+    public class ObjectHolder : ViewModelBase
     {
 
 
@@ -31,6 +31,8 @@ namespace AdminModule
 
         private bool isLoading;
         private List<Teacher> teacherList;
+        private List<Class> classList;
+
 
         public bool Isloading
         {
@@ -52,6 +54,25 @@ namespace AdminModule
             {
                 teacherList = value;
                 OnPropertyChanged("TeacherList");
+                OnPropertyChanged("CurrentClass");
+               // Test = true;
+
+            }
+
+        }
+
+        public List<Class> ClassList
+        {
+
+            get { return classList; }
+
+            set
+            {
+                classList = value;
+                OnPropertyChanged("ClassList");
+                OnPropertyChanged("CurrentStudent");
+                // Test = true;
+
             }
 
         }
@@ -63,8 +84,19 @@ namespace AdminModule
             Isloading = true;
             TeacherList = await ServiceProxy.Instance.GetTeachers();
             Isloading = false;
-           // RaiseOnselectedPersonChanged("Underviser");
+            // RaiseOnselectedPersonChanged("Underviser");
         }
+
+
+        public async void GetClasses()
+        {
+            Isloading = true;
+            ClassList = await ServiceProxy.Instance.GetClasses();
+            Isloading = false;
+            // RaiseOnselectedPersonChanged("Underviser");
+        }
+
+     
 
 
     }

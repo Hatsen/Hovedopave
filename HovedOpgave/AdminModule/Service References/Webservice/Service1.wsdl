@@ -80,12 +80,6 @@
   <wsdl:message name="IService1_InsertClass_OutputMessage">
     <wsdl:part name="parameters" element="tns:InsertClassResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetMostRecentUserId_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetMostRecentUserId" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetMostRecentUserId_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetMostRecentUserIdResponse" />
-  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetLoginDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetLoginDetails" message="tns:IService1_GetLoginDetails_InputMessage" />
@@ -134,10 +128,6 @@
     <wsdl:operation name="InsertClass">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertClass" message="tns:IService1_InsertClass_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertClassResponse" message="tns:IService1_InsertClass_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetMostRecentUserId">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMostRecentUserId" message="tns:IService1_GetMostRecentUserId_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMostRecentUserIdResponse" message="tns:IService1_GetMostRecentUserId_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -243,15 +233,6 @@
     </wsdl:operation>
     <wsdl:operation name="InsertClass">
       <soap:operation soapAction="http://tempuri.org/IService1/InsertClass" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetMostRecentUserId">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetMostRecentUserId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

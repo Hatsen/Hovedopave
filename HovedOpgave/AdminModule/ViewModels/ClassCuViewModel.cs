@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AdminModule.Webservice;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
+using System.Threading;
 
 namespace AdminModule.ViewModels
 {
@@ -14,9 +15,17 @@ namespace AdminModule.ViewModels
         public ClassCuViewModel()
         {
 
-           ObjectHolder.Instance.PropertyChanged += (sender, args) => OnPropertyChanged(args.PropertyName); // viewmodel lytter på objectholderen.
+            ObjectHolder.Instance.PropertyChanged += (sender, args) =>
+            {
+                if (args.PropertyName == "CurrentClass") // bliver ramt når den er ændret i teacherlist på objetholder. er nødt til at gøre dette da properien currentclass ikke vil blive ramt i setteren.
+                {
+                    SetTheClassTeacherInCombobox();
+                }
+                OnPropertyChanged(args.PropertyName); // viewmodel lytter på objectholderen.
 
-            if (ObjectHolder.Instance.TeacherList!=null)
+            };
+
+            if (ObjectHolder.Instance.TeacherList != null)
             {
                 TeacherList = ObjectHolder.Instance.TeacherList;
             }
@@ -43,7 +52,7 @@ namespace AdminModule.ViewModels
         private string className;
         private List<Teacher> teacherList;
         private Teacher selectedTeacher;
-      
+
         #endregion
 
         #region PublicMembers
@@ -56,12 +65,19 @@ namespace AdminModule.ViewModels
             {
                 currentClass = value;
                 ClassName = currentClass.Name;
-                
-               // tjek om teacher findes i listen. Listen skulle gerne være loaded fra start...
-                if (TeacherList!=null||TeacherList.Count!=0) // den er fyldt
-                {
-                    SelectedTeacher= TeacherList.FirstOrDefault(fi => fi.Id == currentClass.Fkteacherid);
-                }
+
+
+                SetTheClassTeacherInCombobox();
+                // tjek om teacher findes i listen. Listen skulle gerne være loaded fra start...DETTE TJEKKES I CONSTRUCTEREN PÅ LYTTEREN.
+
+                /*        else
+                        {
+                            ObjectHolder.Instance.GetTeachers();
+                            //Thread t = new Thread(ObjectHolder.Instance.Tester)
+                            if(ObjectHolder.Instance.TeacherList!=null)
+                            SelectedTeacher = TeacherList.FirstOrDefault(fi => fi.Id == currentClass.Fkteacherid);
+                        }*/
+
             }
         }
 
@@ -92,7 +108,7 @@ namespace AdminModule.ViewModels
 
         public List<Teacher> TeacherList
         {
-            
+
             get { return ObjectHolder.Instance.TeacherList; }
 
             set
@@ -109,7 +125,7 @@ namespace AdminModule.ViewModels
             set
             {
                 ObjectHolder.Instance.Isloading = value;
-              //  OnPropertyChanged("Isloading"); sættes i objectholder.
+                //  OnPropertyChanged("Isloading"); sættes i objectholder.
             }
         }
 
@@ -145,6 +161,8 @@ namespace AdminModule.ViewModels
                  Parent.Address = address;
                  Parent.Userrole = (int)Enums.Userrole.Parent;
                  Parent.Phonenumber = phonenumber;*/
+                theClass.Name = ClassName;
+                theClass.Fkteacherid = SelectedTeacher.Id;
 
                 success = await BusinessLogic.Instance.CreateClass(theClass);
 
@@ -155,13 +173,17 @@ namespace AdminModule.ViewModels
                 // her vil det ikke være nødvendigt at oprette password, id og username.
                 //  BusinessLogic.Instance.UpdateParent(CurrentParent);
 
-               /* CurrentParent.Firstname = firstname;
-                CurrentParent.Lastname = lastname;
-                CurrentParent.City = city;
-                CurrentParent.Birthdate = birthdate;
-                CurrentParent.Address = address;
-                CurrentParent.Phonenumber = phonenumber;*/
-                success = await BusinessLogic.Instance.UpdateClass(currentClass);
+                /* CurrentParent.Firstname = firstname;
+                 CurrentParent.Lastname = lastname;
+                 CurrentParent.City = city;
+                 CurrentParent.Birthdate = birthdate;
+                 CurrentParent.Address = address;
+                 CurrentParent.Phonenumber = phonenumber;*/
+
+                CurrentClass.Name = ClassName;
+                CurrentClass.Fkteacherid = SelectedTeacher.Id;
+
+                success = await BusinessLogic.Instance.UpdateClass(CurrentClass);
             }
 
 
@@ -176,17 +198,17 @@ namespace AdminModule.ViewModels
         }
 
 
-       public bool IsEnable(Object o)
+        public bool IsEnable(Object o)
         {
             // validerer om alle felter er blevet udfyldt.
             bool enable = true;
-            if (SelectedTeacher==null || string.IsNullOrEmpty(ClassName))
+            if (SelectedTeacher == null || string.IsNullOrEmpty(ClassName))
             {
                 enable = false;
             }
             return enable;
         }
-       
+
 
         public void Cancel(Object o)
         {
@@ -203,9 +225,9 @@ namespace AdminModule.ViewModels
 
         private async void GetTeachers()
         {
-           /* Isloading = true;
-            TeacherList = await ServiceProxy.Instance.GetTeachers();
-            Isloading = false;*/
+            /* Isloading = true;
+             TeacherList = await ServiceProxy.Instance.GetTeachers();
+             Isloading = false;*/
 
             ObjectHolder.Instance.TeacherList = await ServiceProxy.Instance.GetTeachers();
 
@@ -220,6 +242,16 @@ namespace AdminModule.ViewModels
                 OnClassViewClose();
             }
 
+        }
+
+
+
+        private void SetTheClassTeacherInCombobox()
+        {
+            if (TeacherList != null && currentClass != null) // den er fyldt
+            {
+                SelectedTeacher = TeacherList.FirstOrDefault(fi => fi.Id == currentClass.Fkteacherid);
+            }
         }
 
 

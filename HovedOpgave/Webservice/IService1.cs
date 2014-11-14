@@ -74,8 +74,8 @@ namespace Webservice
         #endregion
 
 
-        [OperationContract]
-        int GetMostRecentUserId();
+      /*  [OperationContract]
+        int GetMostRecentUserId();*/
 
 
 

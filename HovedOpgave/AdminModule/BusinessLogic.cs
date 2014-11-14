@@ -155,6 +155,28 @@ namespace AdminModule
         }
 
 
+        public async Task<bool> UpdateStudent(Student theStudent)
+        {
+
+
+        
+
+            //int generatedCount = await ServiceProxy.Instance.GetUserCount(); // begrund hvor vi ikke gør det her..
+            // generer id på service 
+            // smid id ind i teacher tabellen efterfølgende når der er success. BESKRIV HVORFOR I RAPPORTEN.
+
+
+
+
+            //generer id og username og password inden du opretter. Når du updaterere skal der tjekkes om id allerede findes på objektet.
+
+
+
+
+            return await ServiceProxy.Instance.InsertStudent(theStudent); 
+        }
+
+
 
         #endregion
 

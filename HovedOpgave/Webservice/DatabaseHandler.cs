@@ -81,21 +81,16 @@ namespace Webservice
                         anc.ClassID = Convert.ToInt32(getAnc[i][5]);
                     }
 
-<<<<<<< HEAD
                     if (Holder.Instance.Announcements.Contains(anc))
                     {
 
                     }
-=======
-                    bool containsItem = Holder.Instance.Announcements.Any(announcement => announcement.ID == anc.ID);
 
-                    if(containsItem == true)
-                    {}
->>>>>>> origin/master
-                    else
-                    {
+                    // bool containsItem = 
+
+                    if (Holder.Instance.Announcements.Any(announcement => announcement.ID != anc.ID))
                         Holder.Instance.Announcements.Add(anc);
-                    }
+
                 }
             }
             catch (Exception ex)
@@ -149,11 +144,11 @@ namespace Webservice
         }
 
 
-        public int GetMostRecentUserId()
+        /*public int GetMostRecentUserId()
         {
             string statement = "SELECT MAX(Id) AS RecentId FROM [User];"; // selects the highest id therefor the most recent generated id.
             int count = -1;
-   
+
             try
             {
                 DB.Open();
@@ -172,7 +167,7 @@ namespace Webservice
             }
 
             return count;
-        }
+        }*/
 
 
         #region TeacherCRUD
@@ -180,21 +175,48 @@ namespace Webservice
         public bool InsertTeacher(Teacher teacher)
         {
             bool success = true;
+            int result;
 
-            try
-            {
-                DB.Open();
 
-                DB.Exec(
-                    "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole, PhoneNumber, fk_SchoolId) " +
-                    "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + teacher.Username + "','" + teacher.Password + "','" + teacher.Lastlogin + "'," + teacher.Userrole + ", " + teacher.Phonenumber + "," + 1 + ");");
-                DB.Exec("INSERT INTO [Teacher] (Id, Rank) VALUES (" + teacher.Id + ", " + teacher.Rank + ");");
-            }
-            catch (Exception)
+            DB.Open();
+            // this works very well !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            result = DB.Exec("BEGIN TRANSACTION BEGIN TRY DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)" +
+                "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + 1 + "','" + teacher.Password + "','" + teacher.Lastlogin.ToString() + "'," + teacher.Userrole + ", " + teacher.Phonenumber + "," + 1 + ");" +
+                "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='Te_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Teacher](Id)VALUES(@Id) COMMIT TRANSACTION   END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
+
+            /*  BEGIN TRANSACTION
+BEGIN TRY
+DECLARE @Id INT
+INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)
+VALUES('1','1','1','1','1','1','1','1',1,111,1)
+SET @Id = SCOPE_IDENTITY()
+INSERT INTO [Parent](Id)VALUES(@Id)
+COMMIT TRANSACTION 
+END TRY
+BEGIN CATCH
+ROLLBACK TRANSACTION
+END CATCH*/
+
+
+            /*  DB.Exec(
+                  "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole, PhoneNumber, fk_SchoolId) " +
+                  "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + teacher.Username + "','" + teacher.Password + "','" + teacher.Lastlogin.ToString() + "'," + teacher.Userrole + ", " + teacher.Phonenumber + "," + 1 + ");");
+              DB.Exec("INSERT INTO [Teacher] (Id, Rank) VALUES (" + teacher.Id + ", " + teacher.Rank + ");");
+              */
+            /*   id = DB.ExecAndGetId("INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole, PhoneNumber, fk_SchoolId) " +
+                   "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + teacher.Username + "','" + teacher.Password + "','" + teacher.Lastlogin.ToString() + "'," + teacher.Userrole + ", " + teacher.Phonenumber + "," + 1 + ");");
+               teacher.Id = id;
+               DB.Exec("INSERT INTO [Teacher] (Id, Rank) VALUES (" + teacher.Id + ", " + teacher.Rank + ");");*/
+
+
+            if (result == -1)
             {
-                Debug.Write("Fejl!");
+
                 success = false;
+
             }
+
 
             return success;
         }
@@ -206,7 +228,7 @@ namespace Webservice
             {
                 DB.Open();
                 DB.Exec("UPDATE [User] SET Firstname ='" + teacher.Firstname + "', Lastname='" + teacher.Lastname + "', City='" + teacher.City + "', Address='" + teacher.Address + "'," +
-                  "Birthdate='" + teacher.Birthdate + "', Username='" + teacher.Username + "', Password='" + teacher.Password + "', Lastlogin ='" + teacher.Lastlogin + "', Userrole=" + teacher.Userrole + ", PhoneNumber=" + teacher.Phonenumber + " WHERE Id=" + teacher.Id + ";");
+                  "Birthdate='" + teacher.Birthdate + "', Username='" + teacher.Username + "', Password='" + teacher.Password + "', Lastlogin ='" + teacher.Lastlogin.ToString() + "', Userrole=" + teacher.Userrole + ", PhoneNumber=" + teacher.Phonenumber + " WHERE Id=" + teacher.Id + ";");
                 DB.Exec("UPDATE [Teacher] SET [Rank]=" + teacher.Rank + " WHERE Id=" + teacher.Id + ";");
             }
             catch (Exception)
@@ -278,12 +300,28 @@ namespace Webservice
             bool success = true;
             int result;
 
+            // kan ike buge transaktion eftersom løbenummeret tælles op. da id tælles på max antal i db og ikke løbenummer giver det problemer eftersom id 210 ikke passer med id te_196
+
             DB.Open();
 
-            result = DB.Exec(
-                    "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole, PhoneNumber, fk_SchoolId) " +
-                    "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" + parent.Address + "','" + parent.Birthdate + "','" + parent.Username + "','" + parent.Password + "','" + parent.Lastlogin + "'," + parent.Userrole + ", " + parent.Phonenumber + ", " + 1 + ");");
-            DB.Exec("INSERT INTO [Parent] (Id) VALUES (" + parent.Id + ");");
+
+            result = DB.Exec("BEGIN TRANSACTION BEGIN TRY DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)" +
+                   "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" + parent.Address + "','" + parent.Birthdate + "','" + 1 + "','" + parent.Password + "','" + parent.Lastlogin.ToString() + "'," + parent.Userrole + ", " + parent.Phonenumber + "," + 1 + ");" +
+                   "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='Pa_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Parent](Id)VALUES(@Id) COMMIT TRANSACTION   END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
+
+            /* result = DB.Exec("BEGIN TRANSACTION trans1 BEGIN TRY INSERT INTO [User] (Firstname,Lastname,City,[Address],[Birthdate],[Username],[Password],Lastlogin,[Userrole],[PhoneNumber],fk_SchoolId)" +
+      "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" + parent.Address + "','" + parent.Birthdate + "','" + parent.Username + "','" + parent.Password + "','" + parent.Lastlogin + "'," + parent.Userrole + ", " + parent.Phonenumber + ", " + 1 + ");" +
+             "INSERT INTO [Parent] (Id) VALUES (" + parent.Id + "); COMMIT TRANSACTION trans1 END TRY BEGIN CATCH ROLLBACK TRANSACTION trans1 return; END CATCH");*/
+
+
+
+
+            /* result = DB.Exec("INSERT INTO [User] (Firstname,Lastname,City,[Address],[Birthdate],[Username],[Password],Lastlogin,[Userrole],[PhoneNumber],fk_SchoolId)" +
+                     "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" +
+                     parent.Address + "','" + parent.Birthdate + "','" + parent.Username + "','" + parent.Password +
+                     "','" + parent.Lastlogin.ToString() + "'," + parent.Userrole + ", " + parent.Phonenumber + ", " + 1 + ");");
+               
+              DB.Exec("INSERT INTO [Parent] (Id) VALUES (" + parent.Id + ");");*/
 
             if (result == -1)
             {
@@ -300,7 +338,7 @@ namespace Webservice
 
             DB.Open();
             result = DB.Exec("UPDATE [User] SET Firstname ='" + parent.Firstname + "', Lastname='" + parent.Lastname + "', City='" + parent.City + "', Address='" + parent.Address + "'," +
-             "Birthdate='" + parent.Birthdate + "', Username='" + parent.Username + "', Password='" + parent.Password + "', Lastlogin ='" + parent.Lastlogin + "', Userrole=" + parent.Userrole + ", PhoneNumber=" + parent.Phonenumber + " WHERE Id=" + parent.Id + ";");
+             "Birthdate='" + parent.Birthdate + "', Username='" + parent.Username + "', Password='" + parent.Password + "', Lastlogin ='" + parent.Lastlogin.ToString() + "', Userrole=" + parent.Userrole + ", PhoneNumber=" + parent.Phonenumber + " WHERE Id=" + parent.Id + ";");
 
             if (result == -1)
             {
@@ -368,19 +406,26 @@ namespace Webservice
         public bool InsertStudent(Student student)
         {
             bool success = true;
-
+            int result = 0;
             try
             {
                 DB.Open();
 
                 // lav en tranaction.
 
-                int a = DB.Exec(
-                     "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole) " +
-                     "VALUES('" + student.Firstname + "','" + student.Lastname + "','" + student.City + "','" + student.Address + "','" + student.Birthdate + "','" + student.Username + "','" + student.Password + "','" + student.Lastlogin + "'," + student.Userrole + ");");
-                int b = DB.Exec("INSERT INTO [Student] (Id, fk_ClassId) VALUES (" + student.Id + "," + student.FkClassid + ");");
+                result = DB.Exec("BEGIN TRANSACTION BEGIN TRY DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)" +
+                 "VALUES('" + student.Firstname + "','" + student.Lastname + "','" + student.City + "','" + student.Address + "','" + student.Birthdate + "','" + 1 + "','" + student.Password + "','" + student.Lastlogin.ToString() + "'," + student.Userrole + ", " + student.Phonenumber + "," + 1 + ");" +
+                 "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='St_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Student](Id, fk_ClassId)VALUES(@Id,"+student.FkClassid+") COMMIT TRANSACTION   END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
 
-                if (a == -1 || b == -1)
+
+
+
+              /*  int a = DB.Exec(
+                     "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole) " +
+                     "VALUES('" + student.Firstname + "','" + student.Lastname + "','" + student.City + "','" + student.Address + "','" + student.Birthdate + "','" + student.Username + "','" + student.Password + "','" + student.Lastlogin.ToString() + "'," + student.Userrole + ");");
+                int b = DB.Exec("INSERT INTO [Student] (Id, fk_ClassId) VALUES (" + student.Id + "," + student.FkClassid + ");");*/
+
+                if (result == -1 )
                 {
                     throw new Exception();
                 }
@@ -397,24 +442,14 @@ namespace Webservice
             return success;
         }
 
-        #endregion
-
-        #region ClassCRUD
-
-      /*  public bool InsertClass(Class theClass)
+        public bool UpdateStudent(Student student)
         {
             bool success = true;
             int result;
 
             DB.Open();
-
-            result = DB.Exec(
-                    "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole, PhoneNumber, fk_SchoolId) " +
-                    "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" + parent.Address + "','" + parent.Birthdate + "','" + parent.Username + "','" + parent.Password + "','" + parent.Lastlogin + "'," + parent.Userrole + ", " + parent.Phonenumber + ", " + 1 + ");");
-            DB.Exec("INSERT INTO [Parent] (Id) VALUES (" + parent.Id + ");");
-
-
-
+            result = DB.Exec("UPDATE [User] SET Firstname ='" + student.Firstname + "', Lastname='" + student.Lastname + "', City='" + student.City + "', Address='" + student.Address + "'," +
+             "Birthdate='" + student.Birthdate + "', Username='" + student.Username + "', Password='" + student.Password + "', Lastlogin ='" + student.Lastlogin.ToString() + "', Userrole=" + student.Userrole + ", PhoneNumber=" + student.Phonenumber + ", fk_ClassId="+student.FkClassid+" WHERE Id=" + student.Id + ";");
 
             if (result == -1)
             {
@@ -423,7 +458,109 @@ namespace Webservice
             }
 
             return success;
-        }*/
+        }
+
+        public List<Student> GetStudents()
+        {
+            List<Student> parents = new List<Student>();
+
+            try
+            {
+                DB.Open();
+
+                string[][] getTeachers = DB.Query("SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
+                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole, [User].PhoneNumber, [Student].fk_ClassId" +
+                                                  " FROM [Student] INNER JOIN [User] ON  [Student].Id=[User].Id ORDER BY [User].Firstname;");
+
+                for (int i = 0; i < getTeachers.Length; i++)
+                {
+                    Student parent = new Student();
+
+                    parent.Id = Convert.ToInt32(getTeachers[i][0]);
+                    parent.Fkuserid = Convert.ToInt32(getTeachers[i][0]);
+                    parent.Firstname = getTeachers[i][1];
+                    parent.Lastname = getTeachers[i][2];
+                    parent.City = getTeachers[i][3];
+                    parent.Address = getTeachers[i][4];
+                    parent.Birthdate = getTeachers[i][5];
+                    parent.Username = getTeachers[i][6];
+                    parent.Password = getTeachers[i][7];
+                    if (getTeachers[i][8] == "")
+                    {
+                        getTeachers[i][8] = DateTime.MinValue.ToString();
+                    }
+                    parent.Lastlogin = Convert.ToDateTime(getTeachers[i][8]);
+                    parent.Userrole = Convert.ToInt32(getTeachers[i][9]);
+                    if (getTeachers[i][10] == "")
+                    {
+                        getTeachers[i][10] = "-1";
+                    }
+                    parent.Phonenumber = Convert.ToInt32(getTeachers[i][10]);
+                    parent.FkClassid = Convert.ToInt32(getTeachers[i][11]);
+                    parents.Add(parent);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                DB.Close();
+            }
+            return parents;
+        }
+
+        #endregion
+
+        #region ClassCRUD
+
+          public bool InsertClass(Class theClass)
+        {
+            bool success = true;
+            int result;
+
+              
+
+            DB.Open();
+            // this works very well !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            result = DB.Exec("BEGIN TRANSACTION BEGIN TRY INSERT INTO [Class](Name, fk_TeacherId, fk_SchoolId)" +
+                "VALUES('" + theClass.Name +"'," +theClass.Fkteacherid + "," + 1+");" +
+                " COMMIT TRANSACTION   END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
+
+
+            if (result == -1)
+            {
+
+                success = false;
+
+            }
+
+
+            return success;
+        }
+
+          public bool UpdateClass(Class theClass)
+          {
+              bool success = true;
+
+              try
+              {
+                  DB.Open();
+                  DB.Exec("UPDATE [Class] SET Name ='" + theClass.Name + "', fk_TeacherId=" + theClass.Fkteacherid +" WHERE Id=" + theClass.Id + ";");
+              }
+              catch (Exception)
+              {
+                  Debug.Write("Fejl!");
+                  success = false;
+              }
+
+              return success;
+
+          }
+
+
 
 
         public List<Class> GetClasses()

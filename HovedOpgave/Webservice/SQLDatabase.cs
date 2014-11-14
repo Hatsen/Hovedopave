@@ -60,7 +60,7 @@ namespace Webservice
             try
             {
                 int Result = dbCMD.ExecuteNonQuery();   //Eksekvere SQL sætningen og få nummeret på påvirkede rækker
-
+                
                 if (Result > 0)         //Hvis nogle rækker blev påvirket
                 {
                     return Result;
@@ -121,5 +121,37 @@ namespace Webservice
         {
             this.dbConn.Close();
         }
+
+
+
+        //lars er inde og lege!
+
+
+        public int ExecAndGetId(string SQLQuery)
+        {
+            string finalSQLQuery = "DECLARE @Id INT; ";
+            finalSQLQuery += SQLQuery + " SELECT @Id=SCOPE_IDENTITY(); SELECT @Id;";
+            
+            
+            int result = 0;
+            SqlCommand dbCMD = new SqlCommand(finalSQLQuery, this.dbConn);   //Forbered en ny SQL statement
+
+            try
+            {
+
+                result = (int)dbCMD.ExecuteScalar();
+            }
+            catch
+            {
+               
+            }
+
+            return result;
+        }
+
+
+
+
+
     }
 }

@@ -14,7 +14,7 @@ namespace AdminModule.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-
+        // sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
         public MainWindowViewModel()
         {
             //ObjectHolder.Instance.PropertyChanged += (sender, args) => OnPropertyChanged(args.PropertyName); // viewmodel lytter på objectholderen.
@@ -25,7 +25,7 @@ namespace AdminModule.ViewModels
             CreateStudentCommand = new DelegateCommand<object>(CreateStudent);
             CreateClassCommand = new DelegateCommand<object>(CreateClass);
             GetClassesCommand = new DelegateCommand<object>(GetClasses);
-            EditClassCommand = new DelegateCommand<object>(EditClass);
+            EditClassCommand = new DelegateCommand<object>(EditClass, MayiEditClass);
 
             List<string> listofpersons = new List<string>();
             listofpersons.Add("Underviser");
@@ -135,6 +135,7 @@ namespace AdminModule.ViewModels
             {
                 selectedClass = value;
                 OnPropertyChanged("SelectedClass");
+                EditClassCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -287,7 +288,16 @@ namespace AdminModule.ViewModels
             cview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             cview.ShowDialog();
 
-        } 
+        }
+
+        public bool MayiEditClass(Object o)
+        {
+            bool boolen = false;
+
+            if (selectedClass != null)
+                boolen = true;
+            return boolen;
+        }
 
         #endregion
 
