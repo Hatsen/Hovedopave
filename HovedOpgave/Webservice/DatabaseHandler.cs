@@ -72,25 +72,8 @@ namespace Webservice
                     anc.Message = getAnc[i][3];
                     anc.GroupID = Convert.ToInt32(getAnc[i][4]);
 
-                    if (anc.ClassID == null)
-                    {
-                        anc.ClassID = 0;
-                    }
-                    else
-                    {
-                        anc.ClassID = Convert.ToInt32(getAnc[i][5]);
-                    }
-
-                    if (Holder.Instance.Announcements.Contains(anc))
-                    {
-
-                    }
-
-                    // bool containsItem = 
-
-                    if (Holder.Instance.Announcements.Any(announcement => announcement.ID != anc.ID))
+                    //if (Holder.Instance.Announcements.Any(announcement => announcement.ID != anc.ID))
                         Holder.Instance.Announcements.Add(anc);
-
                 }
             }
             catch (Exception ex)

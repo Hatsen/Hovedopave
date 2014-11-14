@@ -65,7 +65,7 @@ namespace Webservice
 
             foreach (Announcement anc in Holder.Instance.Announcements)
             {
-                if (groupID <= anc.GroupID || classID == anc.ClassID)
+                if (groupID <= anc.GroupID || classID == anc.ClassID || groupID == 0)
                 {
                     announcements.Add(anc);
                 }

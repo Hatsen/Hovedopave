@@ -67,8 +67,6 @@
     margin-right: 10%;
 }
 
-
-
 #bannerTitle
 {
     text-align: center;
@@ -100,6 +98,7 @@
 #announcementTable
 {
     background-color: #ededbd;
+    border-spacing: 10px;
     border: 1px solid #000;
     float: right;
     text-align: center;
@@ -107,7 +106,7 @@
     min-width: 200px;
 }
 
-.item 
+.item
 {
     background-color: #255180;
     border: 1px solid #032472;
