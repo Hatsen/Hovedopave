@@ -98,7 +98,6 @@
 #announcementTable
 {
     background-color: #ededbd;
-    border-spacing: 10px;
     border: 1px solid #000;
     float: right;
     text-align: center;
@@ -124,4 +123,9 @@
 .ancMessageItem
 {
     background-color: #FFFFCC;
+}
+
+.ancCreatorItem 
+{
+    background-color: #d9d6d6;
 }
