@@ -82,7 +82,7 @@ namespace Webservice
             {
                 if (newPass.Equals(confirmPass) && PasswordHash.ValidatePassword(oldPass, Holder.Instance.LoginDetails.Password) == true)
                 {
-                    DatabaseHandler.Instance.ChangePassword(id, confirmPass);
+                    DatabaseHandler.Instance.ChangePassword(id, PasswordHash.CreateHash(confirmPass));
                     success = true;
                 }
             }
