@@ -126,6 +126,25 @@ namespace Webservice
             return user;
         }
 
+        public bool ChangePassword(int id, string password)
+        {
+            bool success = false;
+
+            try
+            {
+                DB.Open();
+                DB.Exec("UPDATE [user] SET Password = '" + password + "' WHERE Id = " + id);
+                success = true;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                DB.Close();
+            }
+            return success;
+        }
 
         /*public int GetMostRecentUserId()
         {

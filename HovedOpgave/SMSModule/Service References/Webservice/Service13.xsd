@@ -17,10 +17,12 @@
       <xs:element minOccurs="0" name="Birthdate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fkschoolid" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Lastlogin" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phonenumber" type="xs:int" />
       <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Userrole" type="xs:int" />
     </xs:sequence>
@@ -32,12 +34,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfTeacher" nillable="true" type="tns:ArrayOfTeacher" />
-  <xs:complexType name="ArrayOfParent">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Parent" nillable="true" type="tns:Parent" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfParent" nillable="true" type="tns:ArrayOfParent" />
   <xs:complexType name="Parent">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:User">
@@ -48,12 +44,12 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Parent" nillable="true" type="tns:Parent" />
-  <xs:complexType name="ArrayOfStudent">
+  <xs:complexType name="ArrayOfParent">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Student" nillable="true" type="tns:Student" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Parent" nillable="true" type="tns:Parent" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfStudent" nillable="true" type="tns:ArrayOfStudent" />
+  <xs:element name="ArrayOfParent" nillable="true" type="tns:ArrayOfParent" />
   <xs:complexType name="Student">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:User">
@@ -65,4 +61,25 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Student" nillable="true" type="tns:Student" />
+  <xs:complexType name="ArrayOfStudent">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Student" nillable="true" type="tns:Student" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStudent" nillable="true" type="tns:ArrayOfStudent" />
+  <xs:complexType name="ArrayOfClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Class" nillable="true" type="tns:Class" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClass" nillable="true" type="tns:ArrayOfClass" />
+  <xs:complexType name="Class">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Fkschoolid" type="xs:int" />
+      <xs:element minOccurs="0" name="Fkteacherid" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Class" nillable="true" type="tns:Class" />
 </xs:schema>

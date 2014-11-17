@@ -74,6 +74,22 @@ namespace Webservice
             return announcements;
         }
 
+        public bool ChangePassword(int id, string oldPass, string newPass, string confirmPass)
+        {
+            bool success = false;
+
+            if (Holder.Instance.LoginDetails.Id == id)
+            {
+                if (newPass.Equals(confirmPass) && PasswordHash.ValidatePassword(oldPass, Holder.Instance.LoginDetails.Password) == true)
+                {
+                    DatabaseHandler.Instance.ChangePassword(id, confirmPass);
+                    success = true;
+                }
+            }
+
+            return success;
+        }
+
 
         #region TeacherMethods
 

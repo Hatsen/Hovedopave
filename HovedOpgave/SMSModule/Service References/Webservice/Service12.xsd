@@ -64,27 +64,34 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="CreateTeacher">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CreateTeacherResponse">
+  <xs:element name="ChangePassword">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="CreateTeacherResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="oldPass" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newPass" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="confirmPass" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetTeacher">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTeacherResponse">
+  <xs:element name="ChangePasswordResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="GetTeacherResult" nillable="true" type="q2:Teacher" />
+        <xs:element minOccurs="0" name="ChangePasswordResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertTeacher">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="teacher" nillable="true" type="q2:Teacher" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertTeacherResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertTeacherResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -100,29 +107,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="InsertTeacher">
+  <xs:element name="InsertParent">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="teacher" nillable="true" type="q4:Teacher" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="parent" nillable="true" type="q4:Parent" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="InsertTeacherResponse">
+  <xs:element name="InsertParentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="InsertTeacherResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetMostRecentUserId">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetMostRecentUserIdResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetMostRecentUserIdResult" type="xs:int" />
+        <xs:element minOccurs="0" name="InsertParentResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -138,17 +133,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="InsertParent">
+  <xs:element name="InsertStudent">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="parent" nillable="true" type="q6:Parent" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="parent" nillable="true" type="q6:Student" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="InsertParentResponse">
+  <xs:element name="InsertStudentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="InsertParentResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="InsertStudentResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -164,17 +159,29 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="InsertStudent">
+  <xs:element name="GetClasses">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClassesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="parent" nillable="true" type="q8:Student" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="GetClassesResult" nillable="true" type="q8:ArrayOfClass" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="InsertStudentResponse">
+  <xs:element name="InsertClass">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="InsertStudentResult" type="xs:boolean" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="theClass" nillable="true" type="q9:Class" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertClassResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertClassResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

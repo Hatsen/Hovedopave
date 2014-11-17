@@ -25,6 +25,9 @@ namespace Webservice
         [OperationContract]
         List<Announcement> GetAnnouncements(int group, int classID);
 
+        [OperationContract]
+        bool ChangePassword(int id, string oldPass, string newPass, string confirmPass);
+
         #region Teacher
     
 

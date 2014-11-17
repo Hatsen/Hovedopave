@@ -15,28 +15,31 @@ namespace SMSModule
     {
         public async Task<bool> GetLoginDetails(string username, string password)
         {
-            bool result = false;
-            result = await ServiceProxy.Instance.GetLoginDetails(username, password);
+            bool result = await ServiceProxy.Instance.GetLoginDetails(username, password);
             return result;
         }
 
         public async Task<string> GetUserDetails(int number)
         {
-            string result = "";
-            result = await ServiceProxy.Instance.GetUserDetails(number);
+            string result = await ServiceProxy.Instance.GetUserDetails(number);
             return result;
         }
 
         public async Task<bool> CreateAnnouncement(int creator, string header, string message, int groupID, int classID)
         {
-            bool result = false;
-            result = await ServiceProxy.Instance.CreateAnnouncement(creator, header, message, groupID, classID);
+            bool result = await ServiceProxy.Instance.CreateAnnouncement(creator, header, message, groupID, classID);
             return result;
         }
 
         public async Task<List<Announcement>> GetAnnouncements(int groupID, int classID)
         {
             List<Announcement> result = await ServiceProxy.Instance.GetAnnouncements(groupID, classID);
+            return result;
+        }
+
+        public async Task<bool> ChangePassword(int id, string oldPass, string newPass, string confirmPass)
+        {
+            bool result = await ServiceProxy.Instance.ChangePassword(id, oldPass, newPass, confirmPass);
             return result;
         }
     }
