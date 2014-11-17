@@ -71,8 +71,9 @@ namespace Webservice
                     anc.Header = getAnc[i][2];
                     anc.Message = getAnc[i][3];
                     anc.GroupID = Convert.ToInt32(getAnc[i][4]);
+                    anc.ClassID = Convert.ToInt32(getAnc[i][5]);
 
-                    //if (Holder.Instance.Announcements.Any(announcement => announcement.ID != anc.ID))
+                    if (Holder.Instance.Announcements.Any(announcement => announcement.ID != anc.ID))
                         Holder.Instance.Announcements.Add(anc);
                 }
             }
@@ -156,12 +157,10 @@ namespace Webservice
                 DB.Open();
                 string[][] loginDetails = DB.Query("SELECT MAX(Id) FROM [User];");
 
-
                 for (int i = 0; i < loginDetails.Length; i++)
                 {
                     count = Convert.ToInt32(loginDetails[0][0]) + 1; // recent could be 17 but the new id needs to be 18.
                 }
-
             }
             catch (Exception)
             {
