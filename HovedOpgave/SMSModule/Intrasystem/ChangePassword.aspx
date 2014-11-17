@@ -35,8 +35,11 @@
         <tr>
             <td>
                 <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Skift adgangskode" />
+                <br />
+                <asp:RangeValidator ID="RangeValidator1" runat="server" MinimumValue="8" ControlToValidate="txtNewPass" ErrorMessage="Adgangskoden skal som minimum være 8 karakterer lang."></asp:RangeValidator>
+                <br />
+                <asp:RangeValidator ID="RangeValidator2" runat="server" MinimumValue="8" ControlToValidate="txtConfirmPass" ErrorMessage="Adgangskoden skal som minimum være 8 karakterer lang."></asp:RangeValidator>
             </td>
-            <td>&nbsp;</td>
         </tr>
     </table>
 </asp:Content>
