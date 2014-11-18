@@ -171,6 +171,9 @@
     <Content Include="Service References\Webservice\SMSModule.Webservice.Class.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\Webservice\Service14.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

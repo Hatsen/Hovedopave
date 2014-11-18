@@ -50,6 +50,7 @@ namespace Webservice
                     break;
 
                 case 2:
+                    userDetails[5] = Convert.ToString(FindParentsChildren(Holder.Instance.LoginDetails.Id));
                     break;
 
                 case 3:

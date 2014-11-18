@@ -59,7 +59,7 @@ namespace Webservice
             try
             {
                 DB.Open();
-                string[][] getChildren = DB.Query("SELECT fk_ParentId FROM [StudentParent] INNER JOIN ON Parent.Id = StudentParent.fk_ParentId");
+                string[][] getChildren = DB.Query("SELECT fk_ParentId FROM [StudentParent] INNER JOIN [Parent] ON Parent.Id = StudentParent.fk_ParentId");
 
                 for (int i = 0; i < getChildren.Length; i++)
                 {

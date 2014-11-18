@@ -576,6 +576,14 @@ namespace SMSModule.Webservice {
         
         string EndGetUserDetails(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/FindParentsChildren", ReplyAction="http://tempuri.org/IService1/FindParentsChildrenResponse")]
+        System.Collections.Generic.List<int> FindParentsChildren(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/FindParentsChildren", ReplyAction="http://tempuri.org/IService1/FindParentsChildrenResponse")]
+        System.IAsyncResult BeginFindParentsChildren(int id, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<int> EndFindParentsChildren(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateAnnouncement", ReplyAction="http://tempuri.org/IService1/CreateAnnouncementResponse")]
         bool CreateAnnouncement(int creator, string header, string message, int group, int classID);
         
@@ -703,6 +711,25 @@ namespace SMSModule.Webservice {
             get {
                 base.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class FindParentsChildrenCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public FindParentsChildrenCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<int> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<int>)(this.results[0]));
             }
         }
     }
@@ -932,6 +959,12 @@ namespace SMSModule.Webservice {
         
         private System.Threading.SendOrPostCallback onGetUserDetailsCompletedDelegate;
         
+        private BeginOperationDelegate onBeginFindParentsChildrenDelegate;
+        
+        private EndOperationDelegate onEndFindParentsChildrenDelegate;
+        
+        private System.Threading.SendOrPostCallback onFindParentsChildrenCompletedDelegate;
+        
         private BeginOperationDelegate onBeginCreateAnnouncementDelegate;
         
         private EndOperationDelegate onEndCreateAnnouncementDelegate;
@@ -1020,6 +1053,8 @@ namespace SMSModule.Webservice {
         public event System.EventHandler<GetLoginDetailsCompletedEventArgs> GetLoginDetailsCompleted;
         
         public event System.EventHandler<GetUserDetailsCompletedEventArgs> GetUserDetailsCompleted;
+        
+        public event System.EventHandler<FindParentsChildrenCompletedEventArgs> FindParentsChildrenCompleted;
         
         public event System.EventHandler<CreateAnnouncementCompletedEventArgs> CreateAnnouncementCompleted;
         
@@ -1143,6 +1178,56 @@ namespace SMSModule.Webservice {
             }
             base.InvokeAsync(this.onBeginGetUserDetailsDelegate, new object[] {
                         number}, this.onEndGetUserDetailsDelegate, this.onGetUserDetailsCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<int> FindParentsChildren(int id) {
+            return base.Channel.FindParentsChildren(id);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginFindParentsChildren(int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginFindParentsChildren(id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<int> EndFindParentsChildren(System.IAsyncResult result) {
+            return base.Channel.EndFindParentsChildren(result);
+        }
+        
+        private System.IAsyncResult OnBeginFindParentsChildren(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            return this.BeginFindParentsChildren(id, callback, asyncState);
+        }
+        
+        private object[] OnEndFindParentsChildren(System.IAsyncResult result) {
+            System.Collections.Generic.List<int> retVal = this.EndFindParentsChildren(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnFindParentsChildrenCompleted(object state) {
+            if ((this.FindParentsChildrenCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.FindParentsChildrenCompleted(this, new FindParentsChildrenCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void FindParentsChildrenAsync(int id) {
+            this.FindParentsChildrenAsync(id, null);
+        }
+        
+        public void FindParentsChildrenAsync(int id, object userState) {
+            if ((this.onBeginFindParentsChildrenDelegate == null)) {
+                this.onBeginFindParentsChildrenDelegate = new BeginOperationDelegate(this.OnBeginFindParentsChildren);
+            }
+            if ((this.onEndFindParentsChildrenDelegate == null)) {
+                this.onEndFindParentsChildrenDelegate = new EndOperationDelegate(this.OnEndFindParentsChildren);
+            }
+            if ((this.onFindParentsChildrenCompletedDelegate == null)) {
+                this.onFindParentsChildrenCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnFindParentsChildrenCompleted);
+            }
+            base.InvokeAsync(this.onBeginFindParentsChildrenDelegate, new object[] {
+                        id}, this.onEndFindParentsChildrenDelegate, this.onFindParentsChildrenCompletedDelegate, userState);
         }
         
         public bool CreateAnnouncement(int creator, string header, string message, int group, int classID) {
