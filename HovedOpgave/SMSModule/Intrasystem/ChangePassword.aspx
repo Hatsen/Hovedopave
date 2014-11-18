@@ -39,4 +39,8 @@
             </td>
         </tr>
     </table>
-</asp:Content>
+    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ForeColor="Red" ControlToValidate="txtNewPass" ErrorMessage="Den nye adgangskode skal være mellem 8 til 50 karakterer lang." ValidationExpression="^.{8,50}$"></asp:RegularExpressionValidator>
+    <br />
+    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ForeColor="Red" ControlToValidate="txtConfirmPass" ErrorMessage="Den nye adgangskode skal være mellem 8 til 50 karakterer lang." ValidationExpression="^.{8,50}$"></asp:RegularExpressionValidator>
+    <br />
+    </asp:Content>
