@@ -52,6 +52,36 @@ namespace Webservice
             return success;
         }
 
+        public List<int> FindParentsChildren(int id)
+        {
+            List<int> classList = new List<int>();
+
+            try
+            {
+                DB.Open();
+                string[][] getChildren = DB.Query("SELECT fk_ParentId FROM [StudentParent] INNER JOIN ON Parent.Id = StudentParent.fk_ParentId");
+
+                for (int i = 0; i < getChildren.Length; i++)
+                {
+                    if (Convert.ToInt32(getChildren[i][1]) == id)
+                    {
+                        int studentID = Convert.ToInt32(getChildren[i][0]);
+
+                        string[][] getClass = DB.Query("SELECT * from [Student] WHERE Id = " + studentID);
+                        classList.Add(Convert.ToInt32(getClass[0][1]));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                DB.Close();
+            }
+            return classList;
+        }
+
         public List<Announcement> GetAnnouncements(int groupID)
         {
             List<Announcement> announcements = new List<Announcement>();

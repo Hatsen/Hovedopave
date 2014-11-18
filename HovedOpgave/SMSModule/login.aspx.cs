@@ -23,6 +23,8 @@ namespace SMSModule
                 Session["lastname"] = await ObjectHolder.Instance.UcController.GetUserDetails(2);
                 Session["username"] = await ObjectHolder.Instance.UcController.GetUserDetails(3);
                 Session["userrole"] = await ObjectHolder.Instance.UcController.GetUserDetails(4);
+                Session["classid"] = await ObjectHolder.Instance.UcController.GetUserDetails(5);
+
                 Response.Redirect("Intrasystem/Default.aspx", false);
             }
             else
