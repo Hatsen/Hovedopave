@@ -25,6 +25,10 @@ namespace SMSModule.Intrasystem
                 html += "<tr>";
                 html += "<td class='ancMessageItem'>" + anc.Message + "</td>";
                 html += "</tr>";
+                html += "<td class='ancCreatorItem'><b>Skrevet af:  </b></td>";
+                html += "</tr>";
+                html += "<td></td>";
+                html += "</tr>";
             }
             html += "</table>";
             announcements.InnerHtml = html;

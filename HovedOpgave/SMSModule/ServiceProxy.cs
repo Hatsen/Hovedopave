@@ -155,5 +155,35 @@ namespace SMSModule
 
              return tcs.Task;
          }
+
+        public Task<bool> ChangePassword(int id, string oldPass, string newPass, string confirmPass)
+        {
+            var tcs = new TaskCompletionSource<bool>();
+            EventHandler<ChangePasswordCompletedEventArgs> handler = null;
+            handler = (sender, args) =>
+            {
+                if (args.UserState == tcs)
+                {
+                    service.ChangePasswordCompleted -= handler;
+                    if (args.Error != null)
+                    {
+                        tcs.TrySetException(args.Error);
+                    }
+                    else if (args.Cancelled)
+                    {
+                        tcs.TrySetCanceled();
+                    }
+                    else
+                    {
+                        tcs.TrySetResult(args.Result);
+                    }
+                }
+            };
+
+            service.ChangePasswordCompleted += handler;
+            service.ChangePasswordAsync(id, oldPass, newPass, confirmPass, tcs);
+
+            return tcs.Task;
+        }
     }
 }

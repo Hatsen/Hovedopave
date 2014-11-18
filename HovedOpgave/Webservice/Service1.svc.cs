@@ -36,7 +36,7 @@ namespace Webservice
 
         public string GetUserDetails(int number)
         {
-            string[] userDetails = new string[5];
+            string[] userDetails = new string[6];
 
             userDetails[0] = Convert.ToString(Holder.Instance.LoginDetails.Id);
             userDetails[1] = Holder.Instance.LoginDetails.Firstname;
@@ -44,7 +44,35 @@ namespace Webservice
             userDetails[3] = Holder.Instance.LoginDetails.Username;
             userDetails[4] = Convert.ToString(Holder.Instance.LoginDetails.Userrole);
 
+            switch(Holder.Instance.LoginDetails.Userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
+            {
+                case 1: //Skoleleder
+                    userDetails[5] = 0;
+                    break;
+
+                case 2: //Teacher
+                    
+                    break;
+
+                case 3: //Vikar
+                    
+                break;
+
+                case 4: //Parent
+                    userDetails[5] = Convert.ToString(FindParentsChildren(Holder.Instance.LoginDetails.Id));
+                break;
+
+                case 5: //Student
+
+                break;
+            }
+
             return userDetails[number];
+        }
+
+        public List<int> FindParentsChildren(int id)
+        {
+            return DatabaseHandler.Instance.FindParentsChildren(id);
         }
 
         public bool CreateAnnouncement(int creator, string header, string message, int groupID, int classID)
@@ -66,13 +94,28 @@ namespace Webservice
 
             foreach (Announcement anc in Holder.Instance.Announcements)
             {
-                if (groupID <= anc.GroupID || classID == anc.ClassID)
+                if (groupID == 1 || groupID == anc.GroupID || classID == anc.ClassID || groupID == 0)
                 {
-                    announcements.Add(anc);
+                    announcements.Add(anc); //Hvis han er skoleleder, gruppen passer til ham, klassen passer til ham eller beskeden er til alle, skal den tilføjes til listen.
                 }
             }
 
             return announcements;
+        }
+
+        public bool ChangePassword(int id, string oldPass, string newPass, string confirmPass)
+        {
+            bool success = false;
+
+            if (Holder.Instance.LoginDetails.Id == id)
+            {
+                if (newPass.Equals(confirmPass) && PasswordHash.ValidatePassword(oldPass, Holder.Instance.LoginDetails.Password) == true)
+                {
+                    DatabaseHandler.Instance.ChangePassword(id, PasswordHash.CreateHash(confirmPass));
+                    success = true;
+                }
+            }
+            return success;
         }
 
 

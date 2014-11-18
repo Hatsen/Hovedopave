@@ -53,6 +53,36 @@ namespace Webservice
             return success;
         }
 
+        public List<int> FindParentsChildren(int id)
+        {
+            List<int> classList = new List<int>();
+
+            try
+            {
+                DB.Open();
+                string[][] getChildren = DB.Query("SELECT fk_ParentId FROM [StudentParent] INNER JOIN [Parent] ON Parent.Id = StudentParent.fk_ParentId");
+
+                for (int i = 0; i < getChildren.Length; i++)
+                {
+                    if (Convert.ToInt32(getChildren[i][1]) == id)
+                    {
+                        int studentID = Convert.ToInt32(getChildren[i][0]);
+
+                        string[][] getClass = DB.Query("SELECT * from [Student] WHERE Id = " + studentID);
+                        classList.Add(Convert.ToInt32(getClass[0][1]));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                DB.Close();
+            }
+            return classList;
+        }
+
         public List<Announcement> GetAnnouncements(int groupID)
         {
             List<Announcement> announcements = new List<Announcement>();
@@ -72,26 +102,16 @@ namespace Webservice
                     anc.Header = getAnc[i][2];
                     anc.Message = getAnc[i][3];
                     anc.GroupID = Convert.ToInt32(getAnc[i][4]);
+                    anc.ClassID = Convert.ToInt32(getAnc[i][5]);
 
-                    if (anc.ClassID == null)
-                    {
-                        anc.ClassID = 0;
-                    }
-                    else
-                    {
-                        anc.ClassID = Convert.ToInt32(getAnc[i][5]);
-                    }
-
-                    if (Holder.Instance.Announcements.Contains(anc))
-                    {
-
-                    }
-
-                    // bool containsItem = 
-
+<<<<<<< HEAD
                     //if (Holder.Instance.Announcements.Any(announcement => announcement.ID != anc.ID))
                     Holder.Instance.Announcements.Add(anc);
 
+=======
+                    if (Holder.Instance.Announcements.Any(announcement => announcement.ID != anc.ID))
+                        Holder.Instance.Announcements.Add(anc);
+>>>>>>> origin/master
                 }
             }
             catch (Exception ex)
@@ -144,6 +164,25 @@ namespace Webservice
             return user;
         }
 
+        public bool ChangePassword(int id, string password)
+        {
+            bool success = false;
+
+            try
+            {
+                DB.Open();
+                DB.Exec("UPDATE [user] SET Password = '" + password + "' WHERE Id = " + id);
+                success = true;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                DB.Close();
+            }
+            return success;
+        }
 
         /*public int GetMostRecentUserId()
         {
@@ -155,12 +194,10 @@ namespace Webservice
                 DB.Open();
                 string[][] loginDetails = DB.Query("SELECT MAX(Id) FROM [User];");
 
-
                 for (int i = 0; i < loginDetails.Length; i++)
                 {
                     count = Convert.ToInt32(loginDetails[0][0]) + 1; // recent could be 17 but the new id needs to be 18.
                 }
-
             }
             catch (Exception)
             {

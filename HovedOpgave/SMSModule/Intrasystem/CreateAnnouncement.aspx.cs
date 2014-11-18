@@ -20,6 +20,7 @@ namespace SMSModule.Intrasystem
             if (success == true)
             {
                 Response.Write("<SCRIPT LANGUAGE='JavaScript'>alert('Meddelelsen er nu oprettet!')</SCRIPT>");
+                Response.Redirect("Default.aspx");
             }
             else
             {
