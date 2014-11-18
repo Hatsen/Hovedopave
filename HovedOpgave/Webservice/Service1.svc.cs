@@ -45,16 +45,24 @@ namespace Webservice
 
             switch(Holder.Instance.LoginDetails.Userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
             {
-                case 1:
-
+                case 1: //Skoleleder
+                    userDetails[5] = 0;
                     break;
 
-                case 2:
-                    userDetails[5] = Convert.ToString(FindParentsChildren(Holder.Instance.LoginDetails.Id));
+                case 2: //Teacher
+                    
                     break;
 
-                case 3:
+                case 3: //Vikar
+                    
+                break;
+
+                case 4: //Parent
                     userDetails[5] = Convert.ToString(FindParentsChildren(Holder.Instance.LoginDetails.Id));
+                break;
+
+                case 5: //Student
+
                 break;
             }
 
