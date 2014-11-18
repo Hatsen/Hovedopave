@@ -31,7 +31,7 @@ namespace AdminModule
 
         private bool isLoading;
         private List<Teacher> teacherList;
-        private List<Class> classList;
+        private List<ClassEx> classList;
 
 
         public bool Isloading
@@ -61,7 +61,7 @@ namespace AdminModule
 
         }
 
-        public List<Class> ClassList
+        public List<ClassEx> ClassList
         {
 
             get { return classList; }
@@ -84,7 +84,7 @@ namespace AdminModule
             Isloading = true;
             TeacherList = await ServiceProxy.Instance.GetTeachers();
             Isloading = false;
-            // RaiseOnselectedPersonChanged("Underviser");
+            //RaiseOnselectedPersonChanged("Underviser");
         }
 
 

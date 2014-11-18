@@ -50,7 +50,7 @@ namespace AdminModule.Views
         {
             if (viewModel != null)
             {
-                viewModel.OnProjectViewClose += viewModel_OnStudentViewClose;
+                viewModel.OnStudentViewClose += viewModel_OnStudentViewClose;
 
             }
         }
@@ -61,7 +61,7 @@ namespace AdminModule.Views
 
             if (viewModel != null)
             {
-                viewModel.OnProjectViewClose -= viewModel_OnStudentViewClose;
+                viewModel.OnStudentViewClose -= viewModel_OnStudentViewClose;
             }
 
         }

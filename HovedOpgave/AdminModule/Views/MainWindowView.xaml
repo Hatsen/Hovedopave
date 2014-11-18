@@ -56,6 +56,8 @@
                 <Button Content="Hent klasser" HorizontalAlignment="Left" Margin="805,127,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding GetClassesCommand}"/>
                 <Button Content="Søg" HorizontalAlignment="Left" Margin="1031,70,0,0" VerticalAlignment="Top" Width="75" Height="25" Command="{Binding UpdateCommand}"/>
                 <Button Content="Rediger klasse" HorizontalAlignment="Left" Margin="805,157,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding EditClassCommand}"/>
+                <Button Content="Slet Person" HorizontalAlignment="Left" Margin="10,236,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding DeleteUserCommand}"/>
+                <Button Content="Slet Klasse" HorizontalAlignment="Left" Margin="805,187,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding DeleteClassCommand}"/>
             </Grid>
         </Grid>
     </toolkit:BusyIndicator>

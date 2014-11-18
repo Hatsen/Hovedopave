@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using AdminModule.Views;
+using AdminModule.Views.DeleteView;
 using AdminModule.Webservice;
 using Microsoft.Practices.Prism.Commands;
 
@@ -19,13 +20,16 @@ namespace AdminModule.ViewModels
         {
             //ObjectHolder.Instance.PropertyChanged += (sender, args) => OnPropertyChanged(args.PropertyName); // viewmodel lytter på objectholderen.
             CreateTeacherCommand = new DelegateCommand<object>(CreateTeacher);
-            EditUserCommand = new DelegateCommand<object>(EditUser, MayiWrite);
+            EditUserCommand = new DelegateCommand<object>(EditUser, MayiEditPerson);
             UpdateStudentsCommand = new DelegateCommand<object>(UpdateStudents);
             CreateParentCommand = new DelegateCommand<object>(CreateParent);
             CreateStudentCommand = new DelegateCommand<object>(CreateStudent);
             CreateClassCommand = new DelegateCommand<object>(CreateClass);
             GetClassesCommand = new DelegateCommand<object>(GetClasses);
             EditClassCommand = new DelegateCommand<object>(EditClass, MayiEditClass);
+            DeleteUserCommand = new DelegateCommand<object>(DeletePerson, MayiEditPerson);
+            DeleteClassCommand = new DelegateCommand<object>(DeleteClass);
+
 
             List<string> listofpersons = new List<string>();
             listofpersons.Add("Underviser");
@@ -40,14 +44,14 @@ namespace AdminModule.ViewModels
         #region PrivateMembers
 
         private bool isloading;
-        private Object selectedUser;
+        private User selectedUser;
         private List<Teacher> teacherList;
         private List<Student> studentList;
         private List<Parent> parentList;
         private List<string> personStringList;
         private string selectedStringPerson;
-        private List<Class> classList;
-        private Class selectedClass;
+        private List<ClassEx> classList;
+        private ClassEx selectedClass;
 
         #endregion
 
@@ -63,7 +67,7 @@ namespace AdminModule.ViewModels
             }
         }
 
-        public Object SelectedUser // forskel mellem selecteduser fra comboboksen og datagriddet.
+        public User SelectedUser // forskel mellem selecteduser fra comboboksen og datagriddet.
         {
             get { return selectedUser; }
             set
@@ -71,6 +75,7 @@ namespace AdminModule.ViewModels
                 selectedUser = value;
                 OnPropertyChanged("SelectedUser");
                 EditUserCommand.RaiseCanExecuteChanged();
+                DeleteUserCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -104,14 +109,13 @@ namespace AdminModule.ViewModels
             }
             set
             {
-
                 studentList = value;
                 OnPropertyChanged("StudentList");
             }
         }
 
 
-        public List<Class> ClassList
+        public List<ClassEx> ClassList
         {
             get
             {
@@ -125,7 +129,7 @@ namespace AdminModule.ViewModels
         }
 
 
-        public Class SelectedClass
+        public ClassEx SelectedClass
         {
             get
             {
@@ -194,7 +198,7 @@ namespace AdminModule.ViewModels
         }
 
 
-        public bool MayiWrite(Object o)
+        public bool MayiEditPerson(Object o)
         {
             bool boolen = false;
 
@@ -268,7 +272,7 @@ namespace AdminModule.ViewModels
                 paview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 paview.ShowDialog();
             }
-        } 
+        }
 
 
         public DelegateCommand<object> GetClassesCommand { get; set; }
@@ -299,6 +303,52 @@ namespace AdminModule.ViewModels
             return boolen;
         }
 
+        public DelegateCommand<object> DeleteUserCommand { get; set; }
+
+        public DelegateCommand<object> DeleteClassCommand { get; set; }
+
+        public void DeleteClass(Object o)
+        {
+
+            if (SelectedClass.StudentsList.Count != 0)
+            {
+                var okornot = MessageBox.Show("Du kan ikke slette denne klasse, idet den har elever knyttet til sig." +
+                                 "du skal derfor først tilknytte en ny klasse til dine elever i denne klasse.\n" +
+                                 "Et nyt view vil åbnes, hvis du trykker ok.", "Sletning", MessageBoxButton.OKCancel);
+
+                if (okornot == MessageBoxResult.OK)
+                {
+                    DeleteView deleteView = new DeleteView(SelectedClass);
+                    deleteView.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    deleteView.ShowDialog();
+                }
+            }
+
+        }
+
+
+        public async void DeletePerson(Object o)
+        {
+
+
+            var result = MessageBox.Show("Er du sikker på at du ønsker at slette: " + SelectedUser.Firstname + " " + SelectedUser.Lastname, "Sletning",
+                             MessageBoxButton.YesNo,
+                             MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                string resultMessage = await BusinessLogic.Instance.DeleteUserById(SelectedUser.Id);
+                if (resultMessage == "")
+                {
+                    // it went fine!
+                }
+
+            }
+
+        }
+
+
+
         #endregion
 
         #region Methods
@@ -316,8 +366,9 @@ namespace AdminModule.ViewModels
         {
             Isloading = true;
             ClassList = await ServiceProxy.Instance.GetClasses();
+            ObjectHolder.Instance.ClassList = ClassList;
             Isloading = false;
-           // RaiseOnselectedPersonChanged("Underviser");  ikke være nødvendig for klasse.
+            // RaiseOnselectedPersonChanged("Underviser");  ikke være nødvendig for klasse.
         }
 
         private async void GetStudents()

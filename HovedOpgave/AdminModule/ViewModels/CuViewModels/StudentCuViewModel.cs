@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using AdminModule.Views;
 using AdminModule.Webservice;
 using Microsoft.Practices.Prism.Commands;
@@ -41,7 +42,7 @@ namespace AdminModule.ViewModels
 
         }
 
-        public Action OnProjectViewClose;
+        public Action OnStudentViewClose;
         public Enums.ViewState Viewstate; // bliver altid sat til Create til at starte med.
         //  public Enums.ViewState ViewstateObject; // bliver altid sat til Create til at starte med.
 
@@ -57,7 +58,7 @@ namespace AdminModule.ViewModels
         //    private List<Class> classes;
         private int phonenumber;
         private Class selectedClass;
-        private List<Class> classList;
+        private List<ClassEx> classList;
 
 
         #endregion
@@ -163,7 +164,7 @@ namespace AdminModule.ViewModels
             }
         }
 
-        public List<Class> ClassList
+        public List<ClassEx> ClassList
         {
             get { return ObjectHolder.Instance.ClassList; }
             set
@@ -199,7 +200,7 @@ namespace AdminModule.ViewModels
 
         public void Cancel(Object o)
         {
-            RaiseOnProjectViewClose();
+            RaiseOnStudentViewClose();
 
         }
 
@@ -228,10 +229,11 @@ namespace AdminModule.ViewModels
 
                 success = await BusinessLogic.Instance.CreateStudent(student);
 
-                if (success)
-                {
-                    // kast et event og sig han blev oprettet.
-                }
+                MessageBox.Show(success
+                             ? "Elev er oprettet/opdateret! Vinduet lukkes."
+                             : "Noget gik galt. Eleven er ikke blevet oprettet/opdateret. Vinduet lukkes.");
+
+                OnStudentViewClose();
             }
 
             else if (Viewstate == Enums.ViewState.Edit) // for next week! 
@@ -274,11 +276,11 @@ namespace AdminModule.ViewModels
 
 
 
-        private void RaiseOnProjectViewClose()
+        private void RaiseOnStudentViewClose()
         {
-            if (OnProjectViewClose != null)
+            if (OnStudentViewClose != null)
             {
-                OnProjectViewClose();
+                OnStudentViewClose();
             }
 
         }

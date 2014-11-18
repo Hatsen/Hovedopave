@@ -62,7 +62,6 @@ namespace AdminModule
 
 
 
-
         public async Task<bool> UpdateTeacher(Teacher teacher)
         {
             await ServiceProxy.Instance.InsertTeacher(teacher);
@@ -116,8 +115,6 @@ namespace AdminModule
 
 
         #endregion
-
-
 
 
 
@@ -230,6 +227,10 @@ namespace AdminModule
         #endregion
 
 
+        public async Task<string> DeleteUserById(int id)
+        {
+           return await ServiceProxy.Instance.DeleteUserById(id);
 
+        }
     }
 }

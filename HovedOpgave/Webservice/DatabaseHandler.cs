@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using Webservice.DB;
+using Webservice.Extended;
 
 namespace Webservice
 {
@@ -88,8 +89,8 @@ namespace Webservice
 
                     // bool containsItem = 
 
-                    if (Holder.Instance.Announcements.Any(announcement => announcement.ID != anc.ID))
-                        Holder.Instance.Announcements.Add(anc);
+                    //if (Holder.Instance.Announcements.Any(announcement => announcement.ID != anc.ID))
+                    Holder.Instance.Announcements.Add(anc);
 
                 }
             }
@@ -212,12 +213,8 @@ END CATCH*/
 
             if (result == -1)
             {
-
                 success = false;
-
             }
-
-
             return success;
         }
         public bool UpdateTeacher(Teacher teacher)
@@ -289,6 +286,29 @@ END CATCH*/
                 DB.Close();
             }
             return teachers;
+        }
+
+        public bool DeleteUser(int id, string tableName)
+        {
+           
+            int result;
+            bool success = true;
+
+            DB.Open();
+
+            //transaktion her vil gå ind og lave en 
+            result =
+                DB.Exec("BEGIN TRANSACTION BEGIN TRY DELETE FROM ["+tableName+"] WHERE Id = " + id + " DELETE FROM [User] WHERE Id=" +id+ " COMMIT"+
+                " TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION END CATCH");
+
+            // det kan ske at der ikke bliver påvirket rækker hvis den brækker sig. Det er fordi den laver rollback og derfor ikke påvirke nogle rækker.
+            if (result == -1||result==0)
+            {
+                success = false;
+            }
+
+            return success;
+
         }
 
         #endregion
@@ -398,7 +418,11 @@ END CATCH*/
             }
             return parents;
         }
+        public bool DeleteParent(int id)
+        {
 
+            return true;
+        }
         #endregion
 
         #region StudentCRUD
@@ -415,17 +439,17 @@ END CATCH*/
 
                 result = DB.Exec("BEGIN TRANSACTION BEGIN TRY DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)" +
                  "VALUES('" + student.Firstname + "','" + student.Lastname + "','" + student.City + "','" + student.Address + "','" + student.Birthdate + "','" + 1 + "','" + student.Password + "','" + student.Lastlogin.ToString() + "'," + student.Userrole + ", " + student.Phonenumber + "," + 1 + ");" +
-                 "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='St_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Student](Id, fk_ClassId)VALUES(@Id,"+student.FkClassid+") COMMIT TRANSACTION   END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
+                 "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='St_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Student](Id, fk_ClassId)VALUES(@Id," + student.FkClassid + ") COMMIT TRANSACTION   END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
 
 
 
 
-              /*  int a = DB.Exec(
-                     "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole) " +
-                     "VALUES('" + student.Firstname + "','" + student.Lastname + "','" + student.City + "','" + student.Address + "','" + student.Birthdate + "','" + student.Username + "','" + student.Password + "','" + student.Lastlogin.ToString() + "'," + student.Userrole + ");");
-                int b = DB.Exec("INSERT INTO [Student] (Id, fk_ClassId) VALUES (" + student.Id + "," + student.FkClassid + ");");*/
+                /*  int a = DB.Exec(
+                       "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole) " +
+                       "VALUES('" + student.Firstname + "','" + student.Lastname + "','" + student.City + "','" + student.Address + "','" + student.Birthdate + "','" + student.Username + "','" + student.Password + "','" + student.Lastlogin.ToString() + "'," + student.Userrole + ");");
+                  int b = DB.Exec("INSERT INTO [Student] (Id, fk_ClassId) VALUES (" + student.Id + "," + student.FkClassid + ");");*/
 
-                if (result == -1 )
+                if (result == -1)
                 {
                     throw new Exception();
                 }
@@ -449,7 +473,7 @@ END CATCH*/
 
             DB.Open();
             result = DB.Exec("UPDATE [User] SET Firstname ='" + student.Firstname + "', Lastname='" + student.Lastname + "', City='" + student.City + "', Address='" + student.Address + "'," +
-             "Birthdate='" + student.Birthdate + "', Username='" + student.Username + "', Password='" + student.Password + "', Lastlogin ='" + student.Lastlogin.ToString() + "', Userrole=" + student.Userrole + ", PhoneNumber=" + student.Phonenumber + ", fk_ClassId="+student.FkClassid+" WHERE Id=" + student.Id + ";");
+             "Birthdate='" + student.Birthdate + "', Username='" + student.Username + "', Password='" + student.Password + "', Lastlogin ='" + student.Lastlogin.ToString() + "', Userrole=" + student.Userrole + ", PhoneNumber=" + student.Phonenumber + ", fk_ClassId=" + student.FkClassid + " WHERE Id=" + student.Id + ";");
 
             if (result == -1)
             {
@@ -511,22 +535,28 @@ END CATCH*/
             return parents;
         }
 
+        public bool DeleteStudent(int id)
+        {
+
+            return true;
+        }
+
         #endregion
 
         #region ClassCRUD
 
-          public bool InsertClass(Class theClass)
+        public bool InsertClass(Class theClass)
         {
             bool success = true;
             int result;
 
-              
+
 
             DB.Open();
             // this works very well !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             result = DB.Exec("BEGIN TRANSACTION BEGIN TRY INSERT INTO [Class](Name, fk_TeacherId, fk_SchoolId)" +
-                "VALUES('" + theClass.Name +"'," +theClass.Fkteacherid + "," + 1+");" +
+                "VALUES('" + theClass.Name + "'," + theClass.Fkteacherid + "," + 1 + ");" +
                 " COMMIT TRANSACTION   END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
 
 
@@ -541,31 +571,28 @@ END CATCH*/
             return success;
         }
 
-          public bool UpdateClass(Class theClass)
-          {
-              bool success = true;
-
-              try
-              {
-                  DB.Open();
-                  DB.Exec("UPDATE [Class] SET Name ='" + theClass.Name + "', fk_TeacherId=" + theClass.Fkteacherid +" WHERE Id=" + theClass.Id + ";");
-              }
-              catch (Exception)
-              {
-                  Debug.Write("Fejl!");
-                  success = false;
-              }
-
-              return success;
-
-          }
-
-
-
-
-        public List<Class> GetClasses()
+        public bool UpdateClass(Class theClass)
         {
-            List<Class> classes = new List<Class>();
+            bool success = true;
+
+            try
+            {
+                DB.Open();
+                DB.Exec("UPDATE [Class] SET Name ='" + theClass.Name + "', fk_TeacherId=" + theClass.Fkteacherid + " WHERE Id=" + theClass.Id + ";");
+            }
+            catch (Exception)
+            {
+                Debug.Write("Fejl!");
+                success = false;
+            }
+
+            return success;
+
+        }
+
+        public List<ClassEx> GetClasses()
+        {
+            List<ClassEx> classes = new List<ClassEx>();
 
             try
             {
@@ -576,13 +603,15 @@ END CATCH*/
 
                 for (int i = 0; i < getClasses.Length; i++)
                 {
-                    Class theClass = new Class();
+                    ClassEx theClass = new ClassEx();
                     theClass.Id = Convert.ToInt32(getClasses[i][0]);
                     theClass.Name = (getClasses[i][1]);
                     theClass.Fkteacherid = Convert.ToInt32((getClasses[i][2]));
                     theClass.Fkschoolid = Convert.ToInt32(getClasses[i][3]);
                     classes.Add(theClass);
                 }
+
+              
             }
             catch (Exception ex)
             {
@@ -595,11 +624,40 @@ END CATCH*/
             return classes;
         }
 
+        public bool DeleteClass(int id)
+        {
 
-
-
+            return true;
+        }
 
         #endregion
+
+        public int GetTheUserrole(int id)
+        {
+            int userrole = -1;
+
+            try
+            {
+                DB.Open();
+
+                string[][] getTableName = DB.Query("SELECT [User].Userrole FROM [User] WHERE [User].Id=" + id);
+
+                for (int i = 0; i < getTableName.Length; i++)
+                {
+                    userrole = Convert.ToInt32(getTableName[i][0]);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                DB.Close();
+            }
+
+            return userrole;
+        }
 
     }
 }

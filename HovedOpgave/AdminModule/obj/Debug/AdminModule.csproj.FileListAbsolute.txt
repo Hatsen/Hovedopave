@@ -510,3 +510,5 @@ C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\ro\Xceed.Wp
 C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\AdminModule\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\DeleteView\DeleteView.baml
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\Views\DeleteView\DeleteView.g.cs

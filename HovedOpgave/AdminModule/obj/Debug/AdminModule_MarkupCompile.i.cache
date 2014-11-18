@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\obj\Debug\
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\obj\Debug\
 AdminModule
 none
 false
 DEBUG;TRACE
-C:\Users\Lars Skaaning\Dropbox\Datamatiker\HovedOpgave\AdminModule\App.xaml
-5-663988136
+C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\AdminModule\App.xaml
+6-995334786
 
-261060871476
-37-192187596
-Views\CuView\ClassCuView.xaml;Views\MainWindowView.xaml;Views\CuView\ParentCuView.xaml;Views\CuView\StudentCuView.xaml;Views\CuView\TeacherCuView.xaml;
+30-208728322
+37-264639536
+Views\CuView\ClassCuView.xaml;Views\DeleteView\DeleteView.xaml;Views\MainWindowView.xaml;Views\CuView\ParentCuView.xaml;Views\CuView\StudentCuView.xaml;Views\CuView\TeacherCuView.xaml;
 
 False
 

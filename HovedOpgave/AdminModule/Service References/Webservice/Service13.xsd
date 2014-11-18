@@ -67,12 +67,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfStudent" nillable="true" type="tns:ArrayOfStudent" />
-  <xs:complexType name="ArrayOfClass">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Class" nillable="true" type="tns:Class" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfClass" nillable="true" type="tns:ArrayOfClass" />
   <xs:complexType name="Class">
     <xs:sequence>
       <xs:element minOccurs="0" name="Fkschoolid" type="xs:int" />

@@ -33,7 +33,7 @@ namespace AdminModule.ViewModels
             {
                 ObjectHolder.Instance.GetTeachers();
             }
-            // hent teacherlist. hvis den allerede er i mainvindue er der ingen grund til 
+            // henter teacherlist. hvis den allerede er i mainvindue er der ingen grund til 
             // at hente fra servicen. Så bare hent fra objektholder. ellers må du hente.
 
             ConfirmCommand = new DelegateCommand<object>(Confirm, IsEnable);
@@ -154,13 +154,7 @@ namespace AdminModule.ViewModels
             if (Viewstate == Enums.ViewState.Create)
             {
                 Class theClass = new Class();
-                /* Parent.Firstname = firstname;
-                 Parent.Lastname = lastname;
-                 Parent.City = city;
-                 Parent.Birthdate = birthdate;
-                 Parent.Address = address;
-                 Parent.Userrole = (int)Enums.Userrole.Parent;
-                 Parent.Phonenumber = phonenumber;*/
+               
                 theClass.Name = ClassName;
                 theClass.Fkteacherid = SelectedTeacher.Id;
 
@@ -173,12 +167,6 @@ namespace AdminModule.ViewModels
                 // her vil det ikke være nødvendigt at oprette password, id og username.
                 //  BusinessLogic.Instance.UpdateParent(CurrentParent);
 
-                /* CurrentParent.Firstname = firstname;
-                 CurrentParent.Lastname = lastname;
-                 CurrentParent.City = city;
-                 CurrentParent.Birthdate = birthdate;
-                 CurrentParent.Address = address;
-                 CurrentParent.Phonenumber = phonenumber;*/
 
                 CurrentClass.Name = ClassName;
                 CurrentClass.Fkteacherid = SelectedTeacher.Id;
@@ -189,8 +177,8 @@ namespace AdminModule.ViewModels
 
             Isloading = false;
             MessageBox.Show(success
-               ? "Forældre er oprettet/opdateret! Vinduet lukkes."
-               : "Noget gik galt. Underviseren er ikke blevet oprettet/opdateret. Vinduet lukkes.");
+               ? "Klassen er oprettet/opdateret! Vinduet lukkes."
+               : "Noget gik galt. Klassen er ikke blevet oprettet/opdateret. Vinduet lukkes.");
 
             OnClassViewClose();
             //tjek med id.findes id allerede på user skal der ikke genereres username eller password.

@@ -7,6 +7,7 @@ using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Text;
 using Webservice.DB;
+using Webservice.Extended;
 
 namespace Webservice
 {
@@ -37,6 +38,9 @@ namespace Webservice
         [OperationContract]
         List<Teacher> GetTeachers();
 
+        [OperationContract]
+        string DeleteUser(int id);
+
         #endregion
 
 
@@ -48,6 +52,9 @@ namespace Webservice
         [OperationContract]
         List<Parent> GetParents();
 
+        [OperationContract]
+        bool DeleteParent(int id);
+
 
         #endregion
 
@@ -58,18 +65,23 @@ namespace Webservice
         [OperationContract]
         List<Student> GetStudents();
 
+        [OperationContract]
+        bool DeleteStudent(int id);
+
         #endregion
 
 
         #region Class
 
         [OperationContract]
-        List<Class> GetClasses();
+        List<ClassEx> GetClasses();
 
 
         [OperationContract]
         bool InsertClass(Class theClass);
 
+        [OperationContract]
+        bool DeleteClass(int id);
 
         #endregion
 

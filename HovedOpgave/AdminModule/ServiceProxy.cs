@@ -286,9 +286,9 @@ namespace AdminModule
 
 
 
-       public Task<List<Class>> GetClasses()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       public Task<List<ClassEx>> GetClasses()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {
-           var tcs = new TaskCompletionSource<List<Class>>();
+           var tcs = new TaskCompletionSource<List<ClassEx>>();
            EventHandler<GetClassesCompletedEventArgs> handler = null;
            handler = (sender, args) =>
            {
@@ -360,6 +360,38 @@ namespace AdminModule
         #endregion 
 
 
+       
+
+       public Task<string> DeleteUserById(int id)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       {
+           var tcs = new TaskCompletionSource<string>();
+           EventHandler<DeleteUserCompletedEventArgs> handler = null;
+           handler = (sender, args) =>
+           {
+               if (args.UserState == tcs)
+               {
+                   service.DeleteUserCompleted -= handler;
+                   if (args.Error != null)
+                   {
+                       tcs.TrySetException(args.Error);
+                   }
+                   else if (args.Cancelled)
+                   {
+                       tcs.TrySetCanceled();
+                   }
+                   else
+                   {
+                       tcs.TrySetResult(args.Result);
+                   }
+
+               }
+           };
+
+           service.DeleteUserCompleted += handler;
+           service.DeleteUserAsync(id, tcs);
+
+           return tcs.Task;
+       }
 
 
     }

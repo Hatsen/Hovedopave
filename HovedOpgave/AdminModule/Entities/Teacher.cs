@@ -10,7 +10,7 @@ namespace AdminModule.Webservice // ændret namespace for at tilgå proxyklasser
     {
        public override string ToString()
        {
-           return base.Firstname + " " + Lastname.ToString();
+           return base.Firstname + " " + Lastname.ToString(); 
        }
     }
 }

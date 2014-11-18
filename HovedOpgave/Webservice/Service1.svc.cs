@@ -9,13 +9,14 @@ using System.ServiceModel.Web;
 using System.Text;
 using Crypto;
 using Webservice.DB;
+using Webservice.Extended;
 
 namespace Webservice
 {
     public class Service1 : IService1
     {
 
-       
+
         public bool GetLoginDetails(string username, string password)
         {
             HttpContext context = HttpContext.Current;
@@ -77,7 +78,7 @@ namespace Webservice
 
         #region TeacherMethods
 
-    /*    public Teacher GetTeacher()
+        /*    public Teacher GetTeacher()
         {
             Teacher t = new Teacher();
             t.Id = 1; t.Firstname = "Hr Jensen";
@@ -91,10 +92,10 @@ namespace Webservice
         }
 
 
-    /*    public int GetMostRecentUserId()
-        {
-            return DatabaseHandler.Instance.GetMostRecentUserId();
-        }*/
+        /*    public int GetMostRecentUserId()
+            {
+                return DatabaseHandler.Instance.GetMostRecentUserId();
+            }*/
 
 
         public bool InsertTeacher(Teacher teacher)
@@ -108,17 +109,70 @@ namespace Webservice
 
             else
             {
-             //   int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
+                //   int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
 
-              //  if (recentId != -1)
-               // {
+                //  if (recentId != -1)
+                // {
                 /*    teacher.Id = recentId;
                     teacher.Fkuserid = recentId;
                     teacher.Username = "Te_" + recentId;*/
-                    success = DatabaseHandler.Instance.InsertTeacher(teacher); // will insert into User and Teacher.
+                success = DatabaseHandler.Instance.InsertTeacher(teacher); // will insert into User and Teacher.
                 //}
             }
             return success;
+        }
+
+        public string DeleteUser(int id)
+        {
+            string returnMessage = "";
+            int userrole = DatabaseHandler.Instance.GetTheUserrole(id);
+            string tableName = "";
+            // delete user. Du har user tabel og evt. teacher, student eller parent.
+
+            if (userrole == (int)EnumsWeb.Userrole.Teacher)
+            {
+                tableName = "Teacher";
+                bool result = DatabaseHandler.Instance.DeleteUser(id, tableName);
+
+                if (!result && tableName == "Teacher")
+                {
+                    returnMessage =
+                        "Før du kan fjerne teahcer skal du fjerne klasse eller klasser, der er tilknyttet underviseren." +
+                        "Underviseren er ikke blevet slettet." +
+                        "Du bedes kontakte support.";
+                }
+            }
+
+            if (userrole == (int)EnumsWeb.Userrole.Parent)
+            {
+                tableName = "Parent";
+                bool result = DatabaseHandler.Instance.DeleteUser(id, tableName);
+
+                if (!result && tableName == "Parent")
+                {
+                    returnMessage =
+                        "Noget gik galt under sletningen af forældre. Forældren er ikke blevet slettet." +
+                        "Du bedes kontakte support.";
+                }
+
+            }
+
+
+            if (userrole == (int)EnumsWeb.Userrole.Student)
+            {
+                tableName = "Student";
+                bool result = DatabaseHandler.Instance.DeleteUser(id, tableName);
+
+                if (!result && tableName == "Student")
+                {
+                    returnMessage =
+                        "Noget gik galt under sletningen af elev. Eleven er ikke blevet slettet." +
+                        "Du bedes kontakte support.";
+                }
+
+            }
+
+            return returnMessage;
         }
 
         #endregion
@@ -147,12 +201,12 @@ namespace Webservice
             {
                 //int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
 
-               // if (recentId != -1)
+                // if (recentId != -1)
                 //{
-                 /*   parent.Id = recentId;
-                    parent.Fkuserid = recentId;
-                    parent.Username = "Pa_" + recentId;*/
-                    success = DatabaseHandler.Instance.InsertParent(parent); 
+                /*   parent.Id = recentId;
+                   parent.Fkuserid = recentId;
+                   parent.Username = "Pa_" + recentId;*/
+                success = DatabaseHandler.Instance.InsertParent(parent);
                 //}
             }
             return success;
@@ -161,10 +215,16 @@ namespace Webservice
 
         public List<Parent> GetParents()
         {
-          
+
             return DatabaseHandler.Instance.GetParents();
         }
 
+
+        public bool DeleteParent(int id)
+        {
+
+            return DatabaseHandler.Instance.DeleteParent(id);
+        }
 
         #endregion
 
@@ -176,21 +236,21 @@ namespace Webservice
 
             bool success = false;
 
-            if (student.Id!=0)
+            if (student.Id != 0)
             {
                 success = DatabaseHandler.Instance.UpdateStudent(student);
             }
             else
             {
-            //int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
+                //int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
 
-           // if (recentId != -1)
-            //{
-              /*  student.Id = recentId;
-                student.Fkuserid = recentId;
-                student.Username = "St_" + recentId;*/
+                // if (recentId != -1)
+                //{
+                /*  student.Id = recentId;
+                  student.Fkuserid = recentId;
+                  student.Username = "St_" + recentId;*/
                 success = DatabaseHandler.Instance.InsertStudent(student); // will insert into User and Teacher.
-          //  }
+                //  }
             }
             return success;
 
@@ -202,9 +262,14 @@ namespace Webservice
 
 
             return DatabaseHandler.Instance.GetStudents();
-          
+
         }
 
+        public bool DeleteStudent(int id)
+        {
+
+            return DatabaseHandler.Instance.DeleteStudent(id);
+        }
 
         #endregion
 
@@ -213,23 +278,25 @@ namespace Webservice
         #region Class
 
 
-        public List<Class> GetClasses()
+        public List<ClassEx> GetClasses()
         {
+            List<ClassEx> listOfClassExs = new List<ClassEx>();
+            List<Student> listOfStudents = DatabaseHandler.Instance.GetStudents();
+            // her bliver studerende sat ind i listen:
+            listOfClassExs = DatabaseHandler.Instance.GetClasses();
 
-         /*   List<Class> listen = new List<Class>();
-
-            for (int i = 0; i < 10; i++)
+            foreach (ClassEx classEx in listOfClassExs)
             {
-                Class c = new Class();
-                c.Fkschoolid = 1;
-                c.Fkteacherid = 1;
-                c.Name = "hej";
-                c.Id = i;
-                listen.Add(c);
-            }*/
+                foreach (Student student in listOfStudents)
+                {
+                    if (student.FkClassid == classEx.Id)
+                    {
+                        classEx.StudentsList.Add(student);
+                    }
+                }
+            }
 
-          return  DatabaseHandler.Instance.GetClasses();
-
+            return listOfClassExs;
         }
 
         public bool InsertClass(Class theClass)
@@ -249,7 +316,10 @@ namespace Webservice
             return success;
         }
 
-      
+        public bool DeleteClass(int id)
+        {
+            return DatabaseHandler.Instance.DeleteClass(id);
+        }
 
         #endregion
 

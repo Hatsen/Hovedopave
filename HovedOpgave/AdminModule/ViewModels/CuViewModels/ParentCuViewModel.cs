@@ -216,7 +216,7 @@ namespace AdminModule.ViewModels
         public void Cancel(Object o)
         {
             
-            RaiseOnProjectViewClose();
+            RaiseOnParentViewClose();
         }
 
         #endregion
@@ -228,7 +228,7 @@ namespace AdminModule.ViewModels
         #region Methods
 
 
-        private void RaiseOnProjectViewClose()
+        private void RaiseOnParentViewClose()
         {
             if (OnParentViewClose != null)
             {
