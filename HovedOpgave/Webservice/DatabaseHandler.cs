@@ -104,14 +104,8 @@ namespace Webservice
                     anc.GroupID = Convert.ToInt32(getAnc[i][4]);
                     anc.ClassID = Convert.ToInt32(getAnc[i][5]);
 
-<<<<<<< HEAD
                     //if (Holder.Instance.Announcements.Any(announcement => announcement.ID != anc.ID))
                     Holder.Instance.Announcements.Add(anc);
-
-=======
-                    if (Holder.Instance.Announcements.Any(announcement => announcement.ID != anc.ID))
-                        Holder.Instance.Announcements.Add(anc);
->>>>>>> origin/master
                 }
             }
             catch (Exception ex)

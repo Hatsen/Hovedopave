@@ -47,7 +47,7 @@ namespace Webservice
             switch(Holder.Instance.LoginDetails.Userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
             {
                 case 1: //Skoleleder
-                    userDetails[5] = 0;
+                    userDetails[5] = "0";
                     break;
 
                 case 2: //Teacher
