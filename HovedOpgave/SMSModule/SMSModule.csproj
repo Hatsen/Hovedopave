@@ -168,12 +168,15 @@
     <Content Include="Service References\Webservice\SMSModule.Webservice.Teacher.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\Webservice\SMSModule.Webservice.Class.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\Webservice\Service14.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Webservice\Service15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\Webservice\SMSModule.Webservice.ClassEx.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

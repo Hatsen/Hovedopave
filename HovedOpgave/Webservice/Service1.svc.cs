@@ -103,6 +103,11 @@ namespace Webservice
             return announcements;
         }
 
+        public string GetAnnouncementCreator(int id)
+        {
+            return DatabaseHandler.Instance.GetAnnouncementCreator(id);
+        }
+
         public bool ChangePassword(int id, string oldPass, string newPass, string confirmPass)
         {
             bool success = false;

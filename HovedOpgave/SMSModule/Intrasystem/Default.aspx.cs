@@ -25,7 +25,7 @@ namespace SMSModule.Intrasystem
                 html += "<tr>";
                 html += "<td class='ancMessageItem'>" + anc.Message + "</td>";
                 html += "</tr>";
-                html += "<td class='ancCreatorItem'><b>Skrevet af:  </b></td>";
+                html += "<td class='ancCreatorItem'><b>Skrevet af: " + await ObjectHolder.Instance.UcController.GetAnnouncementCreator(anc.Creator) + " </b></td>";
                 html += "</tr>";
                 html += "<td></td>";
                 html += "</tr>";

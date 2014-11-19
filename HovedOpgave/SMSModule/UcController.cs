@@ -37,6 +37,12 @@ namespace SMSModule
             return result;
         }
 
+        public async Task<string> GetAnnouncementCreator(int id)
+        {
+            string result = await ServiceProxy.Instance.GetAnnouncementCreator(id);
+            return result;
+        }
+
         public async Task<bool> ChangePassword(int id, string oldPass, string newPass, string confirmPass)
         {
             bool result = await ServiceProxy.Instance.ChangePassword(id, oldPass, newPass, confirmPass);

@@ -119,6 +119,26 @@ namespace Webservice
             return announcements;
         }
 
+        public string GetAnnouncementCreator(int id)
+        {
+            string name = "";
+            try
+            {
+                DB.Open();
+                string[][] getCreator = DB.Query("SELECT * FROM [user] WHERE id =" + id);
+                name = getCreator[0][1] + " " + getCreator[0][2];
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                DB.Close();
+            }
+
+            return name;
+        }
+
         /// <summary>
         /// Gets a users informations from the database, and returns it as an User Object.
         /// </summary>
