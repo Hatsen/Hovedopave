@@ -19,7 +19,7 @@ namespace SMSModule.Intrasystem
             for (int i = 0; i < classList.Count; i++)
             {
                 html += "<tr>";
-                html += "<td><a href='Default.aspx?class=" + classList[i].ToString() + "'>" + classList[i].ToString() + "</a></td>";
+                html += "<td class='selectorLinkItem'><a href='Default.aspx?class=" + classList[i].ToString() + "'>" + classList[i].ToString() + "</a></td>";
                 html += "</tr>";
             }
             html += "</table>";
