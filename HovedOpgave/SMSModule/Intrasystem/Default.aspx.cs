@@ -13,8 +13,14 @@ namespace SMSModule.Intrasystem
         protected async void Page_Load(object sender, EventArgs e)
         {
             string html = "";
+            int selectedClass = Convert.ToInt32(Request.QueryString["class"]);
 
-            List<Announcement> announcementList = await ObjectHolder.Instance.UcController.GetAnnouncements(Convert.ToInt32(Session["userrole"]), 0);
+            if ((await ObjectHolder.Instance.UcController.GetClassDetails(Convert.ToInt32(Session["userid"]), Convert.ToInt32(Session["userrole"]))).Contains(selectedClass))
+            {
+                Session["selectedclass"] = selectedClass;
+            }
+
+            List<Announcement> announcementList = await ObjectHolder.Instance.UcController.GetAnnouncements(Convert.ToInt32(Session["userrole"]), Convert.ToInt32(Session["selectedclass"]));
 
             html += "<table id='announcementTable'>";
             foreach(Announcement anc in announcementList)

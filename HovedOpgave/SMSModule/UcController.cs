@@ -25,6 +25,12 @@ namespace SMSModule
             return result;
         }
 
+        public async Task<List<int>> GetClassDetails(int id, int userrole)
+        {
+            List<int> result = await ServiceProxy.Instance.GetClassDetails(id, userrole);
+            return result;
+        }
+
         public async Task<bool> CreateAnnouncement(int creator, string header, string message, int groupID, int classID)
         {
             bool result = await ServiceProxy.Instance.CreateAnnouncement(creator, header, message, groupID, classID);

@@ -24,6 +24,9 @@ namespace Webservice
         List<int> FindParentsChildren(int id);
 
         [OperationContract]
+        List<int> GetClassDetails(int id, int userrole);
+
+        [OperationContract]
         bool CreateAnnouncement(int creator, string header, string message, int group, int classID);
 
         [OperationContract]

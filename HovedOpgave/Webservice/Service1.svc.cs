@@ -36,18 +36,25 @@ namespace Webservice
 
         public string GetUserDetails(int number)
         {
-            string[] userDetails = new string[6];
+            string[] userDetails = new string[5];
 
             userDetails[0] = Convert.ToString(Holder.Instance.LoginDetails.Id);
             userDetails[1] = Holder.Instance.LoginDetails.Firstname;
             userDetails[2] = Holder.Instance.LoginDetails.Lastname;
             userDetails[3] = Holder.Instance.LoginDetails.Username;
             userDetails[4] = Convert.ToString(Holder.Instance.LoginDetails.Userrole);
+  
+            return userDetails[number];
+        }
 
-            switch(Holder.Instance.LoginDetails.Userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
+        public List<int> GetClassDetails(int id, int userrole)
+        {
+            List<int> classList = new List<int>();
+
+            switch(userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
             {
                 case 1: //Skoleleder
-                    userDetails[5] = "0";
+                    classList.Add(0);
                     break;
 
                 case 2: //Teacher
@@ -59,7 +66,7 @@ namespace Webservice
                 break;
 
                 case 4: //Parent
-                    userDetails[5] = Convert.ToString(FindParentsChildren(Holder.Instance.LoginDetails.Id));
+                    classList = FindParentsChildren(id);
                 break;
 
                 case 5: //Student
@@ -67,7 +74,7 @@ namespace Webservice
                 break;
             }
 
-            return userDetails[number];
+            return classList;
         }
 
         public List<int> FindParentsChildren(int id)

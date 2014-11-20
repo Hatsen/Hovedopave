@@ -59,9 +59,9 @@ namespace Webservice
 
             try
             {
-                DB.Open();
-                string[][] getChildren = DB.Query("SELECT fk_ParentId FROM [StudentParent] INNER JOIN [Parent] ON Parent.Id = StudentParent.fk_ParentId");
-
+                DB.Open(); //SELECT fk_StudentId, fk_ParentId FROM [StudentParent] INNER JOIN [Parent] ON Parent.Id = StudentParent.fk_ParentId
+                string[][] getChildren = DB.Query("SELECT * FROM StudentParent");
+                
                 for (int i = 0; i < getChildren.Length; i++)
                 {
                     if (Convert.ToInt32(getChildren[i][1]) == id)

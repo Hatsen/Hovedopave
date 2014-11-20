@@ -608,6 +608,14 @@ namespace SMSModule.Webservice {
         
         System.Collections.Generic.List<int> EndFindParentsChildren(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetClassDetails", ReplyAction="http://tempuri.org/IService1/GetClassDetailsResponse")]
+        System.Collections.Generic.List<int> GetClassDetails(int id, int userrole);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetClassDetails", ReplyAction="http://tempuri.org/IService1/GetClassDetailsResponse")]
+        System.IAsyncResult BeginGetClassDetails(int id, int userrole, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<int> EndGetClassDetails(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateAnnouncement", ReplyAction="http://tempuri.org/IService1/CreateAnnouncementResponse")]
         bool CreateAnnouncement(int creator, string header, string message, int group, int classID);
         
@@ -786,6 +794,25 @@ namespace SMSModule.Webservice {
         private object[] results;
         
         public FindParentsChildrenCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<int> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<int>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetClassDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetClassDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1124,6 +1151,12 @@ namespace SMSModule.Webservice {
         
         private System.Threading.SendOrPostCallback onFindParentsChildrenCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetClassDetailsDelegate;
+        
+        private EndOperationDelegate onEndGetClassDetailsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetClassDetailsCompletedDelegate;
+        
         private BeginOperationDelegate onBeginCreateAnnouncementDelegate;
         
         private EndOperationDelegate onEndCreateAnnouncementDelegate;
@@ -1244,6 +1277,8 @@ namespace SMSModule.Webservice {
         public event System.EventHandler<GetUserDetailsCompletedEventArgs> GetUserDetailsCompleted;
         
         public event System.EventHandler<FindParentsChildrenCompletedEventArgs> FindParentsChildrenCompleted;
+        
+        public event System.EventHandler<GetClassDetailsCompletedEventArgs> GetClassDetailsCompleted;
         
         public event System.EventHandler<CreateAnnouncementCompletedEventArgs> CreateAnnouncementCompleted;
         
@@ -1427,6 +1462,58 @@ namespace SMSModule.Webservice {
             }
             base.InvokeAsync(this.onBeginFindParentsChildrenDelegate, new object[] {
                         id}, this.onEndFindParentsChildrenDelegate, this.onFindParentsChildrenCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<int> GetClassDetails(int id, int userrole) {
+            return base.Channel.GetClassDetails(id, userrole);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetClassDetails(int id, int userrole, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetClassDetails(id, userrole, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<int> EndGetClassDetails(System.IAsyncResult result) {
+            return base.Channel.EndGetClassDetails(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetClassDetails(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            int userrole = ((int)(inValues[1]));
+            return this.BeginGetClassDetails(id, userrole, callback, asyncState);
+        }
+        
+        private object[] OnEndGetClassDetails(System.IAsyncResult result) {
+            System.Collections.Generic.List<int> retVal = this.EndGetClassDetails(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetClassDetailsCompleted(object state) {
+            if ((this.GetClassDetailsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetClassDetailsCompleted(this, new GetClassDetailsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetClassDetailsAsync(int id, int userrole) {
+            this.GetClassDetailsAsync(id, userrole, null);
+        }
+        
+        public void GetClassDetailsAsync(int id, int userrole, object userState) {
+            if ((this.onBeginGetClassDetailsDelegate == null)) {
+                this.onBeginGetClassDetailsDelegate = new BeginOperationDelegate(this.OnBeginGetClassDetails);
+            }
+            if ((this.onEndGetClassDetailsDelegate == null)) {
+                this.onEndGetClassDetailsDelegate = new EndOperationDelegate(this.OnEndGetClassDetails);
+            }
+            if ((this.onGetClassDetailsCompletedDelegate == null)) {
+                this.onGetClassDetailsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetClassDetailsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetClassDetailsDelegate, new object[] {
+                        id,
+                        userrole}, this.onEndGetClassDetailsDelegate, this.onGetClassDetailsCompletedDelegate, userState);
         }
         
         public bool CreateAnnouncement(int creator, string header, string message, int group, int classID) {

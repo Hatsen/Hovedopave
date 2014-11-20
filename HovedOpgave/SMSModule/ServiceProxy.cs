@@ -96,6 +96,37 @@ namespace SMSModule
              return tcs.Task;
          }
 
+         public Task<List<int>> GetClassDetails(int id, int userrole)
+         {
+             var tcs = new TaskCompletionSource<List<int>>();
+             EventHandler<GetClassDetailsCompletedEventArgs> handler = null;
+             handler = (sender, args) =>
+             {
+                 if (args.UserState == tcs)
+                 {
+                     service.GetClassDetailsCompleted -= handler;
+                     if (args.Error != null)
+                     {
+                         tcs.TrySetException(args.Error);
+                     }
+                     else if (args.Cancelled)
+                     {
+                         tcs.TrySetCanceled();
+                     }
+                     else
+                     {
+                         tcs.TrySetResult(args.Result);
+                     }
+                 }
+             };
+
+             service.GetClassDetailsCompleted += handler;
+             service.GetClassDetailsAsync(id, userrole, tcs);
+ 
+             return tcs.Task;
+         }
+
+        
          public Task<bool> CreateAnnouncement(int creator, string header, string message, int group, int classID)
          {
              var tcs = new TaskCompletionSource<bool>();
