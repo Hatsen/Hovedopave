@@ -46,68 +46,44 @@ namespace Webservice
             return userDetails[number];
         }
 
-
-            switch (Holder.Instance.LoginDetails.Userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
-
         public List<ClassEx> GetClassDetails(int id, int userrole)
         {
             List<ClassEx> classList = GetClasses();
 
             foreach (ClassEx classEx in classList)
-
             {
-                foreach(Student student in classEx.StudentsList)
+                foreach (Student student in classEx.StudentsList)
                 {
                     if (student.Id == id)
-                {
-                    switch (userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
                     {
-                        case 1: //Skoleleder
-                            classList.Add(null);
-                            break;
+                        switch (userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
+                        {
+                            case 1: //Skoleleder
+                                classList.Add(null);
+                                break;
+                            case 2: //Teacher
 
+                                break;
 
-                case 2: //Teacher
+                            case 3: //Vikar
 
-                    break;
+                                break;
 
-                case 3: //Vikar
+                            case 4: //Parent
+                                if (!classList.Contains(classEx))
+                                {
+                                    classList.Add(classEx);
+                                }
+                                break;
 
-                    break;
-
-                case 4: //Parent
-                    userDetails[5] = Convert.ToString(FindParentsChildren(Holder.Instance.LoginDetails.Id));
-                    break;
-
-                        case 2: //Teacher
-
-                            break;
-
-                        case 3: //Vikar
-
-
-                            break;
-
-
-                    break;
-            }
-
-                        case 4: //Parent
-                            if (!classList.Contains(classEx))
-                            {
-                                classList.Add(classEx);
-                            }
-                            break;
-
-
-                        case 5: //Student
-
-                            break;
+                            case 5: //Student
+                                break;
+                        }
                     }
                 }
-                }
-              return classList;
             }
+            return classList;
+        }
           
         
 
