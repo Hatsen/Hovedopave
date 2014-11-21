@@ -21,7 +21,10 @@ namespace SMSModule.Intrasystem
             if (result == true)
             {
                 Response.Write("<SCRIPT LANGUAGE='JavaScript'>alert('Din adgangskode er nu blevet ændret!')</SCRIPT>");
-                Response.Redirect("ChangePassword.aspx");
+
+                txtOldPass.Text = "";
+                txtNewPass.Text = "";
+                txtConfirmPass.Text = "";
             }
             else
             {

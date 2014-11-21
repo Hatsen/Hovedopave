@@ -105,6 +105,28 @@
     min-width: 200px;
 }
 
+#selector
+{
+    background-color: white;
+    border-left: 1px solid;
+	border-right: 1px solid;
+    border-bottom: 1px solid;
+    width: 20%;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+#selectorheader
+{
+    background-image: url('../images/blackboard.png');
+    border-radius: 20px 20px 0px 0px;
+	border: 1px solid;
+    min-height: 75px;
+    width: 20%;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
 #selectorClassTable
 {
     text-align: center;

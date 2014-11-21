@@ -4,17 +4,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Vælg klasse</title>
+    <link rel="stylesheet" href="../style/intra.css" type="text/css"/>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-        <asp:Label ID="Label1" runat="server" Font-Bold="True" Text="Vælg din ønskede klasse:"></asp:Label>
-    </div>
+        <header id="selectorheader">
+            <h1 id="bannerTitle">Vælg en klasse</h1>
+        </header>
+        <section id="selector">
         <div id="selectorClassArea" runat="server">
 
         </div>
+       </section>
     </form>
 </body>
 </html>
