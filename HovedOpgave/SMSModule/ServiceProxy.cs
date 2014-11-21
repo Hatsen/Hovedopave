@@ -96,6 +96,37 @@ namespace SMSModule
              return tcs.Task;
          }
 
+         public Task<List<ClassEx>> GetClassDetails(int id, int userrole)
+         {
+             var tcs = new TaskCompletionSource<List<ClassEx>>();
+             EventHandler<GetClassDetailsCompletedEventArgs> handler = null;
+             handler = (sender, args) =>
+             {
+                 if (args.UserState == tcs)
+                 {
+                     service.GetClassDetailsCompleted -= handler;
+                     if (args.Error != null)
+                     {
+                         tcs.TrySetException(args.Error);
+                     }
+                     else if (args.Cancelled)
+                     {
+                         tcs.TrySetCanceled();
+                     }
+                     else
+                     {
+                         tcs.TrySetResult(args.Result);
+                     }
+                 }
+             };
+
+             service.GetClassDetailsCompleted += handler;
+             service.GetClassDetailsAsync(id, userrole, tcs);
+ 
+             return tcs.Task;
+         }
+
+        
          public Task<bool> CreateAnnouncement(int creator, string header, string message, int group, int classID)
          {
              var tcs = new TaskCompletionSource<bool>();
@@ -155,6 +186,36 @@ namespace SMSModule
 
              return tcs.Task;
          }
+
+        public Task<string> GetAnnouncementCreator(int id)
+        {
+            var tcs = new TaskCompletionSource<string>();
+            EventHandler<GetAnnouncementCreatorCompletedEventArgs> handler = null;
+            handler = (sender, args) =>
+            {
+                if (args.UserState == tcs)
+                {
+                    service.GetAnnouncementCreatorCompleted -= handler;
+                    if (args.Error != null)
+                    {
+                        tcs.TrySetException(args.Error);
+                    }
+                    else if (args.Cancelled)
+                    {
+                        tcs.TrySetCanceled();
+                    }
+                    else
+                    {
+                        tcs.TrySetResult(args.Result);
+                    }
+                }
+            };
+
+            service.GetAnnouncementCreatorCompleted += handler;
+            service.GetAnnouncementCreatorAsync(id, tcs);
+
+            return tcs.Task;
+        }
 
         public Task<bool> ChangePassword(int id, string oldPass, string newPass, string confirmPass)
         {

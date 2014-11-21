@@ -21,13 +21,19 @@ namespace Webservice
         string GetUserDetails(int number);
 
         [OperationContract]
-        List<int> FindParentsChildren(int id);
+        List<Student> FindParentsChildren(int id);
+
+        [OperationContract]
+        List<ClassEx> GetClassDetails(int id, int userrole);
 
         [OperationContract]
         bool CreateAnnouncement(int creator, string header, string message, int group, int classID);
 
         [OperationContract]
         List<Announcement> GetAnnouncements(int group, int classID);
+
+        [OperationContract]
+        string GetAnnouncementCreator(int id);
 
         [OperationContract]
         bool ChangePassword(int id, string oldPass, string newPass, string confirmPass);

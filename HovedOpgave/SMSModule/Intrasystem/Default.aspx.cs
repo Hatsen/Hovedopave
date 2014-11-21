@@ -1,10 +1,10 @@
-﻿using SMSModule.Webservice;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SMSModule.Webservice;
 
 namespace SMSModule.Intrasystem
 {
@@ -13,8 +13,24 @@ namespace SMSModule.Intrasystem
         protected async void Page_Load(object sender, EventArgs e)
         {
             string html = "";
+            int selectedClass = Convert.ToInt32(Request.QueryString["class"]);
+            List<ClassEx> classList = (await ObjectHolder.Instance.UcController.GetClassDetails(Convert.ToInt32(Session["userid"]), Convert.ToInt32(Session["userrole"])));
 
-            List<Announcement> announcementList = await ObjectHolder.Instance.UcController.GetAnnouncements(Convert.ToInt32(Session["userrole"]), 0);
+            foreach (ClassEx classEx in classList)
+            {
+                if (classEx.Id == Convert.ToInt32(Request.QueryString["selectedclass"]))
+                {
+                    Session["selectedclass"] = classEx.Id;
+                }
+            }
+
+            /*
+            if ((await ObjectHolder.Instance.UcController.GetClassDetails(Convert.ToInt32(Session["userid"]), Convert.ToInt32(Session["userrole"]))).Contains(selectedClass))
+            {
+                Session["selectedclass"] = selectedClass;
+            }
+            */
+            List<Announcement> announcementList = await ObjectHolder.Instance.UcController.GetAnnouncements(Convert.ToInt32(Session["userrole"]), Convert.ToInt32(Session["selectedclass"]));
 
             html += "<table id='announcementTable'>";
             foreach(Announcement anc in announcementList)
@@ -25,7 +41,7 @@ namespace SMSModule.Intrasystem
                 html += "<tr>";
                 html += "<td class='ancMessageItem'>" + anc.Message + "</td>";
                 html += "</tr>";
-                html += "<td class='ancCreatorItem'><b>Skrevet af:  </b></td>";
+                html += "<td class='ancCreatorItem'><b>Skrevet af: " + await ObjectHolder.Instance.UcController.GetAnnouncementCreator(anc.Creator) + " </b></td>";
                 html += "</tr>";
                 html += "<td></td>";
                 html += "</tr>";

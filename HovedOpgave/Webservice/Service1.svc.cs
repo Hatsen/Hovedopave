@@ -35,20 +35,38 @@ namespace Webservice
 
         public string GetUserDetails(int number)
         {
-            string[] userDetails = new string[6];
+            string[] userDetails = new string[5];
 
             userDetails[0] = Convert.ToString(Holder.Instance.LoginDetails.Id);
             userDetails[1] = Holder.Instance.LoginDetails.Firstname;
             userDetails[2] = Holder.Instance.LoginDetails.Lastname;
             userDetails[3] = Holder.Instance.LoginDetails.Username;
             userDetails[4] = Convert.ToString(Holder.Instance.LoginDetails.Userrole);
+  
+            return userDetails[number];
+        }
 
+<<<<<<< HEAD
             switch (Holder.Instance.LoginDetails.Userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
-            {
-                case 1: //Skoleleder
-                    userDetails[5] = "0";
-                    break;
+=======
+        public List<ClassEx> GetClassDetails(int id, int userrole)
+        {
+            List<ClassEx> classList = GetClasses();
 
+            foreach (ClassEx classEx in classList)
+>>>>>>> origin/master
+            {
+                foreach(Student student in classEx.StudentsList)
+                {
+                    if (student.Id == id)
+                {
+                    switch (userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
+                    {
+                        case 1: //Skoleleder
+                            classList.Add(null);
+                            break;
+
+<<<<<<< HEAD
                 case 2: //Teacher
 
                     break;
@@ -60,16 +78,39 @@ namespace Webservice
                 case 4: //Parent
                     userDetails[5] = Convert.ToString(FindParentsChildren(Holder.Instance.LoginDetails.Id));
                     break;
+=======
+                        case 2: //Teacher
 
-                case 5: //Student
+                            break;
 
+                        case 3: //Vikar
+>>>>>>> origin/master
+
+                            break;
+
+<<<<<<< HEAD
                     break;
             }
+=======
+                        case 4: //Parent
+                            if (!classList.Contains(classEx))
+                            {
+                                classList.Add(classEx);
+                            }
+                            break;
+>>>>>>> origin/master
 
-            return userDetails[number];
+                        case 5: //Student
+
+                            break;
+                    }
+                }
+                }
+            }
+            return classList;
         }
 
-        public List<int> FindParentsChildren(int id)
+        public List<Student> FindParentsChildren(int id)
         {
             return DatabaseHandler.Instance.FindParentsChildren(id);
         }
@@ -100,6 +141,11 @@ namespace Webservice
             }
 
             return announcements;
+        }
+
+        public string GetAnnouncementCreator(int id)
+        {
+            return DatabaseHandler.Instance.GetAnnouncementCreator(id);
         }
 
         public bool ChangePassword(int id, string oldPass, string newPass, string confirmPass)

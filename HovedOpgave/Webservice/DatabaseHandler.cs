@@ -53,23 +53,38 @@ namespace Webservice
             return success;
         }
 
-        public List<int> FindParentsChildren(int id)
+        public List<Student> FindParentsChildren(int id)
         {
-            List<int> classList = new List<int>();
+            List<Student> childrenList = new List<Student>();
 
             try
             {
-                DB.Open();
-                string[][] getChildren = DB.Query("SELECT fk_ParentId FROM [StudentParent] INNER JOIN [Parent] ON Parent.Id = StudentParent.fk_ParentId");
-
+                DB.Open(); //SELECT fk_StudentId, fk_ParentId FROM [StudentParent] INNER JOIN [Parent] ON Parent.Id = StudentParent.fk_ParentId
+                string[][] getChildren = DB.Query("SELECT * FROM StudentParent");
+                
                 for (int i = 0; i < getChildren.Length; i++)
                 {
                     if (Convert.ToInt32(getChildren[i][1]) == id)
                     {
                         int studentID = Convert.ToInt32(getChildren[i][0]);
-
+                        string[][] getStudentInfo = DB.Query("SELECT * FROM [User] WHERE Id=" + studentID);
                         string[][] getClass = DB.Query("SELECT * from [Student] WHERE Id = " + studentID);
-                        classList.Add(Convert.ToInt32(getClass[0][1]));
+
+                        Student student = new Student();
+
+                        student.Firstname = getStudentInfo[i][1];
+                        student.Lastname = getStudentInfo[i][2];
+                        student.City = getStudentInfo[i][3];
+                        student.Address = getStudentInfo[i][4];
+                        student.Birthdate = getStudentInfo[i][5];
+                        student.Username = getStudentInfo[i][6];
+                        student.Password = getStudentInfo[i][7];
+                        student.Lastlogin = Convert.ToDateTime(getStudentInfo[i][8]);
+                        student.Userrole = Convert.ToInt32(getStudentInfo[i][9]);
+                        student.Phonenumber = Convert.ToInt32(getStudentInfo[i][10]);
+                        student.FkClassid = Convert.ToInt32(getClass[i][1]);
+
+                        childrenList.Add(student);
                     }
                 }
             }
@@ -80,7 +95,7 @@ namespace Webservice
             {
                 DB.Close();
             }
-            return classList;
+            return childrenList;
         }
 
         public List<Announcement> GetAnnouncements(int groupID)
@@ -117,6 +132,26 @@ namespace Webservice
                 DB.Close();
             }
             return announcements;
+        }
+
+        public string GetAnnouncementCreator(int id)
+        {
+            string name = "";
+            try
+            {
+                DB.Open();
+                string[][] getCreator = DB.Query("SELECT * FROM [user] WHERE id =" + id);
+                name = getCreator[0][1] + " " + getCreator[0][2];
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                DB.Close();
+            }
+
+            return name;
         }
 
         /// <summary>

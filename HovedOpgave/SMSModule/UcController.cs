@@ -25,6 +25,12 @@ namespace SMSModule
             return result;
         }
 
+        public async Task<List<ClassEx>> GetClassDetails(int id, int userrole)
+        {
+            List<ClassEx> result = await ServiceProxy.Instance.GetClassDetails(id, userrole);
+            return result;
+        }
+
         public async Task<bool> CreateAnnouncement(int creator, string header, string message, int groupID, int classID)
         {
             bool result = await ServiceProxy.Instance.CreateAnnouncement(creator, header, message, groupID, classID);
@@ -34,6 +40,12 @@ namespace SMSModule
         public async Task<List<Announcement>> GetAnnouncements(int groupID, int classID)
         {
             List<Announcement> result = await ServiceProxy.Instance.GetAnnouncements(groupID, classID);
+            return result;
+        }
+
+        public async Task<string> GetAnnouncementCreator(int id)
+        {
+            string result = await ServiceProxy.Instance.GetAnnouncementCreator(id);
             return result;
         }
 
