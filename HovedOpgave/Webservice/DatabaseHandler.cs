@@ -53,8 +53,6 @@ namespace Webservice
             return success;
         }
 
-
-
         public List<Announcement> GetAnnouncements(int groupID)
         {
             List<Announcement> announcements = new List<Announcement>();
@@ -111,10 +109,6 @@ namespace Webservice
             return name;
         }
 
-        /// <summary>
-        /// Gets a users informations from the database, and returns it as an User Object.
-        /// </summary>
-        /// <param name="username">The username of the user.</param>
         public User GetLoginDetails(string username)
         {
             User user = new User();
@@ -540,6 +534,40 @@ END CATCH*/
             }
 
             return success;
+        }
+
+        public ClassEx GetStudentClass(int id)
+        {
+            ClassEx classEx = new ClassEx();
+
+            try
+            {
+                DB.Open();
+                string[][] getClassId = DB.Query("SELECT * FROM [Student] WHERE Id =" + id);
+
+                for (int i = 0; i < getClassId.Length; i++)
+                {
+                    int classID = Convert.ToInt32(getClassId[i][1]);
+                    string[][] getClass = DB.Query("SELECT * FROM Class WHERE Id =" + classID);
+
+                    for (int i = 0; i < getClass.Length; i++)
+                    {
+                        classEx.Id = Convert.ToInt32(getClass[i][0]);
+                        classEx.Name = getClass[i][1];
+                        classEx.TeacherId = Convert.ToInt32(getClass[i][2]);
+                        classEx.SchoolId = Convert.ToInt32(getClass[i][3]);
+                    }
+                }
+                return classEx;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                DB.Close();
+            }
+            return classList;
         }
 
         public List<Student> GetStudents()

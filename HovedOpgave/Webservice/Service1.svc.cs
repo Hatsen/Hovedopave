@@ -15,84 +15,7 @@ namespace Webservice
 {
     public class Service1 : IService1
     {
-
-        public bool GetLoginDetails(string username, string password)
-        {
-            HttpContext context = HttpContext.Current;
-            bool loggedIn = false;
-
-            DatabaseHandler.Instance.GetLoginDetails(username);
-            if (Holder.Instance.LoginDetails != null && PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails.Password) == true)
-            {
-                loggedIn = true;
-            }
-            else
-            {
-                loggedIn = false;
-            }
-            return loggedIn;
-        }
-
-        public string GetUserDetails(int number)
-        {
-            string[] userDetails = new string[5];
-
-            userDetails[0] = Convert.ToString(Holder.Instance.LoginDetails.Id);
-            userDetails[1] = Holder.Instance.LoginDetails.Firstname;
-            userDetails[2] = Holder.Instance.LoginDetails.Lastname;
-            userDetails[3] = Holder.Instance.LoginDetails.Username;
-            userDetails[4] = Convert.ToString(Holder.Instance.LoginDetails.Userrole);
-
-            return userDetails[number];
-        }
-
-        public List<ClassEx> GetClassDetails(int id, int userrole)
-        {
-            List<ClassEx> classList = GetClasses();
-
-            foreach (ClassEx classEx in classList)
-            {
-                foreach (Student student in classEx.StudentsList)
-                {
-                    if (student.Id == id)
-                    {
-                        switch (userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
-                        {
-                            case 1: //Skoleleder
-                                classList.Add(null);
-                                break;
-
-                            case 2: //Teacher
-
-                                break;
-
-                            case 3: //Vikar
-
-                                break;
-
-                            case 4: //Parent
-                                if (!classList.Contains(classEx))
-                                {
-                                    classList.Add(classEx);
-                                }
-                                break;
-
-                            case 5: //Student
-                                break;
-                        }
-                    }
-                }
-            }
-            return classList;
-        }
-
-
-
-        public List<Student> FindParentsChildren(int id)
-        {
-            return DatabaseHandler.Instance.FindParentsChildren(id);
-        }
-
+        #region AnnouncementMethods
         public bool CreateAnnouncement(int creator, string header, string message, int groupID, int classID)
         {
             if (DatabaseHandler.Instance.CreateAnnouncement(creator, header, message, groupID, classID) == true)
@@ -139,21 +62,7 @@ namespace Webservice
             return DatabaseHandler.Instance.GetAnnouncementCreator(id);
         }
 
-        public bool ChangePassword(int id, string oldPass, string newPass, string confirmPass)
-        {
-            bool success = false;
-
-            if (Holder.Instance.LoginDetails.Id == id)
-            {
-                if (newPass.Equals(confirmPass) && PasswordHash.ValidatePassword(oldPass, Holder.Instance.LoginDetails.Password) == true)
-                {
-                    DatabaseHandler.Instance.ChangePassword(id, PasswordHash.CreateHash(confirmPass));
-                    success = true;
-                }
-            }
-            return success;
-        }
-
+        #endregion
 
         #region TeacherMethods
 
@@ -210,8 +119,6 @@ namespace Webservice
 
         #endregion
 
-
-
         #region ParentMethods
 
         public bool CreateParent(ParentEx parent)
@@ -257,6 +164,10 @@ namespace Webservice
             return success;
         }
 
+        public List<Student> FindParentsChildren(int id)
+        {
+            return DatabaseHandler.Instance.FindParentsChildren(id);
+        }
 
         public List<ParentEx> GetParents()
         {
@@ -331,9 +242,7 @@ namespace Webservice
 
         #endregion
 
-
-
-        #region Class
+        #region ClassMethods
 
 
         public List<ClassEx> GetClasses()
@@ -355,6 +264,50 @@ namespace Webservice
             }
 
             return listOfClassExs;
+        }
+
+        public List<ClassEx> GetClassDetails(int id, int userrole)
+        {
+            List<ClassEx> classList = GetClasses();
+
+            foreach (ClassEx classEx in classList)
+            {
+                foreach (Student student in classEx.StudentsList)
+                {
+                    if (student.Id == id)
+                    {
+                        switch (userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
+                        {
+                            case 1: //Skoleleder
+                                classList.Add(null);
+                                break;
+
+                            case 2: //Teacher
+
+                                break;
+
+                            case 3: //Vikar
+
+                                break;
+
+                            case 4: //Parent
+                                if (!classList.Contains(classEx))
+                                {
+                                    classList.Add(classEx);
+                                }
+                                break;
+
+                            case 5: //Student
+                                if (!classList.Contains(classEx))
+                                {
+                                    classList.Add(classEx);
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+            return classList;
         }
 
         public bool InsertClass(ClassEx theClass)
@@ -380,6 +333,38 @@ namespace Webservice
         }
 
         #endregion
+
+        #region UserMethods
+
+        public bool GetLoginDetails(string username, string password)
+        {
+            HttpContext context = HttpContext.Current;
+            bool loggedIn = false;
+
+            DatabaseHandler.Instance.GetLoginDetails(username);
+            if (Holder.Instance.LoginDetails != null && PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails.Password) == true)
+            {
+                loggedIn = true;
+            }
+            else
+            {
+                loggedIn = false;
+            }
+            return loggedIn;
+        }
+
+        public string GetUserDetails(int number)
+        {
+            string[] userDetails = new string[5];
+
+            userDetails[0] = Convert.ToString(Holder.Instance.LoginDetails.Id);
+            userDetails[1] = Holder.Instance.LoginDetails.Firstname;
+            userDetails[2] = Holder.Instance.LoginDetails.Lastname;
+            userDetails[3] = Holder.Instance.LoginDetails.Username;
+            userDetails[4] = Convert.ToString(Holder.Instance.LoginDetails.Userrole);
+
+            return userDetails[number];
+        }
 
         public string DeleteUser(int id)
         {
@@ -416,7 +401,6 @@ namespace Webservice
 
             }
 
-
             if (userrole == (int)EnumsWeb.Userrole.Student)
             {
                 tableName = "Student";
@@ -434,5 +418,21 @@ namespace Webservice
             return returnMessage;
         }
 
+        public bool ChangePassword(int id, string oldPass, string newPass, string confirmPass)
+        {
+            bool success = false;
+
+            if (Holder.Instance.LoginDetails.Id == id)
+            {
+                if (newPass.Equals(confirmPass) && PasswordHash.ValidatePassword(oldPass, Holder.Instance.LoginDetails.Password) == true)
+                {
+                    DatabaseHandler.Instance.ChangePassword(id, PasswordHash.CreateHash(confirmPass));
+                    success = true;
+                }
+            }
+            return success;
+        }
+
+        #endregion
     }
 }
