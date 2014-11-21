@@ -14,3 +14,8 @@ C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\SMSModule\bin\SMSModule.pdb
 C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\SMSModule\obj\Debug\SMSModule.csprojResolveAssemblyReference.cache
 C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\SMSModule\obj\Debug\SMSModule.dll
 C:\Users\LarsS\Dropbox\Datamatiker\HovedOpgave\SMSModule\obj\Debug\SMSModule.pdb
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main2\HovedOpgave\SMSModule\bin\SMSModule.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main2\HovedOpgave\SMSModule\bin\SMSModule.pdb
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main2\HovedOpgave\SMSModule\obj\Debug\SMSModule.csprojResolveAssemblyReference.cache
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main2\HovedOpgave\SMSModule\obj\Debug\SMSModule.dll
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main2\HovedOpgave\SMSModule\obj\Debug\SMSModule.pdb

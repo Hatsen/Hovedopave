@@ -46,15 +46,15 @@ namespace Webservice
             return userDetails[number];
         }
 
-<<<<<<< HEAD
+
             switch (Holder.Instance.LoginDetails.Userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
-=======
+
         public List<ClassEx> GetClassDetails(int id, int userrole)
         {
             List<ClassEx> classList = GetClasses();
 
             foreach (ClassEx classEx in classList)
->>>>>>> origin/master
+
             {
                 foreach(Student student in classEx.StudentsList)
                 {
@@ -66,7 +66,7 @@ namespace Webservice
                             classList.Add(null);
                             break;
 
-<<<<<<< HEAD
+
                 case 2: //Teacher
 
                     break;
@@ -78,27 +78,27 @@ namespace Webservice
                 case 4: //Parent
                     userDetails[5] = Convert.ToString(FindParentsChildren(Holder.Instance.LoginDetails.Id));
                     break;
-=======
+
                         case 2: //Teacher
 
                             break;
 
                         case 3: //Vikar
->>>>>>> origin/master
+
 
                             break;
 
-<<<<<<< HEAD
+
                     break;
             }
-=======
+
                         case 4: //Parent
                             if (!classList.Contains(classEx))
                             {
                                 classList.Add(classEx);
                             }
                             break;
->>>>>>> origin/master
+
 
                         case 5: //Student
 
@@ -106,9 +106,10 @@ namespace Webservice
                     }
                 }
                 }
+              return classList;
             }
-            return classList;
-        }
+          
+        
 
         public List<Student> FindParentsChildren(int id)
         {
@@ -432,6 +433,7 @@ namespace Webservice
         }
 
         #endregion
+
 
 
     }
