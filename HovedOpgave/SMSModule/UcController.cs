@@ -25,9 +25,9 @@ namespace SMSModule
             return result;
         }
 
-        public async Task<List<int>> GetClassDetails(int id, int userrole)
+        public async Task<List<ClassEx>> GetClassDetails(int id, int userrole)
         {
-            List<int> result = await ServiceProxy.Instance.GetClassDetails(id, userrole);
+            List<ClassEx> result = await ServiceProxy.Instance.GetClassDetails(id, userrole);
             return result;
         }
 

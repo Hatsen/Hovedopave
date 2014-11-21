@@ -96,9 +96,9 @@ namespace SMSModule
              return tcs.Task;
          }
 
-         public Task<List<int>> GetClassDetails(int id, int userrole)
+         public Task<List<ClassEx>> GetClassDetails(int id, int userrole)
          {
-             var tcs = new TaskCompletionSource<List<int>>();
+             var tcs = new TaskCompletionSource<List<ClassEx>>();
              EventHandler<GetClassDetailsCompletedEventArgs> handler = null;
              handler = (sender, args) =>
              {

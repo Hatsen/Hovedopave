@@ -1,10 +1,10 @@
-﻿using SMSModule.Webservice;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SMSModule.Webservice;
 
 namespace SMSModule.Intrasystem
 {
@@ -14,12 +14,22 @@ namespace SMSModule.Intrasystem
         {
             string html = "";
             int selectedClass = Convert.ToInt32(Request.QueryString["class"]);
+            List<ClassEx> classList = (await ObjectHolder.Instance.UcController.GetClassDetails(Convert.ToInt32(Session["userid"]), Convert.ToInt32(Session["userrole"])));
 
+            foreach (ClassEx classEx in classList)
+            {
+                if (classEx.Id == Convert.ToInt32(Request.QueryString["selectedclass"]))
+                {
+                    Session["selectedclass"] = classEx.Id;
+                }
+            }
+
+            /*
             if ((await ObjectHolder.Instance.UcController.GetClassDetails(Convert.ToInt32(Session["userid"]), Convert.ToInt32(Session["userrole"]))).Contains(selectedClass))
             {
                 Session["selectedclass"] = selectedClass;
             }
-
+            */
             List<Announcement> announcementList = await ObjectHolder.Instance.UcController.GetAnnouncements(Convert.ToInt32(Session["userrole"]), Convert.ToInt32(Session["selectedclass"]));
 
             html += "<table id='announcementTable'>";

@@ -47,37 +47,48 @@ namespace Webservice
             return userDetails[number];
         }
 
-        public List<int> GetClassDetails(int id, int userrole)
+        public List<ClassEx> GetClassDetails(int id, int userrole)
         {
-            List<int> classList = new List<int>();
+            List<ClassEx> classList = GetClasses();
 
-            switch(userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
+            foreach (ClassEx classEx in classList)
             {
-                case 1: //Skoleleder
-                    classList.Add(0);
-                    break;
+                foreach(Student student in classEx.StudentsList)
+                {
+                    if (student.Id == id)
+                {
+                    switch (userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
+                    {
+                        case 1: //Skoleleder
+                            classList.Add(null);
+                            break;
 
-                case 2: //Teacher
-                    
-                    break;
+                        case 2: //Teacher
 
-                case 3: //Vikar
-                    
-                break;
+                            break;
 
-                case 4: //Parent
-                    classList = FindParentsChildren(id);
-                break;
+                        case 3: //Vikar
 
-                case 5: //Student
+                            break;
 
-                break;
+                        case 4: //Parent
+                            if (!classList.Contains(classEx))
+                            {
+                                classList.Add(classEx);
+                            }
+                            break;
+
+                        case 5: //Student
+
+                            break;
+                    }
+                }
+                }
             }
-
             return classList;
         }
 
-        public List<int> FindParentsChildren(int id)
+        public List<Student> FindParentsChildren(int id)
         {
             return DatabaseHandler.Instance.FindParentsChildren(id);
         }

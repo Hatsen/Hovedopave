@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SMSModule.Webservice;
 
 namespace SMSModule.Intrasystem
 {
@@ -12,14 +13,14 @@ namespace SMSModule.Intrasystem
         protected void Page_Load(object sender, EventArgs e)
         {
             string html = "";
-            List<int> classList = (List<int>)Session["classid"];
+            List<ClassEx> classList = (List<ClassEx>)Session["classid"];
 
             html += "<table id=selectorClassTable>";
 
-            for (int i = 0; i < classList.Count; i++)
+            foreach( ClassEx classEx in classList)
             {
                 html += "<tr>";
-                html += "<td class='selectorLinkItem'><a href='Default.aspx?class=" + classList[i].ToString() + "'>" + classList[i].ToString() + "</a></td>";
+                html += "<td class='selectorLinkItem'><a href='Default.aspx?class=" + classEx.Id + "'>" + classEx.Name + "</a></td>";
                 html += "</tr>";
             }
             html += "</table>";

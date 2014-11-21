@@ -179,9 +179,6 @@
     <None Include="Service References\Webservice\Service14.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Webservice\Service15.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Service References\Webservice\SMSModule.Webservice.ClassEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
