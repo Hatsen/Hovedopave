@@ -248,7 +248,7 @@ END CATCH*/
             }
             return success;
         }
-        public bool UpdateTeacher(Teacher teacher)
+        public bool UpdateTeacher(TeacherEx teacher)
         {
             bool success = true;
 
@@ -268,9 +268,9 @@ END CATCH*/
             return success;
 
         }
-        public List<Teacher> GetTeachers()
+        public List<TeacherEx> GetTeachers()
         {
-            List<Teacher> teachers = new List<Teacher>();
+            List<TeacherEx> teachers = new List<TeacherEx>();
 
             try
             {
@@ -282,7 +282,7 @@ END CATCH*/
 
                 for (int i = 0; i < getTeachers.Length; i++)
                 {
-                    Teacher teacher = new Teacher();
+                    TeacherEx teacher = new TeacherEx();
 
                     teacher.Id = Convert.ToInt32(getTeachers[i][0]);
                     teacher.Fkuserid = Convert.ToInt32(getTeachers[i][0]);
@@ -400,9 +400,9 @@ END CATCH*/
             return success;
 
         }
-        public List<Parent> GetParents()
+        public List<ParentEx> GetParents()
         {
-            List<Parent> parents = new List<Parent>();
+            List<ParentEx> parents = new List<ParentEx>();
 
             try
             {
@@ -414,7 +414,7 @@ END CATCH*/
 
                 for (int i = 0; i < getTeachers.Length; i++)
                 {
-                    Parent parent = new Parent();
+                    ParentEx parent = new ParentEx();
 
                     parent.Id = Convert.ToInt32(getTeachers[i][0]);
                     parent.Fkuserid = Convert.ToInt32(getTeachers[i][0]);
@@ -449,11 +449,11 @@ END CATCH*/
             }
             return parents;
         }
-        public bool DeleteParent(int id)
+       /* public bool DeleteParent(int id)
         {
 
             return true;
-        }
+        }*/
         #endregion
 
         #region StudentCRUD
@@ -503,8 +503,8 @@ END CATCH*/
             int result;
 
             DB.Open();
-            result = DB.Exec("UPDATE [User] SET Firstname ='" + student.Firstname + "', Lastname='" + student.Lastname + "', City='" + student.City + "', Address='" + student.Address + "'," +
-             "Birthdate='" + student.Birthdate + "', Username='" + student.Username + "', Password='" + student.Password + "', Lastlogin ='" + student.Lastlogin.ToString() + "', Userrole=" + student.Userrole + ", PhoneNumber=" + student.Phonenumber + ", fk_ClassId=" + student.FkClassid + " WHERE Id=" + student.Id + ";");
+            result = DB.Exec("BEGIN TRANSACTION BEGIN TRY UPDATE [User] SET Firstname ='" + student.Firstname + "', Lastname='" + student.Lastname + "', City='" + student.City + "', Address='" + student.Address + "'," +
+             "Birthdate='" + student.Birthdate + "', Username='" + student.Username + "', Password='" + student.Password + "', Lastlogin ='" + student.Lastlogin.ToString() + "', Userrole=" + student.Userrole + ", PhoneNumber=" + student.Phonenumber + " WHERE Id ="+student.Id+" UPDATE [Student] SET fk_ClassId=" + student.FkClassid + " WHERE Id=" + student.Id + "  COMMIT TRANSACTION END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
 
             if (result == -1)
             {
@@ -576,12 +576,10 @@ END CATCH*/
 
         #region ClassCRUD
 
-        public bool InsertClass(Class theClass)
+        public bool InsertClass(ClassEx theClass)
         {
             bool success = true;
             int result;
-
-
 
             DB.Open();
             // this works very well !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -602,7 +600,7 @@ END CATCH*/
             return success;
         }
 
-        public bool UpdateClass(Class theClass)
+        public bool UpdateClass(ClassEx theClass)
         {
             bool success = true;
 
@@ -655,10 +653,26 @@ END CATCH*/
             return classes;
         }
 
-        public bool DeleteClass(int id)
+        public bool DeleteClass(int classId)
         {
 
-            return true;
+            int result;
+            bool success = true;
+
+            DB.Open();
+
+            //transaktion her vil gå ind og lave en 
+            result =
+                DB.Exec("BEGIN TRANSACTION BEGIN TRY DELETE FROM [Class] WHERE Id = " + classId + " COMMIT" +
+                " TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION END CATCH");
+
+            // det kan ske at der ikke bliver påvirket rækker hvis den brækker sig. Det er fordi den laver rollback og derfor ikke påvirke nogle rækker.
+            if (result == -1 || result == 0)
+            {
+                success = false;
+            }
+
+            return success;
         }
 
         #endregion

@@ -23,7 +23,7 @@ namespace AdminModule.Views
     {
         private ParentCuViewModel viewModel;
 
-        public ParentCuView(Parent parent = null) // se nok mere teacher som generics objekt
+        public ParentCuView(ParentEx parent = null) // se nok mere teacher som generics objekt
         {
             InitializeComponent();
 
@@ -33,19 +33,13 @@ namespace AdminModule.Views
 
             viewModel.Viewstate = parent == null ? Enums.ViewState.Create : Enums.ViewState.Edit;
 
+            
+
             if (parent!=null)
             {
                 viewModel.CurrentParent = parent;
             }
 
-            // her skal tjekkes hvilken type object der skal sættes ind i viewmodel.
-
-          /*  if (teacher!=null ) // object!=null for at dele samme viewmodel. ELLER vær kold og tjek for objectypen i viewmodel?
-            {
-                viewModel. = (Teacher)teacher; // vigtig eftersom jeg ikke får smidt de data som kom fra objektet med ind. Viewstate sættes i starten til create. Er efter linien ovenover blevet sat til edit.
-            }
-            */
-            
            
             this.DataContext = viewModel;
 

@@ -16,7 +16,6 @@ namespace Webservice
     public class Service1 : IService1
     {
 
-
         public bool GetLoginDetails(string username, string password)
         {
             HttpContext context = HttpContext.Current;
@@ -44,27 +43,27 @@ namespace Webservice
             userDetails[3] = Holder.Instance.LoginDetails.Username;
             userDetails[4] = Convert.ToString(Holder.Instance.LoginDetails.Userrole);
 
-            switch(Holder.Instance.LoginDetails.Userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
+            switch (Holder.Instance.LoginDetails.Userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
             {
                 case 1: //Skoleleder
                     userDetails[5] = "0";
                     break;
 
                 case 2: //Teacher
-                    
+
                     break;
 
                 case 3: //Vikar
-                    
-                break;
+
+                    break;
 
                 case 4: //Parent
                     userDetails[5] = Convert.ToString(FindParentsChildren(Holder.Instance.LoginDetails.Id));
-                break;
+                    break;
 
                 case 5: //Student
 
-                break;
+                    break;
             }
 
             return userDetails[number];
@@ -128,10 +127,23 @@ namespace Webservice
 
             return t;
         }*/
-        public List<Teacher> GetTeachers()
+        public List<TeacherEx> GetTeachers()
         {
+            List<TeacherEx> listOfTeacherExs = DatabaseHandler.Instance.GetTeachers();
+            List<ClassEx> listOfClasses = DatabaseHandler.Instance.GetClasses();
+            listOfTeacherExs = DatabaseHandler.Instance.GetTeachers();
 
-            return DatabaseHandler.Instance.GetTeachers();
+            foreach (TeacherEx teacherEx in listOfTeacherExs)
+            {
+                foreach (ClassEx classEx in listOfClasses)
+                {
+                    if (classEx.Fkteacherid == teacherEx.Id)
+                    {
+                        teacherEx.ClassList.Add(classEx);
+                    }
+                }
+            }
+            return listOfTeacherExs;
         }
 
 
@@ -141,7 +153,7 @@ namespace Webservice
             }*/
 
 
-        public bool InsertTeacher(Teacher teacher)
+        public bool InsertTeacher(TeacherEx teacher)
         {
             bool success = false;
 
@@ -152,15 +164,7 @@ namespace Webservice
 
             else
             {
-                //   int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
-
-                //  if (recentId != -1)
-                // {
-                /*    teacher.Id = recentId;
-                    teacher.Fkuserid = recentId;
-                    teacher.Username = "Te_" + recentId;*/
                 success = DatabaseHandler.Instance.InsertTeacher(teacher); // will insert into User and Teacher.
-                //}
             }
             return success;
         }
@@ -224,13 +228,13 @@ namespace Webservice
 
         #region ParentMethods
 
-        public bool CreateParent(Parent parent)
+        public bool CreateParent(ParentEx parent)
         {
 
             return true;
         }
 
-        public bool InsertParent(Parent parent)
+        public bool InsertParent(ParentEx parent)
         {
 
             bool success = false;
@@ -256,18 +260,35 @@ namespace Webservice
         }
 
 
-        public List<Parent> GetParents()
+        public List<ParentEx> GetParents()
         {
+            // søg efter children i studentparent table
+            //ParentEx.Children = FindParentsChildren();
+            List<ParentEx> parentExlist = new List<ParentEx>();
+            parentExlist = DatabaseHandler.Instance.GetParents();
 
-            return DatabaseHandler.Instance.GetParents();
+            foreach (ParentEx parent in parentExlist)
+            {
+              /*  List<Student> id = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
+                if (id.Count != 0)
+                {
+                    foreach (int i in id)
+                    {
+                        parent.ChildrenIdList.Add(i);
+                    }
+                }*/
+
+            }
+
+            return parentExlist;
         }
 
 
-        public bool DeleteParent(int id)
-        {
+        /* public bool DeleteParent(int id)
+         {
 
-            return DatabaseHandler.Instance.DeleteParent(id);
-        }
+             return DatabaseHandler.Instance.DeleteParent(id);
+         }*/
 
         #endregion
 
@@ -342,7 +363,7 @@ namespace Webservice
             return listOfClassExs;
         }
 
-        public bool InsertClass(Class theClass)
+        public bool InsertClass(ClassEx theClass)
         {
             bool success;
 
@@ -359,9 +380,9 @@ namespace Webservice
             return success;
         }
 
-        public bool DeleteClass(int id)
+        public bool DeleteClass(int classId)
         {
-            return DatabaseHandler.Instance.DeleteClass(id);
+            return DatabaseHandler.Instance.DeleteClass(classId);
         }
 
         #endregion

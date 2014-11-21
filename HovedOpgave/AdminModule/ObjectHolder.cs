@@ -10,7 +10,6 @@ namespace AdminModule
     public class ObjectHolder : ViewModelBase
     {
 
-
         private static ObjectHolder instance;
 
         private ObjectHolder() { }
@@ -30,7 +29,7 @@ namespace AdminModule
 
 
         private bool isLoading;
-        private List<Teacher> teacherList;
+        private List<TeacherEx> teacherList;
         private List<ClassEx> classList;
 
 
@@ -45,11 +44,9 @@ namespace AdminModule
         }
 
 
-        public List<Teacher> TeacherList
+        public List<TeacherEx> TeacherList
         {
-
             get { return teacherList; }
-
             set
             {
                 teacherList = value;
@@ -78,7 +75,6 @@ namespace AdminModule
         }
 
 
-
         public async void GetTeachers()
         {
             Isloading = true;
@@ -93,6 +89,8 @@ namespace AdminModule
             Isloading = true;
             ClassList = await ServiceProxy.Instance.GetClasses();
             Isloading = false;
+          
+
             // RaiseOnselectedPersonChanged("Underviser");
         }
 

@@ -51,7 +51,7 @@ namespace AdminModule.ViewModels
         private string firstname;
         private string lastname;
         private string city;
-        private string birthdate;
+        private string birthdate = "dd/mm-yyyy";
         private string address;
         private int fkClassId;
         private Student currentStudent;

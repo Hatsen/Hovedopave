@@ -7,7 +7,7 @@
     <xctk:BusyIndicator IsBusy="{Binding Isloading}" BusyContent="Vent venligst..." >
 
         <Grid Background="CadetBlue">
-            <StackPanel HorizontalAlignment="Left" Height="306" VerticalAlignment="Top" Width="192" Margin="61,33,0,0">
+            <StackPanel HorizontalAlignment="Left" Height="326" VerticalAlignment="Top" Width="192" Margin="61,33,0,0">
                 <Label Content="Fornavn:"/>
                 <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Firstname, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0" />
                 <Label Content="Efternavn:"/>
@@ -22,14 +22,52 @@
                 <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Phonenumber, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="61" VerticalAlignment="Top" Width="192" Margin="61,364,0,0"/>
-            <DataGrid HorizontalAlignment="Left" Margin="293,104,0,0" VerticalAlignment="Top" Height="173" Width="336"/>
-            <ComboBox HorizontalAlignment="Left" Margin="293,59,0,0" VerticalAlignment="Top" Width="120"/>
-            <ComboBox HorizontalAlignment="Left" Margin="418,59,0,0" VerticalAlignment="Top" Width="120"/>
-            <Button Content="Tilknyt" HorizontalAlignment="Left" Margin="554,61,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button Content="Bekræft" Height="23"  Margin="68,384,526,65" Command="{Binding ConfirmCommand}" />
-            <Button Content="Annuller" Height="23" Margin="168,384,426,65" Command="{Binding CancelCommand}" />
 
+            <DataGrid HorizontalAlignment="Left" Margin="290,87,0,0" VerticalAlignment="Top" Height="244" Width="336" ItemsSource="{Binding CurrentParentChildrenList, Mode=TwoWay}" CanUserAddRows="False" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Firstname}" Header="Fornavn" IsReadOnly="True" Width="100" CanUserResize="False"/>
+                    <DataGridTextColumn Binding="{Binding Lastname}" Header="Efternavn" IsReadOnly="True" Width="100" CanUserResize="False"/>
+                    <DataGridTextColumn Binding="{Binding City}" Header="By" IsReadOnly="True" Width="100" CanUserResize="False"/>
+                    <DataGridTextColumn Binding="{Binding FkClassid}" Header="FkClassid" IsReadOnly="True" Width="100" CanUserResize="False"/>
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="0" Background="AliceBlue" Padding="10">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="12" Text="Id: " VerticalAlignment="Center" />
+                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Id}" VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="12" Text="Seneste login: " VerticalAlignment="Center" />
+                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Lastlogin}" VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="12" Text="Userrole: " VerticalAlignment="Center" />
+                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Userrole}" VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="12" Text="Username: " VerticalAlignment="Center" />
+                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Username}" VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="12" Text="Telefon: " VerticalAlignment="Center" />
+                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Phonenumber}" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+
+            </DataGrid>
+
+            <ComboBox HorizontalAlignment="Left" Margin="290,60,0,0" VerticalAlignment="Top" Width="131" RenderTransformOrigin="0.492,0.5" ItemsSource="{Binding ClassList, Mode=TwoWay}"  SelectedItem="{Binding SelectedClass, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ComboBox HorizontalAlignment="Left" Margin="426,60,0,0" VerticalAlignment="Top" Width="120"  ItemsSource="{Binding ChildrenList, Mode=TwoWay}"  SelectedItem="{Binding SelectedChild, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="269" Margin="61,381,0,0">
+                <Button Content="Bekræft" Height="23"   Command="{Binding ConfirmCommand}" Margin="0,12" Width="80" />
+                <Button Content="Annuller" Height="23"  Command="{Binding CancelCommand}"  Margin="10,12,0,11" Width="80" />
+            </StackPanel>
+            <Button Content="Tilknyt" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.093,-0.15" Margin="551,60,0,0" Height="22"/>
         </Grid>
     </xctk:BusyIndicator>
 </Window>

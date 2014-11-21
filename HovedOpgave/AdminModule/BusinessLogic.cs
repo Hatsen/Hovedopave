@@ -30,7 +30,7 @@ namespace AdminModule
 
 
 
-        public async Task<bool> CreateTeacher(Teacher teacher)
+        public async Task<bool> CreateTeacher(TeacherEx teacher)
         {
             //der mangler at blive genereteret id, username og password
             // Husk at id og username skal genereres på servicesiden. (tynd klient)
@@ -55,14 +55,12 @@ namespace AdminModule
             //generer id og username og password inden du opretter. Når du updaterere skal der tjekkes om id allerede findes på objektet.
 
 
-
-
             return true;
         }
 
 
 
-        public async Task<bool> UpdateTeacher(Teacher teacher)
+        public async Task<bool> UpdateTeacher(TeacherEx teacher)
         {
             await ServiceProxy.Instance.InsertTeacher(teacher);
 
@@ -71,10 +69,11 @@ namespace AdminModule
         }
 
 
+
         #region ParentMethods
 
 
-        public async Task<bool> CreateParent(Parent parent)
+        public async Task<bool> CreateParent(ParentEx parent)
         {
             //der mangler at blive genereteret id, username og password
             // Husk at id og username skal genereres på servicesiden. (tynd klient)
@@ -105,10 +104,9 @@ namespace AdminModule
         }
 
 
-        public async Task<bool> UpdateParent(Parent parent)
+        public async Task<bool> UpdateParent(ParentEx parent)
         {
             await ServiceProxy.Instance.InsertParent(parent);
-
 
             return true;
         }
@@ -155,21 +153,6 @@ namespace AdminModule
         public async Task<bool> UpdateStudent(Student theStudent)
         {
 
-
-        
-
-            //int generatedCount = await ServiceProxy.Instance.GetUserCount(); // begrund hvor vi ikke gør det her..
-            // generer id på service 
-            // smid id ind i teacher tabellen efterfølgende når der er success. BESKRIV HVORFOR I RAPPORTEN.
-
-
-
-
-            //generer id og username og password inden du opretter. Når du updaterere skal der tjekkes om id allerede findes på objektet.
-
-
-
-
             return await ServiceProxy.Instance.InsertStudent(theStudent); 
         }
 
@@ -180,7 +163,7 @@ namespace AdminModule
         #region Class
 
 
-        public async Task<bool> CreateClass(Class theClass)
+        public async Task<bool> CreateClass(ClassEx theClass)
         {
            
 
@@ -203,7 +186,7 @@ namespace AdminModule
 
 
 
-        public async Task<bool> UpdateClass(Class theClass)
+        public async Task<bool> UpdateClass(ClassEx theClass)
         {
 
 
@@ -224,6 +207,14 @@ namespace AdminModule
             return true;
         }
 
+
+        public async Task<bool> DeleteClass(int classId)
+        {
+
+            return await ServiceProxy.Instance.DeleteClass(classId);
+        }
+
+
         #endregion
 
 
@@ -231,6 +222,30 @@ namespace AdminModule
         {
            return await ServiceProxy.Instance.DeleteUserById(id);
 
+        }
+
+
+        public async Task<bool> ResetPasswordForSelectedUser(User selectedUser)
+        {
+            bool success = false;
+
+            selectedUser.Password = PasswordHash.CreateHash("1234");
+
+            if (selectedUser.Userrole == (int)Enums.Userrole.Parent)
+            {
+                success = await ServiceProxy.Instance.InsertParent((ParentEx)selectedUser);
+            }
+            else if (selectedUser.Userrole == (int)Enums.Userrole.Teacher)
+            {
+                success = await ServiceProxy.Instance.InsertTeacher((TeacherEx)selectedUser);
+            }
+            else if (selectedUser.Userrole == (int)Enums.Userrole.Student)
+            {
+                success = await ServiceProxy.Instance.InsertStudent((Student)selectedUser);
+            }
+
+
+            return success;
         }
     }
 }

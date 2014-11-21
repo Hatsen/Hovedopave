@@ -74,9 +74,9 @@ namespace AdminModule
        }*/
 
 
-        public  Task<List<Teacher>> GetTeachers()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       public Task<List<TeacherEx>> GetTeachers()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {
-           var tcs = new TaskCompletionSource<List<Teacher>>();
+           var tcs = new TaskCompletionSource<List<TeacherEx>>();
            EventHandler<GetTeachersCompletedEventArgs> handler = null;
            handler = (sender, args) =>
            {
@@ -146,9 +146,9 @@ namespace AdminModule
 
 
 
-       public Task<List<Parent>> GetParents()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       public Task<List<ParentEx>> GetParents()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {
-           var tcs = new TaskCompletionSource<List<Parent>>();
+           var tcs = new TaskCompletionSource<List<ParentEx>>();
            EventHandler<GetParentsCompletedEventArgs> handler = null;
            handler = (sender, args) =>
            {
@@ -179,7 +179,7 @@ namespace AdminModule
 
 
 
-       public Task<bool> InsertTeacher(Teacher teacher)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       public Task<bool> InsertTeacher(TeacherEx teacher)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {
            var tcs = new TaskCompletionSource<bool>();
            EventHandler<InsertTeacherCompletedEventArgs> handler = null;
@@ -217,7 +217,7 @@ namespace AdminModule
 
 
 
-       public Task<bool> InsertParent(Parent parent)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       public Task<bool> InsertParent(ParentEx parent)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {
            var tcs = new TaskCompletionSource<bool>();
            EventHandler<InsertParentCompletedEventArgs> handler = null;
@@ -252,7 +252,7 @@ namespace AdminModule
 
        #region Class
 
-       public Task<bool> InsertClass(Class theClass)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       public Task<bool> InsertClass(ClassEx theClass)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {
            var tcs = new TaskCompletionSource<bool>();
            EventHandler<InsertClassCompletedEventArgs> handler = null;
@@ -317,6 +317,36 @@ namespace AdminModule
            return tcs.Task;
        }
 
+
+       public Task<bool> DeleteClass(int classId)
+       {
+           var tcs = new TaskCompletionSource<bool>();
+           EventHandler<DeleteClassCompletedEventArgs> handler = null;
+           handler = (sender, args) =>
+           {
+               if (args.UserState == tcs)
+               {
+                   service.DeleteClassCompleted -= handler;
+                   if (args.Error != null)
+                   {
+                       tcs.TrySetException(args.Error);
+                   }
+                   else if (args.Cancelled)
+                   {
+                       tcs.TrySetCanceled();
+                   }
+                   else
+                   {
+                       tcs.TrySetResult(args.Result);
+                   }
+               }
+           };
+
+           service.DeleteClassCompleted += handler;
+           service.DeleteClassAsync(classId, tcs);
+
+           return tcs.Task;
+       }
 
        #endregion
 

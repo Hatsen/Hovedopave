@@ -14,6 +14,9 @@ namespace AdminModule.ViewModels
     {
         public TeacherCuViewModel()
         {
+
+
+
             ConfirmCommand = new DelegateCommand<object>(Confirm, IsEnable);
             CancelCommand = new DelegateCommand<object>(Cancel);
 
@@ -34,10 +37,10 @@ namespace AdminModule.ViewModels
         private string firstname;
         private string lastname;
         private string city;
-        private string birthdate;
+        private string birthdate = "dd/mm-yyyy";
         private string address;
         private List<string> ranks;
-        private Teacher currentTeacher;
+        private TeacherEx currentTeacher;
         private string selectedRank;
 
         private bool isLoading;
@@ -49,7 +52,7 @@ namespace AdminModule.ViewModels
         #region PublicMembers
 
 
-        public Teacher CurrentTeacher
+        public TeacherEx CurrentTeacher
         {
             get { return currentTeacher; }
             set
@@ -206,7 +209,7 @@ namespace AdminModule.ViewModels
 
             if (Viewstate == Enums.ViewState.Create)
             {
-                Teacher teacher = new Teacher();
+                TeacherEx teacher = new TeacherEx();
                 teacher.Firstname = firstname;
                 teacher.Lastname = lastname;
                 teacher.City = city;

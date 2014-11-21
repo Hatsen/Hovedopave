@@ -15,10 +15,19 @@ namespace AdminModule.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        // sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+
         public MainWindowViewModel()
         {
-            //ObjectHolder.Instance.PropertyChanged += (sender, args) => OnPropertyChanged(args.PropertyName); // viewmodel lytter på objectholderen.
+
+            ObjectHolder.Instance.PropertyChanged += (sender, args) =>
+                {
+                    /*if (args.PropertyName == "TeacherList")
+                    {
+                        TeacherList = ObjectHolder.Instance.TeacherList;
+                    }*/
+                    OnPropertyChanged(args.PropertyName); // viewmodel lytter på objectholderen.
+                };
+
             CreateTeacherCommand = new DelegateCommand<object>(CreateTeacher);
             EditUserCommand = new DelegateCommand<object>(EditUser, MayiEditPerson);
             UpdateStudentsCommand = new DelegateCommand<object>(UpdateStudents);
@@ -28,8 +37,8 @@ namespace AdminModule.ViewModels
             GetClassesCommand = new DelegateCommand<object>(GetClasses);
             EditClassCommand = new DelegateCommand<object>(EditClass, MayiEditClass);
             DeleteUserCommand = new DelegateCommand<object>(DeletePerson, MayiEditPerson);
-            DeleteClassCommand = new DelegateCommand<object>(DeleteClass);
-
+            DeleteClassCommand = new DelegateCommand<object>(DeleteClass, MayiEditClass);
+            ResetPasswordCommand = new DelegateCommand<object>(ResetPasswordForSelectedUser,MayiEditPerson);
 
             List<string> listofpersons = new List<string>();
             listofpersons.Add("Underviser");
@@ -45,9 +54,9 @@ namespace AdminModule.ViewModels
 
         private bool isloading;
         private User selectedUser;
-        private List<Teacher> teacherList;
+        private List<TeacherEx> teacherList;
         private List<Student> studentList;
-        private List<Parent> parentList;
+        private List<ParentEx> parentList;
         private List<string> personStringList;
         private string selectedStringPerson;
         private List<ClassEx> classList;
@@ -76,21 +85,22 @@ namespace AdminModule.ViewModels
                 OnPropertyChanged("SelectedUser");
                 EditUserCommand.RaiseCanExecuteChanged();
                 DeleteUserCommand.RaiseCanExecuteChanged();
+                ResetPasswordCommand.RaiseCanExecuteChanged();
             }
         }
 
-        public List<Teacher> TeacherList
+        public List<TeacherEx> TeacherList
         {
-            get { return ObjectHolder.Instance.TeacherList; }
+            get { return teacherList; }
             set
             {
-                ObjectHolder.Instance.TeacherList = value;
+                teacherList = value;
                 OnPropertyChanged("TeacherList");
             }
         }
 
 
-        public List<Parent> ParentList
+        public List<ParentEx> ParentList
         {
             get { return parentList; }
             set
@@ -140,10 +150,9 @@ namespace AdminModule.ViewModels
                 selectedClass = value;
                 OnPropertyChanged("SelectedClass");
                 EditClassCommand.RaiseCanExecuteChanged();
+                DeleteClassCommand.RaiseCanExecuteChanged();
             }
         }
-
-
 
         public List<string> PersonStringList
         {
@@ -157,7 +166,6 @@ namespace AdminModule.ViewModels
                 OnPropertyChanged("PersonStringList");
             }
         }
-
 
         public string SelectedStringPerson
         {
@@ -190,6 +198,8 @@ namespace AdminModule.ViewModels
         #region Commands
 
 
+        public DelegateCommand<object> ResetPasswordCommand { get; set; }
+
         public DelegateCommand<object> UpdateStudentsCommand { get; set; }
 
         public void UpdateStudents(Object o)
@@ -214,6 +224,14 @@ namespace AdminModule.ViewModels
             TeacherCuView tview = new TeacherCuView();
             tview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             tview.ShowDialog();
+            tview.Closing += tview_Closing; // den kører ikke videre indtil viewet lukker.
+            SelectedStringPerson = "Underviser"; // heri bliver der kaldt GetParents();
+            // GetTeachers();
+        }
+
+        void tview_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
 
 
@@ -221,9 +239,17 @@ namespace AdminModule.ViewModels
 
         public void CreateParent(Object o)
         {
+            GetClasses();
             ParentCuView pview = new ParentCuView();
             pview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             pview.ShowDialog();
+            pview.Closing += pview_Closing;
+            // GetParents();
+            SelectedStringPerson = "Forældre"; // heri bliver der kaldt GetParents();
+        }
+
+        void pview_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
 
         }
 
@@ -235,6 +261,14 @@ namespace AdminModule.ViewModels
             Views.StudentCuView sview = new Views.StudentCuView();
             sview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             sview.ShowDialog();
+            sview.Closing += sview_Closing;
+            //  GetStudents();
+            SelectedStringPerson = "Elev"; // heri bliver der kaldt GetStudent();
+        }
+
+        void sview_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
 
 
@@ -245,6 +279,13 @@ namespace AdminModule.ViewModels
             Views.ClassCuView cview = new Views.ClassCuView();
             cview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             cview.ShowDialog();
+            cview.Closing += cview_Closing;
+            GetClasses();
+        }
+
+        void cview_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
 
 
@@ -254,7 +295,7 @@ namespace AdminModule.ViewModels
         {
             if (selectedStringPerson == "Underviser")
             {
-                TeacherCuView tview = new TeacherCuView((Teacher)SelectedUser);
+                TeacherCuView tview = new TeacherCuView((TeacherEx)SelectedUser);
                 tview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 tview.ShowDialog();
             }
@@ -268,7 +309,7 @@ namespace AdminModule.ViewModels
 
             if (selectedStringPerson == "Forældre")
             {
-                ParentCuView paview = new ParentCuView((Parent)SelectedUser);
+                ParentCuView paview = new ParentCuView((ParentEx)SelectedUser);
                 paview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 paview.ShowDialog();
             }
@@ -300,6 +341,7 @@ namespace AdminModule.ViewModels
 
             if (selectedClass != null)
                 boolen = true;
+
             return boolen;
         }
 
@@ -307,46 +349,115 @@ namespace AdminModule.ViewModels
 
         public DelegateCommand<object> DeleteClassCommand { get; set; }
 
-        public void DeleteClass(Object o)
+        public async void DeleteClass(Object o)
         {
+            bool result = false;
 
             if (SelectedClass.StudentsList.Count != 0)
             {
                 var okornot = MessageBox.Show("Du kan ikke slette denne klasse, idet den har elever knyttet til sig." +
-                                 "du skal derfor først tilknytte en ny klasse til dine elever i denne klasse.\n" +
-                                 "Et nyt view vil åbnes, hvis du trykker ok.", "Sletning", MessageBoxButton.OKCancel);
+                                              "du skal derfor først tilknytte en ny klasse til dine elever i denne klasse.\n" +
+                                              "Et nyt view vil åbnes, hvis du trykker ok.", "Sletning",
+                    MessageBoxButton.OKCancel);
 
                 if (okornot == MessageBoxResult.OK)
                 {
                     DeleteView deleteView = new DeleteView(SelectedClass);
                     deleteView.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                     deleteView.ShowDialog();
+                    deleteView.Closing += deleteView_Closing;
+                    GetClasses();
                 }
+            }
+
+            else if (SelectedClass.StudentsList.Count == 0)
+            {
+                var messageboxResult = MessageBox.Show("Ønsker du at slette klassen: " + SelectedClass.Name + "?", "Sletning", MessageBoxButton.YesNo);
+                if (messageboxResult == MessageBoxResult.Yes)
+                {
+                    result = await BusinessLogic.Instance.DeleteClass(SelectedClass.Id);
+                }
+            }
+
+            if (result)
+            {
+                MessageBox.Show("Klassen blev fjernet!");
+                GetClasses();
             }
 
         }
 
-
-        public async void DeletePerson(Object o)
+        void deleteView_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
+        }
 
+
+        private void DeleteTeacher()
+        {
+            TeacherEx teacherExss = SelectedUser as TeacherEx; //interresant. Alle personer kan findes ved at typecast fra user.
+
+            //  TeacherEx teacherExss = ObjectHolder.Instance.TeacherList.FirstOrDefault(te => te.Id == selectedUser.Id);
+
+            if (teacherExss.ClassList.Count != 0)
+            {
+                var okornot = MessageBox.Show("Du kan ikke slette denne underviser, idet den har elever knyttet til sig." +
+                                         "du skal derfor først tilknytte en ny klasse til dine elever i denne klasse.\n" +
+                                         "Et nyt view vil åbnes, hvis du trykker ok.", "Sletning",
+               MessageBoxButton.OKCancel);
+
+                if (okornot == MessageBoxResult.OK)
+                {
+                    DeleteView deleteView = new DeleteView(null, teacherExss);
+                    deleteView.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    deleteView.ShowDialog();
+                    deleteView.Closing += deleteView_Closing;
+                }
+            }
+            else if (teacherExss.ClassList.Count == 0)
+            {
+                AreYouSureYouWantToDeleteUser(SelectedUser.Userrole);
+            }
+
+            GetTeachers();
+            GetClasses();
+        }
+
+
+        private async void AreYouSureYouWantToDeleteUser(int userRole)
+        {
             var result = MessageBox.Show("Er du sikker på at du ønsker at slette: " + SelectedUser.Firstname + " " + SelectedUser.Lastname, "Sletning",
-                             MessageBoxButton.YesNo,
-                             MessageBoxImage.Question);
+                     MessageBoxButton.YesNo,
+                     MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
             {
                 string resultMessage = await BusinessLogic.Instance.DeleteUserById(SelectedUser.Id);
                 if (resultMessage == "")
-                {
-                    // it went fine!
-                }
+                    MessageBox.Show("Sletning fuldført!");
 
+                else
+                    MessageBox.Show("Sletning kunne ikke gennemføres!");
             }
+
+            if (userRole == (int)Enums.Userrole.Parent)
+                GetParents();
+            else if (userRole == (int)Enums.Userrole.Student)
+                GetStudents();
 
         }
 
+        public void DeletePerson(Object o)
+        {
+
+            if (SelectedUser.Userrole == (int)Enums.Userrole.Teacher)
+                DeleteTeacher();
+
+            else
+            {
+                AreYouSureYouWantToDeleteUser(SelectedUser.Userrole);
+            }
+        }
 
 
         #endregion
@@ -357,10 +468,10 @@ namespace AdminModule.ViewModels
         {
             Isloading = true;
             TeacherList = await ServiceProxy.Instance.GetTeachers();
+            ObjectHolder.Instance.TeacherList = TeacherList;
             Isloading = false;
             RaiseOnselectedPersonChanged("Underviser");
         }
-
 
         private async void GetClasses()
         {
@@ -388,8 +499,6 @@ namespace AdminModule.ViewModels
         }
 
 
-
-
         public void RaiseOnselectedPersonChanged(string theSelectedPersonString)
         {
             if (OnselectedPersonChanged != null) // er der nogle som  lytter på den. Ikke om den er instansieret.
@@ -397,6 +506,19 @@ namespace AdminModule.ViewModels
                 OnselectedPersonChanged(theSelectedPersonString);
             }
 
+        }
+
+
+        public async void ResetPasswordForSelectedUser(Object o)
+        {
+            bool result; 
+
+            result = await BusinessLogic.Instance.ResetPasswordForSelectedUser(SelectedUser);
+
+            if (result)
+            {
+                MessageBox.Show("Password for bruger " + SelectedUser.Firstname + " blev ændret til 1234");
+            }
         }
 
 

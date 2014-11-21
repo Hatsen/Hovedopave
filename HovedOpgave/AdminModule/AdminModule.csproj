@@ -213,13 +213,13 @@
     <None Include="Service References\Webservice\AdminModule.Webservice.ClassEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\Webservice\AdminModule.Webservice.Parent.datasource">
+    <None Include="Service References\Webservice\AdminModule.Webservice.ParentEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Webservice\AdminModule.Webservice.Student.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\Webservice\AdminModule.Webservice.Teacher.datasource">
+    <None Include="Service References\Webservice\AdminModule.Webservice.TeacherEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Webservice\Service1.wsdl" />
@@ -236,6 +236,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Webservice\Service14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Webservice\Service15.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

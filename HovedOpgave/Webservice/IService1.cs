@@ -36,13 +36,13 @@ namespace Webservice
     
 
         [OperationContract]
-        bool InsertTeacher(Teacher teacher);
+        bool InsertTeacher(TeacherEx teacher);
 
      /*   [OperationContract]
         Teacher GetTeacher(); // bruges ikke endnu..*/
 
         [OperationContract]
-        List<Teacher> GetTeachers();
+        List<TeacherEx> GetTeachers();
 
         [OperationContract]
         string DeleteUser(int id);
@@ -53,13 +53,13 @@ namespace Webservice
         #region Parent
 
         [OperationContract]
-        bool InsertParent(Parent parent);
+        bool InsertParent(ParentEx parent);
 
         [OperationContract]
-        List<Parent> GetParents();
+        List<ParentEx> GetParents();
 
-        [OperationContract]
-        bool DeleteParent(int id);
+        /*[OperationContract]
+        bool DeleteParent(int id);*/
 
 
         #endregion
@@ -84,7 +84,7 @@ namespace Webservice
 
 
         [OperationContract]
-        bool InsertClass(Class theClass);
+        bool InsertClass(ClassEx theClass);
 
         [OperationContract]
         bool DeleteClass(int id);

@@ -47,10 +47,10 @@ namespace AdminModule.ViewModels
         #region PrivateMembers
 
 
-        private Class currentClass;
+        private ClassEx currentClass;
         private bool isLoading;
         private string className;
-        private List<Teacher> teacherList;
+        private List<TeacherEx> teacherList;
         private Teacher selectedTeacher;
 
         #endregion
@@ -58,7 +58,7 @@ namespace AdminModule.ViewModels
         #region PublicMembers
 
 
-        public Class CurrentClass
+        public ClassEx CurrentClass
         {
             get { return currentClass; }
             set
@@ -106,7 +106,7 @@ namespace AdminModule.ViewModels
             }
         }
 
-        public List<Teacher> TeacherList
+        public List<TeacherEx> TeacherList
         {
 
             get { return ObjectHolder.Instance.TeacherList; }
@@ -153,7 +153,7 @@ namespace AdminModule.ViewModels
 
             if (Viewstate == Enums.ViewState.Create)
             {
-                Class theClass = new Class();
+                ClassEx theClass = new ClassEx();
                
                 theClass.Name = ClassName;
                 theClass.Fkteacherid = SelectedTeacher.Id;

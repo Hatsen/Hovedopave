@@ -14,7 +14,24 @@ namespace AdminModule.ViewModels
 
         public ParentCuViewModel()
         {
-            ConfirmCommand = new DelegateCommand<object>(Confirm,IsEnable);
+
+            ObjectHolder.Instance.PropertyChanged += (sender, args) =>
+            {
+                OnPropertyChanged(args.PropertyName); // viewmodel lytter på objectholderen.
+
+            }; // jeg er nødt til at lytte på objectholderen. Hvis jeg ikke gør dette kan jeg ikke få opdateret listen af klasser i comboboksen.
+
+
+            if (ObjectHolder.Instance.ClassList != null)
+            {
+                ClassList = ObjectHolder.Instance.ClassList;
+            }
+            else
+            {
+                ObjectHolder.Instance.GetClasses();
+            }
+
+            ConfirmCommand = new DelegateCommand<object>(Confirm, IsEnable);
             CancelCommand = new DelegateCommand<object>(Cancel);
         }
 
@@ -27,19 +44,20 @@ namespace AdminModule.ViewModels
         private string firstname;
         private string lastname;
         private string city;
-        private string birthdate;
+        private string birthdate = "dd/mm-yyyy";
         private string address;
-        private Parent currentParent;
+        private ParentEx currentParent;
         private bool isLoading;
         private int phonenumber;
-
-
+        private List<Student> currentParentChildrenList; // the current parent children.
+        private List<ClassEx> classList; // will be shown in combo
+        private ClassEx selectedClass = null; // from combo
+        private List<Student> childrenList; // will be shown in combo, but only the students who was selected from the class.
+        private Student selectedChild; // from combo
 
         #endregion
 
         #region PublicMembers
-
-
 
 
         public string Firstname
@@ -97,7 +115,7 @@ namespace AdminModule.ViewModels
             }
         }
 
-        public Parent CurrentParent
+        public ParentEx CurrentParent
         {
             get { return currentParent; }
             set
@@ -110,6 +128,8 @@ namespace AdminModule.ViewModels
                 Address = currentParent.Address;
                 Birthdate = currentParent.Birthdate;
                 Phonenumber = currentParent.Phonenumber;
+                ChildrenList = currentParent.ChildrenList;
+
 
             }
         }
@@ -136,6 +156,69 @@ namespace AdminModule.ViewModels
         }
 
 
+        public List<Student> CurrentParentChildrenList
+        {
+            get { return currentParentChildrenList; }
+            set
+            {
+                currentParentChildrenList = value;
+                OnPropertyChanged("CurrentParentChildrenList");
+            }
+        }
+
+
+
+        public List<ClassEx> ClassList
+        {
+            get { return ObjectHolder.Instance.ClassList; }
+
+            set
+            {
+                classList = value;
+                OnPropertyChanged("ClassList");
+            }
+        }
+
+
+        public List<Student> ChildrenList
+        {
+            get { return childrenList; }
+            set
+            {
+                childrenList = value;
+                OnPropertyChanged("ChildrenList");
+            }
+        }
+
+
+        public ClassEx SelectedClass
+        {
+            get { return selectedClass; }
+            set
+            {
+                if (value != null)
+                {
+                    selectedClass = value;
+                    ChildrenList = value.StudentsList;
+                    OnPropertyChanged("SelectedClass");
+                }
+
+            }
+        }
+
+
+        public Student SelectedChild
+        {
+            get { return selectedChild; }
+            set
+            {
+                selectedChild = value;
+                OnPropertyChanged("SelectedChild");
+            }
+        }
+
+
+
         #endregion
 
         #region Commands
@@ -159,7 +242,7 @@ namespace AdminModule.ViewModels
 
             if (Viewstate == Enums.ViewState.Create)
             {
-                Parent Parent = new Parent();
+                ParentEx Parent = new ParentEx();
                 Parent.Firstname = firstname;
                 Parent.Lastname = lastname;
                 Parent.City = city;
@@ -207,7 +290,7 @@ namespace AdminModule.ViewModels
                 enable = false;
             }
 
-            
+
 
             return enable;
         }
@@ -215,7 +298,7 @@ namespace AdminModule.ViewModels
 
         public void Cancel(Object o)
         {
-            
+
             RaiseOnParentViewClose();
         }
 

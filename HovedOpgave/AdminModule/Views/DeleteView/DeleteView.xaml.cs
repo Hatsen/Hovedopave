@@ -23,18 +23,38 @@ namespace AdminModule.Views.DeleteView
     {
         private DeleteViewModel viewModel;
 
-        public DeleteView(ClassEx selectedClassEx) // tjek om det er teacherex eller class 
+        public DeleteView(ClassEx selectedClassEx = null, TeacherEx selectedTeacher = null) // tjek om det er teacherex eller class 
         {
+
+            InitializeComponent();
+
             if (viewModel == null)
             {
                 viewModel = new DeleteViewModel();
             }
 
-            DataContext = viewModel;
-            viewModel.CurrentClass = selectedClassEx;
+            if (selectedClassEx != null) // er det teacher eller class der ønskes slettet?
+            {
+                viewModel.ViewstateObject = Enums.ViewstateObject.Class;
+                viewModel.CurrentClass = selectedClassEx;
+                datagridClassesEx.Visibility = Visibility.Hidden;
+                cbListofTeachers.Visibility = Visibility.Hidden;
+               butAssociate.Visibility = Visibility.Hidden;
 
-            InitializeComponent();
+
+            }
+            else if (selectedTeacher != null)
+            {
+                viewModel.ViewstateObject = Enums.ViewstateObject.Teacher;
+                viewModel.CurrentTeacherEx = selectedTeacher;
+                listboxStudents.Visibility = Visibility.Hidden;
+                cbListofClasses.Visibility = Visibility.Hidden;
+
+            }
+
+            DataContext = viewModel;
             InitializeEvents();
+
         }
 
 

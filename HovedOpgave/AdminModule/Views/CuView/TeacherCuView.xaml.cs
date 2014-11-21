@@ -23,7 +23,7 @@ namespace AdminModule.Views
     {
         private TeacherCuViewModel viewModel = new TeacherCuViewModel();
 
-        public TeacherCuView(Teacher teacher=null) // se nok mere teacher som generics objekt
+        public TeacherCuView(TeacherEx teacher = null) // se nok mere teacher som generics objekt
         {
             InitializeComponent();
 
@@ -69,7 +69,12 @@ namespace AdminModule.Views
         {
             this.Close();
         }
-      
+
+
+        void tview_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ObjectHolder.Instance.GetTeachers();
+        }
 
     }
 }

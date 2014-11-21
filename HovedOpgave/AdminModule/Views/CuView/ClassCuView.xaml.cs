@@ -24,7 +24,7 @@ namespace AdminModule.Views
 
         private ClassCuViewModel viewModel;
 
-        public ClassCuView(Class classe = null) // se nok mere teacher som generics objekt
+        public ClassCuView(ClassEx classe = null) 
         {
           
             if (viewModel == null)
