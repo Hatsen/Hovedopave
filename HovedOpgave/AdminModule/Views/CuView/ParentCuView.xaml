@@ -67,7 +67,7 @@
                 <Button Content="Bekræft" Height="23"   Command="{Binding ConfirmCommand}" Margin="0,12" Width="80" />
                 <Button Content="Annuller" Height="23"  Command="{Binding CancelCommand}"  Margin="10,12,0,11" Width="80" />
             </StackPanel>
-            <Button Content="Tilknyt" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.093,-0.15" Margin="551,60,0,0" Height="22"/>
+            <Button Content="Tilknyt" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.093,-0.15" Margin="551,60,0,0" Height="22" Command="{Binding AssociateCommand}"/>
         </Grid>
     </xctk:BusyIndicator>
 </Window>

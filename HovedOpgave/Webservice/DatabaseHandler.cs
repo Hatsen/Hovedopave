@@ -53,50 +53,7 @@ namespace Webservice
             return success;
         }
 
-        public List<Student> FindParentsChildren(int id)
-        {
-            List<Student> childrenList = new List<Student>();
 
-            try
-            {
-                DB.Open(); //SELECT fk_StudentId, fk_ParentId FROM [StudentParent] INNER JOIN [Parent] ON Parent.Id = StudentParent.fk_ParentId
-                string[][] getChildren = DB.Query("SELECT * FROM StudentParent");
-                
-                for (int i = 0; i < getChildren.Length; i++)
-                {
-                    if (Convert.ToInt32(getChildren[i][1]) == id)
-                    {
-                        int studentID = Convert.ToInt32(getChildren[i][0]);
-                        string[][] getStudentInfo = DB.Query("SELECT * FROM [User] WHERE Id=" + studentID);
-                        string[][] getClass = DB.Query("SELECT * from [Student] WHERE Id = " + studentID);
-
-                        Student student = new Student();
-
-                        student.Firstname = getStudentInfo[i][1];
-                        student.Lastname = getStudentInfo[i][2];
-                        student.City = getStudentInfo[i][3];
-                        student.Address = getStudentInfo[i][4];
-                        student.Birthdate = getStudentInfo[i][5];
-                        student.Username = getStudentInfo[i][6];
-                        student.Password = getStudentInfo[i][7];
-                        student.Lastlogin = Convert.ToDateTime(getStudentInfo[i][8]);
-                        student.Userrole = Convert.ToInt32(getStudentInfo[i][9]);
-                        student.Phonenumber = Convert.ToInt32(getStudentInfo[i][10]);
-                        student.FkClassid = Convert.ToInt32(getClass[i][1]);
-
-                        childrenList.Add(student);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            finally
-            {
-                DB.Close();
-            }
-            return childrenList;
-        }
 
         public List<Announcement> GetAnnouncements(int groupID)
         {
@@ -356,7 +313,7 @@ END CATCH*/
 
         public bool DeleteUser(int id, string tableName)
         {
-           
+
             int result;
             bool success = true;
 
@@ -364,11 +321,11 @@ END CATCH*/
 
             //transaktion her vil gå ind og lave en 
             result =
-                DB.Exec("BEGIN TRANSACTION BEGIN TRY DELETE FROM ["+tableName+"] WHERE Id = " + id + " DELETE FROM [User] WHERE Id=" +id+ " COMMIT"+
+                DB.Exec("BEGIN TRANSACTION BEGIN TRY DELETE FROM [" + tableName + "] WHERE Id = " + id + " DELETE FROM [User] WHERE Id=" + id + " COMMIT" +
                 " TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION END CATCH");
 
             // det kan ske at der ikke bliver påvirket rækker hvis den brækker sig. Det er fordi den laver rollback og derfor ikke påvirke nogle rækker.
-            if (result == -1||result==0)
+            if (result == -1 || result == 0)
             {
                 success = false;
             }
@@ -381,41 +338,23 @@ END CATCH*/
 
         #region ParentCRUD
 
-        public bool InsertParent(Parent parent)
+        public int InsertParent(Parent parent)
         {
             bool success = true;
             int result;
 
-            // kan ike buge transaktion eftersom løbenummeret tælles op. da id tælles på max antal i db og ikke løbenummer giver det problemer eftersom id 210 ikke passer med id te_196
-
+          
             DB.Open();
 
-
-            result = DB.Exec("BEGIN TRANSACTION BEGIN TRY DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)" +
-                   "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" + parent.Address + "','" + parent.Birthdate + "','" + 1 + "','" + parent.Password + "','" + parent.Lastlogin.ToString() + "'," + parent.Userrole + ", " + parent.Phonenumber + "," + 1 + ");" +
-                   "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='Pa_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Parent](Id)VALUES(@Id) COMMIT TRANSACTION   END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
-
-            /* result = DB.Exec("BEGIN TRANSACTION trans1 BEGIN TRY INSERT INTO [User] (Firstname,Lastname,City,[Address],[Birthdate],[Username],[Password],Lastlogin,[Userrole],[PhoneNumber],fk_SchoolId)" +
-      "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" + parent.Address + "','" + parent.Birthdate + "','" + parent.Username + "','" + parent.Password + "','" + parent.Lastlogin + "'," + parent.Userrole + ", " + parent.Phonenumber + ", " + 1 + ");" +
-             "INSERT INTO [Parent] (Id) VALUES (" + parent.Id + "); COMMIT TRANSACTION trans1 END TRY BEGIN CATCH ROLLBACK TRANSACTION trans1 return; END CATCH");*/
+            string[][] getTeachers = DB.Query("BEGIN TRANSACTION BEGIN TRY DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)" +
+                "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" + parent.Address + "','" + parent.Birthdate + "','" + 1 + "','" + parent.Password + "','" + parent.Lastlogin.ToString() + "'," + parent.Userrole + ", " + parent.Phonenumber + "," + 1 + ");" +
+                "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='Pa_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Parent](Id)VALUES(@Id) SELECT @Id  COMMIT TRANSACTION   END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
 
 
+            int generatedId = Convert.ToInt32(getTeachers[0][0]);
 
 
-            /* result = DB.Exec("INSERT INTO [User] (Firstname,Lastname,City,[Address],[Birthdate],[Username],[Password],Lastlogin,[Userrole],[PhoneNumber],fk_SchoolId)" +
-                     "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" +
-                     parent.Address + "','" + parent.Birthdate + "','" + parent.Username + "','" + parent.Password +
-                     "','" + parent.Lastlogin.ToString() + "'," + parent.Userrole + ", " + parent.Phonenumber + ", " + 1 + ");");
-               
-              DB.Exec("INSERT INTO [Parent] (Id) VALUES (" + parent.Id + ");");*/
-
-            if (result == -1)
-            {
-                Debug.Write("Fejl!");
-                success = false;
-            }
-
-            return success;
+            return generatedId;
         }
         public bool UpdateParent(Parent parent)
         {
@@ -484,11 +423,64 @@ END CATCH*/
             }
             return parents;
         }
-       /* public bool DeleteParent(int id)
-        {
+        /* public bool DeleteParent(int id)
+         {
 
-            return true;
-        }*/
+             return true;
+         }*/
+
+
+
+        public List<Student> FindParentsChildren(int id)
+        {
+            List<Student> childrenList = new List<Student>();
+
+            try
+            {
+                DB.Open(); //SELECT fk_StudentId, fk_ParentId FROM [StudentParent] INNER JOIN [Parent] ON Parent.Id = StudentParent.fk_ParentId
+                string[][] getChildren = DB.Query("SELECT * FROM StudentParent");
+
+                for (int i = 0; i < getChildren.Length; i++)
+                {
+                    if (Convert.ToInt32(getChildren[i][1]) == id)
+                    {
+                        int studentID = Convert.ToInt32(getChildren[i][0]);
+                        string[][] getStudentInfo = DB.Query("SELECT * FROM [User] WHERE Id=" + studentID);
+                        string[][] getClass = DB.Query("SELECT * from [Student] WHERE Id = " + studentID);
+
+                        Student student = new Student();
+                        student.Id = Convert.ToInt32(getStudentInfo[i][0]);
+                        student.Firstname = getStudentInfo[i][1];
+                        student.Lastname = getStudentInfo[i][2];
+                        student.City = getStudentInfo[i][3];
+                        student.Address = getStudentInfo[i][4];
+                        student.Birthdate = getStudentInfo[i][5];
+                        student.Username = getStudentInfo[i][6];
+                        student.Password = getStudentInfo[i][7];
+                        student.Lastlogin = Convert.ToDateTime(getStudentInfo[i][8]);
+                        student.Userrole = Convert.ToInt32(getStudentInfo[i][9]);
+                        student.Phonenumber = Convert.ToInt32(getStudentInfo[i][10]);
+                        student.FkClassid = Convert.ToInt32(getClass[i][1]);
+
+                        childrenList.Add(student);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.Write(ex);
+            }
+            finally
+            {
+                DB.Close();
+            }
+            return childrenList;
+        }
+
+
+
+
+
         #endregion
 
         #region StudentCRUD
@@ -539,7 +531,7 @@ END CATCH*/
 
             DB.Open();
             result = DB.Exec("BEGIN TRANSACTION BEGIN TRY UPDATE [User] SET Firstname ='" + student.Firstname + "', Lastname='" + student.Lastname + "', City='" + student.City + "', Address='" + student.Address + "'," +
-             "Birthdate='" + student.Birthdate + "', Username='" + student.Username + "', Password='" + student.Password + "', Lastlogin ='" + student.Lastlogin.ToString() + "', Userrole=" + student.Userrole + ", PhoneNumber=" + student.Phonenumber + " WHERE Id ="+student.Id+" UPDATE [Student] SET fk_ClassId=" + student.FkClassid + " WHERE Id=" + student.Id + "  COMMIT TRANSACTION END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
+             "Birthdate='" + student.Birthdate + "', Username='" + student.Username + "', Password='" + student.Password + "', Lastlogin ='" + student.Lastlogin.ToString() + "', Userrole=" + student.Userrole + ", PhoneNumber=" + student.Phonenumber + " WHERE Id =" + student.Id + " UPDATE [Student] SET fk_ClassId=" + student.FkClassid + " WHERE Id=" + student.Id + "  COMMIT TRANSACTION END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
 
             if (result == -1)
             {
@@ -675,7 +667,7 @@ END CATCH*/
                     classes.Add(theClass);
                 }
 
-              
+
             }
             catch (Exception ex)
             {
@@ -737,6 +729,45 @@ END CATCH*/
             }
 
             return userrole;
+        }
+
+
+        public bool InsertIntoStudentParent(StudentParent studentParent)
+        {
+            bool success = true;
+            int result = 0;
+            try
+            {
+                DB.Open();
+
+                // lav en tranaction.
+
+                result = DB.Exec("BEGIN TRANSACTION BEGIN TRY INSERT INTO [StudentParent](fk_StudentId, fk_ParentId)" +
+                 "VALUES(" + studentParent.Fkstudentid + "," + studentParent.Fkparentid + "); COMMIT TRANSACTION END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
+
+
+
+
+                /*  int a = DB.Exec(
+                       "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole) " +
+                       "VALUES('" + student.Firstname + "','" + student.Lastname + "','" + student.City + "','" + student.Address + "','" + student.Birthdate + "','" + student.Username + "','" + student.Password + "','" + student.Lastlogin.ToString() + "'," + student.Userrole + ");");
+                  int b = DB.Exec("INSERT INTO [Student] (Id, fk_ClassId) VALUES (" + student.Id + "," + student.FkClassid + ");");*/
+
+                if (result == -1)
+                {
+                    throw new Exception();
+                }
+            }
+            catch (SqlException sqlException)
+            {
+                Debug.Write(sqlException.ToString());
+                success = false;
+            }
+
+
+
+
+            return success;
         }
 
     }

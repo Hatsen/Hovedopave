@@ -644,3 +644,6 @@ C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main2\HovedOpgave\AdminModule\ob
 C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main2\HovedOpgave\AdminModule\obj\Debug\AdminModule.g.resources
 C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main2\HovedOpgave\AdminModule\obj\Debug\AdminModule.Properties.Resources.resources
 C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main2\HovedOpgave\AdminModule\obj\Debug\AdminModule.csproj.GenerateResource.Cache
+C:\Users\LarsS\Dropbox\Datamatiker\main\main2\HovedOpgave\AdminModule\bin\Debug\AdminModule.exe.config
+C:\Users\LarsS\Dropbox\Datamatiker\main\main2\HovedOpgave\AdminModule\obj\Debug\AdminModule.exe
+C:\Users\LarsS\Dropbox\Datamatiker\main\main2\HovedOpgave\AdminModule\obj\Debug\AdminModule.pdb

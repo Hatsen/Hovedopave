@@ -33,11 +33,11 @@ namespace AdminModule.ViewModels
 
             ConfirmCommand = new DelegateCommand<object>(Confirm, IsEnable);
             CancelCommand = new DelegateCommand<object>(Cancel);
+            AssociateCommand = new DelegateCommand<object>(Associate, CanAssociate);
         }
 
         public Action OnParentViewClose;
         public Enums.ViewState Viewstate; // bliver altid sat til Create til at starte med.
-        //  public Enums.ViewState ViewstateObject; // bliver altid sat til Create til at starte med.
 
         #region PrivateMembers
 
@@ -49,7 +49,7 @@ namespace AdminModule.ViewModels
         private ParentEx currentParent;
         private bool isLoading;
         private int phonenumber;
-        private List<Student> currentParentChildrenList; // the current parent children.
+        private List<Student> currentParentChildrenList = new List<Student>(); // the current parent children.
         private List<ClassEx> classList; // will be shown in combo
         private ClassEx selectedClass = null; // from combo
         private List<Student> childrenList; // will be shown in combo, but only the students who was selected from the class.
@@ -128,7 +128,7 @@ namespace AdminModule.ViewModels
                 Address = currentParent.Address;
                 Birthdate = currentParent.Birthdate;
                 Phonenumber = currentParent.Phonenumber;
-                ChildrenList = currentParent.ChildrenList;
+                CurrentParentChildrenList = currentParent.ChildrenList;
 
 
             }
@@ -163,6 +163,7 @@ namespace AdminModule.ViewModels
             {
                 currentParentChildrenList = value;
                 OnPropertyChanged("CurrentParentChildrenList");
+                AssociateCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -201,6 +202,7 @@ namespace AdminModule.ViewModels
                     selectedClass = value;
                     ChildrenList = value.StudentsList;
                     OnPropertyChanged("SelectedClass");
+                    AssociateCommand.RaiseCanExecuteChanged();
                 }
 
             }
@@ -214,6 +216,7 @@ namespace AdminModule.ViewModels
             {
                 selectedChild = value;
                 OnPropertyChanged("SelectedChild");
+                AssociateCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -225,6 +228,8 @@ namespace AdminModule.ViewModels
         public DelegateCommand<object> ConfirmCommand { get; set; }
 
         public DelegateCommand<object> CancelCommand { get; set; }
+
+        public DelegateCommand<object> AssociateCommand { get; set; }
 
         #endregion
 
@@ -242,16 +247,16 @@ namespace AdminModule.ViewModels
 
             if (Viewstate == Enums.ViewState.Create)
             {
-                ParentEx Parent = new ParentEx();
-                Parent.Firstname = firstname;
-                Parent.Lastname = lastname;
-                Parent.City = city;
-                Parent.Birthdate = birthdate;
-                Parent.Address = address;
-                Parent.Userrole = (int)Enums.Userrole.Parent;
-                Parent.Phonenumber = phonenumber;
-
-                success = await BusinessLogic.Instance.CreateParent(Parent);
+                ParentEx parent = new ParentEx();
+                parent.Firstname = firstname;
+                parent.Lastname = lastname;
+                parent.City = city;
+                parent.Birthdate = birthdate;
+                parent.Address = address;
+                parent.Userrole = (int)Enums.Userrole.Parent;
+                parent.Phonenumber = phonenumber;
+                parent.ChildrenList = CurrentParentChildrenList;
+                success = await BusinessLogic.Instance.CreateParent(parent);
 
             }
 
@@ -266,6 +271,7 @@ namespace AdminModule.ViewModels
                 CurrentParent.Birthdate = birthdate;
                 CurrentParent.Address = address;
                 CurrentParent.Phonenumber = phonenumber;
+                CurrentParent.ChildrenList = CurrentParentChildrenList;
                 success = await BusinessLogic.Instance.UpdateParent(CurrentParent);
             }
 
@@ -290,7 +296,37 @@ namespace AdminModule.ViewModels
                 enable = false;
             }
 
+            return enable;
+        }
 
+
+
+        public void Associate(Object o)
+        {
+            List<Student> currentChildrenListTmp = currentParentChildrenList;
+            List<Student> childrenListTmp = new List<Student>();
+
+            foreach (Student student in currentParentChildrenList)
+            {
+                childrenListTmp.Add(student);
+            }
+
+            childrenListTmp.Add(SelectedChild);
+
+            CurrentParentChildrenList = childrenListTmp;
+
+            AssociateCommand.RaiseCanExecuteChanged();
+
+        }
+
+        public bool CanAssociate(Object o)
+        {
+            // validerer om alle felter er blevet udfyldt.
+            bool enable = false;
+            if (SelectedClass != null && SelectedChild != null && !CurrentParentChildrenList.Any(obj=>obj.Id==SelectedChild.Id)) 
+            {
+                enable = true;
+            }
 
             return enable;
         }

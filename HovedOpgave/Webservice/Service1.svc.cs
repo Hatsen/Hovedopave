@@ -42,7 +42,7 @@ namespace Webservice
             userDetails[2] = Holder.Instance.LoginDetails.Lastname;
             userDetails[3] = Holder.Instance.LoginDetails.Username;
             userDetails[4] = Convert.ToString(Holder.Instance.LoginDetails.Userrole);
-  
+
             return userDetails[number];
         }
 
@@ -84,8 +84,8 @@ namespace Webservice
             }
             return classList;
         }
-          
-        
+
+
 
         public List<Student> FindParentsChildren(int id)
         {
@@ -192,58 +192,7 @@ namespace Webservice
             return success;
         }
 
-        public string DeleteUser(int id)
-        {
-            string returnMessage = "";
-            int userrole = DatabaseHandler.Instance.GetTheUserrole(id);
-            string tableName = "";
-            // delete user. Du har user tabel og evt. teacher, student eller parent.
-
-            if (userrole == (int)EnumsWeb.Userrole.Teacher)
-            {
-                tableName = "Teacher";
-                bool result = DatabaseHandler.Instance.DeleteUser(id, tableName);
-
-                if (!result && tableName == "Teacher")
-                {
-                    returnMessage =
-                        "Før du kan fjerne teahcer skal du fjerne klasse eller klasser, der er tilknyttet underviseren." +
-                        "Underviseren er ikke blevet slettet." +
-                        "Du bedes kontakte support.";
-                }
-            }
-
-            if (userrole == (int)EnumsWeb.Userrole.Parent)
-            {
-                tableName = "Parent";
-                bool result = DatabaseHandler.Instance.DeleteUser(id, tableName);
-
-                if (!result && tableName == "Parent")
-                {
-                    returnMessage =
-                        "Noget gik galt under sletningen af forældre. Forældren er ikke blevet slettet." +
-                        "Du bedes kontakte support.";
-                }
-
-            }
-
-
-            if (userrole == (int)EnumsWeb.Userrole.Student)
-            {
-                tableName = "Student";
-                bool result = DatabaseHandler.Instance.DeleteUser(id, tableName);
-
-                if (!result && tableName == "Student")
-                {
-                    returnMessage =
-                        "Noget gik galt under sletningen af elev. Eleven er ikke blevet slettet." +
-                        "Du bedes kontakte support.";
-                }
-
-            }
-
-            return returnMessage;
-        }
+  
 
         #endregion
 
@@ -259,7 +208,7 @@ namespace Webservice
 
         public bool InsertParent(ParentEx parent)
         {
-
+            int generatedId = 0;
             bool success = false;
 
             if (parent.Id != 0) // update
@@ -269,16 +218,28 @@ namespace Webservice
 
             else
             {
-                //int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
 
-                // if (recentId != -1)
-                //{
-                /*   parent.Id = recentId;
-                   parent.Fkuserid = recentId;
-                   parent.Username = "Pa_" + recentId;*/
-                success = DatabaseHandler.Instance.InsertParent(parent);
-                //}
+                if (parent.ChildrenList.Count != 0)
+                {
+                    generatedId = DatabaseHandler.Instance.InsertParent(parent);
+
+                    if (generatedId == 0)
+                        success = false;
+                    else
+                        success = true;
+
+
+                    foreach (Student child in parent.ChildrenList)
+                    {
+                        StudentParent studentParent = new StudentParent();
+                        studentParent.Fkparentid = generatedId;
+                        studentParent.Fkstudentid = child.Id;
+                        DatabaseHandler.Instance.InsertIntoStudentParent(studentParent);
+                    }
+                }
             }
+
+
             return success;
         }
 
@@ -292,16 +253,12 @@ namespace Webservice
 
             foreach (ParentEx parent in parentExlist)
             {
-              /*  List<Student> id = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
-                if (id.Count != 0)
-                {
-                    foreach (int i in id)
-                    {
-                        parent.ChildrenIdList.Add(i);
-                    }
-                }*/
+                List<Student> children = new List<Student>();
+                 children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
+                if (children.Count != 0)
+                    parent.ChildrenList = children;
 
-            }
+           }
 
             return parentExlist;
         }
@@ -410,7 +367,58 @@ namespace Webservice
 
         #endregion
 
+        public string DeleteUser(int id)
+        {
+            string returnMessage = "";
+            int userrole = DatabaseHandler.Instance.GetTheUserrole(id);
+            string tableName = "";
+            // delete user. Du har user tabel og evt. teacher, student eller parent.
 
+            if (userrole == (int)EnumsWeb.Userrole.Teacher)
+            {
+                tableName = "Teacher";
+                bool result = DatabaseHandler.Instance.DeleteUser(id, tableName);
+
+                if (!result && tableName == "Teacher")
+                {
+                    returnMessage =
+                        "Før du kan fjerne teahcer skal du fjerne klasse eller klasser, der er tilknyttet underviseren." +
+                        "Underviseren er ikke blevet slettet." +
+                        "Du bedes kontakte support.";
+                }
+            }
+
+            if (userrole == (int)EnumsWeb.Userrole.Parent)
+            {
+                tableName = "Parent";
+                bool result = DatabaseHandler.Instance.DeleteUser(id, tableName);
+
+                if (!result && tableName == "Parent")
+                {
+                    returnMessage =
+                        "Noget gik galt under sletningen af forældre. Forældren er ikke blevet slettet." +
+                        "Du bedes kontakte support.";
+                }
+
+            }
+
+
+            if (userrole == (int)EnumsWeb.Userrole.Student)
+            {
+                tableName = "Student";
+                bool result = DatabaseHandler.Instance.DeleteUser(id, tableName);
+
+                if (!result && tableName == "Student")
+                {
+                    returnMessage =
+                        "Noget gik galt under sletningen af elev. Eleven er ikke blevet slettet." +
+                        "Du bedes kontakte support.";
+                }
+
+            }
+
+            return returnMessage;
+        }
 
     }
 }

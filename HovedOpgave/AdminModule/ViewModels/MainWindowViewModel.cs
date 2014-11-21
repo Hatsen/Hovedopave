@@ -237,9 +237,9 @@ namespace AdminModule.ViewModels
 
         public DelegateCommand<object> CreateParentCommand { get; set; }
 
-        public void CreateParent(Object o)
+        public async void CreateParent(Object o)
         {
-            GetClasses();
+            bool done = await GetClasses(); // så åbner den først vinduet når kriterierne er opfyldt! smart :)
             ParentCuView pview = new ParentCuView();
             pview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             pview.ShowDialog();
@@ -473,12 +473,14 @@ namespace AdminModule.ViewModels
             RaiseOnselectedPersonChanged("Underviser");
         }
 
-        private async void GetClasses()
+        private async Task<bool> GetClasses()
         {
             Isloading = true;
             ClassList = await ServiceProxy.Instance.GetClasses();
             ObjectHolder.Instance.ClassList = ClassList;
             Isloading = false;
+
+            return true;
             // RaiseOnselectedPersonChanged("Underviser");  ikke være nødvendig for klasse.
         }
 

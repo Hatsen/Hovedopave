@@ -30,7 +30,6 @@ namespace AdminModule.Views
             if (viewModel == null)
                 viewModel = new ParentCuViewModel();
 
-
             viewModel.Viewstate = parent == null ? Enums.ViewState.Create : Enums.ViewState.Edit;
 
             
