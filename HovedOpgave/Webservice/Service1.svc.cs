@@ -61,6 +61,7 @@ namespace Webservice
                             case 1: //Skoleleder
                                 classList.Add(null);
                                 break;
+
                             case 2: //Teacher
 
                                 break;
@@ -111,9 +112,22 @@ namespace Webservice
 
             foreach (Announcement anc in Holder.Instance.Announcements)
             {
+                /*
+                 * if (groupID == 1 || groupID == anc.GroupID || classID == anc.ClassID || groupID == 0)
+                   {
+                        announcements.Add(anc);  
+                   }
+                 */
+
                 if (groupID == 1 || groupID == anc.GroupID || classID == anc.ClassID || groupID == 0)
                 {
-                    announcements.Add(anc); //Hvis han er skoleleder, gruppen passer til ham, klassen passer til ham eller beskeden er til alle, skal den tilføjes til listen.
+                    if (groupID == anc.GroupID && classID != anc.ClassID)
+                    {
+                    }
+                    else if ((groupID == anc.GroupID) && (classID == anc.ClassID) || groupID == anc.GroupID && classID == 0)
+                    {
+                        announcements.Add(anc);
+                    }
                 }
             }
 

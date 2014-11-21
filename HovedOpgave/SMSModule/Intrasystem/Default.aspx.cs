@@ -18,18 +18,16 @@ namespace SMSModule.Intrasystem
 
             foreach (ClassEx classEx in classList)
             {
-                if (classEx.Id == Convert.ToInt32(Request.QueryString["selectedclass"]))
+                if (classEx.Id == Convert.ToInt32(Request.QueryString["class"]))
                 {
                     Session["selectedclass"] = classEx.Id;
                 }
+                else if (Convert.ToInt32(Session["userrole"]) == 0)
+                {
+                    Session["selectedclass"] = 0;
+                }
             }
 
-            /*
-            if ((await ObjectHolder.Instance.UcController.GetClassDetails(Convert.ToInt32(Session["userid"]), Convert.ToInt32(Session["userrole"]))).Contains(selectedClass))
-            {
-                Session["selectedclass"] = selectedClass;
-            }
-            */
             List<Announcement> announcementList = await ObjectHolder.Instance.UcController.GetAnnouncements(Convert.ToInt32(Session["userrole"]), Convert.ToInt32(Session["selectedclass"]));
 
             html += "<table id='announcementTable'>";
