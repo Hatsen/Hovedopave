@@ -550,12 +550,10 @@ END CATCH*/
                     int classID = Convert.ToInt32(getClassId[i][1]);
                     string[][] getClass = DB.Query("SELECT * FROM Class WHERE Id =" + classID);
 
-                    for (int i = 0; i < getClass.Length; i++)
+                    for (int j = 0; j < getClass.Length; j++)
                     {
                         classEx.Id = Convert.ToInt32(getClass[i][0]);
                         classEx.Name = getClass[i][1];
-                        classEx.TeacherId = Convert.ToInt32(getClass[i][2]);
-                        classEx.SchoolId = Convert.ToInt32(getClass[i][3]);
                     }
                 }
                 return classEx;
@@ -567,7 +565,7 @@ END CATCH*/
             {
                 DB.Close();
             }
-            return classList;
+            return classEx;
         }
 
         public List<Student> GetStudents()
