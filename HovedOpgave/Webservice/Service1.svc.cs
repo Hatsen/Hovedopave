@@ -270,42 +270,42 @@ namespace Webservice
         {
             List<ClassEx> classList = GetClasses();
 
-            foreach (ClassEx classEx in classList)
+            switch (userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
             {
-                foreach (Student student in classEx.StudentsList)
-                {
-                    if (student.Id == id)
+                case 1: //Skoleleder
+                    classList.Add(null);
+                    break;
+
+                case 2: //Teacher
+
+                    break;
+
+                case 3: //Vikar
+
+                    break;
+
+                case 4: //Parent
+                   /* if (!classList.Contains(classEx))
                     {
-                        switch (userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
+                        classList.Add(classEx);
+                    } */
+                    break;
+
+                case 5: //Student
+                    foreach (ClassEx classEx in classList)
+                    {
+                        foreach (Student student in classEx.StudentsList)
                         {
-                            case 1: //Skoleleder
-                                classList.Add(null);
-                                break;
-
-                            case 2: //Teacher
-
-                                break;
-
-                            case 3: //Vikar
-
-                                break;
-
-                            case 4: //Parent
+                            if (student.Id == id)
+                            {
                                 if (!classList.Contains(classEx))
                                 {
                                     classList.Add(classEx);
                                 }
-                                break;
-
-                            case 5: //Student
-                                if (!classList.Contains(classEx))
-                                {
-                                    classList.Add(classEx);
-                                }
-                                break;
+                            }
                         }
                     }
-                }
+                    break;
             }
             return classList;
         }
