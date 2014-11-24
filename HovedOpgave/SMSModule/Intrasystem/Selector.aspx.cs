@@ -17,7 +17,7 @@ namespace SMSModule.Intrasystem
 
             html += "<table id=selectorClassTable>";
 
-            if (classList.Count != 0 || classList == null)
+            if (classList.Count == 0 || classList == null)
             {
                 foreach (ClassEx classEx in classList)
                 {
