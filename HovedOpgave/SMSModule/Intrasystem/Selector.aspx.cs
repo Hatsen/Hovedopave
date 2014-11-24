@@ -17,15 +17,21 @@ namespace SMSModule.Intrasystem
 
             html += "<table id=selectorClassTable>";
 
-            foreach(ClassEx classEx in classList)
+            if (classList.Count != 0 || classList == null)
             {
-                html += "<tr>";
-                html += "<td class='selectorLinkItem'><a href='Default.aspx?class=" + classEx.Id + "'>" + classEx.Name + "</a></td>";
-                html += "</tr>";
+                foreach (ClassEx classEx in classList)
+                {
+                    html += "<tr>";
+                    html += "<td class='selectorLinkItem'><a href='Default.aspx?class=" + classEx.Id + "'>" + classEx.Name + "</a></td>";
+                    html += "</tr>";
+                }
+                html += "</table>";
+                selectorClassArea.InnerHtml = html;
             }
-            html += "</table>";
-
-            selectorClassArea.InnerHtml = html;
+            else
+            {
+                Response.Redirect("Default.aspx");
+            }
         }
     }
 }

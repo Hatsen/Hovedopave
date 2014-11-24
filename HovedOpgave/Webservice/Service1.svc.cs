@@ -275,7 +275,7 @@ namespace Webservice
             switch (userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
             {
                 case 1: //Skoleleder
-                    classList.Add(null);
+                    userList.Add(null);
                     break;
 
                 case 2: //Teacher
@@ -283,10 +283,7 @@ namespace Webservice
                     {
                         if (classEx.Fkteacherid == id)
                         {
-                            if (!userList.Contains(classEx))
-                            {
-                                userList.Add(classEx);
-                            }
+                            userList.Add(classEx);
                         }
                     }
                     break;
@@ -305,10 +302,7 @@ namespace Webservice
                         {
                             if (student.Id == id)
                             {
-                                if (!userList.Contains(classEx))
-                                {
-                                    userList.Add(classEx);
-                                }
+                                userList.Add(classEx);
                             }
                         }
                     }
