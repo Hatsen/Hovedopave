@@ -115,7 +115,7 @@ namespace Webservice
             return success;
         }
 
-  
+
 
         #endregion
 
@@ -179,11 +179,12 @@ namespace Webservice
             foreach (ParentEx parent in parentExlist)
             {
                 List<Student> children = new List<Student>();
-                 children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
+                children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
                 if (children.Count != 0)
+                {
                     parent.ChildrenList = children;
-
-           }
+                }
+            }
 
             return parentExlist;
         }
@@ -269,6 +270,7 @@ namespace Webservice
         public List<ClassEx> GetClassDetails(int id, int userrole)
         {
             List<ClassEx> classList = GetClasses();
+            List<ClassEx> userList = new List<ClassEx>(); //De klasser brugeren er en del af.
 
             switch (userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
             {
@@ -277,18 +279,23 @@ namespace Webservice
                     break;
 
                 case 2: //Teacher
-
+                    foreach (ClassEx classEx in classList)
+                    {
+                        if (classEx.Fkteacherid == id)
+                        {
+                            if (!userList.Contains(classEx))
+                            {
+                                userList.Add(classEx);
+                            }
+                        }
+                    }
                     break;
 
                 case 3: //Vikar
-
                     break;
 
                 case 4: //Parent
-                   /* if (!classList.Contains(classEx))
-                    {
-                        classList.Add(classEx);
-                    } */
+
                     break;
 
                 case 5: //Student
@@ -298,16 +305,16 @@ namespace Webservice
                         {
                             if (student.Id == id)
                             {
-                                if (!classList.Contains(classEx))
+                                if (!userList.Contains(classEx))
                                 {
-                                    classList.Add(classEx);
+                                    userList.Add(classEx);
                                 }
                             }
                         }
                     }
                     break;
             }
-            return classList;
+            return userList;
         }
 
         public bool InsertClass(ClassEx theClass)

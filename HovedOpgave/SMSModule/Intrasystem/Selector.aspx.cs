@@ -17,7 +17,7 @@ namespace SMSModule.Intrasystem
 
             html += "<table id=selectorClassTable>";
 
-            foreach( ClassEx classEx in classList)
+            foreach(ClassEx classEx in classList)
             {
                 html += "<tr>";
                 html += "<td class='selectorLinkItem'><a href='Default.aspx?class=" + classEx.Id + "'>" + classEx.Name + "</a></td>";
