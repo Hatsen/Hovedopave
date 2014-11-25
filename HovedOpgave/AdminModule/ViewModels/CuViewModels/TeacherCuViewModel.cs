@@ -15,8 +15,6 @@ namespace AdminModule.ViewModels
         public TeacherCuViewModel()
         {
 
-
-
             ConfirmCommand = new DelegateCommand<object>(Confirm, IsEnable);
             CancelCommand = new DelegateCommand<object>(Cancel);
 

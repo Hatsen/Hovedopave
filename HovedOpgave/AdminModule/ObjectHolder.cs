@@ -31,6 +31,7 @@ namespace AdminModule
         private bool isLoading;
         private List<TeacherEx> teacherList;
         private List<ClassEx> classList;
+        private List<Student> studentList;
 
 
         public bool Isloading
@@ -68,8 +69,20 @@ namespace AdminModule
                 classList = value;
                 OnPropertyChanged("ClassList");
                 OnPropertyChanged("CurrentStudent");
-                // Test = true;
+            }
 
+        }
+
+
+        public List<Student> StudentList
+        {
+
+            get { return studentList; }
+
+            set
+            {
+                studentList = value;
+                OnPropertyChanged("StudentList");
             }
 
         }
@@ -80,7 +93,6 @@ namespace AdminModule
             Isloading = true;
             TeacherList = await ServiceProxy.Instance.GetTeachers();
             Isloading = false;
-            //RaiseOnselectedPersonChanged("Underviser");
         }
 
 
@@ -89,12 +101,15 @@ namespace AdminModule
             Isloading = true;
             ClassList = await ServiceProxy.Instance.GetClasses();
             Isloading = false;
-          
-
-            // RaiseOnselectedPersonChanged("Underviser");
         }
 
-     
+
+        public async void GetStudents()
+        {
+            Isloading = true;
+            StudentList = await ServiceProxy.Instance.GetStudents();
+            Isloading = false;
+        }
 
 
     }

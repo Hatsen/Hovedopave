@@ -38,7 +38,7 @@ namespace AdminModule.ViewModels
             EditClassCommand = new DelegateCommand<object>(EditClass, MayiEditClass);
             DeleteUserCommand = new DelegateCommand<object>(DeletePerson, MayiEditPerson);
             DeleteClassCommand = new DelegateCommand<object>(DeleteClass, MayiEditClass);
-            ResetPasswordCommand = new DelegateCommand<object>(ResetPasswordForSelectedUser,MayiEditPerson);
+            ResetPasswordCommand = new DelegateCommand<object>(ResetPasswordForSelectedUser, MayiEditPerson);
 
             List<string> listofpersons = new List<string>();
             listofpersons.Add("Underviser");
@@ -268,19 +268,20 @@ namespace AdminModule.ViewModels
 
         void sview_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+         
         }
 
 
         public DelegateCommand<object> CreateClassCommand { get; set; }
 
-        public void CreateClass(Object o)
+        public async void CreateClass(Object o)
         {
+            bool waiter;
             Views.ClassCuView cview = new Views.ClassCuView();
             cview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             cview.ShowDialog();
             cview.Closing += cview_Closing;
-            GetClasses();
+            waiter = await GetClasses();
         }
 
         void cview_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -288,31 +289,64 @@ namespace AdminModule.ViewModels
 
         }
 
+        public DelegateCommand<object> EditClassCommand { get; set; }
+
+        public async void EditClass(Object o)
+        {
+            bool waiter;
+            ClassCuView cview = new ClassCuView(SelectedClass);
+            cview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            cview.ShowDialog();
+            cview.Closing += cview_Closing;
+            waiter = await GetClasses();
+        }
+
+        public bool MayiEditClass(Object o)
+        {
+            bool boolen = false;
+
+            if (selectedClass != null)
+                boolen = true;
+
+            return boolen;
+        }
+
+
 
         public DelegateCommand<object> EditUserCommand { get; set; }
 
         public void EditUser(Object o)
         {
-            if (selectedStringPerson == "Underviser")
+            if (selectedStringPerson != null)
             {
-                TeacherCuView tview = new TeacherCuView((TeacherEx)SelectedUser);
-                tview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                tview.ShowDialog();
+                if (selectedStringPerson == "Underviser")
+                {
+                    TeacherCuView tview = new TeacherCuView((TeacherEx)SelectedUser);
+                    tview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    tview.ShowDialog();
+                    tview.Closing += tview_Closing; // den kører ikke videre indtil viewet lukker.
+
+                }
+
+                if (selectedStringPerson == "Elev")
+                {
+                    StudentCuView sview = new StudentCuView((Student)SelectedUser);
+                    sview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    sview.ShowDialog();
+                    sview.Closing += sview_Closing;
+                }
+
+                if (selectedStringPerson == "Forældre")
+                {
+                    ParentCuView pview = new ParentCuView((ParentEx)SelectedUser);
+                    pview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    pview.ShowDialog();
+                    pview.Closing += pview_Closing;
+                }
+
+                SelectedStringPerson = selectedStringPerson;
             }
 
-            if (selectedStringPerson == "Elev")
-            {
-                StudentCuView sview = new StudentCuView((Student)SelectedUser);
-                sview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                sview.ShowDialog();
-            }
-
-            if (selectedStringPerson == "Forældre")
-            {
-                ParentCuView paview = new ParentCuView((ParentEx)SelectedUser);
-                paview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                paview.ShowDialog();
-            }
         }
 
 
@@ -325,25 +359,6 @@ namespace AdminModule.ViewModels
         }
 
 
-        public DelegateCommand<object> EditClassCommand { get; set; }
-
-        public void EditClass(Object o)
-        {
-            ClassCuView cview = new ClassCuView(SelectedClass);
-            cview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            cview.ShowDialog();
-
-        }
-
-        public bool MayiEditClass(Object o)
-        {
-            bool boolen = false;
-
-            if (selectedClass != null)
-                boolen = true;
-
-            return boolen;
-        }
 
         public DelegateCommand<object> DeleteUserCommand { get; set; }
 
@@ -488,6 +503,7 @@ namespace AdminModule.ViewModels
         {
             Isloading = true;
             StudentList = await ServiceProxy.Instance.GetStudents();
+            ObjectHolder.Instance.StudentList = StudentList;
             Isloading = false;
             RaiseOnselectedPersonChanged("Elev");
         }
@@ -496,6 +512,7 @@ namespace AdminModule.ViewModels
         {
             Isloading = true;
             ParentList = await ServiceProxy.Instance.GetParents();
+            ObjectHolder.Instance.StudentList = StudentList;
             Isloading = false;
             RaiseOnselectedPersonChanged("Forældre");
         }
@@ -513,7 +530,7 @@ namespace AdminModule.ViewModels
 
         public async void ResetPasswordForSelectedUser(Object o)
         {
-            bool result; 
+            bool result;
 
             result = await BusinessLogic.Instance.ResetPasswordForSelectedUser(SelectedUser);
 

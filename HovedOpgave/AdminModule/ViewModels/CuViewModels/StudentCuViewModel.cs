@@ -15,7 +15,6 @@ namespace AdminModule.ViewModels
         public StudentCuViewModel()
         {
 
-
             ObjectHolder.Instance.PropertyChanged += (sender, args) =>
             {
                 if (args.PropertyName == "CurrentStudent") // bliver ramt når den er ændret i teacherlist på objetholder. er nødt til at gøre dette da properien currentclass ikke vil blive ramt i setteren.
@@ -59,6 +58,7 @@ namespace AdminModule.ViewModels
         private int phonenumber;
         private Class selectedClass;
         private List<ClassEx> classList;
+        private bool isLoading;
 
 
         #endregion
@@ -83,8 +83,12 @@ namespace AdminModule.ViewModels
                     Address = currentStudent.Address;
                     Birthdate = currentStudent.Birthdate;
                     Phonenumber = currentStudent.Phonenumber;
-                    // FkClassId = currentStudent.FkClassid.ToString(); // hardcoded
                     FkClassId = currentStudent.FkClassid;
+
+                    if (ClassList != null)
+                    {
+                        SetTheClassInCombobox();
+                    }
                 }
 
             }
@@ -171,7 +175,7 @@ namespace AdminModule.ViewModels
             {
                 ObjectHolder.Instance.ClassList = value;
                 OnPropertyChanged("ClassList");
-               // ConfirmCommand.RaiseCanExecuteChanged(); den giver et null problem hvis du trykker opret elev og derefter trykker annuller og så igen opret elev??
+                // ConfirmCommand.RaiseCanExecuteChanged(); den giver et null problem hvis du trykker opret elev og derefter trykker annuller og så igen opret elev??
             }
         }
 
@@ -186,6 +190,16 @@ namespace AdminModule.ViewModels
             }
         }
 
+
+        public bool Isloading
+        {
+            get { return ObjectHolder.Instance.Isloading; }
+            set
+            {
+                ObjectHolder.Instance.Isloading = value;
+                //  OnPropertyChanged("Isloading"); sættes i objectholder.
+            }
+        }
 
 
         #endregion
@@ -206,7 +220,7 @@ namespace AdminModule.ViewModels
 
         public async void Confirm(Object o)
         {
-            bool success;
+            bool success = false;
 
             // vurder ud fra viewstate om der skal oprettes en user deraf dets username password mm. 
             // eller om der skal oprettes en user.
@@ -229,20 +243,31 @@ namespace AdminModule.ViewModels
 
                 success = await BusinessLogic.Instance.CreateStudent(student);
 
-                MessageBox.Show(success
-                             ? "Elev er oprettet/opdateret! Vinduet lukkes."
-                             : "Noget gik galt. Eleven er ikke blevet oprettet/opdateret. Vinduet lukkes.");
 
-                OnStudentViewClose();
             }
 
-            else if (Viewstate == Enums.ViewState.Edit) // for next week! 
+            else if (Viewstate == Enums.ViewState.Edit)
             {
                 // her vil det ikke være nødvendigt at oprette password, id og username.
-                 BusinessLogic.Instance.UpdateStudent(CurrentStudent);
+                CurrentStudent.Firstname = firstname;
+                CurrentStudent.Lastname = lastname;
+                CurrentStudent.City = city;
+                CurrentStudent.Birthdate = birthdate;
+                CurrentStudent.Address = address;
+                // CurrentStudent.Userrole = (int)Enums.Userrole.Student;
+                CurrentStudent.Phonenumber = phonenumber;
+                CurrentStudent.FkClassid = SelectedClass.Id;
+
+
+                success = await BusinessLogic.Instance.UpdateStudent(CurrentStudent);
 
             }
 
+            MessageBox.Show(success
+                            ? "Elev er oprettet/opdateret! Vinduet lukkes."
+                            : "Noget gik galt. Eleven er ikke blevet oprettet/opdateret. Vinduet lukkes.");
+
+            OnStudentViewClose();
 
 
 
@@ -256,7 +281,7 @@ namespace AdminModule.ViewModels
         {
             // validerer om alle felter er blevet udfyldt.
             bool enable = true;
-            if (string.IsNullOrEmpty(Firstname) || string.IsNullOrEmpty(Lastname) || string.IsNullOrEmpty(City) || string.IsNullOrEmpty(Birthdate) || string.IsNullOrEmpty(Address) || SelectedClass ==null)
+            if (string.IsNullOrEmpty(Firstname) || string.IsNullOrEmpty(Lastname) || string.IsNullOrEmpty(City) || string.IsNullOrEmpty(Birthdate) || string.IsNullOrEmpty(Address) || SelectedClass == null)
             {
                 enable = false;
             }
@@ -282,25 +307,24 @@ namespace AdminModule.ViewModels
             {
                 OnStudentViewClose();
             }
-
         }
 
 
         private void SetTheClassInCombobox()
         {
-            if (ObjectHolder.Instance.ClassList != null&&currentStudent!=null)
+            if (ClassList != null && currentStudent != null)
             {
-                SelectedClass = ClassList.FirstOrDefault(theclass => theclass.Id == currentStudent.FkClassid);
+                foreach (ClassEx classEx in ClassList)
+                {
+                    if (classEx.Id == currentStudent.FkClassid)
+                    {
+                        SelectedClass = classEx;
+                    }
+                }
             }
         }
 
         #endregion
-
-
-
-
-
-
 
 
 

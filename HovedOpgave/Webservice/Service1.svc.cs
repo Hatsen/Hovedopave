@@ -201,12 +201,22 @@ namespace Webservice
                 List<Student> children = new List<Student>();
                 children = DatabaseHandler.Instance.FindParentsChildrenTEST(parent.Id);
 
+<<<<<<< HEAD
+              //  children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
+=======
                 //children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
+>>>>>>> origin/master
 
                 if (children.Count != 0)
                 {
                     parent.ChildrenList = children;
+<<<<<<< HEAD
+
                 }
+
+=======
+                }
+>>>>>>> origin/master
             }
 
             return parentExlist;
@@ -268,7 +278,6 @@ namespace Webservice
 
         #region ClassMethods
 
-
         public List<ClassEx> GetClasses()
         {
             List<ClassEx> listOfClassExs = new List<ClassEx>();
@@ -315,6 +324,14 @@ namespace Webservice
                     break;
 
                 case 4: //Parent
+<<<<<<< HEAD
+
+                    /* if (!classList.Contains(classEx))
+                     {
+                         classList.Add(classEx);
+                     } */
+
+=======
                     List<Student> children = DatabaseHandler.Instance.FindParentsChildrenTEST(id);
 
                     foreach (Student st in children)
@@ -327,6 +344,7 @@ namespace Webservice
                             }
                         }
                     }
+>>>>>>> origin/master
                     break;
 
                 case 5: //Student
