@@ -242,7 +242,6 @@ namespace AdminModule.ViewModels
 
             // vurder ud fra viewstate om der skal oprettes en user deraf dets username password mm. 
             // eller om der skal oprettes en user.
-
             // her skal der tjekkes på hvad type objektet er. 
 
             if (Viewstate == Enums.ViewState.Create)
@@ -283,12 +282,13 @@ namespace AdminModule.ViewModels
                     {
                         tmplist.Add(CurrentParentChildrenList[i]);
                     }
-
                 }
 
                 CurrentParent.ChildrenList.Clear();
                 CurrentParent.ChildrenList = tmplist;
       
+               // for(int i =0; i<10)
+
                 success = await BusinessLogic.Instance.UpdateParent(CurrentParent);
             }
 

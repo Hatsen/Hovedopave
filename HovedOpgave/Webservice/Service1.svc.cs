@@ -199,19 +199,16 @@ namespace Webservice
             foreach (ParentEx parent in parentExlist)
             {
                 List<Student> children = new List<Student>();
-<<<<<<< HEAD
                 children = DatabaseHandler.Instance.FindParentsChildrenTEST(parent.Id);
-=======
-                children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
->>>>>>> origin/master
+
+              //  children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
+
                 if (children.Count != 0)
                 {
                     parent.ChildrenList = children;
-<<<<<<< HEAD
 
-=======
                 }
->>>>>>> origin/master
+
             }
 
             return parentExlist;
@@ -273,7 +270,6 @@ namespace Webservice
 
         #region ClassMethods
 
-
         public List<ClassEx> GetClasses()
         {
             List<ClassEx> listOfClassExs = new List<ClassEx>();
@@ -320,14 +316,12 @@ namespace Webservice
                     break;
 
                 case 4: //Parent
-<<<<<<< HEAD
+
                     /* if (!classList.Contains(classEx))
                      {
                          classList.Add(classEx);
                      } */
-=======
 
->>>>>>> origin/master
                     break;
 
                 case 5: //Student
