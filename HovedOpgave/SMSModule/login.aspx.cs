@@ -29,8 +29,10 @@ namespace SMSModule
                 {
                     Response.Redirect("Intrasystem/Default.aspx", false);
                 }
-
-                Response.Redirect("Intrasystem/Selector.aspx", false);
+                else
+                {
+                    Response.Redirect("Intrasystem/Selector.aspx", false);
+                }
             }
             else
             {

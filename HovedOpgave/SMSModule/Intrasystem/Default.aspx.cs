@@ -18,11 +18,15 @@ namespace SMSModule.Intrasystem
 
             foreach (ClassEx classEx in classList)
             {
+                if (Convert.ToInt32(Session["userrole"]) == 0)
+                {
+                    Session["selectedclass"] = 0;
+                }
                 if (classEx.Id == Convert.ToInt32(Request.QueryString["class"]))
                 {
                     Session["selectedclass"] = classEx.Id;
                 }
-                else if (Convert.ToInt32(Session["userrole"]) == 0)
+                else
                 {
                     Session["selectedclass"] = 0;
                 }
