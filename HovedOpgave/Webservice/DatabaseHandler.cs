@@ -479,7 +479,7 @@ END CATCH*/
             List<Student> getStudentInfo = new List<Student>();
             List<Student> childrenList = new List<Student>();
 
-            var con = @"Data Source=(LocalDB)\v11.0;AttachDbFileName=C:\USERS\LARSS\DOCUMENTS\GITHUB\HOVEDOPAVE\HOVEDOPGAVE\WEBSERVICE\APP_DATA\SCHOOLDB.MDF; Integrated Security=SSPI; Connection Timeout=1200";
+            var con = @"Data Source=(LocalDB)\v11.0;AttachDbFileName=C:\USERS\Patrick\DOCUMENTS\GITHUB\HOVEDOPAVE\HOVEDOPGAVE\WEBSERVICE\APP_DATA\SCHOOLDB.MDF; Integrated Security=SSPI; Connection Timeout=1200";
 
             using (SqlConnection myConnection = new SqlConnection(con))
             {

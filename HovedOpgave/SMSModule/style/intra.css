@@ -138,8 +138,9 @@
     border: 1px solid #032472;
     color: #FFF;
     font-family: Arial;
-    padding: 0px 2px;
+    padding: 0px 5px 0px 5px;
     text-decoration: none;
+    margin-bottom: 10px;
 }
 
 .selectorLinkItem

@@ -18,7 +18,7 @@ namespace SMSModule.Intrasystem
 
             foreach (ClassEx classEx in classList)
             {
-                if (Convert.ToInt32(Session["userrole"]) == 0)
+                if (Convert.ToInt32(Session["userrole"]) == 1)
                 {
                     Session["selectedclass"] = 0;
                 }
@@ -26,7 +26,7 @@ namespace SMSModule.Intrasystem
                 {
                     Session["selectedclass"] = classEx.Id;
                 }
-                else
+                else if (classEx.Id == null)
                 {
                     Session["selectedclass"] = 0;
                 }
