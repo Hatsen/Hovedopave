@@ -36,7 +36,7 @@ namespace Webservice
         {
             try
             {
-                this.dbConn = new SqlConnection(@"Data Source=(" + dbServer + @")\v11.0;AttachDbFileName=|DataDirectory|\" + dbNavn + "; Integrated Security=SSPI; Connection Timeout=1200");
+                this.dbConn = new SqlConnection(@"Data Source=(" + dbServer + @")\v11.0;AttachDbFileName=|DataDirectory|\" + dbNavn + "; Integrated Security=SSPI; Connection Timeout=12000");
                 this.dbConn.Open();
 
                 return true;

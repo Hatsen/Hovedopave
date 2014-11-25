@@ -337,7 +337,7 @@ END CATCH*/
             bool success = true;
             int result;
 
-          
+
             DB.Open();
 
             string[][] getTeachers = DB.Query("BEGIN TRANSACTION BEGIN TRY DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)" +
@@ -472,6 +472,62 @@ END CATCH*/
         }
 
 
+        public List<Student> FindParentsChildrenTEST(int id)
+        {
+
+            List<StudentParent> getChildren = new List<StudentParent>();
+            List<Student> getStudentInfo = new List<Student>();
+            List<Student> childrenList = new List<Student>();
+
+            var con = @"Data Source=(LocalDB)\v11.0;AttachDbFileName=C:\USERS\LARSS\DOCUMENTS\GITHUB\HOVEDOPAVE\HOVEDOPGAVE\WEBSERVICE\APP_DATA\SCHOOLDB.MDF; Integrated Security=SSPI; Connection Timeout=1200";
+
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "SELECT * FROM StudentParent";
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                myConnection.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        StudentParent studentParent = new StudentParent();
+                        studentParent.Fkparentid = Convert.ToInt32(oReader["fk_ParentId"]);
+                        studentParent.Fkstudentid = Convert.ToInt32(oReader["fk_StudentId"]);
+                        getChildren.Add(studentParent);
+                    }
+
+                    myConnection.Close();
+                }
+
+                foreach (StudentParent st in getChildren)
+                {
+                    if (Convert.ToInt32(st.Fkparentid) == id)
+                    {
+                        getStudentInfo = GetStudents(st.Fkstudentid); 
+                        Student student = new Student();
+                        student.Id = Convert.ToInt32(getStudentInfo[0].Id);
+                        student.Firstname = getStudentInfo[0].Firstname;
+                        student.Lastname = getStudentInfo[0].Lastname;
+                        student.City = getStudentInfo[0].City;
+                        student.Address = getStudentInfo[0].Address;
+                        student.Birthdate = getStudentInfo[0].Birthdate;
+                        student.Username = getStudentInfo[0].Username;
+                        student.Password = getStudentInfo[0].Password;
+                        student.Lastlogin = Convert.ToDateTime(getStudentInfo[0].Lastlogin);
+                        student.Userrole = Convert.ToInt32(getStudentInfo[0].Userrole);
+                        student.Phonenumber = Convert.ToInt32(getStudentInfo[0].Phonenumber);
+                        student.FkClassid = getStudentInfo[0].FkClassid;
+
+                        childrenList.Add(student);
+                    }
+                }
+
+                myConnection.Close();
+            }
+            return childrenList;
+
+
+        }
 
 
 
@@ -568,17 +624,32 @@ END CATCH*/
             return classEx;
         }
 
-        public List<Student> GetStudents()
+        public List<Student> GetStudents(int? studentId = null)
         {
             List<Student> parents = new List<Student>();
 
             try
             {
                 DB.Open();
+                string sql = "";
 
-                string[][] getTeachers = DB.Query("SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
-                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole, [User].PhoneNumber, [Student].fk_ClassId" +
-                                                  " FROM [Student] INNER JOIN [User] ON  [Student].Id=[User].Id ORDER BY [User].Firstname;");
+                if (studentId == null)
+                {
+                    sql = "SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
+                                " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole, [User].PhoneNumber, [Student].fk_ClassId" +
+                                " FROM [Student] INNER JOIN [User] ON  [Student].Id=[User].Id ORDER BY [User].Firstname;";
+                }
+
+                else
+                {
+                    sql = "SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
+                          " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole, [User].PhoneNumber, [Student].fk_ClassId" +
+                          " FROM [Student] INNER JOIN [User] ON [Student].Id=[User].Id WHERE [User].Id=" + Convert.ToInt32(studentId) + ";";
+                }
+
+
+                string[][] getTeachers = DB.Query(sql);
+
 
                 for (int i = 0; i < getTeachers.Length; i++)
                 {
@@ -681,7 +752,7 @@ END CATCH*/
                 DB.Open();
 
                 string[][] getClasses = DB.Query("SELECT [Class].Id, [Class].Name, [Class].fk_TeacherId,[Class].fk_SchoolId" +
-                                                  " FROM [Class]");
+                          " FROM [Class]");
 
                 for (int i = 0; i < getClasses.Length; i++)
                 {
@@ -766,18 +837,8 @@ END CATCH*/
             {
                 DB.Open();
 
-                // lav en tranaction.
-
                 result = DB.Exec("BEGIN TRANSACTION BEGIN TRY INSERT INTO [StudentParent](fk_StudentId, fk_ParentId)" +
                  "VALUES(" + studentParent.Fkstudentid + "," + studentParent.Fkparentid + "); COMMIT TRANSACTION END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
-
-
-
-
-                /*  int a = DB.Exec(
-                       "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole) " +
-                       "VALUES('" + student.Firstname + "','" + student.Lastname + "','" + student.City + "','" + student.Address + "','" + student.Birthdate + "','" + student.Username + "','" + student.Password + "','" + student.Lastlogin.ToString() + "'," + student.Userrole + ");");
-                  int b = DB.Exec("INSERT INTO [Student] (Id, fk_ClassId) VALUES (" + student.Id + "," + student.FkClassid + ");");*/
 
                 if (result == -1)
                 {

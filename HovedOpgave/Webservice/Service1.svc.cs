@@ -115,7 +115,7 @@ namespace Webservice
             return success;
         }
 
-  
+
 
         #endregion
 
@@ -127,6 +127,30 @@ namespace Webservice
             return true;
         }
 
+
+        private bool InsertTheParrentsChildren(List<Student> childList, int parentId)
+        {
+            bool success = true;
+            try
+            {
+                foreach (Student child in childList)
+                {
+                    StudentParent studentParent = new StudentParent();
+                    studentParent.Fkparentid = parentId;
+                    studentParent.Fkstudentid = child.Id;
+                    DatabaseHandler.Instance.InsertIntoStudentParent(studentParent);
+                }
+            }
+            catch (Exception)
+            {
+                success = false;
+            }
+
+            return success;
+
+        }
+
+
         public bool InsertParent(ParentEx parent)
         {
             int generatedId = 0;
@@ -135,28 +159,24 @@ namespace Webservice
             if (parent.Id != 0) // update
             {
                 success = DatabaseHandler.Instance.UpdateParent(parent);
+
+                if (parent.ChildrenList.Count != 0 && success)
+                {
+                    success = InsertTheParrentsChildren(parent.ChildrenList, parent.Id);
+                }
             }
 
-            else
+            else // create
             {
+                generatedId = DatabaseHandler.Instance.InsertParent(parent);
 
-                if (parent.ChildrenList.Count != 0)
+                if (generatedId == 0)
+                    success = false;
+                else
+                    success = true;
+                if (parent.ChildrenList.Count != 0 && success)
                 {
-                    generatedId = DatabaseHandler.Instance.InsertParent(parent);
-
-                    if (generatedId == 0)
-                        success = false;
-                    else
-                        success = true;
-
-
-                    foreach (Student child in parent.ChildrenList)
-                    {
-                        StudentParent studentParent = new StudentParent();
-                        studentParent.Fkparentid = generatedId;
-                        studentParent.Fkstudentid = child.Id;
-                        DatabaseHandler.Instance.InsertIntoStudentParent(studentParent);
-                    }
+                    success = InsertTheParrentsChildren(parent.ChildrenList, generatedId);
                 }
             }
 
@@ -179,11 +199,11 @@ namespace Webservice
             foreach (ParentEx parent in parentExlist)
             {
                 List<Student> children = new List<Student>();
-                 children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
+                children = DatabaseHandler.Instance.FindParentsChildrenTEST(parent.Id);
                 if (children.Count != 0)
                     parent.ChildrenList = children;
 
-           }
+            }
 
             return parentExlist;
         }
@@ -285,10 +305,10 @@ namespace Webservice
                     break;
 
                 case 4: //Parent
-                   /* if (!classList.Contains(classEx))
-                    {
-                        classList.Add(classEx);
-                    } */
+                    /* if (!classList.Contains(classEx))
+                     {
+                         classList.Add(classEx);
+                     } */
                     break;
 
                 case 5: //Student

@@ -271,7 +271,24 @@ namespace AdminModule.ViewModels
                 CurrentParent.Birthdate = birthdate;
                 CurrentParent.Address = address;
                 CurrentParent.Phonenumber = phonenumber;
-                CurrentParent.ChildrenList = CurrentParentChildrenList;
+                // du er nødt til at tjekke om children list er forskellig fra da den kom ind.
+
+
+                List<Student> tmplist = new List<Student>();
+
+                if (CurrentParent.ChildrenList.Count<CurrentParentChildrenList.Count)
+                {
+                    
+                    for (int i = CurrentParent.ChildrenList.Count; i<CurrentParentChildrenList.Count;i++)
+                    {
+                        tmplist.Add(CurrentParentChildrenList[i]);
+                    }
+
+                }
+
+                CurrentParent.ChildrenList.Clear();
+                CurrentParent.ChildrenList = tmplist;
+      
                 success = await BusinessLogic.Instance.UpdateParent(CurrentParent);
             }
 
@@ -303,7 +320,7 @@ namespace AdminModule.ViewModels
 
         public void Associate(Object o)
         {
-            List<Student> currentChildrenListTmp = currentParentChildrenList;
+           // List<Student> currentChildrenListTmp = currentParentChildrenList;
             List<Student> childrenListTmp = new List<Student>();
 
             foreach (Student student in currentParentChildrenList)
