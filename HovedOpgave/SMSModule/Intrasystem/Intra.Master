@@ -15,7 +15,17 @@
         <a href="Default.aspx" style="text-decoration: none"><h1 id="bannerTitle">Skoleintra</h1></a>
         </header>
         <nav id="leftMenu">
-            <a class="item" href="http://www.google.com">Google</a> <a class="item" href="http://www.eal.dk">Eal</a>
+            <a class="item" href="ChangePassword.aspx">Skift adgangskode</a> 
+            <br />
+            <%if (Convert.ToInt32(Session["userrole"]) != 1 || Convert.ToInt32(Session["userrole"]) != 2)
+              {
+                  adminControls.InnerHtml = "";
+              } %>
+            <div id="adminControls" runat="server">
+            <a class="item" href="CreateAnnouncement.aspx">Opret meddelelse</a>
+            <br />
+            <a class="item" href="Protocol.aspx">Protokol</a>
+            </div>
         </nav>
         <section id="content">
             <asp:ContentPlaceHolder ID="contentarea" runat="server">
