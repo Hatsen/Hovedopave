@@ -17,10 +17,12 @@
         <nav id="leftMenu">
             <a class="item" href="ChangePassword.aspx">Skift adgangskode</a> 
             <br />
-            <%if (Convert.ToInt32(Session["userrole"]) != 1 || Convert.ToInt32(Session["userrole"]) != 2)
+            <%
+              if (Convert.ToInt32(Session["userrole"]) >= 3)
               {
                   adminControls.InnerHtml = "";
-              } %>
+              } 
+            %>
             <div id="adminControls" runat="server">
             <a class="item" href="CreateAnnouncement.aspx">Opret meddelelse</a>
             <br />

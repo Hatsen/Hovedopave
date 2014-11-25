@@ -22,13 +22,13 @@ namespace SMSModule.Intrasystem
                 {
                     Session["selectedclass"] = 0;
                 }
-                if (classEx.Id == Convert.ToInt32(Request.QueryString["class"]))
-                {
-                    Session["selectedclass"] = classEx.Id;
-                }
-                else if (classEx.Id == null)
+                if (classEx == null)
                 {
                     Session["selectedclass"] = 0;
+                }
+                else if (classEx.Id == Convert.ToInt32(Request.QueryString["class"]))
+                {
+                    Session["selectedclass"] = classEx.Id;
                 }
             }
 
