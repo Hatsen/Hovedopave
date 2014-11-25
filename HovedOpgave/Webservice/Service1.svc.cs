@@ -201,14 +201,22 @@ namespace Webservice
                 List<Student> children = new List<Student>();
                 children = DatabaseHandler.Instance.FindParentsChildrenTEST(parent.Id);
 
+<<<<<<< HEAD
               //  children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
+=======
+                //children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
+>>>>>>> origin/master
 
                 if (children.Count != 0)
                 {
                     parent.ChildrenList = children;
+<<<<<<< HEAD
 
                 }
 
+=======
+                }
+>>>>>>> origin/master
             }
 
             return parentExlist;
@@ -316,12 +324,27 @@ namespace Webservice
                     break;
 
                 case 4: //Parent
+<<<<<<< HEAD
 
                     /* if (!classList.Contains(classEx))
                      {
                          classList.Add(classEx);
                      } */
 
+=======
+                    List<Student> children = DatabaseHandler.Instance.FindParentsChildrenTEST(id);
+
+                    foreach (Student st in children)
+                    {
+                        foreach (ClassEx classEx in classList)
+                        {
+                            if (st.FkClassid == classEx.Id)
+                            {
+                                userList.Add(classEx);
+                            }
+                        }
+                    }
+>>>>>>> origin/master
                     break;
 
                 case 5: //Student
