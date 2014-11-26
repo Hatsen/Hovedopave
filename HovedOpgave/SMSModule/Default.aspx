@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentarea" Runat="Server">
     <p>
-    Hej og stort velkommen til SkoleSystem-websitet. Systemet er stadig under hård udvikling, siderne og funktionerne vil derfor drasktisk ændre sig de næste mange uger.</p>
+        bla bla bla...
+    </p>
 </asp:Content>
 

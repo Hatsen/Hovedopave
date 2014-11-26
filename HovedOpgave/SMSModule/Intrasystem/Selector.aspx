@@ -14,7 +14,6 @@
         </header>
         <section id="selector">
         <div id="selectorClassArea" runat="server">
-
         </div>
        </section>
     </form>

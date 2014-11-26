@@ -15,17 +15,12 @@ namespace SMSModule.Intrasystem
             string html = "";
             List<ClassEx> classList = (List<ClassEx>)Session["classid"];
 
-            html += "<table id=selectorClassTable>";
-
             if (classList.Count != 0 || classList != null)
             {
                 foreach (ClassEx classEx in classList)
                 {
-                    html += "<tr>";
-                    html += "<td class='selectorLinkItem'><a href='Default.aspx?class=" + classEx.Id + "'>" + classEx.Name + "</a></td>";
-                    html += "</tr>";
+                    html += "<a class='selectorLinkItem' href='Default.aspx?class=" + classEx.Id + "'>" + classEx.Name + "</a><br />";
                 }
-                html += "</table>";
                 selectorClassArea.InnerHtml = html;
             }
             else

@@ -40,6 +40,15 @@ namespace SMSModule.Intrasystem {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl adminControls;
         
         /// <summary>
+        /// checkSelector control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl checkSelector;
+        
+        /// <summary>
         /// contentarea control.
         /// </summary>
         /// <remarks>

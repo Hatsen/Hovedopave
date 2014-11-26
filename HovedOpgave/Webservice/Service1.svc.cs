@@ -35,13 +35,6 @@ namespace Webservice
 
             foreach (Announcement anc in Holder.Instance.Announcements)
             {
-                /*
-                 * if (groupID == 1 || groupID == anc.GroupID || classID == anc.ClassID || groupID == 0)
-                   {
-                        announcements.Add(anc);  
-                   }
-                 */
-
                 if (groupID == 1 || groupID == anc.GroupID || classID == anc.ClassID || groupID == 0)
                 {
                     if (groupID == anc.GroupID && classID != anc.ClassID)
@@ -320,14 +313,6 @@ namespace Webservice
                     break;
 
                 case 4: //Parent
-
-
-                    /* if (!classList.Contains(classEx))
-                     {
-                         classList.Add(classEx);
-                     } */
-
-
                     List<Student> children = DatabaseHandler.Instance.FindParentsChildrenTEST(id);
 
                     foreach (Student st in children)
@@ -336,7 +321,10 @@ namespace Webservice
                         {
                             if (st.FkClassid == classEx.Id)
                             {
-                                userList.Add(classEx);
+                                if (!userList.Contains(classEx))
+                                {
+                                    userList.Add(classEx);
+                                }
                             }
                         }
                     }

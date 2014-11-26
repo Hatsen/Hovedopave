@@ -66,6 +66,7 @@
     <Content Include="Intrasystem\Default.aspx" />
     <Content Include="Intrasystem\CreateAnnouncement.aspx" />
     <Content Include="Intrasystem\ChangePassword.aspx" />
+    <Content Include="Intrasystem\Logout.aspx" />
     <Content Include="Intrasystem\Selector.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Intrasystem\Intra.Master" />
@@ -125,6 +126,13 @@
     </Compile>
     <Compile Include="Intrasystem\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Intrasystem\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Intrasystem\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Intrasystem\Selector.aspx.cs">
       <DependentUpon>Selector.aspx</DependentUpon>
