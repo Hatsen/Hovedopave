@@ -42,7 +42,10 @@ namespace Webservice
                     }
                     else if ((groupID == anc.GroupID) && (classID == anc.ClassID) || groupID == anc.GroupID && classID == 0)
                     {
-                        announcements.Add(anc);
+                        if (!announcements.Any(i => i.ID == anc.ID))
+                        {
+                            announcements.Add(anc);
+                        }
                     }
                 }
             }
