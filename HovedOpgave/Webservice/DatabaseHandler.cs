@@ -164,30 +164,6 @@ namespace Webservice
             return success;
         }
 
-        /*public int GetMostRecentUserId()
-        {
-            string statement = "SELECT MAX(Id) AS RecentId FROM [User];"; // selects the highest id therefor the most recent generated id.
-            int count = -1;
-
-            try
-            {
-                DB.Open();
-                string[][] loginDetails = DB.Query("SELECT MAX(Id) FROM [User];");
-
-                for (int i = 0; i < loginDetails.Length; i++)
-                {
-                    count = Convert.ToInt32(loginDetails[0][0]) + 1; // recent could be 17 but the new id needs to be 18.
-                }
-            }
-            catch (Exception)
-            {
-                Debug.Write("fejl!");
-            }
-
-            return count;
-        }*/
-
-
         #region TeacherCRUD
 
         public bool InsertTeacher(Teacher teacher)

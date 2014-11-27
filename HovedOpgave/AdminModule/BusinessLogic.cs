@@ -32,28 +32,10 @@ namespace AdminModule
 
         public async Task<bool> CreateTeacher(TeacherEx teacher)
         {
-            //der mangler at blive genereteret id, username og password
-            // Husk at id og username skal genereres på servicesiden. (tynd klient)
-            // det behøver ikke forholde sig sådan med password. Den har sammen med de andre attributter
-            // ikke noget med tallet fra Id at gøre.
-
-        
-
             teacher.Lastlogin = DateTime.Now;
             teacher.Password = PasswordHash.CreateHash(teacher.Birthdate); // spørgsmålet er om det hele ikke bare skal være på webservicen?? altså genereing af pass og lastlogin.
 
-
             await ServiceProxy.Instance.InsertTeacher(teacher);
-
-            //int generatedCount = await ServiceProxy.Instance.GetUserCount(); // begrund hvor vi ikke gør det her..
-            // generer id på service 
-            // smid id ind i teacher tabellen efterfølgende når der er success. BESKRIV HVORFOR I RAPPORTEN.
-
-
-
-
-            //generer id og username og password inden du opretter. Når du updaterere skal der tjekkes om id allerede findes på objektet.
-
 
             return true;
         }
@@ -63,7 +45,6 @@ namespace AdminModule
         public async Task<bool> UpdateTeacher(TeacherEx teacher)
         {
             await ServiceProxy.Instance.InsertTeacher(teacher);
-
 
             return true;
         }
@@ -75,29 +56,11 @@ namespace AdminModule
 
         public async Task<bool> CreateParent(ParentEx parent)
         {
-            //der mangler at blive genereteret id, username og password
-            // Husk at id og username skal genereres på servicesiden. (tynd klient)
-            // det behøver ikke forholde sig sådan med password. Den har sammen med de andre attributter
-            // ikke noget med tallet fra Id at gøre.
-
-
 
             parent.Lastlogin = DateTime.Now;
             parent.Password = PasswordHash.CreateHash(parent.Birthdate);
 
-
             await ServiceProxy.Instance.InsertParent(parent);
-
-            //int generatedCount = await ServiceProxy.Instance.GetUserCount(); // begrund hvor vi ikke gør det her..
-            // generer id på service 
-            // smid id ind i teacher tabellen efterfølgende når der er success. BESKRIV HVORFOR I RAPPORTEN.
-
-
-
-
-            //generer id og username og password inden du opretter. Når du updaterere skal der tjekkes om id allerede findes på objektet.
-
-
 
 
             return true;
@@ -121,28 +84,12 @@ namespace AdminModule
 
         public async Task<bool> CreateStudent(Student student)
         {
-            //der mangler at blive genereteret id, username og password
-            // Husk at id og username skal genereres på servicesiden. (tynd klient)
-            // det behøver ikke forholde sig sådan med password. Den har sammen med de andre attributter
-            // ikke noget med tallet fra Id at gøre.
-
-
 
             student.Lastlogin = DateTime.Now;
             student.Password = PasswordHash.CreateHash(student.Birthdate);
 
 
             await ServiceProxy.Instance.InsertStudent(student);
-
-            //int generatedCount = await ServiceProxy.Instance.GetUserCount(); // begrund hvor vi ikke gør det her..
-            // generer id på service 
-            // smid id ind i teacher tabellen efterfølgende når der er success. BESKRIV HVORFOR I RAPPORTEN.
-
-
-
-
-            //generer id og username og password inden du opretter. Når du updaterere skal der tjekkes om id allerede findes på objektet.
-
 
 
 
@@ -153,7 +100,7 @@ namespace AdminModule
         public async Task<bool> UpdateStudent(Student theStudent)
         {
 
-            return await ServiceProxy.Instance.InsertStudent(theStudent); 
+            return await ServiceProxy.Instance.InsertStudent(theStudent);
         }
 
 
@@ -165,7 +112,7 @@ namespace AdminModule
 
         public async Task<bool> CreateClass(ClassEx theClass)
         {
-           
+
 
             await ServiceProxy.Instance.InsertClass(theClass);
 
@@ -220,7 +167,7 @@ namespace AdminModule
 
         public async Task<string> DeleteUserById(int id)
         {
-           return await ServiceProxy.Instance.DeleteUserById(id);
+            return await ServiceProxy.Instance.DeleteUserById(id);
 
         }
 
@@ -246,6 +193,49 @@ namespace AdminModule
 
 
             return success;
+        }
+
+
+        public string GetAssociatedChildren(ParentEx parent = null, ClassEx classe = null)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+
+            if (parent != null)
+            {
+                if (parent.ChildrenList.Count == 0)
+                {
+                    stringBuilder.AppendLine("Denne forældre har ingen børn tilknyttet.");
+                }
+                else
+                {
+                    stringBuilder.AppendLine("De tilknyttede børn for forældre " + parent.Firstname + " er:");
+                    stringBuilder.AppendLine();
+                    foreach (Student child in parent.ChildrenList)
+                    {
+                        stringBuilder.AppendLine(child.Firstname + " " + child.Lastname);
+                    }
+                }
+            }
+
+            else if (classe!=null)
+            {
+                if (classe.StudentsList.Count == 0)
+                {
+                    stringBuilder.AppendLine("Denne klasse har ingen børn tilknyttet.");
+                }
+                else
+                {
+                    stringBuilder.AppendLine("De tilknyttede børn for klasse " + classe.Name+ " er:");
+                    stringBuilder.AppendLine();
+                    foreach (Student child in classe.StudentsList)
+                    {
+                        stringBuilder.AppendLine(child.Firstname + " " + child.Lastname);
+                    }
+                }
+            }
+            
+            return stringBuilder.ToString();
         }
     }
 }

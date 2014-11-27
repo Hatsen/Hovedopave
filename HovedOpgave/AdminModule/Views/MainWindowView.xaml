@@ -11,28 +11,23 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Menu Grid.Row="0">
-                <MenuItem Header="_Underviser">
-                    <MenuItem Command="{Binding EditUserCommand}" Header="Opret Underviser" /> ResetPasswordForSelectedUser
-                </MenuItem>
-                <MenuItem Header="_Brugere">
-                    <MenuItem Command="{Binding ResetPasswordCommand}" Header="Reset Password" /> 
-                </MenuItem>
-                <MenuItem Header="_Elev">
-                    <MenuItem Command="{Binding CreateStudentCommand}" Header="Opret Elev"/>
+                <MenuItem Header="_Filer">
+                    <MenuItem Command="{Binding CreateStudentCommand}" Header="Afslut"/>
                 </MenuItem>
                 <MenuItem Header="_Hjælp">
-                    <MenuItem Command="{Binding CreateParentCommand}" Header="Reset Password" />
-                    <MenuItem Command="{Binding }" Header="Se tilknyttede børn"/>
+                    <MenuItem Command="{Binding ResetPasswordCommand}" Header="Reset Password" />
+                    <MenuItem Command="{Binding SeeAssociateChildrenCommand}" Header="Se tilknyttede børn"/>
                 </MenuItem>
             </Menu>
             <Grid Row="1" Grid.ColumnSpan="2">
                 <Button Content="Søg" HorizontalAlignment="Left" Margin="450,70,0,0" VerticalAlignment="Top" Width="81" Height="25" Command="{Binding UpdateCommand}"/>
                 <DataGrid Name="datagridUser" HorizontalAlignment="Left" VerticalAlignment="Top" Height="352" Width="400" Margin="131,97,0,-53" ItemsSource="{Binding TeacherList, Mode=TwoWay}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}"  AutoGenerateColumns="False" CanUserAddRows="False"  >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Firstname}" Header="Fornavn" IsReadOnly="True" Width="100" CanUserResize="False"/>
-                        <DataGridTextColumn Binding="{Binding Lastname}" Header="Efternavn" IsReadOnly="True" Width="100" CanUserResize="False"/>
-                        <DataGridTextColumn Binding="{Binding City}" Header="By" IsReadOnly="True" Width="100" CanUserResize="False"/>
-                        <DataGridTextColumn Binding="{Binding Address}" Header="Adresse" IsReadOnly="True" Width="100" CanUserResize="False"/>
+                        <DataGridTextColumn Binding="{Binding Firstname}" Header="Fornavn" IsReadOnly="True" Width="80" CanUserResize="False"/>
+                        <DataGridTextColumn Binding="{Binding Lastname}" Header="Efternavn" IsReadOnly="True" Width="80" CanUserResize="False"/>
+                        <DataGridTextColumn Binding="{Binding City}" Header="By" IsReadOnly="True" Width="80" CanUserResize="False"/>
+                        <DataGridTextColumn Binding="{Binding Address}" Header="Adresse" IsReadOnly="True" Width="80" CanUserResize="False"/>
+                        <DataGridTextColumn Binding="{Binding Title}" Header="Stilling" IsReadOnly="True" Width="80" CanUserResize="False"/>
                     </DataGrid.Columns>
                     <DataGrid.RowDetailsTemplate>
                         <DataTemplate>
@@ -62,9 +57,17 @@
                             </Border>
                         </DataTemplate>
                     </DataGrid.RowDetailsTemplate>
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Se tilknytninger" Command="{Binding SeeAssociateChildrenCommand }">
+                            </MenuItem>
+                            <MenuItem Header="Reset Password for brugeren" Command="{Binding ResetPasswordCommand }">
+                            </MenuItem>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
                 </DataGrid>
-                
-                
+
+
                 <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="192" Height="25" Margin="131,70,0,0" ItemsSource="{Binding PersonStringList, Mode=TwoWay}" SelectedItem="{Binding SelectedStringPerson, Mode=TwoWay}"/>
                 <TextBox HorizontalAlignment="Left" Height="25" Margin="328,70,0,0" TextWrapping="Wrap" Text="Søg..."  VerticalAlignment="Top" Width="117"/>
                 <Button Content="Rediger Person" HorizontalAlignment="Left" Margin="10,206,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding EditUserCommand}"/>
@@ -72,12 +75,18 @@
                 <Button Content="Opret Elev" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding CreateStudentCommand}"/>
                 <Button Content="Opret Forældre" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding CreateParentCommand}"/>
                 <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left" VerticalAlignment="Top" Height="352" Width="400" Margin="669,96,0,-46" ItemsSource="{Binding ClassList, Mode=TwoWay}" SelectedItem="{Binding SelectedClass}">
-                <DataGrid.Columns>
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Se tilknytninger" Command="{Binding SeeAssociateChildrenCommand }">
+                            </MenuItem>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id}" Header="KlasseId" IsReadOnly="True" Width="133" CanUserResize="False" ></DataGridTextColumn>
                         <DataGridTextColumn Binding="{Binding Name}" Header="Navn" IsReadOnly="True" Width="133" CanUserResize="False"></DataGridTextColumn>
                         <DataGridTextColumn Binding="{Binding Fkteacherid}" Header="Underviser" IsReadOnly="True" Width="133" CanUserResize="False"></DataGridTextColumn>
-                    </DataGrid.Columns>    
-                
+                    </DataGrid.Columns>
+
                 </DataGrid>
                 <TextBox HorizontalAlignment="Left" Height="25" Margin="878,70,0,0" TextWrapping="Wrap" Text="Søg..."  VerticalAlignment="Top" Width="111"/>
                 <Button Content="Opret klasse" HorizontalAlignment="Left" Margin="559,98,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding CreateClassCommand}"/>

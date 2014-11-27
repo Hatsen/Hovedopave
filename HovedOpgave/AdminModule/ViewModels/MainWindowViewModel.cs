@@ -39,6 +39,7 @@ namespace AdminModule.ViewModels
             DeleteUserCommand = new DelegateCommand<object>(DeletePerson, MayiEditPerson);
             DeleteClassCommand = new DelegateCommand<object>(DeleteClass, MayiEditClass);
             ResetPasswordCommand = new DelegateCommand<object>(ResetPasswordForSelectedUser, MayiEditPerson);
+            SeeAssociateChildrenCommand = new DelegateCommand<object>(SeeAssociateChildren);
 
             List<string> listofpersons = new List<string>();
             listofpersons.Add("Underviser");
@@ -181,8 +182,9 @@ namespace AdminModule.ViewModels
                     GetTeachers(); // async metode
 
                 else if (selectedStringPerson == "Elev")
-                    GetStudents();
-
+                {
+                    RefreshStudentsAndClasses();
+                }
                 else if (selectedStringPerson == "Forældre")
                 {
                     GetParents();
@@ -195,8 +197,44 @@ namespace AdminModule.ViewModels
 
         #endregion
 
+
+        private async void RefreshStudentsAndClasses()
+        {
+            await GetStudents();
+            await GetClasses();
+
+        }
+
         #region Commands
 
+
+
+        public DelegateCommand<object> SeeAssociateChildrenCommand { get; set; }
+
+
+        public void SeeAssociateChildren(Object o)
+        {
+            if (SelectedUser != null)
+            {
+                if (SelectedUser.Userrole == (int)Enums.Userrole.Parent)
+                {
+                    ParentEx parent = (ParentEx)SelectedUser;
+                    MessageBox.Show(BusinessLogic.Instance.GetAssociatedChildren(parent));
+                }
+                else
+                {
+                    MessageBox.Show("Denne bruger har ikke mulighed for at have tilknyttede børn på sig. Vælg istedet en forældre!");
+                }
+            }
+            else if (SelectedClass != null)
+            {
+                MessageBox.Show(BusinessLogic.Instance.GetAssociatedChildren(null, SelectedClass));
+            }
+            else if (SelectedClass == null && SelectedUser == null)
+            {
+                MessageBox.Show("Du skal først vælge en forældre eller klasse i listen før du kan se tilknytninger.!");
+            }
+        }
 
         public DelegateCommand<object> ResetPasswordCommand { get; set; }
 
