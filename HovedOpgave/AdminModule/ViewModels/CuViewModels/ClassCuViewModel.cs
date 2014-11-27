@@ -46,7 +46,6 @@ namespace AdminModule.ViewModels
 
         #region PrivateMembers
 
-
         private ClassEx currentClass;
         private bool isLoading;
         private string className;

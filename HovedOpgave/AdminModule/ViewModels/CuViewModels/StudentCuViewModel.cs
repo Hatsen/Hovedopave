@@ -215,7 +215,6 @@ namespace AdminModule.ViewModels
         public void Cancel(Object o)
         {
             RaiseOnStudentViewClose();
-
         }
 
         public async void Confirm(Object o)
@@ -239,8 +238,6 @@ namespace AdminModule.ViewModels
                 student.Phonenumber = phonenumber;
                 student.FkClassid = SelectedClass.Id;
 
-                // eleven skal knyttes til nogle forældre.
-
                 success = await BusinessLogic.Instance.CreateStudent(student);
 
 
@@ -254,7 +251,6 @@ namespace AdminModule.ViewModels
                 CurrentStudent.City = city;
                 CurrentStudent.Birthdate = birthdate;
                 CurrentStudent.Address = address;
-                // CurrentStudent.Userrole = (int)Enums.Userrole.Student;
                 CurrentStudent.Phonenumber = phonenumber;
                 CurrentStudent.FkClassid = SelectedClass.Id;
 

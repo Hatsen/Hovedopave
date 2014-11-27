@@ -56,10 +56,10 @@ namespace AdminModule.Views
             }
             else if (selectedUserString == "Underviser")
             {
-                DataGridTextColumn col = new DataGridTextColumn();
+              /*  DataGridTextColumn col = new DataGridTextColumn();
                 col.Header = "Rank";
                 col.Binding = new Binding("Rank");
-                datagridUser.Columns.Add(col);
+                datagridUser.Columns.Add(col);*/
 
                 datagridUser.ItemsSource = viewmodel.TeacherList;
 

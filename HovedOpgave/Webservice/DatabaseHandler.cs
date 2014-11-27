@@ -263,7 +263,7 @@ END CATCH*/
                 DB.Open();
 
                 string[][] getTeachers = DB.Query("SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
-                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole, [User].PhoneNumber, [Teacher].Rank" +
+                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole, [User].PhoneNumber" +
                                                   " FROM [Teacher] INNER JOIN [User] ON  [Teacher].Id=[User].Id ORDER BY [User].Firstname;");
 
                 for (int i = 0; i < getTeachers.Length; i++)
@@ -285,12 +285,7 @@ END CATCH*/
                     }
                     teacher.Lastlogin = Convert.ToDateTime(getTeachers[i][8]);
                     teacher.Userrole = Convert.ToInt32(getTeachers[i][9]);
-                    if (getTeachers[i][10] == "")
-                    {
-                        getTeachers[i][10] = "-1";
-                    }
                     teacher.Phonenumber = Convert.ToInt32(getTeachers[i][10]);
-                    teacher.Rank = Convert.ToInt32(getTeachers[i][11]);
                     teachers.Add(teacher);
                 }
             }
@@ -423,7 +418,7 @@ END CATCH*/
              return true;
          }*/
 
-       
+
 
         public List<Student> FindParentsChildren(int id)
         {
@@ -472,18 +467,18 @@ END CATCH*/
         }
 
 
-        public List<Student> FindParentsChildrenTEST(int id)
+        public List<StudentParent> GetStudentParent(int id)
         {
+            List<StudentParent> studentParentsList = new List<StudentParent>();
 
-            List<StudentParent> getChildren = new List<StudentParent>();
-            List<Student> getStudentInfo = new List<Student>();
-            List<Student> childrenList = new List<Student>();
 
-            var con = @"Data Source=(LocalDB)\v11.0;AttachDbFileName=C:\USERS\Patrick\DOCUMENTS\GITHUB\HOVEDOPAVE\HOVEDOPGAVE\WEBSERVICE\APP_DATA\SCHOOLDB.MDF; Integrated Security=SSPI; Connection Timeout=1200";
+            // var con = @"Data Source=(LocalDB)\v11.0;AttachDbFileName=C:\USERS\Patrick\DOCUMENTS\GITHUB\HOVEDOPAVE\HOVEDOPGAVE\WEBSERVICE\APP_DATA\SCHOOLDB.MDF; Integrated Security=SSPI; Connection Timeout=1200";
+            var con =
+                @"Data Source=(LocalDB)\v11.0;AttachDbFileName=C:\USERS\LarsS\DOCUMENTS\GITHUB\HOVEDOPAVE\HOVEDOPGAVE\WEBSERVICE\APP_DATA\SCHOOLDB.MDF; Integrated Security=SSPI; Connection Timeout=1200";
 
             using (SqlConnection myConnection = new SqlConnection(con))
             {
-                string oString = "SELECT * FROM StudentParent";
+                string oString = "SELECT * FROM StudentParent WHERE [fk_StudentId]="+id+"OR [fk_ParentId]="+id;
                 SqlCommand oCmd = new SqlCommand(oString, myConnection);
                 myConnection.Open();
                 using (SqlDataReader oReader = oCmd.ExecuteReader())
@@ -493,40 +488,71 @@ END CATCH*/
                         StudentParent studentParent = new StudentParent();
                         studentParent.Fkparentid = Convert.ToInt32(oReader["fk_ParentId"]);
                         studentParent.Fkstudentid = Convert.ToInt32(oReader["fk_StudentId"]);
-                        getChildren.Add(studentParent);
+                        studentParentsList.Add(studentParent);
                     }
 
                     myConnection.Close();
                 }
+                return studentParentsList;
+            }
+        }
 
-                foreach (StudentParent st in getChildren)
+
+        public bool DeleteConnectionBetweenParentAndChild(int parentId, int childId)
+        {
+
+            int result;
+            bool success = true;
+
+            DB.Open();
+
+            //transaktion her vil gå ind og lave en 
+            result =
+                DB.Exec("BEGIN TRANSACTION BEGIN TRY  delete  from [StudentParent] where [fk_ParentId] = "+parentId+" AND [fk_StudentId] = "+childId+" COMMIT" +
+                " TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION END CATCH");
+
+            // det kan ske at der ikke bliver påvirket rækker hvis den brækker sig. Det er fordi den laver rollback og derfor ikke påvirke nogle rækker.
+            if (result == -1 || result == 0)
+            {
+                success = false;
+            }
+
+            return success;
+        }
+
+
+
+        public List<Student> FindParentsChildrenTEST(int id)
+        {
+
+            List<Student> getStudentInfo = new List<Student>();
+            List<Student> childrenList = new List<Student>();
+
+            List<StudentParent> getChildren = GetStudentParent(id);
+
+            foreach (StudentParent st in getChildren)
+            {
+                if (Convert.ToInt32(st.Fkparentid) == id)
                 {
-                    if (Convert.ToInt32(st.Fkparentid) == id)
-                    {
-                        getStudentInfo = GetStudents(st.Fkstudentid); 
-                        Student student = new Student();
-                        student.Id = Convert.ToInt32(getStudentInfo[0].Id);
-                        student.Firstname = getStudentInfo[0].Firstname;
-                        student.Lastname = getStudentInfo[0].Lastname;
-                        student.City = getStudentInfo[0].City;
-                        student.Address = getStudentInfo[0].Address;
-                        student.Birthdate = getStudentInfo[0].Birthdate;
-                        student.Username = getStudentInfo[0].Username;
-                        student.Password = getStudentInfo[0].Password;
-                        student.Lastlogin = Convert.ToDateTime(getStudentInfo[0].Lastlogin);
-                        student.Userrole = Convert.ToInt32(getStudentInfo[0].Userrole);
-                        student.Phonenumber = Convert.ToInt32(getStudentInfo[0].Phonenumber);
-                        student.FkClassid = getStudentInfo[0].FkClassid;
+                    getStudentInfo = GetStudents(st.Fkstudentid);
+                    Student student = new Student();
+                    student.Id = Convert.ToInt32(getStudentInfo[0].Id);
+                    student.Firstname = getStudentInfo[0].Firstname;
+                    student.Lastname = getStudentInfo[0].Lastname;
+                    student.City = getStudentInfo[0].City;
+                    student.Address = getStudentInfo[0].Address;
+                    student.Birthdate = getStudentInfo[0].Birthdate;
+                    student.Username = getStudentInfo[0].Username;
+                    student.Password = getStudentInfo[0].Password;
+                    student.Lastlogin = Convert.ToDateTime(getStudentInfo[0].Lastlogin);
+                    student.Userrole = Convert.ToInt32(getStudentInfo[0].Userrole);
+                    student.Phonenumber = Convert.ToInt32(getStudentInfo[0].Phonenumber);
+                    student.FkClassid = getStudentInfo[0].FkClassid;
 
-                        childrenList.Add(student);
-                    }
+                    childrenList.Add(student);
                 }
-
-                myConnection.Close();
             }
             return childrenList;
-
-
         }
 
 

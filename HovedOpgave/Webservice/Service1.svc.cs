@@ -77,7 +77,7 @@ namespace Webservice
         {
             List<TeacherEx> listOfTeacherExs = DatabaseHandler.Instance.GetTeachers();
             List<ClassEx> listOfClasses = DatabaseHandler.Instance.GetClasses();
-            listOfTeacherExs = DatabaseHandler.Instance.GetTeachers();
+            //listOfTeacherExs = DatabaseHandler.Instance.GetTeachers();
 
             foreach (TeacherEx teacherEx in listOfTeacherExs)
             {
@@ -201,7 +201,7 @@ namespace Webservice
                 List<Student> children = new List<Student>();
                 children = DatabaseHandler.Instance.FindParentsChildrenTEST(parent.Id);
 
-              //  children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
+                //  children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
 
                 //children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
 
@@ -214,9 +214,9 @@ namespace Webservice
                 }
 
 
-                }
-             return parentExlist;
             }
+            return parentExlist;
+        }
 
 
         /* public bool DeleteParent(int id)
@@ -430,8 +430,7 @@ namespace Webservice
                 if (!result && tableName == "Teacher")
                 {
                     returnMessage =
-                        "Før du kan fjerne teahcer skal du fjerne klasse eller klasser, der er tilknyttet underviseren." +
-                        "Underviseren er ikke blevet slettet." +
+                        "Underviseren blev ikke blevet slettet. Noget gik galt." +
                         "Du bedes kontakte support.";
                 }
             }
@@ -439,6 +438,14 @@ namespace Webservice
             if (userrole == (int)EnumsWeb.Userrole.Parent)
             {
                 tableName = "Parent";
+                List<StudentParent> children = DatabaseHandler.Instance.GetStudentParent(id);
+                if (children.Count != 0)
+                {
+                    foreach (StudentParent studentParent in children)
+                    {
+                        DatabaseHandler.Instance.DeleteConnectionBetweenParentAndChild(studentParent.Fkparentid, studentParent.Fkstudentid);
+                    }
+                }
                 bool result = DatabaseHandler.Instance.DeleteUser(id, tableName);
 
                 if (!result && tableName == "Parent")
@@ -453,15 +460,22 @@ namespace Webservice
             if (userrole == (int)EnumsWeb.Userrole.Student)
             {
                 tableName = "Student";
+                List<StudentParent> children = DatabaseHandler.Instance.GetStudentParent(id);
+                if (children.Count != 0)
+                {
+                    foreach (StudentParent studentParent in children)
+                    {
+                        DatabaseHandler.Instance.DeleteConnectionBetweenParentAndChild(studentParent.Fkparentid, studentParent.Fkstudentid);
+                    }
+                }
                 bool result = DatabaseHandler.Instance.DeleteUser(id, tableName);
 
                 if (!result && tableName == "Student")
                 {
                     returnMessage =
-                        "Noget gik galt under sletningen af elev. Eleven er ikke blevet slettet." +
+                        "Noget gik galt under sletningen af eleven. Eleven er ikke blevet slettet." +
                         "Du bedes kontakte support.";
                 }
-
             }
 
             return returnMessage;

@@ -66,15 +66,15 @@ namespace AdminModule.ViewModels
                 Birthdate = currentTeacher.Birthdate;
                 Phonenumber = currentTeacher.Phonenumber;
 
-                if (currentTeacher.Rank == (int)Enums.Rank.Principal) // lige her skal jeg kende til værdierne for enums
+                if (currentTeacher.Userrole == (int)Enums.Rank.Principal) // lige her skal jeg kende til værdierne for enums
                 {
                     SelectedRank = "Skoleleder";
                 }
-                else if (currentTeacher.Rank == (int)Enums.Rank.Teacher)
+                else if (currentTeacher.Userrole == (int)Enums.Rank.Teacher)
                 {
                     SelectedRank = "Underviser";
                 }
-                else if (currentTeacher.Rank == (int)Enums.Rank.Substitute)
+                else if (currentTeacher.Userrole == (int)Enums.Rank.Substitute)
                 {
                     SelectedRank = "Vikar";
                 }
@@ -214,15 +214,15 @@ namespace AdminModule.ViewModels
                 teacher.Birthdate = birthdate;
                 teacher.Address = address;
                 if (selectedRank == "Underviser")
-                    teacher.Rank = (int)Enums.Rank.Teacher;
+                    teacher.Userrole = (int)Enums.Userrole.Teacher;
 
                 else if (selectedRank == "Vikar")
-                    teacher.Rank = (int)Enums.Rank.Substitute;
+                    teacher.Userrole = (int)Enums.Userrole.Substitute;
 
                 else if (selectedRank == "Skoleleder")
-                    teacher.Rank = (int)Enums.Rank.Principal;
+                    teacher.Userrole = (int)Enums.Userrole.Principal;
 
-                teacher.Userrole = (int)Enums.Userrole.Teacher; // it's in the view of teacher meaning the userrole will be 1.
+               // teacher.Userrole = (int)Enums.Userrole.Teacher; // it's in the view of teacher meaning the userrole will be 1.
                 teacher.Phonenumber = phonenumber;
 
                 success = await BusinessLogic.Instance.CreateTeacher(teacher);
@@ -240,13 +240,13 @@ namespace AdminModule.ViewModels
                 CurrentTeacher.Birthdate = birthdate;
                 CurrentTeacher.Address = address;
                 if (selectedRank == "Underviser")
-                    CurrentTeacher.Rank = (int)Enums.Rank.Teacher;
+                    CurrentTeacher.Userrole = (int)Enums.Rank.Teacher;
 
                 else if (selectedRank == "Vikar")
-                    CurrentTeacher.Rank = (int)Enums.Rank.Substitute;
+                    CurrentTeacher.Userrole = (int)Enums.Rank.Substitute;
 
                 else if (selectedRank == "Skoleleder")
-                    CurrentTeacher.Rank = (int)Enums.Rank.Principal;
+                    CurrentTeacher.Userrole = (int)Enums.Rank.Principal;
 
                 CurrentTeacher.Phonenumber = phonenumber;
 

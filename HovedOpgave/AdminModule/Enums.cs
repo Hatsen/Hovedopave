@@ -23,9 +23,11 @@ namespace AdminModule
 
        public enum Userrole
        {
-           Teacher = 1,
-           Parent = 2,
-           Student = 3
+           Principal = 1,
+           Teacher = 2,
+           Substitute = 3,
+           Parent = 4,
+           Student = 5
        };
 
 
@@ -35,7 +37,6 @@ namespace AdminModule
            Student = 2,
            Parent = 3,
            Class = 4,
-
        };
 
    }

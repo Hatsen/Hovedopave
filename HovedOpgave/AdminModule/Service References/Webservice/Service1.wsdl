@@ -4,10 +4,9 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Webservice" />
-      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Webservice.Extended" />
-      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Webservice.DB" />
+      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Webservice.DB" />
+      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Webservice.Extended" />
+      <xsd:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Webservice" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetLoginDetails_InputMessage">
@@ -28,6 +27,12 @@
   <wsdl:message name="IService1_FindParentsChildren_OutputMessage">
     <wsdl:part name="parameters" element="tns:FindParentsChildrenResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetClassDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassDetails" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetClassDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassDetailsResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_CreateAnnouncement_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateAnnouncement" />
   </wsdl:message>
@@ -39,6 +44,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_GetAnnouncements_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAnnouncementsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnnouncementCreator_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnouncementCreator" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnnouncementCreator_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnouncementCreatorResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_ChangePassword_InputMessage">
     <wsdl:part name="parameters" element="tns:ChangePassword" />
@@ -125,6 +136,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/FindParentsChildren" message="tns:IService1_FindParentsChildren_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/FindParentsChildrenResponse" message="tns:IService1_FindParentsChildren_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetClassDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetClassDetails" message="tns:IService1_GetClassDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetClassDetailsResponse" message="tns:IService1_GetClassDetails_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CreateAnnouncement">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateAnnouncement" message="tns:IService1_CreateAnnouncement_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateAnnouncementResponse" message="tns:IService1_CreateAnnouncement_OutputMessage" />
@@ -132,6 +147,10 @@
     <wsdl:operation name="GetAnnouncements">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAnnouncements" message="tns:IService1_GetAnnouncements_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAnnouncementsResponse" message="tns:IService1_GetAnnouncements_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnnouncementCreator">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAnnouncementCreator" message="tns:IService1_GetAnnouncementCreator_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAnnouncementCreatorResponse" message="tns:IService1_GetAnnouncementCreator_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ChangePassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ChangePassword" message="tns:IService1_ChangePassword_InputMessage" />
@@ -211,6 +230,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetClassDetails">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetClassDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CreateAnnouncement">
       <soap:operation soapAction="http://tempuri.org/IService1/CreateAnnouncement" style="document" />
       <wsdl:input>
@@ -222,6 +250,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAnnouncements">
       <soap:operation soapAction="http://tempuri.org/IService1/GetAnnouncements" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnnouncementCreator">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAnnouncementCreator" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -238,9 +238,6 @@
     <None Include="Service References\Webservice\Service14.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Webservice\Service15.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

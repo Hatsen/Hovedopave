@@ -268,7 +268,7 @@ namespace AdminModule.ViewModels
 
         void sview_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-         
+
         }
 
 
@@ -408,7 +408,7 @@ namespace AdminModule.ViewModels
         }
 
 
-        private void DeleteTeacher()
+        private async void DeleteTeacher()
         {
             TeacherEx teacherExss = SelectedUser as TeacherEx; //interresant. Alle personer kan findes ved at typecast fra user.
 
@@ -435,7 +435,7 @@ namespace AdminModule.ViewModels
             }
 
             GetTeachers();
-            GetClasses();
+            await GetClasses();
         }
 
 
@@ -447,25 +447,30 @@ namespace AdminModule.ViewModels
 
             if (result == MessageBoxResult.Yes)
             {
+                Isloading = true;
                 string resultMessage = await BusinessLogic.Instance.DeleteUserById(SelectedUser.Id);
                 if (resultMessage == "")
                     MessageBox.Show("Sletning fuldført!");
 
                 else
-                    MessageBox.Show("Sletning kunne ikke gennemføres!");
+                    MessageBox.Show(resultMessage);
+
+                Isloading = false;
             }
 
             if (userRole == (int)Enums.Userrole.Parent)
                 GetParents();
             else if (userRole == (int)Enums.Userrole.Student)
-                GetStudents();
-
+            {
+                await GetStudents();
+                await GetClasses();
+            }
         }
 
         public void DeletePerson(Object o)
         {
 
-            if (SelectedUser.Userrole == (int)Enums.Userrole.Teacher)
+            if (SelectedUser.Userrole == (int)Enums.Userrole.Teacher || SelectedUser.Userrole == (int)Enums.Userrole.Principal || SelectedUser.Userrole == (int)Enums.Userrole.Substitute)
                 DeleteTeacher();
 
             else
@@ -479,7 +484,7 @@ namespace AdminModule.ViewModels
 
         #region Methods
 
-        private async void GetTeachers()
+        private async void GetTeachers() // måske int userrole her. Så kan du hente de ansatte som er relevante
         {
             Isloading = true;
             TeacherList = await ServiceProxy.Instance.GetTeachers();
@@ -499,13 +504,14 @@ namespace AdminModule.ViewModels
             // RaiseOnselectedPersonChanged("Underviser");  ikke være nødvendig for klasse.
         }
 
-        private async void GetStudents()
+        private async Task<bool> GetStudents()
         {
             Isloading = true;
             StudentList = await ServiceProxy.Instance.GetStudents();
             ObjectHolder.Instance.StudentList = StudentList;
             Isloading = false;
             RaiseOnselectedPersonChanged("Elev");
+            return true;
         }
 
         private async void GetParents()
