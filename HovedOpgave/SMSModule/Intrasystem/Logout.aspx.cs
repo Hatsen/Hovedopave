@@ -14,7 +14,6 @@ namespace SMSModule.Intrasystem
             Session.Remove("userid");
             Session.Remove("firstname");
             Session.Remove("lastname");
-            Session.Remove("username");
             Session.Remove("userrole");
             Session.Remove("classid");
 
