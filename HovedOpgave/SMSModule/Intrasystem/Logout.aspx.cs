@@ -17,7 +17,7 @@ namespace SMSModule.Intrasystem
             Session.Remove("userrole");
             Session.Remove("classid");
 
-            Response.Redirect("Default.aspx");
+            Response.Redirect("../Login.aspx");
         }
     }
 }
