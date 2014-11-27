@@ -854,6 +854,21 @@ END CATCH*/
             return userrole;
         }
 
+        public void UpdateLastLogin(string id, DateTime login)
+        {
+            try
+            {
+                DB.Open();
+                DB.Exec("UPDATE [User] SET Lastlogin = '" + login + "' WHERE Username = '" + id + "'");
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                DB.Close();
+            }
+        }
 
         public bool InsertIntoStudentParent(StudentParent studentParent)
         {

@@ -385,6 +385,7 @@ namespace Webservice
             if (Holder.Instance.LoginDetails != null && PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails.Password) == true)
             {
                 loggedIn = true;
+                DatabaseHandler.Instance.UpdateLastLogin(username, DateTime.Now);
             }
             else
             {
