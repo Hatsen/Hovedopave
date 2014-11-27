@@ -17,6 +17,7 @@
         <nav id="leftMenu">
             <a class="item" href="ChangePassword.aspx">Skift adgangskode</a> 
             <br />
+            <br />
             <%
               if (Convert.ToInt32(Session["userrole"]) >= 3)
               {
@@ -26,8 +27,10 @@
             <div id="adminControls" runat="server">
             <a class="item" href="CreateAnnouncement.aspx">Opret meddelelse</a>
             <br />
+            <br />
             <a class="item" href="Protocol.aspx">Protokol</a>
             </div>
+            <br />
             <br />
             <%     
                 List<SMSModule.Webservice.ClassEx> classList = (List<SMSModule.Webservice.ClassEx>)Session["classid"];
@@ -39,6 +42,7 @@
             <div id="checkSelector" runat="server">
             <a class="item" href="Selector.aspx">Skift klassevisning</a>
             </div>
+            <br />
             <br />
             <a class="item" href="Logout.aspx">Log ud</a>
         </nav>
