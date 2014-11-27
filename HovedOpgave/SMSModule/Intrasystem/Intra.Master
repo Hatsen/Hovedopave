@@ -17,15 +17,34 @@
         <nav id="leftMenu">
             <a class="item" href="ChangePassword.aspx">Skift adgangskode</a> 
             <br />
-            <%if (Convert.ToInt32(Session["userrole"]) != 1 || Convert.ToInt32(Session["userrole"]) != 2)
+            <br />
+            <%
+              if (Convert.ToInt32(Session["userrole"]) >= 3)
               {
                   adminControls.InnerHtml = "";
-              } %>
+              } 
+            %>
             <div id="adminControls" runat="server">
             <a class="item" href="CreateAnnouncement.aspx">Opret meddelelse</a>
             <br />
+            <br />
             <a class="item" href="Protocol.aspx">Protokol</a>
             </div>
+            <br />
+            <br />
+            <%     
+                List<SMSModule.Webservice.ClassEx> classList = (List<SMSModule.Webservice.ClassEx>)Session["classid"];
+                if (classList.Count <= 1)
+                {
+                    checkSelector.InnerHtml = "";
+                }              
+            %>
+            <div id="checkSelector" runat="server">
+            <a class="item" href="Selector.aspx">Skift klassevisning</a>
+            </div>
+            <br />
+            <br />
+            <a class="item" href="Logout.aspx">Log ud</a>
         </nav>
         <section id="content">
             <asp:ContentPlaceHolder ID="contentarea" runat="server">

@@ -7,6 +7,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentarea" runat="server">
+    <div id="changePasswordArea" runat="server">
     <table class="auto-style1">
         <tr>
             <td>
@@ -43,4 +44,5 @@
     <br />
     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ForeColor="Red" ControlToValidate="txtConfirmPass" ErrorMessage="Den nye adgangskode skal være mellem 8 til 50 karakterer lang." ValidationExpression="^.{8,50}$"></asp:RegularExpressionValidator>
     <br />
+        </div>
     </asp:Content>
