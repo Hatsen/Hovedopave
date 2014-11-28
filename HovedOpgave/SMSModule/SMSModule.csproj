@@ -66,8 +66,8 @@
     <Content Include="Intrasystem\Default.aspx" />
     <Content Include="Intrasystem\CreateAnnouncement.aspx" />
     <Content Include="Intrasystem\ChangePassword.aspx" />
-    <Content Include="Intrasystem\Logout.aspx" />
     <Content Include="Intrasystem\Selector.aspx" />
+    <Content Include="Intrasystem\Terminate.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Intrasystem\Intra.Master" />
     <None Include="Service References\Webservice\Service1.disco" />
@@ -127,19 +127,19 @@
     <Compile Include="Intrasystem\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Intrasystem\Logout.aspx.cs">
-      <DependentUpon>Logout.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Intrasystem\Logout.aspx.designer.cs">
-      <DependentUpon>Logout.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Intrasystem\Selector.aspx.cs">
       <DependentUpon>Selector.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Intrasystem\Selector.aspx.designer.cs">
       <DependentUpon>Selector.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Intrasystem\Terminate.aspx.cs">
+      <DependentUpon>Terminate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Intrasystem\Terminate.aspx.designer.cs">
+      <DependentUpon>Terminate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
