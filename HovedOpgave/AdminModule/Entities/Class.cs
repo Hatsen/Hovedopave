@@ -9,34 +9,40 @@ namespace AdminModule.Webservice
     public partial class Class
     {
         //shouldwork...
-    /*    private string associatedTeacher;
+        private string associatedTeacher;
 
         public string AssociatedTeacher
         {
             get
             {
+                if (ObjectHolder.Instance.TeacherList == null)
+                {
+                    ObjectHolder.Instance.GetTeachers();
+                }
+
                 if (ObjectHolder.Instance.TeacherList != null)
                 {
 
                     foreach (TeacherEx teacher in ObjectHolder.Instance.TeacherList)
                     {
-                        if (teacher.Id==Id)
+
+                        foreach (ClassEx classEx in teacher.ClassList)
                         {
-                            associatedTeacher = teacher.Firstname + " " + teacher.Lastname;
+                            if (classEx.Id == Id)
+                            {
+                                associatedTeacher = teacher.Firstname + " " + teacher.Lastname;
+                            }
+
                         }
                     }
                 }
-                else
-                {
-                    ObjectHolder.Instance.GetTeachers();
-                }
+              
 
                 return associatedTeacher;
             }
             set { associatedTeacher = value; }
         }
 
-        */
 
         public override string ToString()
         {

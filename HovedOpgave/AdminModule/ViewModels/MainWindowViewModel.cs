@@ -319,8 +319,8 @@ namespace AdminModule.ViewModels
             cview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             cview.ShowDialog();
             cview.Closing += cview_Closing;
-            await GetClasses();
             await GetTeachers();
+            await GetClasses();
         }
 
         void cview_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -336,8 +336,8 @@ namespace AdminModule.ViewModels
             cview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             cview.ShowDialog();
             cview.Closing += cview_Closing;
-            await GetClasses();
             await GetTeachers();
+            await GetClasses();
         }
 
         public bool MayiEditClass(Object o)
@@ -391,9 +391,10 @@ namespace AdminModule.ViewModels
 
         public DelegateCommand<object> GetClassesCommand { get; set; }
 
-        public void GetClasses(Object o)
+        public async void GetClasses(Object o)
         {
-            GetClasses();//overloading.
+            await GetTeachers();
+            await GetClasses();//overloading.
 
         }
 

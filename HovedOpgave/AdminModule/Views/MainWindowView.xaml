@@ -84,7 +84,7 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id}" Header="KlasseId" IsReadOnly="True" Width="133" CanUserResize="False" ></DataGridTextColumn>
                         <DataGridTextColumn Binding="{Binding Name}" Header="Navn" IsReadOnly="True" Width="133" CanUserResize="False"></DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Fkteacherid}" Header="Underviser" IsReadOnly="True" Width="133" CanUserResize="False"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding AssociatedTeacher}" Header="Underviser" IsReadOnly="True" Width="133" CanUserResize="False"></DataGridTextColumn>
                     </DataGrid.Columns>
 
                 </DataGrid>
