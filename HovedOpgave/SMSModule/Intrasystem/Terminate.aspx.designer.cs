@@ -11,7 +11,7 @@ namespace SMSModule.Intrasystem
 {
 
 
-    public partial class Logout
+    public partial class Terminate
     {
 
         /// <summary>

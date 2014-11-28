@@ -15,17 +15,18 @@ namespace SMSModule.Intrasystem
             string html = "";
             List<ClassEx> classList = (List<ClassEx>)Session["classid"];
 
-            if (classList.Count != 0 || classList != null)
+
+            if (classList.Count == 1 || classList.Count == 0)
+            {
+                Response.Redirect("Default.aspx");
+            }
+            else if (classList.Count != 0 || classList != null)
             {
                 foreach (ClassEx classEx in classList)
                 {
                     html += "<a class='selectorLinkItem' href='Default.aspx?class=" + classEx.Id + "'>" + classEx.Name + "</a><br />";
                 }
                 selectorClassArea.InnerHtml = html;
-            }
-            else
-            {
-                Response.Redirect("Default.aspx");
             }
         }
     }
