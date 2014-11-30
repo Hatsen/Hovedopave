@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Logout.aspx.cs" Inherits="SMSModule.Intrasystem.Logout" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Terminate.aspx.cs" Inherits="SMSModule.Intrasystem.Terminate" %>
 
 <!DOCTYPE html>
 

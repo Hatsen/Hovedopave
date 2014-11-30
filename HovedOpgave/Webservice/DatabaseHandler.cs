@@ -867,10 +867,6 @@ END CATCH*/
                 Debug.Write(sqlException.ToString());
                 success = false;
             }
-
-
-
-
             return success;
         }
 

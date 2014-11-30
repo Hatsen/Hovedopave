@@ -30,7 +30,7 @@ namespace AdminModule.ViewModels
 
             CreateTeacherCommand = new DelegateCommand<object>(CreateTeacher);
             EditUserCommand = new DelegateCommand<object>(EditUser, MayiEditPerson);
-            UpdateStudentsCommand = new DelegateCommand<object>(UpdateStudents);
+            //  UpdateStudentsCommand = new DelegateCommand<object>(UpdateStudents);
             CreateParentCommand = new DelegateCommand<object>(CreateParent);
             CreateStudentCommand = new DelegateCommand<object>(CreateStudent);
             CreateClassCommand = new DelegateCommand<object>(CreateClass);
@@ -240,10 +240,10 @@ namespace AdminModule.ViewModels
 
         public DelegateCommand<object> UpdateStudentsCommand { get; set; }
 
-        public void UpdateStudents(Object o)
-        {
-            GetStudents();
-        }
+        /*  public void UpdateStudents(Object o)
+          {
+              GetStudents();
+          }*/
 
 
         public bool MayiEditPerson(Object o)
@@ -314,12 +314,13 @@ namespace AdminModule.ViewModels
 
         public async void CreateClass(Object o)
         {
-            bool waiter;
+
             Views.ClassCuView cview = new Views.ClassCuView();
             cview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             cview.ShowDialog();
             cview.Closing += cview_Closing;
-            waiter = await GetClasses();
+            await GetTeachers();
+            await GetClasses();
         }
 
         void cview_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -331,12 +332,12 @@ namespace AdminModule.ViewModels
 
         public async void EditClass(Object o)
         {
-            bool waiter;
             ClassCuView cview = new ClassCuView(SelectedClass);
             cview.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             cview.ShowDialog();
             cview.Closing += cview_Closing;
-            waiter = await GetClasses();
+            await GetTeachers();
+            await GetClasses();
         }
 
         public bool MayiEditClass(Object o)
@@ -390,9 +391,10 @@ namespace AdminModule.ViewModels
 
         public DelegateCommand<object> GetClassesCommand { get; set; }
 
-        public void GetClasses(Object o)
+        public async void GetClasses(Object o)
         {
-            GetClasses();//overloading.
+            await GetTeachers();
+            await GetClasses();//overloading.
 
         }
 
@@ -419,7 +421,7 @@ namespace AdminModule.ViewModels
                     deleteView.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                     deleteView.ShowDialog();
                     deleteView.Closing += deleteView_Closing;
-                    GetClasses();
+                    await GetClasses();
                 }
             }
 
@@ -435,7 +437,7 @@ namespace AdminModule.ViewModels
             if (result)
             {
                 MessageBox.Show("Klassen blev fjernet!");
-                GetClasses();
+                await GetClasses();
             }
 
         }
@@ -472,7 +474,7 @@ namespace AdminModule.ViewModels
                 AreYouSureYouWantToDeleteUser(SelectedUser.Userrole);
             }
 
-            GetTeachers();
+            await GetTeachers();
             await GetClasses();
         }
 
@@ -522,13 +524,14 @@ namespace AdminModule.ViewModels
 
         #region Methods
 
-        private async void GetTeachers() // måske int userrole her. Så kan du hente de ansatte som er relevante
+        private async Task<bool> GetTeachers() // måske int userrole her. Så kan du hente de ansatte som er relevante
         {
             Isloading = true;
             TeacherList = await ServiceProxy.Instance.GetTeachers();
             ObjectHolder.Instance.TeacherList = TeacherList;
             Isloading = false;
             RaiseOnselectedPersonChanged("Underviser");
+            return true;
         }
 
         private async Task<bool> GetClasses()
