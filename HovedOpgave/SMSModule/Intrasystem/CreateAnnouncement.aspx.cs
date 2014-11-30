@@ -13,6 +13,7 @@ namespace SMSModule.Intrasystem
         protected async void Page_Load(object sender, EventArgs e)
         {
             List<ClassEx> classList = await ObjectHolder.Instance.UcController.GetClassDetails(Convert.ToInt32(Session["userid"]), Convert.ToInt32(Session["userrole"]));
+            ddlClass.Items.Add(new ListItem("Alle", "0"));
 
             foreach (ClassEx classEx in classList)
             {

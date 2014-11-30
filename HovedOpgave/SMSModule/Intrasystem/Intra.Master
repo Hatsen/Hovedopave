@@ -54,9 +54,6 @@
             <asp:ContentPlaceHolder ID="contentarea" runat="server">
             </asp:ContentPlaceHolder>
         </section>
-        <footer id="footer">
-            Lala copyright claims here.
-        </footer>
     </form>
 </body>
 </html>

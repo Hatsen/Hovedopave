@@ -24,9 +24,11 @@
 
 #leftMenu 
 {
+    border-radius: 0px 0px 0px 20px;
     position: absolute;
     background-color: #85d142;
     border-left: 1px solid;
+    border-right: 1px solid;
     border-bottom: 1px solid;
     height: 65%;
     min-height: 650px;
@@ -39,6 +41,7 @@
 
 #content
 {
+    border-radius: 0px 0px 20px 0px;
     position: inherit;
     float: right;
     background-color:white;
@@ -50,8 +53,10 @@
     width: 70%;
     margin-right: 10%;
     overflow: auto;
+    overflow-x: auto;
 }
 
+/*
 #footer
 {
     position: absolute;
@@ -66,6 +71,7 @@
     margin-left: 10%;
     margin-right: 10%;
 }
+*/
 
 #bannerTitle
 {
@@ -157,7 +163,7 @@
 
 .ancHeaderItem
 {
-    background-color: #ebe7e7;
+    background-color: #6C97C5;
 }
 
 .ancMessageItem
@@ -167,5 +173,5 @@
 
 .ancCreatorItem 
 {
-    background-color: #d9d6d6;
+    background-color: #53779C;
 }
