@@ -299,7 +299,7 @@ namespace Webservice
             switch (userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
             {
                 case 1: //Skoleleder
-                    userList.Add(null);
+                    userList = classList;
                     break;
 
                 case 2: //Teacher

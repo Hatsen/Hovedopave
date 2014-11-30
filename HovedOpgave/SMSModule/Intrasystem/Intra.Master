@@ -15,6 +15,10 @@
         <a href="Default.aspx" style="text-decoration: none"><h1 id="bannerTitle">Skoleintra</h1></a>
         </header>
         <nav id="leftMenu">
+            <br />
+            <a class="item" href="Default.aspx">Forside</a>
+            <br />
+            <br />
             <a class="item" href="ChangePassword.aspx">Skift adgangskode</a> 
             <br />
             <br />
