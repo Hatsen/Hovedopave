@@ -146,6 +146,7 @@
 
 .item
 {
+    background-size: auto;
     background-color: #48a32d;
     border: 1px solid #032472;
     color: #FFF;
