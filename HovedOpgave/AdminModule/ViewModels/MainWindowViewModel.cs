@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -39,7 +41,7 @@ namespace AdminModule.ViewModels
             DeleteUserCommand = new DelegateCommand<object>(DeletePerson, MayiEditPerson);
             DeleteClassCommand = new DelegateCommand<object>(DeleteClass, MayiEditClass);
             ResetPasswordCommand = new DelegateCommand<object>(ResetPasswordForSelectedUser, MayiEditPerson);
-            SeeAssociateChildrenCommand = new DelegateCommand<object>(SeeAssociateChildren);
+            SeeAssociationsCommand = new DelegateCommand<object>(SeeAssociations);
 
             List<string> listofpersons = new List<string>();
             listofpersons.Add("Underviser");
@@ -82,6 +84,11 @@ namespace AdminModule.ViewModels
             get { return selectedUser; }
             set
             {
+                if (SelectedClass != null)
+                {
+                    SelectedClass = null;
+                }
+
                 selectedUser = value;
                 OnPropertyChanged("SelectedUser");
                 EditUserCommand.RaiseCanExecuteChanged();
@@ -148,6 +155,11 @@ namespace AdminModule.ViewModels
             }
             set
             {
+                if (SelectedUser != null)
+                {
+                    SelectedUser = null;
+                }
+
                 selectedClass = value;
                 OnPropertyChanged("SelectedClass");
                 EditClassCommand.RaiseCanExecuteChanged();
@@ -209,10 +221,10 @@ namespace AdminModule.ViewModels
 
 
 
-        public DelegateCommand<object> SeeAssociateChildrenCommand { get; set; }
+        public DelegateCommand<object> SeeAssociationsCommand { get; set; }
 
 
-        public void SeeAssociateChildren(Object o)
+        public void SeeAssociations(Object o)
         {
             if (SelectedUser != null)
             {
@@ -221,7 +233,14 @@ namespace AdminModule.ViewModels
                     ParentEx parent = (ParentEx)SelectedUser;
                     MessageBox.Show(BusinessLogic.Instance.GetAssociatedChildren(parent));
                 }
-                else
+                else if (SelectedUser.Userrole == (int) Enums.Userrole.Teacher ||
+                         SelectedUser.Userrole == (int) Enums.Userrole.Principal ||
+                         SelectedUser.Userrole == (int) Enums.Userrole.Substitute)
+                {
+                    MessageBox.Show(BusinessLogic.Instance.GetAssociatedClasses(selectedUser));
+                }
+
+                else 
                 {
                     MessageBox.Show("Denne bruger har ikke mulighed for at have tilknyttede børn på sig. Vælg istedet en forældre!");
                 }
@@ -395,9 +414,9 @@ namespace AdminModule.ViewModels
         {
             await GetTeachers();
             await GetClasses();//overloading.
+            SelectedStringPerson = "Underviser";
 
         }
-
 
 
         public DelegateCommand<object> DeleteUserCommand { get; set; }

@@ -196,6 +196,34 @@ namespace AdminModule
         }
 
 
+        public string GetAssociatedClasses(User user)
+        {
+
+            TeacherEx employee = (TeacherEx)user;
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            if (employee != null)
+            {
+                if (employee.ClassList.Count == 0)
+                {
+                    stringBuilder.AppendLine("Denne ansat er ikke tilknyttet nogen klasse.");
+                }
+                else
+                {
+                    stringBuilder.AppendLine("De tilknyttede klasser for ansat:" + employee.Firstname + " er:");
+                    stringBuilder.AppendLine();
+                    foreach (ClassEx classEx in employee.ClassList)
+                    {
+                        stringBuilder.AppendLine(classEx.Name);
+                    }
+                }
+            }
+
+            return stringBuilder.ToString();
+        }
+
+
         public string GetAssociatedChildren(ParentEx parent = null, ClassEx classe = null)
         {
             StringBuilder stringBuilder = new StringBuilder();

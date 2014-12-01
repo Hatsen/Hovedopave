@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        Title="ParentCuView" Height="502.732" Width="671.642" Closing="Window_Closing">
+        Title="Forældre" Height="502.732" Width="671.642" Closing="Window_Closing">
 
     <xctk:BusyIndicator IsBusy="{Binding Isloading}" BusyContent="Vent venligst..." >
 
@@ -68,6 +68,8 @@
                 <Button Content="Annuller" Height="23"  Command="{Binding CancelCommand}"  Margin="10,12,0,11" Width="80" />
             </StackPanel>
             <Button Content="Tilknyt" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.093,-0.15" Margin="551,60,0,0" Height="22" Command="{Binding AssociateCommand}"/>
+            <TextBlock HorizontalAlignment="Left" Margin="295,38,0,0" TextWrapping="Wrap" Text="Klasse:" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="426,38,0,0" TextWrapping="Wrap" Text="Elev:" VerticalAlignment="Top"/>
             <!--<GroupBox Header="Tilnytning" HorizontalAlignment="Left" Margin="258,10,0,0" VerticalAlignment="Top" Height="349" Width="396"/>-->
                
 
