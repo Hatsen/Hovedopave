@@ -37,10 +37,7 @@ namespace Webservice
             {
                 if (groupID == 1 || groupID == anc.GroupID || classID == anc.ClassID || groupID == 0)
                 {
-                    if (groupID == anc.GroupID && classID != anc.ClassID)
-                    {
-                    }
-                    else if ((groupID == anc.GroupID) && (classID == anc.ClassID) || groupID == anc.GroupID && classID == 0)
+                    if ((groupID == anc.GroupID) && (classID == anc.ClassID) || groupID == anc.GroupID && classID == 0)
                     {
                         if (!announcements.Any(i => i.ID == anc.ID))
                         {
@@ -299,7 +296,7 @@ namespace Webservice
             switch (userrole) //Her skal vi finde ud af hvilken klasse personen tilhører.
             {
                 case 1: //Skoleleder
-                    userList.Add(null);
+                    userList = classList;
                     break;
 
                 case 2: //Teacher

@@ -30,7 +30,7 @@
             </asp:DropDownList>
         </p>
         <p style="margin-left: 320px">
-            <asp:DropDownList ID="DropDownList1" runat="server">
+            <asp:DropDownList ID="ddlClass" runat="server">
             </asp:DropDownList>
         </p>
         <p>

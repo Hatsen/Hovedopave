@@ -2,13 +2,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style1 {
-            width: 100%;
+            width: 67%;
+        height: 83px;
+    }
+        .auto-style2 {
+            height: 26px;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentarea" runat="server">
     <div id="changePasswordArea" runat="server">
-    <table class="auto-style1">
+    <table class="auto-style1" align="center">
         <tr>
             <td>
                 <asp:Label ID="Label1" runat="server" Text="Din nuværende adgangskode:"></asp:Label>
@@ -26,10 +30,10 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td class="auto-style2">
                 <asp:Label ID="Label3" runat="server" Text="Gentag ønsket adgangskode:"></asp:Label>
             </td>
-            <td>
+            <td class="auto-style2">
                 <asp:TextBox ID="txtConfirmPass" runat="server" TextMode="Password"></asp:TextBox>
             </td>
         </tr>
