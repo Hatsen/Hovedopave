@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentarea" runat="server">
         <%
-                helloMessageArea.InnerHtml = "<h2> Hej " + Session["firstname"].ToString() + " " + Session["lastname"].ToString() + "</h2>";
+                helloMessageArea.InnerHtml = "<center><h2> Hej " + Session["firstname"].ToString() + " " + Session["lastname"].ToString() + "</h2></center>";
         %>
     <div id="helloMessageArea" runat="server">
     </div>
