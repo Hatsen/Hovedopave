@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Webservice.Extended" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Webservice.Extended" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Webservice.DB" />
+  <xs:complexType name="ArrayOfClassEx">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClassEx" nillable="true" type="tns:ClassEx" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClassEx" nillable="true" type="tns:ArrayOfClassEx" />
+  <xs:complexType name="ClassEx">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Webservice.DB" base="q1:Class">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="StudentsList" nillable="true" type="q1:ArrayOfStudent" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClassEx" nillable="true" type="tns:ClassEx" />
+  <xs:complexType name="TeacherEx">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Webservice.DB" base="q2:Teacher">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ClassList" nillable="true" type="tns:ArrayOfClassEx" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TeacherEx" nillable="true" type="tns:TeacherEx" />
+  <xs:complexType name="ArrayOfTeacherEx">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TeacherEx" nillable="true" type="tns:TeacherEx" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTeacherEx" nillable="true" type="tns:ArrayOfTeacherEx" />
+  <xs:complexType name="ParentEx">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/Webservice.DB" base="q3:Parent">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChildrenList" nillable="true" type="q3:ArrayOfStudent" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ParentEx" nillable="true" type="tns:ParentEx" />
+  <xs:complexType name="ArrayOfParentEx">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ParentEx" nillable="true" type="tns:ParentEx" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfParentEx" nillable="true" type="tns:ArrayOfParentEx" />
+</xs:schema>

@@ -16,6 +16,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSModule", "SMSModule\SMSM
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirkealleWebsite", "BirkealleWebsite\BirkealleWebsite.csproj", "{E0DC4C70-690C-45A8-B3E3-4ED9793DF61E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7727174C-560B-402C-916A-5DFFC93C7924} = {7727174C-560B-402C-916A-5DFFC93C7924}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirkealleWebsite.Tests", "BirkealleWebsite.Tests\BirkealleWebsite.Tests.csproj", "{B0114E6B-7EE1-40B0-A7F0-7CD2482C3E98}"
 EndProject
