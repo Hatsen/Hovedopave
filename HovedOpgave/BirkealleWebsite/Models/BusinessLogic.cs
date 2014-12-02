@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
+using BirkealleWebsite.WebService;
 
 namespace BirkealleWebsite.Models
 {
@@ -21,6 +23,24 @@ namespace BirkealleWebsite.Models
                 return instance;
             }
 
+        }
+
+        public async Task<bool> GetLoginDetails(string username, string password)
+        {
+            if (await ServiceProxy.Instance.GetLoginDetails(username, password) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public async Task<string> GetUserDetails(int number)
+        {
+            string result = await ServiceProxy.Instance.GetUserDetails(number);
+            return result;
         }
     }
 }
