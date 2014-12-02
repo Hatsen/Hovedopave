@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminModule", "AdminModule\AdminModule.csproj", "{D2B94B26-4CFD-4323-8B27-5F5366C35BEA}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7727174C-560B-402C-916A-5DFFC93C7924} = {7727174C-560B-402C-916A-5DFFC93C7924}
@@ -12,6 +14,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSModule", "SMSModule\SMSM
 	ProjectSection(ProjectDependencies) = postProject
 		{7727174C-560B-402C-916A-5DFFC93C7924} = {7727174C-560B-402C-916A-5DFFC93C7924}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirkealleWebsite", "BirkealleWebsite\BirkealleWebsite.csproj", "{E0DC4C70-690C-45A8-B3E3-4ED9793DF61E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7727174C-560B-402C-916A-5DFFC93C7924} = {7727174C-560B-402C-916A-5DFFC93C7924}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirkealleWebsite.Tests", "BirkealleWebsite.Tests\BirkealleWebsite.Tests.csproj", "{B0114E6B-7EE1-40B0-A7F0-7CD2482C3E98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +40,14 @@ Global
 		{414C2DD8-7848-4E19-9B9E-72F54A0E6E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{414C2DD8-7848-4E19-9B9E-72F54A0E6E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{414C2DD8-7848-4E19-9B9E-72F54A0E6E49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0DC4C70-690C-45A8-B3E3-4ED9793DF61E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0DC4C70-690C-45A8-B3E3-4ED9793DF61E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0DC4C70-690C-45A8-B3E3-4ED9793DF61E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0DC4C70-690C-45A8-B3E3-4ED9793DF61E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0114E6B-7EE1-40B0-A7F0-7CD2482C3E98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0114E6B-7EE1-40B0-A7F0-7CD2482C3E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0114E6B-7EE1-40B0-A7F0-7CD2482C3E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0114E6B-7EE1-40B0-A7F0-7CD2482C3E98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
