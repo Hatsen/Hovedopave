@@ -77,7 +77,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB\Class.cs" />
+    <Compile Include="DB\Enrollment.cs" />
     <Compile Include="DB\Parent.cs" />
+    <Compile Include="DB\ParentEnrollment.cs" />
     <Compile Include="DB\School.cs" />
     <Compile Include="DB\Student.cs" />
     <Compile Include="DB\Announcement.cs" />

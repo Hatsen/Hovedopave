@@ -101,6 +101,8 @@ namespace Webservice
       /*  [OperationContract]
         int GetMostRecentUserId();*/
 
+        [OperationContract]
+        bool CreateEnrollment(Enrollment entollment, List<ParentEx> parents);
 
 
     }

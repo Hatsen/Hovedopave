@@ -1,7 +1,68 @@
-﻿
+﻿@model BirkealleWebsite.Models.Repository
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery.validate.js")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
+    @Scripts.Render("~/Scripts/MicrosoftAjax.debug.js")
+    @Scripts.Render("~/Scripts/MicrosoftMvcAjax.debug.js")
+    @Scripts.Render("~/Scripts/MicrosoftMvcValidation.debug.js")
+}
+
+
 @{
     ViewBag.Title = "EnrollmentView";
 }
 
-<h2>EnrollmentView</h2>
+
+<h2 style="margin-bottom:5%; text-align:center;">Indmeldelse til Birkeallé</h2>
+
+
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <h4>Kunne ikke gennemføre indmeldelse! Tjek om dit brugernavn er Pa_[DINE INITIALER HER] er korrekt</h4>
+        @Html.ValidationSummary()
+    </div>
+}
+
+
+@{using (Html.BeginForm("PostEnrollment", "Enrollment", FormMethod.Post))
+{
+
+    <div style="margin-bottom:2%; margin-top:2%; margin-left:auto; margin-right:auto; text-align:center;">
+
+        @Html.AntiForgeryToken()
+
+
+
+
+
+        <div class="alert alert-danger">
+            <h4>Mangler data i tekstbokse</h4>
+            @Html.ValidationSummary()
+        </div>
+
+
+        <p><b>Barnets fornavn:</b></p> @Html.TextBox("ChildFirstname", Model) @Html.ValidationMessage("ChildFirstname", "*") <br />
+        <p><b>Barnets efternavn: </b></p> @Html.TextBox("ChildLastname", Model) @Html.ValidationMessage("ChildLastname", "*") <br />
+        <p><b> Fødselsdag:(dd/mm/åååå) </b></p> @Html.TextBox("ChildBirthdate", Model) @Html.ValidationMessage("ChildBirthdate", "*") <br />
+        <p>Indtast kun brugernavn for de forældre, som skal tilknyttes barnet:</p>
+        <p><b> Moderens brugernavn: </b></p> @Html.TextBox("MotherUsername", Model)
+        <p><b> Faderens brugernavn: </b></p> @Html.TextBox("FatherUsername", Model)
+        <p><b> Barnets adresse:</b></p> @Html.TextBox("ChildAddress", Model) @Html.ValidationMessage("ChildAddress", "*")
+        <p><b> Barnets by:</b></p> @Html.TextBox("ChildCity", Model) @Html.ValidationMessage("ChildCity", "*")
+        <p><b> Barnets telefonnummer(hvis barnet ikke har et nummer skriver i blot 0.):</p> @Html.TextBox("ChildPhonenumber", Model) @Html.ValidationMessage("ChildPhonenumber", "*")
+        <p><b> Bemærkninger: </b></p>@Html.TextArea("Notes", Model)
+
+        <br />
+        <br />
+        <input type="submit" value="Send formular" class="btn btn-primary" /><br />
+    </div>
+}
+
+
+}
+
 
