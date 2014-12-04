@@ -271,4 +271,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CreateEnrollment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="entollment" nillable="true" type="q12:Enrollment" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Webservice.Extended" minOccurs="0" name="parents" nillable="true" type="q13:ArrayOfParentEx" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateEnrollmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateEnrollmentResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -453,7 +453,7 @@ END CATCH*/
 
             using (SqlConnection myConnection = new SqlConnection(con))
             {
-                string oString = "SELECT * FROM StudentParent WHERE [fk_StudentId]="+id+"OR [fk_ParentId]="+id;
+                string oString = "SELECT * FROM StudentParent WHERE [fk_StudentId]=" + id + "OR [fk_ParentId]=" + id;
                 SqlCommand oCmd = new SqlCommand(oString, myConnection);
                 myConnection.Open();
                 using (SqlDataReader oReader = oCmd.ExecuteReader())
@@ -483,7 +483,7 @@ END CATCH*/
 
             //transaktion her vil gå ind og lave en 
             result =
-                DB.Exec("BEGIN TRANSACTION BEGIN TRY  delete  from [StudentParent] where [fk_ParentId] = "+parentId+" AND [fk_StudentId] = "+childId+" COMMIT" +
+                DB.Exec("BEGIN TRANSACTION BEGIN TRY  delete  from [StudentParent] where [fk_ParentId] = " + parentId + " AND [fk_StudentId] = " + childId + " COMMIT" +
                 " TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION END CATCH");
 
             // det kan ske at der ikke bliver påvirket rækker hvis den brækker sig. Det er fordi den laver rollback og derfor ikke påvirke nogle rækker.
@@ -845,6 +845,8 @@ END CATCH*/
             }
         }
 
+
+
         public bool InsertIntoStudentParent(StudentParent studentParent)
         {
             bool success = true;
@@ -866,6 +868,46 @@ END CATCH*/
                 Debug.Write(sqlException.ToString());
                 success = false;
             }
+            return success;
+        }
+
+        public bool InsertEnrollment(Enrollment enrollment, List<ParentEx> parents)
+        {
+            bool success = true;
+            int result;
+
+
+            SqlConnection db = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=12000");
+            SqlTransaction transaction;
+
+            db.Open();
+            transaction = db.BeginTransaction();
+            try
+            {
+                string sqlstatment = "DECLARE @Id INT INSERT INTO [Enrollment](Childfirstname, Childlastname,Childcity,Childaddress,Childbirthdate,ChildphoneNumber,Notes, Datecreated, fk_SchoolId)" +
+                   " VALUES ('" + enrollment.ChildFirstname + "','" + enrollment.ChildLastname + "','" + enrollment.ChildCity + "','" + enrollment.ChildAddress + "','" + enrollment.ChildBirthdate + "'," + enrollment.ChildPhonenumber + ",'" + enrollment.Notes + "','" + enrollment.DateCreated + "', " + enrollment.Fkschoolid + ");" +
+              " SET @Id = SCOPE_IDENTITY();";
+
+                foreach (ParentEx parentex in parents)
+                {
+
+                    sqlstatment += " INSERT INTO [ParentEnrollment](fk_ParentId, fk_EnrollmentId) VALUES (" + parentex.Id + ",(@Id)); ";
+
+                }
+
+                new SqlCommand(sqlstatment, db, transaction)
+                   .ExecuteNonQuery();
+
+                transaction.Commit();
+            }
+            catch (SqlException sqlError)
+            {
+                transaction.Rollback();
+                success = false;
+            }
+
+            db.Close();
+
             return success;
         }
 

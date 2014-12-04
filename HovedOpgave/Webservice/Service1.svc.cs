@@ -114,11 +114,6 @@ namespace Webservice
 
         #region ParentMethods
 
-        public bool CreateParent(ParentEx parent)
-        {
-
-            return true;
-        }
 
 
         private bool InsertTheParrentsChildren(List<Student> childList, int parentId)
@@ -486,5 +481,18 @@ namespace Webservice
         }
 
         #endregion
+
+
+        public bool CreateEnrollment(Enrollment enrollment, List<ParentEx> parents)
+        {
+
+            enrollment.DateCreated = DateTime.Now.ToString();
+
+            return DatabaseHandler.Instance.InsertEnrollment(enrollment,parents);
+
+      
+
+        }
+
     }
 }

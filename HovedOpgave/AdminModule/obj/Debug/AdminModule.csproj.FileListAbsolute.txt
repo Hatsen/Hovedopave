@@ -647,3 +647,9 @@ C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main2\HovedOpgave\AdminModule\ob
 C:\Users\LarsS\Dropbox\Datamatiker\main\main2\HovedOpgave\AdminModule\bin\Debug\AdminModule.exe.config
 C:\Users\LarsS\Dropbox\Datamatiker\main\main2\HovedOpgave\AdminModule\obj\Debug\AdminModule.exe
 C:\Users\LarsS\Dropbox\Datamatiker\main\main2\HovedOpgave\AdminModule\obj\Debug\AdminModule.pdb
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main7\HovedOpgave\AdminModule\bin\Debug\AdminModule.exe.config
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main7\HovedOpgave\AdminModule\obj\Debug\AdminModule.exe
+C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main7\HovedOpgave\AdminModule\obj\Debug\AdminModule.pdb
+C:\Users\LarsS\Dropbox\Datamatiker\main\main8\HovedOpgave\AdminModule\bin\Debug\AdminModule.exe.config
+C:\Users\LarsS\Dropbox\Datamatiker\main\main8\HovedOpgave\AdminModule\obj\Debug\AdminModule.exe
+C:\Users\LarsS\Dropbox\Datamatiker\main\main8\HovedOpgave\AdminModule\obj\Debug\AdminModule.pdb

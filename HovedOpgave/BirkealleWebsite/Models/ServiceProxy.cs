@@ -272,5 +272,42 @@ namespace BirkealleWebsite.Models
 
             return tcs.Task;
         }
+
+
+
+
+        public Task<bool> CreateEnrollment(Enrollment enrollment, List<ParentEx> parents)
+        {
+            var tcs = new TaskCompletionSource<bool>();
+            EventHandler<CreateEnrollmentCompletedEventArgs> handler = null;
+            handler = (sender, args) =>
+            {
+                if (args.UserState == tcs)
+                {
+                    service.CreateEnrollmentCompleted -= handler;
+                    if (args.Error != null)
+                    {
+                        tcs.TrySetException(args.Error);
+                    }
+                    else if (args.Cancelled)
+                    {
+                        tcs.TrySetCanceled();
+                    }
+                    else
+                    {
+                        tcs.TrySetResult(args.Result);
+                    }
+                }
+            };
+
+            service.CreateEnrollmentCompleted += handler;
+            service.CreateEnrollmentAsync(enrollment, parents, tcs);
+
+            return tcs.Task;
+        }
+
+
+
+
     }
 }
