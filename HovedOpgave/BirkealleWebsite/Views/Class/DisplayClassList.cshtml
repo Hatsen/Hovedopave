@@ -6,8 +6,15 @@
 
 <h2>Klasser dine børn er tilknyttet til:</h2>
 
-@foreach (var item in Model)
+@if (Model.Count() != 0)
 {
-    <li>@Html.ActionLink(item.Name, "DisplaySpecifiedClass", "class", new { id = item.Id }, null)</li>
+    foreach (var item in Model)
+    {
+        <li>@Html.ActionLink(item.Name, "DisplaySpecifiedClass", "class", new { id = item.Id }, null)</li>
+    }
+}
+else
+{
+    <b>Det ser ikke ud til at dine børn er tilknyttet en klasse. Hvis dette er en fejl, bedes du kontakte <a href="mailto:skoleleder@birkealle.dk">skolelederen</a>.</b>
 }
 

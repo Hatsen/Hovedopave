@@ -12,6 +12,7 @@
         <th>Fornavn</th>
         <th>Efternavn</th>
         <th>Adresse</th>
+        <th>By</th>
         <th>Telefonnummer</th>
         </tr>
             @foreach (var student in item.StudentsList)
@@ -20,8 +21,11 @@
                     <td>@student.Firstname</td>
                     <td>@student.Lastname</td>
                     <td>@student.Address</td>
+                    <td>@student.City</td>
                     <td>@student.Phonenumber</td>
                 </tr>
             }
     </table>
+    
+    <b>Der er i alt: @item.StudentsList.Count elever i klassen.</b>
 }
