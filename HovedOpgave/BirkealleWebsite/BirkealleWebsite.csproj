@@ -261,10 +261,11 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Class\DisplayClassList.cshtml" />
+    <Content Include="Views\Class\DisplaySpecifiedClass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Class\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

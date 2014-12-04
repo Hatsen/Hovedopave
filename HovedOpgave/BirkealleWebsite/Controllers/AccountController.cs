@@ -27,6 +27,13 @@ namespace BirkealleWebsite.Controllers
             {
                 if (await BusinessLogic.Instance.GetUserDetails(4) == "4")
                 {
+                    this.Session["userid"] = await BusinessLogic.Instance.GetUserDetails(0);
+                    this.Session["firstname"] = await BusinessLogic.Instance.GetUserDetails(1);
+                    this.Session["lastname"] = await BusinessLogic.Instance.GetUserDetails(2);
+                    this.Session["username"] = await BusinessLogic.Instance.GetUserDetails(3);
+                    this.Session["userrole"] = await BusinessLogic.Instance.GetUserDetails(4);
+                    this.Session["classid"] = await BusinessLogic.Instance.GetClassDetails(Convert.ToInt32(Session["userid"]), Convert.ToInt32(Session["userrole"]));
+
                     return View("~/Views/Account/Index.cshtml");
                 }
                 else

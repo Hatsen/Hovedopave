@@ -1,0 +1,13 @@
+﻿@model IEnumerable<BirkealleWebsite.WebService.ClassEx>
+
+@{
+    ViewBag.Title = "Klasseliste";
+}
+
+<h2>Klasser dine børn er tilknyttet til:</h2>
+
+@foreach (var item in Model)
+{
+    <li>@Html.ActionLink(item.Name, "DisplaySpecifiedClass", "class", new { id = item.Id }, null)</li>
+}
+

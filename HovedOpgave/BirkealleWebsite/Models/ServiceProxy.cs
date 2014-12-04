@@ -32,6 +32,36 @@ namespace BirkealleWebsite.Models
             }
         }
 
+        public Task<List<ClassEx>> GetClasses()
+        {
+            var tcs = new TaskCompletionSource<List<ClassEx>>();
+            EventHandler<GetClassesCompletedEventArgs> handler = null;
+            handler = (sender, args) =>
+            {
+                if (args.UserState == tcs)
+                {
+                    service.GetClassesCompleted -= handler;
+                    if (args.Error != null)
+                    {
+                        tcs.TrySetException(args.Error);
+                    }
+                    else if (args.Cancelled)
+                    {
+                        tcs.TrySetCanceled();
+                    }
+                    else
+                    {
+                        tcs.TrySetResult(args.Result);
+                    }
+                }
+            };
+
+            service.GetClassesCompleted += handler;
+            service.GetClassesAsync(tcs);
+
+            return tcs.Task;
+        }
+
         public Task<bool> GetLoginDetails(string username, string password)
         {
             var tcs = new TaskCompletionSource<bool>();

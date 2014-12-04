@@ -42,5 +42,17 @@ namespace BirkealleWebsite.Models
             string result = await ServiceProxy.Instance.GetUserDetails(number);
             return result;
         }
+
+        public async Task<List<ClassEx>> GetClasses()
+        {
+            List<ClassEx> result = await ServiceProxy.Instance.GetClasses();
+            return result;
+        }
+
+        public async Task<List<ClassEx>> GetClassDetails(int id, int groupID)
+        {
+            List<ClassEx> result = await ServiceProxy.Instance.GetClassDetails(id, groupID);
+            return result;
+        }
     }
 }

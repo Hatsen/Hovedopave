@@ -1,0 +1,27 @@
+﻿@model IEnumerable<BirkealleWebsite.WebService.ClassEx>
+
+@{
+    ViewBag.Title = "Klasseliste";
+}
+
+@foreach (var item in Model)
+{
+    <h2>Elever i: @item.Name</h2>
+    <table class="table">
+        <tr>
+        <th>Fornavn</th>
+        <th>Efternavn</th>
+        <th>Adresse</th>
+        <th>Telefonnummer</th>
+        </tr>
+            @foreach (var student in item.StudentsList)
+            {
+                <tr>
+                    <td>@student.Firstname</td>
+                    <td>@student.Lastname</td>
+                    <td>@student.Address</td>
+                    <td>@student.Phonenumber</td>
+                </tr>
+            }
+    </table>
+}
