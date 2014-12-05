@@ -26,8 +26,6 @@ namespace BirkealleWebsite.Models
 
         }
 
-<<<<<<< HEAD
-
         public async Task<bool> CreateEnrollment(Repository repository)
         {
 
@@ -87,14 +85,9 @@ namespace BirkealleWebsite.Models
             }
 
 
-
-
-
         }
 
 
-
-=======
         public async Task<bool> GetLoginDetails(string username, string password)
         {
             if (await ServiceProxy.Instance.GetLoginDetails(username, password) == true)
@@ -124,6 +117,5 @@ namespace BirkealleWebsite.Models
             List<ClassEx> result = await ServiceProxy.Instance.GetClassDetails(id, groupID);
             return result;
         }
->>>>>>> origin/master
     }
 }
