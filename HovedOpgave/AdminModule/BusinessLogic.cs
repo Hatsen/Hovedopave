@@ -182,7 +182,7 @@ namespace AdminModule
             {
                 success = await ServiceProxy.Instance.InsertParent((ParentEx)selectedUser);
             }
-            else if (selectedUser.Userrole == (int)Enums.Userrole.Teacher)
+            else if (selectedUser.Userrole == (int)Enums.Userrole.Teacher || selectedUser.Userrole == (int)Enums.Userrole.Principal || selectedUser.Userrole == (int)Enums.Userrole.Substitute)
             {
                 success = await ServiceProxy.Instance.InsertTeacher((TeacherEx)selectedUser);
             }

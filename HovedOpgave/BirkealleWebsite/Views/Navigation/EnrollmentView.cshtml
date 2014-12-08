@@ -15,7 +15,7 @@
 }
 
 
-<h2 style="margin-bottom:5%; text-align:center;">Indmeldelse til Birkeallé</h2>
+<h2 style="margin-bottom: 5%; text-align: center;">Indmeldelse til Birkeallé</h2>
 
 
 
@@ -28,33 +28,42 @@
 }
 
 
-@{using (Html.BeginForm("PostEnrollment", "Enrollment", FormMethod.Post))
+@if (Session["username"] != null)
+{
+    
+using (Html.BeginForm("PostEnrollment", "Enrollment", FormMethod.Post))
 {
 
-    <div style="margin-bottom:2%; margin-top:2%; margin-left:auto; margin-right:auto; text-align:center;">
-
+    <div style="margin-bottom: 2%; margin-top: 2%; margin-left: auto; margin-right: auto; text-align: center;">
         @Html.AntiForgeryToken()
 
-
-
-
-
         <div class="alert alert-danger">
-            <h4>Mangler data i tekstbokse</h4>
+            <h4>Mangler information i felterne</h4>
             @Html.ValidationSummary()
         </div>
 
-
-        <p><b>Barnets fornavn:</b></p> @Html.TextBox("ChildFirstname", Model) @Html.ValidationMessage("ChildFirstname", "*") <br />
-        <p><b>Barnets efternavn: </b></p> @Html.TextBox("ChildLastname", Model) @Html.ValidationMessage("ChildLastname", "*") <br />
-        <p><b> Fødselsdag:(dd/mm/åååå) </b></p> @Html.TextBox("ChildBirthdate", Model) @Html.ValidationMessage("ChildBirthdate", "*") <br />
+        <p><b>Barnets fornavn:</b></p>
+        @Html.TextBox("ChildFirstname", Model) @Html.ValidationMessage("ChildFirstname", "*")
+        <br />
+        <p><b>Barnets efternavn: </b></p>
+        @Html.TextBox("ChildLastname", Model) @Html.ValidationMessage("ChildLastname", "*")
+        <br />
+        <p><b>Fødselsdag:(dd/mm/åååå) </b></p>
+        @Html.TextBox("ChildBirthdate", Model) @Html.ValidationMessage("ChildBirthdate", "*")
+        <br />
         <p>Indtast kun brugernavn for de forældre, som skal tilknyttes barnet:</p>
-        <p><b> Moderens brugernavn: </b></p> @Html.TextBox("MotherUsername", Model)
-        <p><b> Faderens brugernavn: </b></p> @Html.TextBox("FatherUsername", Model)
-        <p><b> Barnets adresse:</b></p> @Html.TextBox("ChildAddress", Model) @Html.ValidationMessage("ChildAddress", "*")
-        <p><b> Barnets by:</b></p> @Html.TextBox("ChildCity", Model) @Html.ValidationMessage("ChildCity", "*")
-        <p><b> Barnets telefonnummer(hvis barnet ikke har et nummer skriver i blot 0.):</p> @Html.TextBox("ChildPhonenumber", Model) @Html.ValidationMessage("ChildPhonenumber", "*")
-        <p><b> Bemærkninger: </b></p>@Html.TextArea("Notes", Model)
+        <p><b>Moderens brugernavn: </b></p>
+        @Html.TextBox("MotherUsername", Model)
+        <p><b>Faderens brugernavn: </b></p>
+        @Html.TextBox("FatherUsername", Model)
+        <p><b>Barnets adresse:</b></p>
+        @Html.TextBox("ChildAddress", Model) @Html.ValidationMessage("ChildAddress", "*")
+        <p><b>Barnets by:</b></p>
+        @Html.TextBox("ChildCity", Model) @Html.ValidationMessage("ChildCity", "*")
+        <p><b>Barnets telefonnummer(hvis barnet ikke har et nummer skriver i blot 0.):</b></p>
+        @Html.TextBox("ChildPhonenumber", Model) @Html.ValidationMessage("ChildPhonenumber", "*")
+        <p><b>Bemærkninger: </b></p>
+        @Html.TextArea("Notes", Model)
 
         <br />
         <br />
@@ -62,7 +71,20 @@
     </div>
 }
 
-
 }
+
+else
+{
+    <div class="alert alert-danger">
+        <h4>Du skal være logget ind som forældre før at du kan tilmelde dit barn til skolen.<br/>
+            <b>@Html.ActionLink("Tryk her for at logge ind:", "GotoLogin", "Navigation")</b>
+        </h4>
+           
+        </div>
+}
+
+
+
+
 
 

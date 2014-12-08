@@ -32,7 +32,6 @@ namespace AdminModule.ViewModels
 
             CreateTeacherCommand = new DelegateCommand<object>(CreateTeacher);
             EditUserCommand = new DelegateCommand<object>(EditUser, MayiEditPerson);
-            //  UpdateStudentsCommand = new DelegateCommand<object>(UpdateStudents);
             CreateParentCommand = new DelegateCommand<object>(CreateParent);
             CreateStudentCommand = new DelegateCommand<object>(CreateStudent);
             CreateClassCommand = new DelegateCommand<object>(CreateClass);
@@ -191,7 +190,7 @@ namespace AdminModule.ViewModels
                 selectedStringPerson = value;
 
                 if (selectedStringPerson == "Underviser")
-                    GetTeachers(); // async metode
+                    GetTeacherCalledFromPropery(); 
 
                 else if (selectedStringPerson == "Elev")
                 {
@@ -257,12 +256,6 @@ namespace AdminModule.ViewModels
 
         public DelegateCommand<object> ResetPasswordCommand { get; set; }
 
-        public DelegateCommand<object> UpdateStudentsCommand { get; set; }
-
-        /*  public void UpdateStudents(Object o)
-          {
-              GetStudents();
-          }*/
 
 
         public bool MayiEditPerson(Object o)
@@ -542,6 +535,13 @@ namespace AdminModule.ViewModels
         #endregion
 
         #region Methods
+
+        private async void GetTeacherCalledFromPropery()
+        {
+            await GetTeachers();
+
+        }
+
 
         private async Task<bool> GetTeachers() // måske int userrole her. Så kan du hente de ansatte som er relevante
         {

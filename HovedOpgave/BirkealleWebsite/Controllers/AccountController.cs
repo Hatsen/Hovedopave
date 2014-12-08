@@ -25,7 +25,7 @@ namespace BirkealleWebsite.Controllers
         {
             if (await BusinessLogic.Instance.GetLoginDetails(username, password) == true)
             {
-                if (await BusinessLogic.Instance.GetUserDetails(4) == "4")
+                if (await BusinessLogic.Instance.GetUserDetails(4) == "4") // userrole for parent
                 {
                     this.Session["userid"] = await BusinessLogic.Instance.GetUserDetails(0);
                     this.Session["firstname"] = await BusinessLogic.Instance.GetUserDetails(1);
