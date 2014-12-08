@@ -38,12 +38,12 @@ namespace BirkealleWebsite.Controllers
                 }
                 else
                 {
-                    return View("~/Views/Shared/NotParent.cshtml");
+                    return View("~/Views/Shared/NotParent.cshtml"); //Hvis brugeren ikke er forælder.
                 }
             }
             else
             {
-                return View("~/Views/Shared/LoginFail.cshtml");
+                return View("~/Views/Shared/LoginFail.cshtml"); //Hvis brugeroplysningerne var forkerte.
             }
         }
     }
