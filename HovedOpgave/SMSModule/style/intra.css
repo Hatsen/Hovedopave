@@ -61,6 +61,11 @@
     color: white;
 }
 
+#helloMessageArea
+{
+    text-align: center;
+}
+
 #loginheader
 {
     background-image: url('../images/blackboard.png');

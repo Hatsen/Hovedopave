@@ -25,6 +25,9 @@ namespace SMSModule
                 Session["userrole"] = await ObjectHolder.Instance.UcController.GetUserDetails(4);
                 Session["classid"] = await ObjectHolder.Instance.UcController.GetClassDetails(Convert.ToInt32(Session["userid"]), Convert.ToInt32(Session["userrole"]));
 
+                Response.Redirect("Intrasystem/Selector.aspx", false);
+
+                /*
                 if (Convert.ToInt32(Session["userrole"]) == 1 || Convert.ToInt32(Session["userrole"]) == 5)
                 {
                     Response.Redirect("Intrasystem/Default.aspx", false);
@@ -33,6 +36,7 @@ namespace SMSModule
                 {
                     Response.Redirect("Intrasystem/Selector.aspx", false);
                 }
+                 */
             }
             else
             {
