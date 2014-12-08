@@ -20,6 +20,15 @@ namespace Webservice
         {
             if (DatabaseHandler.Instance.CreateAnnouncement(creator, header, message, groupID, classID) == true)
             {
+                Announcement anc = new Announcement();
+
+                anc.Creator = creator;
+                anc.Header = header;
+                anc.Message = message;
+                anc.GroupID = groupID;
+                anc.ClassID = classID;
+                Holder.Instance.Announcements.Add(anc);
+
                 return true;
             }
             else
