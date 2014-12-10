@@ -66,6 +66,36 @@ namespace SMSModule
             return tcs.Task;
         }
 
+        public Task<bool> UpdateUserDetails(int id, string city, string address, int phone, string email)
+        {
+            var tcs = new TaskCompletionSource<bool>();
+            EventHandler<UpdateUserDetailsCompletedEventArgs> handler = null;
+            handler = (sender, args) =>
+            {
+                if (args.UserState == tcs)
+                {
+                    service.UpdateUserDetailsCompleted -= handler;
+                    if (args.Error != null)
+                    {
+                        tcs.TrySetException(args.Error);
+                    }
+                    else if (args.Cancelled)
+                    {
+                        tcs.TrySetCanceled();
+                    }
+                    else
+                    {
+                        tcs.TrySetResult(args.Result);
+                    }
+                }
+            };
+
+            service.UpdateUserDetailsCompleted += handler;
+            service.UpdateUserDetailsAsync(id, city, address, phone, email, tcs);
+
+            return tcs.Task;
+        }
+
          public Task<string> GetUserDetails(int number)
          {
              var tcs = new TaskCompletionSource<string>();
@@ -93,6 +123,36 @@ namespace SMSModule
              service.GetUserDetailsCompleted += handler;
              service.GetUserDetailsAsync(number, tcs);
  
+             return tcs.Task;
+         }
+
+         public Task<List<ClassEx>> GetClasses()
+         {
+             var tcs = new TaskCompletionSource<List<ClassEx>>();
+             EventHandler<GetClassesCompletedEventArgs> handler = null;
+             handler = (sender, args) =>
+             {
+                 if (args.UserState == tcs)
+                 {
+                     service.GetClassesCompleted -= handler;
+                     if (args.Error != null)
+                     {
+                         tcs.TrySetException(args.Error);
+                     }
+                     else if (args.Cancelled)
+                     {
+                         tcs.TrySetCanceled();
+                     }
+                     else
+                     {
+                         tcs.TrySetResult(args.Result);
+                     }
+                 }
+             };
+
+             service.GetClassesCompleted += handler;
+             service.GetClassesAsync(tcs);
+
              return tcs.Task;
          }
 
@@ -125,8 +185,7 @@ namespace SMSModule
  
              return tcs.Task;
          }
-
-        
+  
          public Task<bool> CreateAnnouncement(int creator, string header, string message, int group, int classID)
          {
              var tcs = new TaskCompletionSource<bool>();

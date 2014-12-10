@@ -68,6 +68,8 @@
     <Content Include="Intrasystem\ChangePassword.aspx" />
     <Content Include="Intrasystem\Selector.aspx" />
     <Content Include="Intrasystem\Terminate.aspx" />
+    <Content Include="Intrasystem\ChangeDetails.aspx" />
+    <Content Include="Intrasystem\ClassList.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Intrasystem\Intra.Master" />
     <None Include="Service References\Webservice\Service1.disco" />
@@ -141,6 +143,20 @@
     <Compile Include="Intrasystem\Terminate.aspx.designer.cs">
       <DependentUpon>Terminate.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Intrasystem\ChangeDetails.aspx.cs">
+      <DependentUpon>ChangeDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Intrasystem\ChangeDetails.aspx.designer.cs">
+      <DependentUpon>ChangeDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Intrasystem\ClassList.aspx.cs">
+      <DependentUpon>ClassList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Intrasystem\ClassList.aspx.designer.cs">
+      <DependentUpon>ClassList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -172,22 +188,22 @@
     <Content Include="Service References\Webservice\SMSModule.Webservice.Student.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\Webservice\SMSModule.Webservice.Parent.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\Webservice\Service13.xsd">
       <SubType>Designer</SubType>
     </None>
     <Content Include="Service References\Webservice\SMSModule.Webservice.Announcement.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\Webservice\SMSModule.Webservice.Teacher.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\Webservice\Service14.xsd">
       <SubType>Designer</SubType>
     </None>
     <Content Include="Service References\Webservice\SMSModule.Webservice.ClassEx.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Webservice\SMSModule.Webservice.ParentEx.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Webservice\SMSModule.Webservice.TeacherEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">

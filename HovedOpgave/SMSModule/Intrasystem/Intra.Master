@@ -19,7 +19,13 @@
             <a class="item" href="Default.aspx">Forside</a>
             <br />
             <br />
+            <a class="item" href="ClassList.aspx">Klasseliste</a>
+            <br />
+            <br />
             <a class="item" href="ChangePassword.aspx">Skift adgangskode</a> 
+            <br />
+            <br />
+            <a class="item" href="ChangeDetails.aspx">Rediger kontaktoplysninger</a>
             <br />
             <br />
             <%

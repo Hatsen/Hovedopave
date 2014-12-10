@@ -98,6 +98,9 @@ namespace Webservice
         #endregion
 
 
+        [OperationContract]
+        bool UpdateUserDetails(int id, string city, string address, int phone, string email);
+
       /*  [OperationContract]
         int GetMostRecentUserId();*/
 

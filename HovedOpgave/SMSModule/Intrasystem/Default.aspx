@@ -5,6 +5,5 @@
     <div id="helloMessageArea" runat="server">
     </div>
     <div id="announcements" runat="server">
-        
     </div>
 </asp:Content>

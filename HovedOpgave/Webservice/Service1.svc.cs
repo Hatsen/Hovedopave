@@ -397,13 +397,17 @@ namespace Webservice
 
         public string GetUserDetails(int number)
         {
-            string[] userDetails = new string[5];
+            string[] userDetails = new string[9];
 
             userDetails[0] = Convert.ToString(Holder.Instance.LoginDetails.Id);
             userDetails[1] = Holder.Instance.LoginDetails.Firstname;
             userDetails[2] = Holder.Instance.LoginDetails.Lastname;
             userDetails[3] = Holder.Instance.LoginDetails.Username;
             userDetails[4] = Convert.ToString(Holder.Instance.LoginDetails.Userrole);
+            userDetails[5] = Holder.Instance.LoginDetails.City;
+            userDetails[6] = Holder.Instance.LoginDetails.Address;
+            userDetails[7] = Convert.ToString(Holder.Instance.LoginDetails.Phonenumber);
+            userDetails[8] = Holder.Instance.LoginDetails.Email;
 
             return userDetails[number];
         }
@@ -487,6 +491,11 @@ namespace Webservice
                 }
             }
             return success;
+        }
+
+        public bool UpdateUserDetails(int id, string city, string address, int phone, string email)
+        {
+            return DatabaseHandler.Instance.UpdateUserDetails(id, city, address, phone, email);
         }
 
         #endregion
