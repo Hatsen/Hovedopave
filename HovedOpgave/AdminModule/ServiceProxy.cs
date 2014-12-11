@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AdminModule
@@ -28,50 +29,6 @@ namespace AdminModule
            }
 
        }
-
-
-/*       public Task<Teacher> GetTeacher()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
-       {
-           var tcs = new TaskCompletionSource<Teacher>();
-           EventHandler<GetTeacherCompletedEventArgs> handler = null;
-           handler = (sender, args) =>
-           {
-               if (args.UserState == tcs)
-               {
-                   service.GetTeacherCompleted -= handler;
-                   if (args.Error != null)
-                   {
-                       tcs.TrySetException(args.Error);
-                   }
-                   else if (args.Cancelled)
-                   {
-                       tcs.TrySetCanceled();
-                   }
-                   else
-                   {
-                       tcs.TrySetResult(args.Result);
-                   }
-
-               }
-           };
-
-           service.GetTeacherCompleted += handler;
-           service.GetTeacherAsync(tcs);
-
-           return tcs.Task;
-       }
-*/
-
-
-      /* public List<Teacher> GetTeachers()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
-       {
-           var tcs = new TaskCompletionSource<List<Teacher>>();
-      
-
-           service.GetTeachersAsync(tcs);
-
-           return tcs.Task;
-       }*/
 
 
        public Task<List<TeacherEx>> GetTeachers()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
@@ -356,7 +313,7 @@ namespace AdminModule
 
 
 
-       public Task<bool> InsertStudent(Student student)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       public Task<bool> InsertStudent(Student student, Enrollment enrollment = null)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {
            var tcs = new TaskCompletionSource<bool>();
            EventHandler<InsertStudentCompletedEventArgs> handler = null;
@@ -382,7 +339,7 @@ namespace AdminModule
            };
 
            service.InsertStudentCompleted += handler;
-           service.InsertStudentAsync(student, tcs);
+           service.InsertStudentAsync(student,enrollment, tcs);
 
            return tcs.Task;
        }
@@ -422,6 +379,45 @@ namespace AdminModule
 
            return tcs.Task;
        }
+
+
+
+
+
+       public Task<List<Enrollment>> GetEnrollments()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       {
+           var tcs = new TaskCompletionSource<List<Enrollment>>();
+           EventHandler<GetEnrollmentsCompletedEventArgs> handler = null;
+           handler = (sender, args) =>
+           {
+               if (args.UserState == tcs)
+               {
+                   service.GetEnrollmentsCompleted -= handler;
+                   if (args.Error != null)
+                   {
+                       tcs.TrySetException(args.Error);
+                   }
+                   else if (args.Cancelled)
+                   {
+                       tcs.TrySetCanceled();
+                   }
+                   else
+                   {
+                       tcs.TrySetResult(args.Result);
+                   }
+
+               }
+           };
+
+           service.GetEnrollmentsCompleted += handler;
+           service.GetEnrollmentsAsync(tcs);
+
+           return tcs.Task;
+       }
+
+
+
+
 
 
     }

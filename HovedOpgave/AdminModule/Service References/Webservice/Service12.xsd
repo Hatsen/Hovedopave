@@ -195,6 +195,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="parent" nillable="true" type="q8:Student" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="enrollment" nillable="true" type="q9:Enrollment" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -213,7 +214,7 @@
   <xs:element name="GetStudentsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="GetStudentsResult" nillable="true" type="q9:ArrayOfStudent" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="GetStudentsResult" nillable="true" type="q10:ArrayOfStudent" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -239,14 +240,14 @@
   <xs:element name="GetClassesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Webservice.Extended" minOccurs="0" name="GetClassesResult" nillable="true" type="q10:ArrayOfClassEx" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Webservice.Extended" minOccurs="0" name="GetClassesResult" nillable="true" type="q11:ArrayOfClassEx" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertClass">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Webservice.Extended" minOccurs="0" name="theClass" nillable="true" type="q11:ClassEx" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Webservice.Extended" minOccurs="0" name="theClass" nillable="true" type="q12:ClassEx" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -268,6 +269,33 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="DeleteClassResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateEnrollment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="entollment" nillable="true" type="q13:Enrollment" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Webservice.Extended" minOccurs="0" name="parents" nillable="true" type="q14:ArrayOfParentEx" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateEnrollmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateEnrollmentResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEnrollments">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEnrollmentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="GetEnrollmentsResult" nillable="true" type="q15:ArrayOfEnrollment" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

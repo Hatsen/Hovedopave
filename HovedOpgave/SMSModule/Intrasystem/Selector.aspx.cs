@@ -36,6 +36,14 @@ namespace SMSModule.Intrasystem
             }
         }
 
+<<<<<<< HEAD
+        void lnk_Command(object sender, CommandEventArgs e, int id)
+        {
+            CreateSession(id);
+        }
+     
+=======
+>>>>>>> origin/master
         protected void CreateSession(int classID)
         {
 

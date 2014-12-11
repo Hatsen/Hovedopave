@@ -56,6 +56,7 @@ namespace Webservice
 
         public int Exec(string SQLQuery)
         {
+      
             SqlCommand dbCMD = new SqlCommand(SQLQuery, this.dbConn);   //Forbered en ny SQL statement
 
             try
@@ -75,6 +76,7 @@ namespace Webservice
             {
                 return -1;      //En fejl opstod
             }
+           
         }
 
         /// <summary>

@@ -123,7 +123,10 @@ namespace Webservice
 
         #region ParentMethods
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/master
 
         private bool InsertTheParrentsChildren(List<Student> childList, int parentId)
         {
@@ -159,6 +162,11 @@ namespace Webservice
 
                 if (parent.ChildrenList.Count != 0 && success)
                 {
+                    foreach (Student child in parent.ChildrenList)
+                    {
+                        DatabaseHandler.Instance.DeleteConnectionBetweenParentAndChild(parent.Id, child.Id);
+                    }
+
                     success = InsertTheParrentsChildren(parent.ChildrenList, parent.Id);
                 }
             }
@@ -188,8 +196,7 @@ namespace Webservice
 
         public List<ParentEx> GetParents()
         {
-            // søg efter children i studentparent table
-            //ParentEx.Children = FindParentsChildren();
+
             List<ParentEx> parentExlist = new List<ParentEx>();
             parentExlist = DatabaseHandler.Instance.GetParents();
 
@@ -198,56 +205,84 @@ namespace Webservice
                 List<Student> children = new List<Student>();
                 children = DatabaseHandler.Instance.FindParentsChildrenTEST(parent.Id);
 
-                //  children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
-
-                //children = DatabaseHandler.Instance.FindParentsChildren(parent.Id);
-
+                parent.EnrollmentsCount = DatabaseHandler.Instance.FindTheEnrollmentsAssociateforTheParent(parent.Id); // finds the number for how many enrollments the parent has created.
 
                 if (children.Count != 0)
                 {
                     parent.ChildrenList = children;
-
-
                 }
-
 
             }
             return parentExlist;
         }
-
-
-        /* public bool DeleteParent(int id)
-         {
-
-             return DatabaseHandler.Instance.DeleteParent(id);
-         }*/
 
         #endregion
 
         #region StudentMethods
 
 
-        public bool InsertStudent(Student student)
+        public bool InsertStudent(Student student, Enrollment enrollment = null)
         {
 
             bool success = false;
+            string sqlStatement = "";
 
-            if (student.Id != 0)
+            if (enrollment != null)
             {
-                success = DatabaseHandler.Instance.UpdateStudent(student);
-            }
-            else
-            {
-                //int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
+                List<ParentEnrollment> parentenrollmentlist = DatabaseHandler.Instance.GetParentEnrollment(enrollment.Id); 
 
-                // if (recentId != -1)
-                //{
-                /*  student.Id = recentId;
-                  student.Fkuserid = recentId;
-                  student.Username = "St_" + recentId;*/
-                success = DatabaseHandler.Instance.InsertStudent(student); // will insert into User and Teacher.
-                //  }
+               // student.Id = DatabaseHandler.Instance.InsertStudent(student); // hvorfor ikke bare returner string tilbage og så have en commit metode på databasehandler
+                // så kan du sende den samlet sql statement ned til databasen. (Dette behøves ikke når der skal læses/read da den ikke kan ødelægge noget.) transaction
+
+                sqlStatement+= DatabaseHandler.Instance.InsertStudent2(student);
+
+
+                foreach (ParentEnrollment parentenrollment in parentenrollmentlist)
+                {
+                    StudentParent association = new StudentParent();
+                    association.Fkparentid=parentenrollment.Fkparentid;
+                    association.Fkstudentid = student.Id;
+
+                    sqlStatement += DatabaseHandler.Instance.InsertIntoStudentParent2(association); // abner og lukker connection flere gange....
+                }
+
+
+                foreach (ParentEnrollment parentenrollment in parentenrollmentlist)
+                {
+                    sqlStatement += DatabaseHandler.Instance.DeleteConnectionBetweenParentAndEnrollment2(parentenrollment.Fkparentid, enrollment.Id); // abner og lukker connection flere gange....
+                }
+                sqlStatement += DatabaseHandler.Instance.DeleteEnrollment2(enrollment.Id);
+
+
+                success = DatabaseHandler.Instance.Commit(sqlStatement);
+
+
+
+
             }
+
+            else if (enrollment == null)
+            {
+
+                if (student.Id != 0)
+                {
+                    success = DatabaseHandler.Instance.UpdateStudent(student);
+                }
+                else
+                {
+                    //int recentId = DatabaseHandler.Instance.GetMostRecentUserId();
+
+                    // if (recentId != -1)
+                    //{
+                    /*  student.Id = recentId;
+                      student.Fkuserid = recentId;
+                      student.Username = "St_" + recentId;*/
+                    int generatedId = DatabaseHandler.Instance.InsertStudent(student); // will insert into User and Student.
+                    //  }
+                }
+
+            }
+
             return success;
 
         }
@@ -419,7 +454,7 @@ namespace Webservice
             string tableName = "";
             // delete user. Du har user tabel og evt. teacher, student eller parent.
 
-            if (userrole == (int)EnumsWeb.Userrole.Teacher)
+            if (userrole == (int)EnumsWeb.Userrole.Teacher || userrole == (int)EnumsWeb.Userrole.Principal || userrole == (int)EnumsWeb.Userrole.Substitute)
             {
                 tableName = "Teacher";
                 bool result = DatabaseHandler.Instance.DeleteUser(id, tableName);
@@ -434,7 +469,18 @@ namespace Webservice
 
             if (userrole == (int)EnumsWeb.Userrole.Parent)
             {
+
                 tableName = "Parent";
+
+                List<ParentEnrollment> parentEnrollments = DatabaseHandler.Instance.GetTheAssociatedEnrollmentsForTheParent(id);
+                if (parentEnrollments.Count != 0)
+                {
+                    foreach (ParentEnrollment studentParent in parentEnrollments)
+                    {
+                        DatabaseHandler.Instance.DeleteConnectionBetweenParentAndEnrollment(studentParent.Fkparentid, studentParent.FkEnrollmentid);
+                    }
+                }
+
                 List<StudentParent> children = DatabaseHandler.Instance.GetStudentParent(id);
                 if (children.Count != 0)
                 {
@@ -501,6 +547,31 @@ namespace Webservice
         #endregion
 
 
+<<<<<<< HEAD
+        #region Enrollments
+
+        public bool CreateEnrollment(Enrollment enrollment, List<ParentEx> parents)
+        {
+
+            enrollment.DateCreated = DateTime.Now.ToString(); // for at faa servertiden. mest korrekt.
+
+
+
+            return DatabaseHandler.Instance.InsertEnrollment(enrollment, parents);
+
+        }
+
+
+        public List<Enrollment> GetEnrollments()
+        {
+
+            return DatabaseHandler.Instance.GetEnrollments();
+
+        }
+
+        #endregion
+
+=======
         public bool CreateEnrollment(Enrollment enrollment, List<ParentEx> parents)
         {
 
@@ -512,5 +583,6 @@ namespace Webservice
 
         }
 
+>>>>>>> origin/master
     }
 }

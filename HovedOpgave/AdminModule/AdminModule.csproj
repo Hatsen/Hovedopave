@@ -213,6 +213,9 @@
     <None Include="Service References\Webservice\AdminModule.Webservice.ClassEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\Webservice\AdminModule.Webservice.Enrollment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\Webservice\AdminModule.Webservice.ParentEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

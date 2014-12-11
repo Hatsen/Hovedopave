@@ -53,6 +53,7 @@ namespace AdminModule.ViewModels
         private string birthdate = "dd/mm-yyyy";
         private string address;
         private int fkClassId;
+        private string email;
         private Student currentStudent;
         //    private List<Class> classes;
         private int phonenumber;
@@ -168,6 +169,18 @@ namespace AdminModule.ViewModels
             }
         }
 
+        public string Email
+        {
+            get { return email; }
+            set
+            {
+                email = value;
+                OnPropertyChanged("Email");
+                ConfirmCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+
         public List<ClassEx> ClassList
         {
             get { return ObjectHolder.Instance.ClassList; }
@@ -228,7 +241,7 @@ namespace AdminModule.ViewModels
 
             if (Viewstate == Enums.ViewState.Create)
             {
-                Student student = new Student();
+              /*  Student student = new Student();
                 student.Firstname = firstname;
                 student.Lastname = lastname;
                 student.City = city;
@@ -236,9 +249,9 @@ namespace AdminModule.ViewModels
                 student.Address = address;
                 student.Userrole = (int)Enums.Userrole.Student;
                 student.Phonenumber = phonenumber;
-                student.FkClassid = SelectedClass.Id;
+                student.FkClassid = SelectedClass.Id;*/
 
-                success = await BusinessLogic.Instance.CreateStudent(student);
+                success = await BusinessLogic.Instance.CreateStudent(firstname, lastname, city,address,birthdate,phonenumber,email,SelectedClass.Id);
 
 
             }

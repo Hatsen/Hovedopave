@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using Webservice.DB;
 using Webservice.Extended;
@@ -179,29 +180,6 @@ namespace Webservice
                 "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + 1 + "','" + teacher.Password + "','" + teacher.Lastlogin.ToString() + "'," + teacher.Userrole + ", " + teacher.Phonenumber + "," + 1 + ");" +
                 "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='Te_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Teacher](Id)VALUES(@Id) COMMIT TRANSACTION   END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
 
-            /*  BEGIN TRANSACTION
-BEGIN TRY
-DECLARE @Id INT
-INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)
-VALUES('1','1','1','1','1','1','1','1',1,111,1)
-SET @Id = SCOPE_IDENTITY()
-INSERT INTO [Parent](Id)VALUES(@Id)
-COMMIT TRANSACTION 
-END TRY
-BEGIN CATCH
-ROLLBACK TRANSACTION
-END CATCH*/
-
-
-            /*  DB.Exec(
-                  "INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole, PhoneNumber, fk_SchoolId) " +
-                  "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + teacher.Username + "','" + teacher.Password + "','" + teacher.Lastlogin.ToString() + "'," + teacher.Userrole + ", " + teacher.Phonenumber + "," + 1 + ");");
-              DB.Exec("INSERT INTO [Teacher] (Id, Rank) VALUES (" + teacher.Id + ", " + teacher.Rank + ");");
-              */
-            /*   id = DB.ExecAndGetId("INSERT INTO [User] (Firstname, Lastname, City, Address, Birthdate, Username, Password, Lastlogin, Userrole, PhoneNumber, fk_SchoolId) " +
-                   "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + teacher.Username + "','" + teacher.Password + "','" + teacher.Lastlogin.ToString() + "'," + teacher.Userrole + ", " + teacher.Phonenumber + "," + 1 + ");");
-               teacher.Id = id;
-               DB.Exec("INSERT INTO [Teacher] (Id, Rank) VALUES (" + teacher.Id + ", " + teacher.Rank + ");");*/
 
 
             if (result == -1)
@@ -269,10 +247,13 @@ END CATCH*/
             {
 
             }
+
             finally
             {
                 DB.Close();
             }
+
+
             return teachers;
         }
 
@@ -281,21 +262,37 @@ END CATCH*/
 
             int result;
             bool success = true;
-
-            DB.Open();
-
-            //transaktion her vil gå ind og lave en 
-            result =
-                DB.Exec("BEGIN TRANSACTION BEGIN TRY DELETE FROM [" + tableName + "] WHERE Id = " + id + " DELETE FROM [User] WHERE Id=" + id + " COMMIT" +
-                " TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION END CATCH");
-
-            // det kan ske at der ikke bliver påvirket rækker hvis den brækker sig. Det er fordi den laver rollback og derfor ikke påvirke nogle rækker.
-            if (result == -1 || result == 0)
+            try
             {
-                success = false;
+
+                DB.Open();
+
+                //transaktion her vil gå ind og lave en 
+                result =
+                    DB.Exec("BEGIN TRANSACTION BEGIN TRY DELETE FROM [" + tableName + "] WHERE Id = " + id + " DELETE FROM [User] WHERE Id=" + id + " COMMIT" +
+                    " TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION END CATCH");
+
+
+                // det kan ske at der ikke bliver påvirket rækker hvis den brækker sig. Det er fordi den laver rollback og derfor ikke påvirke nogle rækker.
+                if (result == -1 || result == 0)
+                {
+                    success = false;
+                }
+
             }
 
+
+            catch (Exception ex)
+            {
+
+            }
+
+            finally
+            {
+                DB.Close();
+            }
             return success;
+
 
         }
 
@@ -384,15 +381,11 @@ END CATCH*/
             }
             finally
             {
-                DB.Close();
+                DB.Close();// pas pa med at lukke forbindelse
             }
             return parents;
         }
-        /* public bool DeleteParent(int id)
-         {
 
-             return true;
-         }*/
 
 
 
@@ -449,9 +442,9 @@ END CATCH*/
 
 
             var con = @"Data Source=(LocalDB)\v11.0;;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=1200";
-             //var con=@"Data Source=(LocalDB)\v11.0;AttachDbFileName=C:\USERS\LarsS\DOCUMENTS\GITHUB\HOVEDOPAVE\HOVEDOPGAVE\WEBSERVICE\APP_DATA\SCHOOLDB.MDF; Integrated Security=SSPI; Connection Timeout=1200";
+            //var con=@"Data Source=(LocalDB)\v11.0;AttachDbFileName=C:\USERS\LarsS\DOCUMENTS\GITHUB\HOVEDOPAVE\HOVEDOPGAVE\WEBSERVICE\APP_DATA\SCHOOLDB.MDF; Integrated Security=SSPI; Connection Timeout=1200";
 
-             //(@"Data Source=(LocalDB)\v11.0;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=12000");
+            //(@"Data Source=(LocalDB)\v11.0;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=12000");
 
             using (SqlConnection myConnection = new SqlConnection(con))
             {
@@ -475,6 +468,50 @@ END CATCH*/
         }
 
 
+        public List<ParentEnrollment> GetTheAssociatedEnrollmentsForTheParent(int id)
+        {
+            List<ParentEnrollment> Enrollments = new List<ParentEnrollment>();
+
+
+            var con = @"Data Source=(LocalDB)\v11.0;;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=1200";
+
+
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = ("Select * FROM [ParentEnrollment] Where [ParentEnrollment].fk_ParentId = " + id + ";");
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                myConnection.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        ParentEnrollment parentEnrollment = new ParentEnrollment();
+                        parentEnrollment.Fkparentid = Convert.ToInt32(oReader["fk_ParentId"]);
+                        parentEnrollment.FkEnrollmentid = Convert.ToInt32(oReader["fk_EnrollmentId"]);
+                        Enrollments.Add(parentEnrollment);
+                    }
+
+                    myConnection.Close();
+                }
+                return Enrollments;
+            }
+        }
+
+        public int FindTheEnrollmentsAssociateforTheParent(int id)
+        {
+            string[][] getEnrollments = DB.Query("Select COUNT([ParentEnrollment].Id) FROM [ParentEnrollment] Where [ParentEnrollment].fk_ParentId = " + id + ";");
+            return Convert.ToInt32(getEnrollments[0][0]);
+        }
+
+
+
+
+
+
+
+
+
+
         public bool DeleteConnectionBetweenParentAndChild(int parentId, int childId)
         {
 
@@ -496,6 +533,7 @@ END CATCH*/
 
             return success;
         }
+
 
 
 
@@ -534,12 +572,17 @@ END CATCH*/
 
 
 
+
+
+
         #endregion
 
         #region StudentCRUD
 
-        public bool InsertStudent(Student student)
+        public int InsertStudent(Student student)
         {
+            int generatedId = -1;
+
             bool success = true;
             int result = 0;
             try
@@ -548,10 +591,13 @@ END CATCH*/
 
                 // lav en tranaction.
 
-                result = DB.Exec("BEGIN TRANSACTION BEGIN TRY DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)" +
-                 "VALUES('" + student.Firstname + "','" + student.Lastname + "','" + student.City + "','" + student.Address + "','" + student.Birthdate + "','" + 1 + "','" + student.Password + "','" + student.Lastlogin.ToString() + "'," + student.Userrole + ", " + student.Phonenumber + "," + 1 + ");" +
-                 "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='St_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Student](Id, fk_ClassId)VALUES(@Id," + student.FkClassid + ") COMMIT TRANSACTION   END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
+                string[][] getTeachers = DB.Query("BEGIN TRANSACTION BEGIN TRY DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)" +
+                 "VALUES('" + student.Firstname + "','" + student.Lastname + "','" + student.City + "','" + student.Address + "','" + student.Birthdate + "','" + 1 + "','" + student.Password + "','" + student.Lastlogin.ToString() + "'," + student.Userrole + ", " + student.Phonenumber + "," + student.Fkschoolid + ");" +
+                 "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='St_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Student](Id, fk_ClassId)VALUES(@Id," + student.FkClassid + ") SELECT @Id COMMIT TRANSACTION   END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
 
+
+
+                generatedId = Convert.ToInt32(getTeachers[0][0]);
 
 
 
@@ -572,10 +618,27 @@ END CATCH*/
             }
 
 
+            finally
+            {
+                DB.Close();
+            }
 
-
-            return success;
+            return generatedId;
         }
+
+
+
+        public string InsertStudent2(Student student)
+        {
+          
+                string getTeachers =(" DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)" +
+                 "VALUES('" + student.Firstname + "','" + student.Lastname + "','" + student.City + "','" + student.Address + "','" + student.Birthdate + "','" + 1 + "','" + student.Password + "','" + student.Lastlogin.ToString() + "'," + student.Userrole + ", " + student.Phonenumber + "," + student.Fkschoolid + ");" +
+                 "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='St_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Student](Id, fk_ClassId)VALUES(@Id," + student.FkClassid + ")");
+
+
+            return getTeachers;
+        }
+
 
         public bool UpdateStudent(Student student)
         {
@@ -591,6 +654,8 @@ END CATCH*/
                 Debug.Write("Fejl!");
                 success = false;
             }
+
+            DB.Close();
 
             return success;
         }
@@ -634,20 +699,13 @@ END CATCH*/
             try
             {
                 DB.Open();
-                string sql = "";
-
-                if (studentId == null)
-                {
-                    sql = "SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
+                string sql = "SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
                                 " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole, [User].PhoneNumber, [Student].fk_ClassId" +
-                                " FROM [Student] INNER JOIN [User] ON  [Student].Id=[User].Id ORDER BY [User].Firstname;";
-                }
+                                " FROM [Student] INNER JOIN [User] ON  [Student].Id=[User].Id ";
 
-                else
+                if (studentId != null)
                 {
-                    sql = "SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
-                          " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole, [User].PhoneNumber, [Student].fk_ClassId" +
-                          " FROM [Student] INNER JOIN [User] ON [Student].Id=[User].Id WHERE [User].Id=" + Convert.ToInt32(studentId) + ";";
+                    sql += " WHERE [User].Id=" + Convert.ToInt32(studentId) + ";";
                 }
 
 
@@ -709,7 +767,6 @@ END CATCH*/
             int result;
 
             DB.Open();
-            // this works very well !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             result = DB.Exec("BEGIN TRANSACTION BEGIN TRY INSERT INTO [Class](Name, fk_TeacherId, fk_SchoolId)" +
                 "VALUES('" + theClass.Name + "'," + theClass.Fkteacherid + "," + 1 + ");" +
@@ -723,6 +780,7 @@ END CATCH*/
 
             }
 
+            DB.Close();
 
             return success;
         }
@@ -804,27 +862,181 @@ END CATCH*/
 
         #endregion
 
-        public bool UpdateUserDetails(int id, string city, string address, int phone, string email)
+        #region Enrollment
+
+        public bool InsertEnrollment(Enrollment enrollment, List<ParentEx> parents)
         {
-            bool success = false;
+            bool success = true;
+            int result;
+
+
+            SqlConnection db = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=12000");
+            SqlTransaction transaction;
+
+            db.Open();
+            transaction = db.BeginTransaction();
+            try
+            {
+                string sqlstatment = "DECLARE @Id INT INSERT INTO [Enrollment](Childfirstname, Childlastname,Childcity,Childaddress,Childbirthdate,ChildphoneNumber,Notes, Datecreated, fk_SchoolId)" +
+                   " VALUES ('" + enrollment.ChildFirstname + "','" + enrollment.ChildLastname + "','" + enrollment.ChildCity + "','" + enrollment.ChildAddress + "','" + enrollment.ChildBirthdate + "'," + enrollment.ChildPhonenumber + ",'" + enrollment.Notes + "','" + enrollment.DateCreated + "', " + enrollment.Fkschoolid + ");" +
+              " SET @Id = SCOPE_IDENTITY();";
+
+                foreach (ParentEx parentex in parents)
+                {
+
+                    sqlstatment += " INSERT INTO [ParentEnrollment](fk_ParentId, fk_EnrollmentId) VALUES (" + parentex.Id + ",(@Id)); ";
+
+                }
+
+                new SqlCommand(sqlstatment, db, transaction)
+                   .ExecuteNonQuery();
+
+                transaction.Commit();
+            }
+            catch (SqlException sqlError)
+            {
+                transaction.Rollback();
+                success = false;
+            }
+
+            db.Close();
+
+            return success;
+        }
+
+        public List<Enrollment> GetEnrollments()
+        {
+
+            List<Enrollment> enrollments = new List<Enrollment>();
 
             try
             {
                 DB.Open();
-                DB.Exec("UPDATE [User] SET City = '" + city + "', Address = '" + address + "', PhoneNumber = " + phone + ", Email = '" + email + "' WHERE Id = " + id);
 
-                success = true;
+                string[][] getEnrollments = DB.Query("SELECT * " + " FROM [Enrollment];");
+
+                for (int i = 0; i < getEnrollments.Length; i++)
+                {
+                    Enrollment enrollment = new Enrollment();
+
+                    enrollment.Id = Convert.ToInt32(getEnrollments[i][0]);
+                    enrollment.ChildFirstname = getEnrollments[i][1];
+                    enrollment.ChildLastname = getEnrollments[i][2];
+                    enrollment.ChildCity = getEnrollments[i][3];
+                    enrollment.ChildAddress = getEnrollments[i][4];
+                    enrollment.ChildBirthdate = getEnrollments[i][5];
+                    enrollment.ChildPhonenumber = Convert.ToInt32(getEnrollments[i][6]);
+                    enrollment.Notes = getEnrollments[i][7];
+                    enrollment.DateCreated = getEnrollments[i][8];
+                    enrollment.Fkschoolid = Convert.ToInt32(getEnrollments[i][9]);
+
+                    enrollments.Add(enrollment);
+                }
             }
-            catch (SqlException ex)
-            {   
+            catch (Exception ex)
+            {
+
             }
             finally
             {
                 DB.Close();
             }
+            return enrollments;
+        }
+
+
+        public bool DeleteConnectionBetweenParentAndEnrollment(int parentId, int enrollmentId)
+        {
+
+            int result;
+            bool success = true;
+
+            DB.Open();
+
+            //transaktion her vil gå ind og lave en 
+            result =
+                DB.Exec("BEGIN TRANSACTION BEGIN TRY  delete  from [ParentEnrollment] where [fk_ParentId] = " + parentId + " AND [fk_EnrollmentId] = " + enrollmentId + " COMMIT" +
+                " TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION END CATCH");
+
+            DB.Close();
+
+            DeleteEnrollment(enrollmentId);
+
+
+            // det kan ske at der ikke bliver påvirket rækker hvis den brækker sig. Det er fordi den laver rollback og derfor ikke påvirke nogle rækker.
+            if (result == -1 || result == 0)
+            {
+                success = false;
+            }
+
+
 
             return success;
         }
+
+
+
+        public string DeleteConnectionBetweenParentAndEnrollment2(int parentId, int enrollmentId)
+        {
+
+            string result = "";
+
+     
+
+            //transaktion her vil gå ind og lave en 
+            result =("  delete  from [ParentEnrollment] where [fk_ParentId] = " + parentId + " AND [fk_EnrollmentId] = " + enrollmentId + ";");
+
+
+
+
+
+            return result;
+        }
+
+
+
+
+        public bool DeleteEnrollment(int enrollmentId)
+        {
+
+            int result;
+            bool success = true;
+
+            DB.Open();
+
+            result = DB.Exec("BEGIN TRANSACTION BEGIN TRY  delete  from [Enrollment] where [Id] = " + enrollmentId + " COMMIT" +
+             " TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION END CATCH");
+
+
+            if (result == -1 || result == 0)
+            {
+                success = false;
+            }
+
+
+            DB.Close();
+
+            return success;
+
+
+        }
+
+
+
+        public string DeleteEnrollment2(int enrollmentId)
+        {
+
+            string result = "";
+      
+            result = (" delete  from [Enrollment] where [Id] = " + enrollmentId + "");
+
+            return result;
+
+        }
+
+
+        #endregion
+
 
         public int GetTheUserrole(int id)
         {
@@ -870,7 +1082,6 @@ END CATCH*/
         }
 
 
-
         public bool InsertIntoStudentParent(StudentParent studentParent)
         {
             bool success = true;
@@ -892,13 +1103,101 @@ END CATCH*/
                 Debug.Write(sqlException.ToString());
                 success = false;
             }
+
+            finally
+            {
+                DB.Close();
+            }
             return success;
+
         }
 
-        public bool InsertEnrollment(Enrollment enrollment, List<ParentEx> parents)
+
+        public string InsertIntoStudentParent2(StudentParent studentParent)
         {
+
+            string returnstring = "";
+
+
+                returnstring=(" INSERT INTO [StudentParent](fk_StudentId, fk_ParentId)" +
+                 "VALUES(@Id," + studentParent.Fkparentid + ");");
+
+            return returnstring;
+
+        }
+
+
+
+        /*  public bool InsertStudentFromEnrollment(Student student, Enrollment enrollment)
+          {
+
+
+
+
+              bool success = true;
+              int result = 0;
+              try
+              {
+                  DB.Open();
+
+                  result = DB.Exec("BEGIN TRANSACTION BEGIN TRY INSERT INTO [StudentParent](fk_StudentId, fk_ParentId)" +
+                   "VALUES(" + studentParent.Fkstudentid + "," + studentParent.Fkparentid + "); COMMIT TRANSACTION END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
+
+                  if (result == -1)
+                  {
+                      throw new Exception();
+                  }
+              }
+              catch (SqlException sqlException)
+              {
+                  Debug.Write(sqlException.ToString());
+                  success = false;
+              }
+
+              finally
+              {
+                  DB.Close();
+              }
+              return success;
+          }*/
+
+
+        public List<ParentEnrollment> GetParentEnrollment(int id)
+        {
+            List<ParentEnrollment> studentParentsList = new List<ParentEnrollment>();
+
+
+            var con = @"Data Source=(LocalDB)\v11.0;;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=12000";
+
+
+            using (SqlConnection myConnection = new SqlConnection(con))
+            {
+                string oString = "SELECT * FROM ParentEnrollment WHERE [fk_EnrollmentId]=" + id + "OR [fk_ParentId]=" + id;
+                SqlCommand oCmd = new SqlCommand(oString, myConnection);
+                myConnection.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        ParentEnrollment parentenrollment = new ParentEnrollment();
+                        parentenrollment.Fkparentid = Convert.ToInt32(oReader["fk_ParentId"]);
+                        parentenrollment.FkEnrollmentid = Convert.ToInt32(oReader["fk_EnrollmentId"]);
+                        studentParentsList.Add(parentenrollment);
+                    }
+
+                    myConnection.Close();
+                }
+                return studentParentsList;
+            }
+        }
+
+
+
+        public bool Commit(string sqlStatement)
+        {
+
+
             bool success = true;
-            int result;
 
 
             SqlConnection db = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=12000");
@@ -908,17 +1207,9 @@ END CATCH*/
             transaction = db.BeginTransaction();
             try
             {
-                string sqlstatment = "DECLARE @Id INT INSERT INTO [Enrollment](Childfirstname, Childlastname,Childcity,Childaddress,Childbirthdate,ChildphoneNumber,Notes, Datecreated, fk_SchoolId)" +
-                   " VALUES ('" + enrollment.ChildFirstname + "','" + enrollment.ChildLastname + "','" + enrollment.ChildCity + "','" + enrollment.ChildAddress + "','" + enrollment.ChildBirthdate + "'," + enrollment.ChildPhonenumber + ",'" + enrollment.Notes + "','" + enrollment.DateCreated + "', " + enrollment.Fkschoolid + ");" +
-              " SET @Id = SCOPE_IDENTITY();";
+                string sqlstatment = sqlStatement;
 
-                foreach (ParentEx parentex in parents)
-                {
-
-                    sqlstatment += " INSERT INTO [ParentEnrollment](fk_ParentId, fk_EnrollmentId) VALUES (" + parentex.Id + ",(@Id)); ";
-
-                }
-
+              
                 new SqlCommand(sqlstatment, db, transaction)
                    .ExecuteNonQuery();
 
@@ -933,7 +1224,9 @@ END CATCH*/
             db.Close();
 
             return success;
+
         }
+
 
     }
 }

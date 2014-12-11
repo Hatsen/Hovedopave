@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AdminModule.Webservice;
 using Crypto;
+using System.Net.Mail;
 
 namespace AdminModule
 {
@@ -12,6 +13,8 @@ namespace AdminModule
     {
 
         private static BusinessLogic instance;
+        private string schoolEmail = "Birkealle";
+        private int schoolId = 1;
 
         private BusinessLogic() { }
 
@@ -26,6 +29,32 @@ namespace AdminModule
                 return instance;
             }
 
+        }
+
+
+        public string SendEmail(string toUserEmail, string subject, string body)
+        {
+            string result = "Succes";
+
+            try
+            {
+                MailMessage mail = new MailMessage(toUserEmail, schoolEmail);
+                SmtpClient client = new SmtpClient();
+                client.Port = 25;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Host = "smtp.google.com";
+                mail.Subject = subject;
+                mail.Body = body;
+                client.Send(mail);
+            }
+
+            catch (Exception exeption)
+            {
+                result = exeption.ToString();
+            }
+
+            return result;
         }
 
 
@@ -82,18 +111,29 @@ namespace AdminModule
         #region StudentMethods
 
 
-        public async Task<bool> CreateStudent(Student student)
+        /// <summary>
+        /// Creates a student. Optinal to choose enrollment. If you link an enrollment the student will be created out from that enrollment.
+        /// </summary>
+        public async Task<bool> CreateStudent(string firstname, string lastname, string city, string address,string birthdate, int phonenumber, string email, int fkClassid, Enrollment enrollment =null)
         {
+
+            Student student = new Student();
+            student.Firstname = firstname;
+            student.Lastname = lastname;
+            student.City = city;
+            student.Email=email;
+            student.Birthdate = birthdate;
+            student.Address = address;
+            student.Userrole = (int)Enums.Userrole.Student;
+            student.Phonenumber = phonenumber;
+            student.FkClassid = fkClassid;
+            student.Fkschoolid=schoolId;
 
             student.Lastlogin = DateTime.Now;
             student.Password = PasswordHash.CreateHash(student.Birthdate);
 
 
-            await ServiceProxy.Instance.InsertStudent(student);
-
-
-
-            return true;
+            return await ServiceProxy.Instance.InsertStudent(student,enrollment);
         }
 
 
@@ -167,6 +207,12 @@ namespace AdminModule
 
         public async Task<string> DeleteUserById(int id)
         {
+
+
+
+
+            // hvis det er en parent skal du tjekke om han har oprettet indmeldelser. De skal slettes fra systemet forst.
+            // typecast user p[ userrole. n[r det er parent tjekker du khans liste.
             return await ServiceProxy.Instance.DeleteUserById(id);
 
         }
@@ -246,7 +292,7 @@ namespace AdminModule
                 }
             }
 
-            else if (classe!=null)
+            else if (classe != null)
             {
                 if (classe.StudentsList.Count == 0)
                 {
@@ -254,7 +300,7 @@ namespace AdminModule
                 }
                 else
                 {
-                    stringBuilder.AppendLine("De tilknyttede børn for klasse " + classe.Name+ " er:");
+                    stringBuilder.AppendLine("De tilknyttede børn for klasse " + classe.Name + " er:");
                     stringBuilder.AppendLine();
                     foreach (Student child in classe.StudentsList)
                     {
@@ -262,7 +308,7 @@ namespace AdminModule
                     }
                 }
             }
-            
+
             return stringBuilder.ToString();
         }
     }
