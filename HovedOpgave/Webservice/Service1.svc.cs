@@ -123,10 +123,7 @@ namespace Webservice
 
         #region ParentMethods
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 
         private bool InsertTheParrentsChildren(List<Student> childList, int parentId)
         {
@@ -221,7 +218,7 @@ namespace Webservice
         #region StudentMethods
 
 
-        public bool InsertStudent(Student student, Enrollment enrollment = null)
+        public bool InsertStudent(Student student, EnrollmentEx enrollment = null)
         {
 
             bool success = false;
@@ -255,8 +252,6 @@ namespace Webservice
 
 
                 success = DatabaseHandler.Instance.Commit(sqlStatement);
-
-
 
 
             }
@@ -539,15 +534,15 @@ namespace Webservice
             return success;
         }
 
-        public bool UpdateUserDetails(int id, string city, string address, int phone, string email)
+    /*    public bool UpdateUserDetails(int id, string city, string address, int phone, string email)
         {
-            return DatabaseHandler.Instance.UpdateUserDetails(id, city, address, phone, email);
-        }
+            //return DatabaseHandler.Instance.UpdateUserDetails(id, city, address, phone, email); // sorrry for at gøre det her, Patrick, men kunne ikke finde den i min databasehandler...
+        }*/
 
         #endregion
 
 
-<<<<<<< HEAD
+
         #region Enrollments
 
         public bool CreateEnrollment(Enrollment enrollment, List<ParentEx> parents)
@@ -562,27 +557,37 @@ namespace Webservice
         }
 
 
-        public List<Enrollment> GetEnrollments()
+        public List<EnrollmentEx> GetEnrollments()
         {
 
-            return DatabaseHandler.Instance.GetEnrollments();
+            List<EnrollmentEx> enrollmentList = new List<EnrollmentEx>();
+                List<ParentEnrollment> parentenrollment = new List<ParentEnrollment>();
+             List<ParentEx> parentlist = new List<ParentEx>();
+
+            enrollmentList = DatabaseHandler.Instance.GetEnrollments();
+            
+            
+            foreach(EnrollmentEx enrolex in enrollmentList)
+            {
+                parentenrollment = DatabaseHandler.Instance.GetParentEnrollment(enrolex.Id); // heri indgar parent id for enrollmentet.
+
+                foreach(ParentEnrollment parentenroll in parentenrollment)
+                {
+                    enrolex.ParentList = DatabaseHandler.Instance.GetParents(parentenroll.Fkparentid);
+                    //enrolex.ParentList.Add(parentenroll);
+
+                }
+            }
+
+
+            return enrollmentList;
 
         }
 
         #endregion
 
-=======
-        public bool CreateEnrollment(Enrollment enrollment, List<ParentEx> parents)
-        {
 
-            enrollment.DateCreated = DateTime.Now.ToString();
 
-            return DatabaseHandler.Instance.InsertEnrollment(enrollment,parents);
 
-      
-
-        }
-
->>>>>>> origin/master
     }
 }

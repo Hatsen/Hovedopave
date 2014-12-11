@@ -308,8 +308,8 @@ namespace Webservice
 
             DB.Open();
 
-            string[][] getTeachers = DB.Query("BEGIN TRANSACTION BEGIN TRY DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)" +
-                "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" + parent.Address + "','" + parent.Birthdate + "','" + 1 + "','" + parent.Password + "','" + parent.Lastlogin.ToString() + "'," + parent.Userrole + ", " + parent.Phonenumber + "," + 1 + ");" +
+            string[][] getTeachers = DB.Query("BEGIN TRANSACTION BEGIN TRY DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,Email, fk_SchoolId)" +
+                "VALUES('" + parent.Firstname + "','" + parent.Lastname + "','" + parent.City + "','" + parent.Address + "','" + parent.Birthdate + "','" + 1 + "','" + parent.Password + "','" + parent.Lastlogin.ToString() + "'," + parent.Userrole + ", " + parent.Phonenumber + ",'" +parent.Email+"',"+ 1 + ");" +
                 "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='Pa_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Parent](Id)VALUES(@Id) SELECT @Id  COMMIT TRANSACTION   END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
 
 
@@ -325,7 +325,7 @@ namespace Webservice
 
             DB.Open();
             result = DB.Exec("UPDATE [User] SET Firstname ='" + parent.Firstname + "', Lastname='" + parent.Lastname + "', City='" + parent.City + "', Address='" + parent.Address + "'," +
-             "Birthdate='" + parent.Birthdate + "', Username='" + parent.Username + "', Password='" + parent.Password + "', Lastlogin ='" + parent.Lastlogin.ToString() + "', Userrole=" + parent.Userrole + ", PhoneNumber=" + parent.Phonenumber + " WHERE Id=" + parent.Id + ";");
+             "Birthdate='" + parent.Birthdate + "', Username='" + parent.Username + "', Password='" + parent.Password + "', Lastlogin ='" + parent.Lastlogin.ToString() + "', Userrole=" + parent.Userrole + ", PhoneNumber=" + parent.Phonenumber + ", Email= '"+parent.Email+ "' WHERE Id=" + parent.Id + ";");
 
             if (result == -1)
             {
@@ -336,17 +336,32 @@ namespace Webservice
             return success;
 
         }
-        public List<ParentEx> GetParents()
+        public List<ParentEx> GetParents(int? parentId = null)
         {
+
+
+
             List<ParentEx> parents = new List<ParentEx>();
+
+
+
+            string sql = ("SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
+                                              " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole, [User].PhoneNumber, [User].Email " +
+                                              " FROM [Parent] INNER JOIN [User] ON  [Parent].Id=[User].Id ");
+
 
             try
             {
                 DB.Open();
 
-                string[][] getTeachers = DB.Query("SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
-                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole, [User].PhoneNumber" +
-                                                  " FROM [Parent] INNER JOIN [User] ON  [Parent].Id=[User].Id ORDER BY [User].Firstname;");
+
+                if (parentId != null)
+                {
+                    sql += " WHERE [User].Id=" + Convert.ToInt32(parentId) + ";";
+                }
+
+
+                string[][] getTeachers = DB.Query(sql);
 
                 for (int i = 0; i < getTeachers.Length; i++)
                 {
@@ -372,6 +387,7 @@ namespace Webservice
                         getTeachers[i][10] = "-1";
                     }
                     parent.Phonenumber = Convert.ToInt32(getTeachers[i][10]);
+                    parent.Email = getTeachers[i][11];
                     parents.Add(parent);
                 }
             }
@@ -630,10 +646,10 @@ namespace Webservice
 
         public string InsertStudent2(Student student)
         {
-          
-                string getTeachers =(" DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)" +
-                 "VALUES('" + student.Firstname + "','" + student.Lastname + "','" + student.City + "','" + student.Address + "','" + student.Birthdate + "','" + 1 + "','" + student.Password + "','" + student.Lastlogin.ToString() + "'," + student.Userrole + ", " + student.Phonenumber + "," + student.Fkschoolid + ");" +
-                 "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='St_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Student](Id, fk_ClassId)VALUES(@Id," + student.FkClassid + ")");
+
+            string getTeachers = (" DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)" +
+             "VALUES('" + student.Firstname + "','" + student.Lastname + "','" + student.City + "','" + student.Address + "','" + student.Birthdate + "','" + 1 + "','" + student.Password + "','" + student.Lastlogin.ToString() + "'," + student.Userrole + ", " + student.Phonenumber + "," + student.Fkschoolid + ");" +
+             "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='St_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Student](Id, fk_ClassId)VALUES(@Id," + student.FkClassid + ")");
 
 
             return getTeachers;
@@ -904,10 +920,10 @@ namespace Webservice
             return success;
         }
 
-        public List<Enrollment> GetEnrollments()
+        public List<EnrollmentEx> GetEnrollments()
         {
 
-            List<Enrollment> enrollments = new List<Enrollment>();
+            List<EnrollmentEx> enrollments = new List<EnrollmentEx>();
 
             try
             {
@@ -917,7 +933,7 @@ namespace Webservice
 
                 for (int i = 0; i < getEnrollments.Length; i++)
                 {
-                    Enrollment enrollment = new Enrollment();
+                    EnrollmentEx enrollment = new EnrollmentEx();
 
                     enrollment.Id = Convert.ToInt32(getEnrollments[i][0]);
                     enrollment.ChildFirstname = getEnrollments[i][1];
@@ -981,10 +997,10 @@ namespace Webservice
 
             string result = "";
 
-     
+
 
             //transaktion her vil gå ind og lave en 
-            result =("  delete  from [ParentEnrollment] where [fk_ParentId] = " + parentId + " AND [fk_EnrollmentId] = " + enrollmentId + ";");
+            result = ("  delete  from [ParentEnrollment] where [fk_ParentId] = " + parentId + " AND [fk_EnrollmentId] = " + enrollmentId + ";");
 
 
 
@@ -1027,7 +1043,7 @@ namespace Webservice
         {
 
             string result = "";
-      
+
             result = (" delete  from [Enrollment] where [Id] = " + enrollmentId + "");
 
             return result;
@@ -1119,8 +1135,8 @@ namespace Webservice
             string returnstring = "";
 
 
-                returnstring=(" INSERT INTO [StudentParent](fk_StudentId, fk_ParentId)" +
-                 "VALUES(@Id," + studentParent.Fkparentid + ");");
+            returnstring = (" INSERT INTO [StudentParent](fk_StudentId, fk_ParentId)" +
+             "VALUES(@Id," + studentParent.Fkparentid + ");");
 
             return returnstring;
 
@@ -1209,7 +1225,7 @@ namespace Webservice
             {
                 string sqlstatment = sqlStatement;
 
-              
+
                 new SqlCommand(sqlstatment, db, transaction)
                    .ExecuteNonQuery();
 

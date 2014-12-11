@@ -295,7 +295,7 @@
   <xs:element name="GetEnrollmentsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="GetEnrollmentsResult" nillable="true" type="q15:ArrayOfEnrollment" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Webservice.Extended" minOccurs="0" name="GetEnrollmentsResult" nillable="true" type="q15:ArrayOfEnrollmentEx" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

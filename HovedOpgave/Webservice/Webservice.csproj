@@ -89,6 +89,7 @@
     <Compile Include="DB\User.cs" />
     <Compile Include="EnumsWeb.cs" />
     <Compile Include="Extended\ClassEx.cs" />
+    <Compile Include="Extended\EnrollmentEx.cs" />
     <Compile Include="Extended\ParentEx.cs" />
     <Compile Include="Extended\TeacherEx.cs" />
     <Compile Include="Holder.cs" />

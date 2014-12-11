@@ -80,10 +80,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Enrollment" nillable="true" type="tns:Enrollment" />
-  <xs:complexType name="ArrayOfEnrollment">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Enrollment" nillable="true" type="tns:Enrollment" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfEnrollment" nillable="true" type="tns:ArrayOfEnrollment" />
 </xs:schema>
