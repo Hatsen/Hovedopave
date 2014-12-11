@@ -16,7 +16,7 @@
             <asp:TextBox ID="txtMessage" runat="server" Height="191px" Width="405px" TextMode="MultiLine"></asp:TextBox>
         </p>
         <p style="margin-left: 280px">
-            <asp:Label ID="Label1" runat="server" Font-Bold="True" Text="Målgruppe &amp; klasse:"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Font-Bold="True" Text="Målgruppe:"></asp:Label>
         </p>
         <p>
             <asp:Button ID="btnCreate" runat="server" OnClick="btnCreate_Click" Text="Opret meddelelse" />
@@ -28,6 +28,10 @@
 <asp:ListItem Value="4">Forældre</asp:ListItem>
                 <asp:ListItem Value="5">Elever</asp:ListItem>
             </asp:DropDownList>
+        </p>
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="Label4" runat="server" Font-Bold="True" Text="Klasse:"></asp:Label>
         </p>
         <p style="margin-left: 320px">
             <asp:DropDownList ID="ddlClass" runat="server">

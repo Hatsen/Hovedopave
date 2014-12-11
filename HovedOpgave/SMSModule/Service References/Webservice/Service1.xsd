@@ -22,6 +22,7 @@
       <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Birthdate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fkschoolid" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
@@ -54,12 +55,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Teacher" nillable="true" type="tns:Teacher" />
-  <xs:complexType name="ArrayOfTeacher">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Teacher" nillable="true" type="tns:Teacher" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfTeacher" nillable="true" type="tns:ArrayOfTeacher" />
   <xs:complexType name="Parent">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:User">
@@ -70,10 +65,19 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Parent" nillable="true" type="tns:Parent" />
-  <xs:complexType name="ArrayOfParent">
+  <xs:complexType name="Enrollment">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Parent" nillable="true" type="tns:Parent" />
+      <xs:element minOccurs="0" name="ChildAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChildBirthdate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChildCity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChildFirstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChildLastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChildPhonenumber" type="xs:int" />
+      <xs:element minOccurs="0" name="DateCreated" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fkschoolid" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfParent" nillable="true" type="tns:ArrayOfParent" />
+  <xs:element name="Enrollment" nillable="true" type="tns:Enrollment" />
 </xs:schema>

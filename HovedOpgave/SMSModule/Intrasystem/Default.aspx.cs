@@ -13,6 +13,7 @@ namespace SMSModule.Intrasystem
         protected async void Page_Load(object sender, EventArgs e)
         {
             string html = "";
+
             int selectedClass = Convert.ToInt32(Request.QueryString["class"]);
             List<ClassEx> classList = (await ObjectHolder.Instance.UcController.GetClassDetails(Convert.ToInt32(Session["userid"]), Convert.ToInt32(Session["userrole"])));
 
@@ -29,6 +30,7 @@ namespace SMSModule.Intrasystem
                 else if (classEx.Id == Convert.ToInt32(Request.QueryString["class"]))
                 {
                     Session["selectedclass"] = classEx.Id;
+                    helloMessageArea.InnerHtml = "<h2> Hej " + Session["firstname"].ToString() + " " + Session["lastname"].ToString() + " - " + classEx.Name + "</h2>";
                 }
             }
 

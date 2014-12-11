@@ -172,6 +172,7 @@ C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\BirkealleWebsite.Tests\bi
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\BirkealleWebsite.Tests\obj\Debug\BirkealleWebsite.Tests.csprojResolveAssemblyReference.cache
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\BirkealleWebsite.Tests\obj\Debug\BirkealleWebsite.Tests.dll
 C:\Users\LarsS\Documents\GitHub\Hovedopave\HovedOpgave\BirkealleWebsite.Tests\obj\Debug\BirkealleWebsite.Tests.pdb
+<<<<<<< HEAD
 C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main9\HovedOpgave\BirkealleWebsite.Tests\bin\Debug\BirkealleWebsite.Tests.dll.config
 C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main9\HovedOpgave\BirkealleWebsite.Tests\bin\Debug\BirkealleWebsite.Tests.dll
 C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main9\HovedOpgave\BirkealleWebsite.Tests\bin\Debug\BirkealleWebsite.Tests.pdb
@@ -214,3 +215,5 @@ C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main9\HovedOpgave\BirkealleWebsi
 C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main9\HovedOpgave\BirkealleWebsite.Tests\obj\Debug\BirkealleWebsite.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main9\HovedOpgave\BirkealleWebsite.Tests\obj\Debug\BirkealleWebsite.Tests.dll
 C:\Users\Lars Skaaning\Dropbox\Datamatiker\main\main9\HovedOpgave\BirkealleWebsite.Tests\obj\Debug\BirkealleWebsite.Tests.pdb
+=======
+>>>>>>> origin/master

@@ -61,6 +61,11 @@
     color: white;
 }
 
+#helloMessageArea
+{
+    text-align: center;
+}
+
 #loginheader
 {
     background-image: url('../images/blackboard.png');
@@ -124,6 +129,13 @@
     width: 20%;
     margin-left: 40%;
     margin-right: 40%;
+}
+
+#classlist
+{
+    text-align: center;
+    border: 1px solid #000;
+    border-collapse: collapse;
 }
 
 .item

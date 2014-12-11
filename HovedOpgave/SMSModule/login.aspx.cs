@@ -24,7 +24,14 @@ namespace SMSModule
                 Session["username"] = await ObjectHolder.Instance.UcController.GetUserDetails(3);
                 Session["userrole"] = await ObjectHolder.Instance.UcController.GetUserDetails(4);
                 Session["classid"] = await ObjectHolder.Instance.UcController.GetClassDetails(Convert.ToInt32(Session["userid"]), Convert.ToInt32(Session["userrole"]));
+                Session["city"] = await ObjectHolder.Instance.UcController.GetUserDetails(5);
+                Session["address"] = await ObjectHolder.Instance.UcController.GetUserDetails(6);
+                Session["phone"] = await ObjectHolder.Instance.UcController.GetUserDetails(7);
+                Session["email"] = await ObjectHolder.Instance.UcController.GetUserDetails(8);
 
+                Response.Redirect("Intrasystem/Selector.aspx", false);
+
+                /*
                 if (Convert.ToInt32(Session["userrole"]) == 1 || Convert.ToInt32(Session["userrole"]) == 5)
                 {
                     Response.Redirect("Intrasystem/Default.aspx", false);
@@ -33,6 +40,7 @@ namespace SMSModule
                 {
                     Response.Redirect("Intrasystem/Selector.aspx", false);
                 }
+                 */
             }
             else
             {

@@ -200,7 +200,11 @@ namespace AdminModule.ViewModels
                 selectedStringPerson = value;
 
                 if (selectedStringPerson == "Underviser")
+<<<<<<< HEAD
                     GetTeacherCalledFromPropery();
+=======
+                    GetTeacherCalledFromPropery(); 
+>>>>>>> origin/master
 
                 else if (selectedStringPerson == "Elev")
                 {
@@ -622,12 +626,15 @@ namespace AdminModule.ViewModels
 
         }
 
+<<<<<<< HEAD
         private async void GetParentsCalledFromPropery()
         {
             await GetParents();
 
         }
 
+=======
+>>>>>>> origin/master
 
         private async Task<bool> GetTeachers() // måske int userrole her. Så kan du hente de ansatte som er relevante
         {

@@ -87,12 +87,6 @@
   <wsdl:message name="IService1_GetParents_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetParentsResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_DeleteParent_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteParent" />
-  </wsdl:message>
-  <wsdl:message name="IService1_DeleteParent_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteParentResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_InsertStudent_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertStudent" />
   </wsdl:message>
@@ -128,6 +122,18 @@
   </wsdl:message>
   <wsdl:message name="IService1_DeleteClass_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateUserDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserDetails" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateUserDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateEnrollment_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEnrollment" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateEnrollment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEnrollmentResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetLoginDetails">
@@ -182,10 +188,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetParents" message="tns:IService1_GetParents_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetParentsResponse" message="tns:IService1_GetParents_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="DeleteParent">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteParent" message="tns:IService1_DeleteParent_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteParentResponse" message="tns:IService1_DeleteParent_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="InsertStudent">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertStudent" message="tns:IService1_InsertStudent_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertStudentResponse" message="tns:IService1_InsertStudent_OutputMessage" />
@@ -209,6 +211,14 @@
     <wsdl:operation name="DeleteClass">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteClass" message="tns:IService1_DeleteClass_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteClassResponse" message="tns:IService1_DeleteClass_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateUserDetails" message="tns:IService1_UpdateUserDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateUserDetailsResponse" message="tns:IService1_UpdateUserDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEnrollment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateEnrollment" message="tns:IService1_CreateEnrollment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateEnrollmentResponse" message="tns:IService1_CreateEnrollment_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -330,15 +340,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeleteParent">
-      <soap:operation soapAction="http://tempuri.org/IService1/DeleteParent" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="InsertStudent">
       <soap:operation soapAction="http://tempuri.org/IService1/InsertStudent" style="document" />
       <wsdl:input>
@@ -386,6 +387,24 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteClass">
       <soap:operation soapAction="http://tempuri.org/IService1/DeleteClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserDetails">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateUserDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEnrollment">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateEnrollment" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

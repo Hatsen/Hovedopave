@@ -15,10 +15,16 @@ namespace SMSModule.Intrasystem
             string html = "";
             List<ClassEx> classList = (List<ClassEx>)Session["classid"];
 
-
-            if (classList.Count == 1 || classList.Count == 0)
+            if (classList.Count == 0)
             {
                 Response.Redirect("Default.aspx");
+            }
+            else if (classList.Count == 1)
+            {
+                foreach (ClassEx classEx in classList)
+                {
+                    Response.Redirect("Default.aspx?class=" + classEx.Id);
+                }
             }
             else if (classList.Count != 0 || classList != null)
             {
@@ -30,11 +36,14 @@ namespace SMSModule.Intrasystem
             }
         }
 
+<<<<<<< HEAD
         void lnk_Command(object sender, CommandEventArgs e, int id)
         {
             CreateSession(id);
         }
      
+=======
+>>>>>>> origin/master
         protected void CreateSession(int classID)
         {
 

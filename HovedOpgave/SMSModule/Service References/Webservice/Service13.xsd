@@ -17,4 +17,36 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="ClassEx" nillable="true" type="tns:ClassEx" />
+  <xs:complexType name="TeacherEx">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Webservice.DB" base="q2:Teacher">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ClassList" nillable="true" type="tns:ArrayOfClassEx" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TeacherEx" nillable="true" type="tns:TeacherEx" />
+  <xs:complexType name="ArrayOfTeacherEx">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TeacherEx" nillable="true" type="tns:TeacherEx" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTeacherEx" nillable="true" type="tns:ArrayOfTeacherEx" />
+  <xs:complexType name="ParentEx">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/Webservice.DB" base="q3:Parent">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChildrenList" nillable="true" type="q3:ArrayOfStudent" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ParentEx" nillable="true" type="tns:ParentEx" />
+  <xs:complexType name="ArrayOfParentEx">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ParentEx" nillable="true" type="tns:ParentEx" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfParentEx" nillable="true" type="tns:ArrayOfParentEx" />
 </xs:schema>
