@@ -153,6 +153,11 @@
     margin-bottom: 10px;
 }
 
+.classlistitem
+{
+    border: 1px solid #000;
+}
+
 .selectorLinkItem
 {
     text-align: center;

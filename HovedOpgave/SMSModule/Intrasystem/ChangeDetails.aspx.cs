@@ -35,6 +35,11 @@ namespace SMSModule.Intrasystem
             if (success == true)
             {
                 Response.Write("<SCRIPT LANGUAGE='JavaScript'>alert('Dine brugeroplysninger er nu opdateret!')</SCRIPT>");
+
+                Session["city"] = txtCity.Text;
+                Session["address"] = txtAddress.Text;
+                Session["phone"] = txtPhone.Text;
+                Session["email"] = txtEmail.Text;
             }
             else
             {
