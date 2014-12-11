@@ -666,6 +666,7 @@ namespace AdminModule.Webservice {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Enrollment", Namespace="http://schemas.datacontract.org/2004/07/Webservice.DB")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(AdminModule.Webservice.EnrollmentEx))]
     public partial class Enrollment : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -851,6 +852,29 @@ namespace AdminModule.Webservice {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnrollmentEx", Namespace="http://schemas.datacontract.org/2004/07/Webservice.Extended")]
+    [System.SerializableAttribute()]
+    public partial class EnrollmentEx : AdminModule.Webservice.Enrollment {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<AdminModule.Webservice.ParentEx> ParentListField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<AdminModule.Webservice.ParentEx> ParentList {
+            get {
+                return this.ParentListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParentListField, value) != true)) {
+                    this.ParentListField = value;
+                    this.RaisePropertyChanged("ParentList");
+                }
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Webservice.IService1")]
     public interface IService1 {
@@ -1016,12 +1040,12 @@ namespace AdminModule.Webservice {
         bool EndCreateEnrollment(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEnrollments", ReplyAction="http://tempuri.org/IService1/GetEnrollmentsResponse")]
-        System.Collections.Generic.List<AdminModule.Webservice.Enrollment> GetEnrollments();
+        System.Collections.Generic.List<AdminModule.Webservice.EnrollmentEx> GetEnrollments();
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetEnrollments", ReplyAction="http://tempuri.org/IService1/GetEnrollmentsResponse")]
         System.IAsyncResult BeginGetEnrollments(System.AsyncCallback callback, object asyncState);
         
-        System.Collections.Generic.List<AdminModule.Webservice.Enrollment> EndGetEnrollments(System.IAsyncResult result);
+        System.Collections.Generic.List<AdminModule.Webservice.EnrollmentEx> EndGetEnrollments(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1419,10 +1443,10 @@ namespace AdminModule.Webservice {
             this.results = results;
         }
         
-        public System.Collections.Generic.List<AdminModule.Webservice.Enrollment> Result {
+        public System.Collections.Generic.List<AdminModule.Webservice.EnrollmentEx> Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((System.Collections.Generic.List<AdminModule.Webservice.Enrollment>)(this.results[0]));
+                return ((System.Collections.Generic.List<AdminModule.Webservice.EnrollmentEx>)(this.results[0]));
             }
         }
     }
@@ -2634,7 +2658,7 @@ namespace AdminModule.Webservice {
                         parents}, this.onEndCreateEnrollmentDelegate, this.onCreateEnrollmentCompletedDelegate, userState);
         }
         
-        public System.Collections.Generic.List<AdminModule.Webservice.Enrollment> GetEnrollments() {
+        public System.Collections.Generic.List<AdminModule.Webservice.EnrollmentEx> GetEnrollments() {
             return base.Channel.GetEnrollments();
         }
         
@@ -2644,7 +2668,7 @@ namespace AdminModule.Webservice {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.Collections.Generic.List<AdminModule.Webservice.Enrollment> EndGetEnrollments(System.IAsyncResult result) {
+        public System.Collections.Generic.List<AdminModule.Webservice.EnrollmentEx> EndGetEnrollments(System.IAsyncResult result) {
             return base.Channel.EndGetEnrollments(result);
         }
         
@@ -2653,7 +2677,7 @@ namespace AdminModule.Webservice {
         }
         
         private object[] OnEndGetEnrollments(System.IAsyncResult result) {
-            System.Collections.Generic.List<AdminModule.Webservice.Enrollment> retVal = this.EndGetEnrollments(result);
+            System.Collections.Generic.List<AdminModule.Webservice.EnrollmentEx> retVal = this.EndGetEnrollments(result);
             return new object[] {
                     retVal};
         }

@@ -68,8 +68,8 @@ namespace AdminModule.ViewModels
         private string selectedStringPerson;
         private List<ClassEx> classList;
         private ClassEx selectedClass;
-        private List<Enrollment> enrollmentList;
-        private Enrollment selectedEnrollment;
+        private List<EnrollmentEx> enrollmentList;
+        private EnrollmentEx selectedEnrollment;
 
         System.Timers.Timer _timer = new System.Timers.Timer();
 
@@ -200,11 +200,9 @@ namespace AdminModule.ViewModels
                 selectedStringPerson = value;
 
                 if (selectedStringPerson == "Underviser")
-<<<<<<< HEAD
+
                     GetTeacherCalledFromPropery();
-=======
-                    GetTeacherCalledFromPropery(); 
->>>>>>> origin/master
+
 
                 else if (selectedStringPerson == "Elev")
                 {
@@ -221,7 +219,7 @@ namespace AdminModule.ViewModels
         }
 
 
-        public List<Enrollment> EnrollmentList
+        public List<EnrollmentEx> EnrollmentList
         {
             get
             {
@@ -235,7 +233,7 @@ namespace AdminModule.ViewModels
         }
 
 
-        public Enrollment SelectedEnrollment
+        public EnrollmentEx SelectedEnrollment
         {
             get
             {
@@ -592,15 +590,32 @@ namespace AdminModule.ViewModels
 
         public async void ConfirmEnrollment(Object o)
         {
-            
+            string[] succesList = new string[SelectedEnrollment.ParentList.Count];
+            int i = 0;
             bool success = await BusinessLogic.Instance.CreateStudent(SelectedEnrollment.ChildFirstname, SelectedEnrollment.ChildLastname, SelectedEnrollment.ChildCity, SelectedEnrollment.ChildAddress, SelectedEnrollment.ChildBirthdate, SelectedEnrollment.ChildPhonenumber, "empty", SelectedClass.Id, SelectedEnrollment);
 
-           /* if (success)
-                BusinessLogic.Instance.SendEmail();// egentligt ret kritisk, men da vores losning nok ikke er optimal ser vi bort fra at lave en aktiv/passiv paa enrollment. Hvis email fejler kan vi ikke finde frem til indmeldelsen.
-            else
-                MessageBox.Show("Kunne ikke oprette indmeldelse! Kontakt support.");*/
+            if (success)
+            {
+                foreach (ParentEx parent in SelectedEnrollment.ParentList)
+                {
+                    succesList[i] = BusinessLogic.Instance.SendEmail(parent.Email, "Indmeldelse bekræftiget!", "Hej, " + parent.Firstname + "!/nDit barn " + SelectedEnrollment.ChildFirstname + " " + SelectedEnrollment.ChildLastname + "er blevet oprettet " +
+                        "i vores system og er tilføjet klassen " + SelectedClass.Name + " med klasselæren " + SelectedClass.AssociatedTeacher + " vi glæder os til at se dig!/nVenlig hilsen Birkealle.");// egentligt ret kritisk, men da vores losning nok ikke er optimal ser vi bort fra at lave en aktiv/passiv paa enrollment. Hvis email fejler kan vi ikke finde frem til indmeldelsen.
 
-            MessageBox.Show("Indmeldelse bekræftiget!");
+                    if (succesList[i] != "Succes")
+                            MessageBox.Show("Noget gik galt under transmission af email til forældren "+parent.Firstname+". Ring venligst til forældren og fortæl af barnet er oprettet i systemet!/nNummeret er:"+parent.Phonenumber);
+                  
+                    
+                    i++;
+                }
+
+             
+            }
+            else
+                MessageBox.Show("Kunne ikke oprette indmeldelse! Kontakt support.");
+
+          if(succesList.All(obj=> obj =="Succes"))
+                MessageBox.Show("Indmeldelse bekræftiget!");
+        
 
         }
 
@@ -626,15 +641,13 @@ namespace AdminModule.ViewModels
 
         }
 
-<<<<<<< HEAD
+
         private async void GetParentsCalledFromPropery()
         {
             await GetParents();
 
         }
 
-=======
->>>>>>> origin/master
 
         private async Task<bool> GetTeachers() // måske int userrole her. Så kan du hente de ansatte som er relevante
         {

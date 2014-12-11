@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AdminModule.Webservice;
 using Crypto;
 using System.Net.Mail;
+using System.Net;
 
 namespace AdminModule
 {
@@ -13,7 +14,7 @@ namespace AdminModule
     {
 
         private static BusinessLogic instance;
-        private string schoolEmail = "Birkealle";
+        private string schoolEmail = "Birkealle@mail.dk";
         private int schoolId = 1;
 
         private BusinessLogic() { }
@@ -36,22 +37,31 @@ namespace AdminModule
         {
             string result = "Succes";
 
+            MailMessage msg = new MailMessage();
+
+            msg.From = new MailAddress("Lars.s.jensen92@gmail.com");
+            msg.To.Add(toUserEmail);
+            msg.Subject = "test";
+            msg.Body = "Test Content";
+            msg.Priority = MailPriority.High;
+
+            SmtpClient client = new SmtpClient();
+
+            client.Credentials = new NetworkCredential("Lars.s.jensen92@gmail.com", "Mfg86nrgMetvww8d", "smtp.gmail.com");
+            client.Host = "smtp.gmail.com";
+            client.Port = 587;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.EnableSsl = true;
+            client.UseDefaultCredentials = false;
+
+         
             try
             {
-                MailMessage mail = new MailMessage(toUserEmail, schoolEmail);
-                SmtpClient client = new SmtpClient();
-                client.Port = 25;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.UseDefaultCredentials = false;
-                client.Host = "smtp.google.com";
-                mail.Subject = subject;
-                mail.Body = body;
-                client.Send(mail);
+                client.Send(msg);
             }
-
-            catch (Exception exeption)
+            catch (Exception ex)
             {
-                result = exeption.ToString();
+                result = ex.ToString();
             }
 
             return result;
@@ -114,7 +124,7 @@ namespace AdminModule
         /// <summary>
         /// Creates a student. Optinal to choose enrollment. If you link an enrollment the student will be created out from that enrollment.
         /// </summary>
-        public async Task<bool> CreateStudent(string firstname, string lastname, string city, string address,string birthdate, int phonenumber, string email, int fkClassid, Enrollment enrollment =null)
+        public async Task<bool> CreateStudent(string firstname, string lastname, string city, string address,string birthdate, int phonenumber, string email, int fkClassid, EnrollmentEx enrollment =null)
         {
 
             Student student = new Student();

@@ -50,4 +50,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfParentEx" nillable="true" type="tns:ArrayOfParentEx" />
+  <xs:complexType name="ArrayOfEnrollmentEx">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EnrollmentEx" nillable="true" type="tns:EnrollmentEx" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEnrollmentEx" nillable="true" type="tns:ArrayOfEnrollmentEx" />
+  <xs:complexType name="EnrollmentEx">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/Webservice.DB" base="q4:Enrollment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ParentList" nillable="true" type="tns:ArrayOfParentEx" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EnrollmentEx" nillable="true" type="tns:EnrollmentEx" />
 </xs:schema>

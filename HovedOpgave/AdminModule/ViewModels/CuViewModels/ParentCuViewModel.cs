@@ -49,11 +49,13 @@ namespace AdminModule.ViewModels
         private ParentEx currentParent;
         private bool isLoading;
         private int phonenumber;
+        private string email;
         private List<Student> currentParentChildrenList = new List<Student>(); // the current parent children.
         private List<ClassEx> classList; // will be shown in combo
         private ClassEx selectedClass = null; // from combo
         private List<Student> childrenList; // will be shown in combo, but only the students who was selected from the class.
         private Student selectedChild; // from combo
+
 
         #endregion
 
@@ -128,6 +130,7 @@ namespace AdminModule.ViewModels
                 Address = currentParent.Address;
                 Birthdate = currentParent.Birthdate;
                 Phonenumber = currentParent.Phonenumber;
+                Email = currentParent.Email;
                 CurrentParentChildrenList = currentParent.ChildrenList;
 
 
@@ -144,6 +147,22 @@ namespace AdminModule.ViewModels
                 ConfirmCommand.RaiseCanExecuteChanged();
             }
         }
+
+        public string Email
+        {
+            get { return email; }
+            set
+            {
+                email = value;
+                OnPropertyChanged("Email");
+                ConfirmCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+
+
+
+
 
         public bool Isloading
         {
@@ -255,6 +274,7 @@ namespace AdminModule.ViewModels
                 parent.Userrole = (int)Enums.Userrole.Parent;
                 parent.Phonenumber = phonenumber;
                 parent.ChildrenList = CurrentParentChildrenList;
+                parent.Email = email;
                 success = await BusinessLogic.Instance.CreateParent(parent);
 
             }
@@ -270,6 +290,7 @@ namespace AdminModule.ViewModels
                 CurrentParent.Birthdate = birthdate;
                 CurrentParent.Address = address;
                 CurrentParent.Phonenumber = phonenumber;
+                CurrentParent.Email = email;
                 // du er nødt til at tjekke om children list er forskellig fra da den kom ind.
 
 

@@ -313,7 +313,7 @@ namespace AdminModule
 
 
 
-       public Task<bool> InsertStudent(Student student, Enrollment enrollment = null)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       public Task<bool> InsertStudent(Student student, EnrollmentEx enrollment = null)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {
            var tcs = new TaskCompletionSource<bool>();
            EventHandler<InsertStudentCompletedEventArgs> handler = null;
@@ -384,9 +384,9 @@ namespace AdminModule
 
 
 
-       public Task<List<Enrollment>> GetEnrollments()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       public Task<List<EnrollmentEx>> GetEnrollments()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
        {
-           var tcs = new TaskCompletionSource<List<Enrollment>>();
+           var tcs = new TaskCompletionSource<List<EnrollmentEx>>();
            EventHandler<GetEnrollmentsCompletedEventArgs> handler = null;
            handler = (sender, args) =>
            {
