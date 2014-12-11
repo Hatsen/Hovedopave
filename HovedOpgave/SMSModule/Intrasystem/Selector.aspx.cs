@@ -29,5 +29,15 @@ namespace SMSModule.Intrasystem
                 selectorClassArea.InnerHtml = html;
             }
         }
+
+        void lnk_Command(object sender, CommandEventArgs e, int id)
+        {
+            CreateSession(id);
+        }
+     
+        protected void CreateSession(int classID)
+        {
+
+        }
     }
 }

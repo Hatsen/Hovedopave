@@ -12,6 +12,7 @@ using AdminModule.Views;
 using AdminModule.Views.DeleteView;
 using AdminModule.Webservice;
 using Microsoft.Practices.Prism.Commands;
+using System.Collections.ObjectModel;
 
 namespace AdminModule.ViewModels
 {
@@ -32,7 +33,6 @@ namespace AdminModule.ViewModels
 
             CreateTeacherCommand = new DelegateCommand<object>(CreateTeacher);
             EditUserCommand = new DelegateCommand<object>(EditUser, MayiEditPerson);
-            //  UpdateStudentsCommand = new DelegateCommand<object>(UpdateStudents);
             CreateParentCommand = new DelegateCommand<object>(CreateParent);
             CreateStudentCommand = new DelegateCommand<object>(CreateStudent);
             CreateClassCommand = new DelegateCommand<object>(CreateClass);
@@ -42,12 +42,16 @@ namespace AdminModule.ViewModels
             DeleteClassCommand = new DelegateCommand<object>(DeleteClass, MayiEditClass);
             ResetPasswordCommand = new DelegateCommand<object>(ResetPasswordForSelectedUser, MayiEditPerson);
             SeeAssociationsCommand = new DelegateCommand<object>(SeeAssociations);
+            ConfirmEnrollmentCommand = new DelegateCommand<object>(ConfirmEnrollment, MayConfirmEnrollment);
 
             List<string> listofpersons = new List<string>();
             listofpersons.Add("Underviser");
             listofpersons.Add("Elev");
             listofpersons.Add("Forældre");
             PersonStringList = listofpersons;
+
+            SetTimer();
+
 
         }
 
@@ -64,6 +68,10 @@ namespace AdminModule.ViewModels
         private string selectedStringPerson;
         private List<ClassEx> classList;
         private ClassEx selectedClass;
+        private List<Enrollment> enrollmentList;
+        private Enrollment selectedEnrollment;
+
+        System.Timers.Timer _timer = new System.Timers.Timer();
 
         #endregion
 
@@ -164,6 +172,7 @@ namespace AdminModule.ViewModels
                 OnPropertyChanged("SelectedClass");
                 EditClassCommand.RaiseCanExecuteChanged();
                 DeleteClassCommand.RaiseCanExecuteChanged();
+                ConfirmEnrollmentCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -191,7 +200,7 @@ namespace AdminModule.ViewModels
                 selectedStringPerson = value;
 
                 if (selectedStringPerson == "Underviser")
-                    GetTeachers(); // async metode
+                    GetTeacherCalledFromPropery();
 
                 else if (selectedStringPerson == "Elev")
                 {
@@ -199,13 +208,49 @@ namespace AdminModule.ViewModels
                 }
                 else if (selectedStringPerson == "Forældre")
                 {
-                    GetParents();
+                    GetParentsCalledFromPropery();
                 }
 
                 //    RaiseOnselectedPersonChanged(selectedStringPerson); må ikke bruges her da der ikke er blevet tilføjet noget til listen endnu.
                 OnPropertyChanged("SelectedStringPerson");
             }
         }
+
+
+        public List<Enrollment> EnrollmentList
+        {
+            get
+            {
+                return enrollmentList;
+            }
+            set
+            {
+                enrollmentList = value;
+                OnPropertyChanged("EnrollmentList");
+            }
+        }
+
+
+        public Enrollment SelectedEnrollment
+        {
+            get
+            {
+                return selectedEnrollment;
+            }
+            set
+            {
+
+                selectedEnrollment = value;
+                OnPropertyChanged("SelectedEnrollment");
+                if (selectedEnrollment != null)
+                    _timer.Stop();
+                else
+                    _timer.Start();
+
+                ConfirmEnrollmentCommand.RaiseCanExecuteChanged();
+            }
+        }
+
 
         #endregion
 
@@ -233,14 +278,14 @@ namespace AdminModule.ViewModels
                     ParentEx parent = (ParentEx)SelectedUser;
                     MessageBox.Show(BusinessLogic.Instance.GetAssociatedChildren(parent));
                 }
-                else if (SelectedUser.Userrole == (int) Enums.Userrole.Teacher ||
-                         SelectedUser.Userrole == (int) Enums.Userrole.Principal ||
-                         SelectedUser.Userrole == (int) Enums.Userrole.Substitute)
+                else if (SelectedUser.Userrole == (int)Enums.Userrole.Teacher ||
+                         SelectedUser.Userrole == (int)Enums.Userrole.Principal ||
+                         SelectedUser.Userrole == (int)Enums.Userrole.Substitute)
                 {
                     MessageBox.Show(BusinessLogic.Instance.GetAssociatedClasses(selectedUser));
                 }
 
-                else 
+                else
                 {
                     MessageBox.Show("Denne bruger har ikke mulighed for at have tilknyttede børn på sig. Vælg istedet en forældre!");
                 }
@@ -257,12 +302,6 @@ namespace AdminModule.ViewModels
 
         public DelegateCommand<object> ResetPasswordCommand { get; set; }
 
-        public DelegateCommand<object> UpdateStudentsCommand { get; set; }
-
-        /*  public void UpdateStudents(Object o)
-          {
-              GetStudents();
-          }*/
 
 
         public bool MayiEditPerson(Object o)
@@ -490,7 +529,7 @@ namespace AdminModule.ViewModels
             }
             else if (teacherExss.ClassList.Count == 0)
             {
-                AreYouSureYouWantToDeleteUser(SelectedUser.Userrole);
+                await AreYouSureYouWantToDeleteUser(SelectedUser.Userrole); // vigtigt fordi den ellers g[r ind og lukker forbindelsen for sletningen af underviseren, hvis der ikke er tilknyttet born til ham.
             }
 
             await GetTeachers();
@@ -498,8 +537,9 @@ namespace AdminModule.ViewModels
         }
 
 
-        private async void AreYouSureYouWantToDeleteUser(int userRole)
+        private async Task<bool> AreYouSureYouWantToDeleteUser(int userRole)
         {
+
             var result = MessageBox.Show("Er du sikker på at du ønsker at slette: " + SelectedUser.Firstname + " " + SelectedUser.Lastname, "Sletning",
                      MessageBoxButton.YesNo,
                      MessageBoxImage.Question);
@@ -507,7 +547,7 @@ namespace AdminModule.ViewModels
             if (result == MessageBoxResult.Yes)
             {
                 Isloading = true;
-                string resultMessage = await BusinessLogic.Instance.DeleteUserById(SelectedUser.Id);
+                string resultMessage = await BusinessLogic.Instance.DeleteUserById(SelectedUser.Id); // hvis det er en parent skal du tjekke om han har oprettet indmeldelser. De skal slettes fra systemet forst.
                 if (resultMessage == "")
                     MessageBox.Show("Sletning fuldført!");
 
@@ -518,12 +558,14 @@ namespace AdminModule.ViewModels
             }
 
             if (userRole == (int)Enums.Userrole.Parent)
-                GetParents();
+                await GetParents();
             else if (userRole == (int)Enums.Userrole.Student)
             {
                 await GetStudents();
                 await GetClasses();
             }
+
+            return true;
         }
 
         public void DeletePerson(Object o)
@@ -539,9 +581,53 @@ namespace AdminModule.ViewModels
         }
 
 
+
+        public DelegateCommand<object> ConfirmEnrollmentCommand { get; set; }
+
+
+
+        public async void ConfirmEnrollment(Object o)
+        {
+            
+            bool success = await BusinessLogic.Instance.CreateStudent(SelectedEnrollment.ChildFirstname, SelectedEnrollment.ChildLastname, SelectedEnrollment.ChildCity, SelectedEnrollment.ChildAddress, SelectedEnrollment.ChildBirthdate, SelectedEnrollment.ChildPhonenumber, "empty", SelectedClass.Id, SelectedEnrollment);
+
+           /* if (success)
+                BusinessLogic.Instance.SendEmail();// egentligt ret kritisk, men da vores losning nok ikke er optimal ser vi bort fra at lave en aktiv/passiv paa enrollment. Hvis email fejler kan vi ikke finde frem til indmeldelsen.
+            else
+                MessageBox.Show("Kunne ikke oprette indmeldelse! Kontakt support.");*/
+
+            MessageBox.Show("Indmeldelse bekræftiget!");
+
+        }
+
+        private bool MayConfirmEnrollment(Object o)
+        {
+            bool boolen = false;
+
+            if (selectedClass != null && selectedEnrollment != null)
+                boolen = true;
+
+            return boolen;
+        }
+
+
+
         #endregion
 
         #region Methods
+
+        private async void GetTeacherCalledFromPropery()
+        {
+            await GetTeachers();
+
+        }
+
+        private async void GetParentsCalledFromPropery()
+        {
+            await GetParents();
+
+        }
+
 
         private async Task<bool> GetTeachers() // måske int userrole her. Så kan du hente de ansatte som er relevante
         {
@@ -561,7 +647,6 @@ namespace AdminModule.ViewModels
             Isloading = false;
 
             return true;
-            // RaiseOnselectedPersonChanged("Underviser");  ikke være nødvendig for klasse.
         }
 
         private async Task<bool> GetStudents()
@@ -574,13 +659,14 @@ namespace AdminModule.ViewModels
             return true;
         }
 
-        private async void GetParents()
+        private async Task<bool> GetParents()
         {
             Isloading = true;
             ParentList = await ServiceProxy.Instance.GetParents();
             ObjectHolder.Instance.StudentList = StudentList;
             Isloading = false;
             RaiseOnselectedPersonChanged("Forældre");
+            return true;
         }
 
 
@@ -604,6 +690,20 @@ namespace AdminModule.ViewModels
             {
                 MessageBox.Show("Password for bruger " + SelectedUser.Firstname + " blev ændret til 1234");
             }
+        }
+
+
+        public void SetTimer()
+        {
+            _timer.Elapsed += _timer_Elapsed;
+            _timer.Interval = 10000;
+            _timer.Enabled = true;
+
+        }
+
+        async void _timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            EnrollmentList = await ServiceProxy.Instance.GetEnrollments();
         }
 
 

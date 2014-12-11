@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BirkealleWebsite.WebService;
+using BirkealleWebsite.Models;
 
 namespace BirkealleWebsite.Controllers
 {
@@ -17,6 +18,7 @@ namespace BirkealleWebsite.Controllers
 
         public ActionResult GotoEnrollment()
         {
+
             return View("~/Views/Navigation/EnrollmentView.cshtml");
         }
 
@@ -39,5 +41,11 @@ namespace BirkealleWebsite.Controllers
         {
             return View("~/Views/Navigation/GalleryView.cshtml");
         }
+
+        public ActionResult Information()
+        {
+            return View("~/Views/Navigation/GalleryView.cshtml");
+        }
+
     }
 }

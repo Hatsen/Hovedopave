@@ -9,28 +9,28 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+   <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: green">
+        <div class="container" style="background-color: green; text-align: center">
+            <div class="navbar-header" style="background-color: green; text-align: center;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="background-color: green">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" style="background-color: green; text-align:center">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Hjem", "Index", "Navigation")</li>
-                    <li>@Html.ActionLink("Om skolen", "GotoAboutSchool", "Navigation")</li>
-                    <li>@Html.ActionLink("Kontakt os", "GotoContact", "Navigation")</li>
-                    <li>@Html.ActionLink("Skolegalleri", "GotoGallery", "Navigation")</li>
-                    <li>@Html.ActionLink("Skoleindmeldelse", "GotoEnrollment", "Navigation")</li>
-                    <li>@Html.ActionLink("Login", "GotoLogin", "Navigation")</li>
+                    <li style="text-align:center;">@Html.ActionLink("Hjem", "Index", "Navigation")</li>
+                    <li style="text-align: center">@Html.ActionLink("Om skolen", "GotoAboutSchool", "Navigation")</li>
+                    <li style="text-align: center">@Html.ActionLink("Kontakt os", "GotoContact", "Navigation")</li>
+                    <li style="text-align: center">@Html.ActionLink("Skolegalleri", "GotoGallery", "Navigation")</li>
+                    <li style="text-align: center">@Html.ActionLink("Skoleindmeldelse", "GotoEnrollment", "Navigation")</li>
+                    <li style="text-align: center">@Html.ActionLink("Login", "GotoLogin", "Navigation")</li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" style="text-align:center">
         @RenderBody()
         <hr />
         <footer>
@@ -41,5 +41,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+
+
 </body>
 </html>

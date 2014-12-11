@@ -273,7 +273,7 @@ namespace AdminModule.ViewModels
                 // du er nødt til at tjekke om children list er forskellig fra da den kom ind.
 
 
-                List<Student> tmplist = new List<Student>();
+              /*  List<Student> tmplist = new List<Student>();
 
                 if (CurrentParent.ChildrenList.Count<CurrentParentChildrenList.Count)
                 {
@@ -285,9 +285,11 @@ namespace AdminModule.ViewModels
                 }
 
                 CurrentParent.ChildrenList.Clear();
-                CurrentParent.ChildrenList = tmplist;
+                CurrentParent.ChildrenList = tmplist;*/
       
                // for(int i =0; i<10)
+
+                CurrentParent.ChildrenList = CurrentParentChildrenList;
 
                 success = await BusinessLogic.Instance.UpdateParent(CurrentParent);
             }
@@ -356,9 +358,6 @@ namespace AdminModule.ViewModels
         }
 
         #endregion
-
-
-
 
 
         #region Methods
