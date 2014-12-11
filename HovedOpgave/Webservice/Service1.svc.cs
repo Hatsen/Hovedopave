@@ -544,7 +544,7 @@ namespace Webservice
 
         #region Enrollments
 
-        public bool CreateEnrollment(Enrollment enrollment, List<ParentEx> parents)
+        public bool CreateEnrollment(EnrollmentEx enrollment, List<ParentEx> parents)
         {
 
             enrollment.DateCreated = DateTime.Now.ToString(); // for at faa servertiden. mest korrekt.
@@ -556,7 +556,7 @@ namespace Webservice
         }
 
 
-        public List<Enrollment> GetEnrollments()
+        public List<EnrollmentEx> GetEnrollments()
         {
 
             return DatabaseHandler.Instance.GetEnrollments();

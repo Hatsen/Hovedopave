@@ -102,11 +102,11 @@ namespace Webservice
         #region Enrollment
 
         [OperationContract]
-        bool CreateEnrollment(Enrollment entollment, List<ParentEx> parents);
+        bool CreateEnrollment(EnrollmentEx entollment, List<ParentEx> parents);
 
 
         [OperationContract]
-        List<Enrollment> GetEnrollments();
+        List<EnrollmentEx> GetEnrollments();
 
 
 

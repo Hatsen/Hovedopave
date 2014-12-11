@@ -1032,10 +1032,10 @@ namespace AdminModule.Webservice {
         bool EndDeleteClass(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateEnrollment", ReplyAction="http://tempuri.org/IService1/CreateEnrollmentResponse")]
-        bool CreateEnrollment(AdminModule.Webservice.Enrollment entollment, System.Collections.Generic.List<AdminModule.Webservice.ParentEx> parents);
+        bool CreateEnrollment(AdminModule.Webservice.EnrollmentEx entollment, System.Collections.Generic.List<AdminModule.Webservice.ParentEx> parents);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/CreateEnrollment", ReplyAction="http://tempuri.org/IService1/CreateEnrollmentResponse")]
-        System.IAsyncResult BeginCreateEnrollment(AdminModule.Webservice.Enrollment entollment, System.Collections.Generic.List<AdminModule.Webservice.ParentEx> parents, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginCreateEnrollment(AdminModule.Webservice.EnrollmentEx entollment, System.Collections.Generic.List<AdminModule.Webservice.ParentEx> parents, System.AsyncCallback callback, object asyncState);
         
         bool EndCreateEnrollment(System.IAsyncResult result);
         
@@ -1046,6 +1046,14 @@ namespace AdminModule.Webservice {
         System.IAsyncResult BeginGetEnrollments(System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<AdminModule.Webservice.EnrollmentEx> EndGetEnrollments(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateUserDetails", ReplyAction="http://tempuri.org/IService1/UpdateUserDetailsResponse")]
+        bool UpdateUserDetails(int id, string city, string address, int phone, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/UpdateUserDetails", ReplyAction="http://tempuri.org/IService1/UpdateUserDetailsResponse")]
+        System.IAsyncResult BeginUpdateUserDetails(int id, string city, string address, int phone, string email, System.AsyncCallback callback, object asyncState);
+        
+        bool EndUpdateUserDetails(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1453,6 +1461,25 @@ namespace AdminModule.Webservice {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UpdateUserDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public UpdateUserDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class Service1Client : System.ServiceModel.ClientBase<AdminModule.Webservice.IService1>, AdminModule.Webservice.IService1 {
         
         private BeginOperationDelegate onBeginGetLoginDetailsDelegate;
@@ -1581,6 +1608,12 @@ namespace AdminModule.Webservice {
         
         private System.Threading.SendOrPostCallback onGetEnrollmentsCompletedDelegate;
         
+        private BeginOperationDelegate onBeginUpdateUserDetailsDelegate;
+        
+        private EndOperationDelegate onEndUpdateUserDetailsDelegate;
+        
+        private System.Threading.SendOrPostCallback onUpdateUserDetailsCompletedDelegate;
+        
         public Service1Client() {
         }
         
@@ -1641,6 +1674,8 @@ namespace AdminModule.Webservice {
         public event System.EventHandler<CreateEnrollmentCompletedEventArgs> CreateEnrollmentCompleted;
         
         public event System.EventHandler<GetEnrollmentsCompletedEventArgs> GetEnrollmentsCompleted;
+        
+        public event System.EventHandler<UpdateUserDetailsCompletedEventArgs> UpdateUserDetailsCompleted;
         
         public bool GetLoginDetails(string username, string password) {
             return base.Channel.GetLoginDetails(username, password);
@@ -2606,12 +2641,12 @@ namespace AdminModule.Webservice {
                         id}, this.onEndDeleteClassDelegate, this.onDeleteClassCompletedDelegate, userState);
         }
         
-        public bool CreateEnrollment(AdminModule.Webservice.Enrollment entollment, System.Collections.Generic.List<AdminModule.Webservice.ParentEx> parents) {
+        public bool CreateEnrollment(AdminModule.Webservice.EnrollmentEx entollment, System.Collections.Generic.List<AdminModule.Webservice.ParentEx> parents) {
             return base.Channel.CreateEnrollment(entollment, parents);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginCreateEnrollment(AdminModule.Webservice.Enrollment entollment, System.Collections.Generic.List<AdminModule.Webservice.ParentEx> parents, System.AsyncCallback callback, object asyncState) {
+        public System.IAsyncResult BeginCreateEnrollment(AdminModule.Webservice.EnrollmentEx entollment, System.Collections.Generic.List<AdminModule.Webservice.ParentEx> parents, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginCreateEnrollment(entollment, parents, callback, asyncState);
         }
         
@@ -2621,7 +2656,7 @@ namespace AdminModule.Webservice {
         }
         
         private System.IAsyncResult OnBeginCreateEnrollment(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            AdminModule.Webservice.Enrollment entollment = ((AdminModule.Webservice.Enrollment)(inValues[0]));
+            AdminModule.Webservice.EnrollmentEx entollment = ((AdminModule.Webservice.EnrollmentEx)(inValues[0]));
             System.Collections.Generic.List<AdminModule.Webservice.ParentEx> parents = ((System.Collections.Generic.List<AdminModule.Webservice.ParentEx>)(inValues[1]));
             return this.BeginCreateEnrollment(entollment, parents, callback, asyncState);
         }
@@ -2639,11 +2674,11 @@ namespace AdminModule.Webservice {
             }
         }
         
-        public void CreateEnrollmentAsync(AdminModule.Webservice.Enrollment entollment, System.Collections.Generic.List<AdminModule.Webservice.ParentEx> parents) {
+        public void CreateEnrollmentAsync(AdminModule.Webservice.EnrollmentEx entollment, System.Collections.Generic.List<AdminModule.Webservice.ParentEx> parents) {
             this.CreateEnrollmentAsync(entollment, parents, null);
         }
         
-        public void CreateEnrollmentAsync(AdminModule.Webservice.Enrollment entollment, System.Collections.Generic.List<AdminModule.Webservice.ParentEx> parents, object userState) {
+        public void CreateEnrollmentAsync(AdminModule.Webservice.EnrollmentEx entollment, System.Collections.Generic.List<AdminModule.Webservice.ParentEx> parents, object userState) {
             if ((this.onBeginCreateEnrollmentDelegate == null)) {
                 this.onBeginCreateEnrollmentDelegate = new BeginOperationDelegate(this.OnBeginCreateEnrollment);
             }
@@ -2704,6 +2739,64 @@ namespace AdminModule.Webservice {
                 this.onGetEnrollmentsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetEnrollmentsCompleted);
             }
             base.InvokeAsync(this.onBeginGetEnrollmentsDelegate, null, this.onEndGetEnrollmentsDelegate, this.onGetEnrollmentsCompletedDelegate, userState);
+        }
+        
+        public bool UpdateUserDetails(int id, string city, string address, int phone, string email) {
+            return base.Channel.UpdateUserDetails(id, city, address, phone, email);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginUpdateUserDetails(int id, string city, string address, int phone, string email, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUpdateUserDetails(id, city, address, phone, email, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public bool EndUpdateUserDetails(System.IAsyncResult result) {
+            return base.Channel.EndUpdateUserDetails(result);
+        }
+        
+        private System.IAsyncResult OnBeginUpdateUserDetails(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            string city = ((string)(inValues[1]));
+            string address = ((string)(inValues[2]));
+            int phone = ((int)(inValues[3]));
+            string email = ((string)(inValues[4]));
+            return this.BeginUpdateUserDetails(id, city, address, phone, email, callback, asyncState);
+        }
+        
+        private object[] OnEndUpdateUserDetails(System.IAsyncResult result) {
+            bool retVal = this.EndUpdateUserDetails(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnUpdateUserDetailsCompleted(object state) {
+            if ((this.UpdateUserDetailsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UpdateUserDetailsCompleted(this, new UpdateUserDetailsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UpdateUserDetailsAsync(int id, string city, string address, int phone, string email) {
+            this.UpdateUserDetailsAsync(id, city, address, phone, email, null);
+        }
+        
+        public void UpdateUserDetailsAsync(int id, string city, string address, int phone, string email, object userState) {
+            if ((this.onBeginUpdateUserDetailsDelegate == null)) {
+                this.onBeginUpdateUserDetailsDelegate = new BeginOperationDelegate(this.OnBeginUpdateUserDetails);
+            }
+            if ((this.onEndUpdateUserDetailsDelegate == null)) {
+                this.onEndUpdateUserDetailsDelegate = new EndOperationDelegate(this.OnEndUpdateUserDetails);
+            }
+            if ((this.onUpdateUserDetailsCompletedDelegate == null)) {
+                this.onUpdateUserDetailsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdateUserDetailsCompleted);
+            }
+            base.InvokeAsync(this.onBeginUpdateUserDetailsDelegate, new object[] {
+                        id,
+                        city,
+                        address,
+                        phone,
+                        email}, this.onEndUpdateUserDetailsDelegate, this.onUpdateUserDetailsCompletedDelegate, userState);
         }
     }
 }
