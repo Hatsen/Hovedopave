@@ -52,6 +52,11 @@
         </tr>
     </table>
 <br />
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCity" ErrorMessage="Du skal indtaste en by." ForeColor="Red"></asp:RequiredFieldValidator>
+    <br />
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtAddress" ErrorMessage="Du skal indtaste en adresse." ForeColor="Red"></asp:RequiredFieldValidator>
+    <br />
+    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtPhone" ErrorMessage="Du skal indraste et gyldigt telefonnummer." ForeColor="Red" ValidationExpression="^[2-9]\d{7}$"></asp:RegularExpressionValidator>
 <br />
 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail" ErrorMessage="Du skal indtaste en gyldig e-mail." ValidationExpression="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" ForeColor="Red"></asp:RegularExpressionValidator>
 </asp:Content>
