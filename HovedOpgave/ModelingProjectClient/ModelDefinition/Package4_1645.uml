@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="6dda78e6-744c-418e-a0cf-81d5f921b6ba"
+  name="Commands"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="e6f7ee4f-31d7-4800-8e02-f242e7270756"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DMicrosoft.Practices.Prism.Commands"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="4aa41520-2523-4724-af67-d2d5d26186c6"
+        name="DelegateCommand&lt;Object‎&gt;"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="bd376053-d132-4e8d-8dcd-cd196b79de93"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7bd58807-6c03-4e73-90bf-7944242f6494">
+                <propertyInstance
+                  Id="7ad1b7d4-01c7-4c21-8d6a-32d8b93259de"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e199fe3d-716e-42a6-83d3-2c89784a47ae">
+                <propertyInstance
+                  Id="441a5220-6ec2-4f8b-9abd-6dc6b885f038"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="dfe345ec-6cc4-4f86-874c-92a188f08ebd">
+                <propertyInstance
+                  Id="7b0877b9-3dd1-43c9-ba16-6ccb4e06725e"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="698408b4-ebba-4a4f-9dd4-7166abd9101c">
+                <propertyInstance
+                  Id="fdbd599a-8e74-4e83-b9cb-f09e0e07e454"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b0de7af9-fde6-4982-9bf7-95cecb89671e">
+                <propertyInstance
+                  Id="a07c8739-07b7-4a91-83d7-0ae1a05b3e5e"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <signatures>
+          <templateBinding
+            Id="b8f61f15-b04f-4bd3-bf1b-c35d1377f2bf">
+            <redefinableTemplateSignatureMoniker
+              Id="d42e80f8-5204-48f6-ad37-fd79397547ab"
+              LastKnownLocation="Package4_1645.uml" />
+            <relationshipOwnedElementsInternal>
+              <templateBindingHasTemplateParameterSubstitution>
+                <templateParameterSubstitution
+                  Id="49412c10-60a7-4482-8cc0-4cc3ca8b924e">
+                  <actuals>
+                    <classMoniker
+                      Id="2c000a79-9940-4ac8-a82c-6bdde383c797"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package1_1641.uml" />
+                  </actuals>
+                  <formal>
+                    <classifierTemplateParameterMoniker
+                      Id="2c7ef00a-d320-49c5-98bf-15b74dec1e31"
+                      LastKnownLocation="Package4_1645.uml" />
+                  </formal>
+                </templateParameterSubstitution>
+              </templateBindingHasTemplateParameterSubstitution>
+            </relationshipOwnedElementsInternal>
+          </templateBinding>
+        </signatures>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6ca4fe80-44ce-4155-a9f2-4ab83f3aaafa"
+        name="DelegateCommand"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="ed50d281-ffb1-4ee0-a642-85618270f5bf"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2Fpackages%2FPrism.Mvvm.1.0.0%2Flib%2Fnet45%2FMicrosoft.Practices.Prism.Mvvm.dll&quot; Namespace%3DMicrosoft.Practices.Prism.Commands Type%3D(Name%3DDelegateCommand GenericParameterCount%3D1)"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="04899228-321f-4945-887d-859ad45f184a"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4033e1d0-f9dd-46a8-93f6-0f594ce598e6">
+                <propertyInstance
+                  Id="8ab6bc32-ae69-4205-8151-01e7cd473fd0"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="be1cb8a3-2c15-4520-842b-3e6c54afa3c4">
+                <propertyInstance
+                  Id="42b7fec5-3240-48c1-898c-4ef5d7025032"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c184b4d2-49bf-43b3-8f51-595a95b41bec">
+                <propertyInstance
+                  Id="7de4f620-15d9-497e-a5ff-91acf017e42d"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a3784cbd-ccd1-45a2-94fe-5a390ffdc506">
+                <propertyInstance
+                  Id="645e20a8-f162-4548-b379-5923ac00a16e"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c057225f-2802-4535-b20f-b73a9378c922">
+                <propertyInstance
+                  Id="3eaffa83-6a92-40ba-a773-3d45a2b931ce"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedRedefinableTemplateSignatureInternal>
+          <redefinableTemplateSignature
+            Id="d42e80f8-5204-48f6-ad37-fd79397547ab"
+            parameters=""
+            name="RedefinableTemplateSignature1"
+            isLeaf="false">
+            <ownedParameters>
+              <classifierTemplateParameter
+                Id="2c7ef00a-d320-49c5-98bf-15b74dec1e31">
+                <referencesInternal>
+                  <reference
+                    Id="8de60019-ad30-452b-b2de-55f7f62caddc"
+                    handle="viewcode://./CodeSchema_GenericParameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2Fpackages%2FPrism.Mvvm.1.0.0%2Flib%2Fnet45%2FMicrosoft.Practices.Prism.Mvvm.dll&quot; Namespace%3DMicrosoft.Practices.Prism.Commands Type%3D(Name%3DDelegateCommand GenericParameterCount%3D1) ParameterIdentifier%3D0"
+                    tag="ViewCode" />
+                </referencesInternal>
+                <ownedParameterableElement>
+                  <class
+                    Id="86b04634-234e-407f-a63c-71bbbdaf348b"
+                    name="T"
+                    isAbstract="false"
+                    isLeaf="false"
+                    isActiveClass="false" />
+                </ownedParameterableElement>
+              </classifierTemplateParameter>
+            </ownedParameters>
+          </redefinableTemplateSignature>
+        </ownedRedefinableTemplateSignatureInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

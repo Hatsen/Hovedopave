@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="69b53dc6-98f1-47e3-9503-017ffa9ba222"
+  name="Webservice"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="d63e0068-c873-4291-8e29-788117cbee79"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DWebservice"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="6921f6a5-ece2-46a3-9a7d-460d461fc4c3"
+        LastKnownName="Extended"
+        LastKnownLocation="Package1_1726.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="b0f36c6e-c7f6-49ed-b907-96f52428a515"
+        LastKnownName="DB"
+        LastKnownLocation="Package2_1726.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

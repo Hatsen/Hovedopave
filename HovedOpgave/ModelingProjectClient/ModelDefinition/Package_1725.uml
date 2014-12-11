@@ -1,0 +1,1043 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="cd20f03b-e0ee-4ea5-b388-0ff81c921b51"
+  name="Crypto"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="de4817e0-c7b5-45d4-8ae7-edcd01f5fcf2"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DCrypto"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="195afeb3-f9f9-4189-af0e-ae0c5047d4de"
+        name="PasswordHash"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="3b04a88e-1671-4a01-9c45-9f0bb93c57c7"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="ba144b9a-cceb-46d1-9089-fb8a13b6c077"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a661463c-e936-4079-828b-f1db99de194e">
+                <propertyInstance
+                  Id="596514c3-a009-4eba-9019-60e119a3e6fc"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6cc68a9c-e071-4589-bb45-6249e67cd187">
+                <propertyInstance
+                  Id="45b5f975-0d0b-4d79-b875-9212779f4f1d"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2f07427c-f185-4308-99dd-5487ace3ceba">
+                <propertyInstance
+                  Id="204698f9-44ce-4402-9cd6-d866de3e36b5"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e09d3305-d78a-4b5e-bda1-6b6b99cad162">
+                <propertyInstance
+                  Id="ec9b27ed-c391-4d16-88e7-3da9c310c75d"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="27be3c67-df3f-480e-91d6-6cb0f35b09e2">
+                <propertyInstance
+                  Id="c80cdfb2-599b-483d-bb90-da18eb90644b"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="8ac20501-11ea-4b59-9b83-4609239c442c"
+            name="HASH_BYTE_SIZE"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="ea9d2b0c-9310-4b46-b1d0-8073982f3763"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3DHASH_BYTE_SIZE"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="82506ef3-1041-4202-8183-d05bce969a10"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dfb26c2f-7cee-4147-8eb1-ffd1bbd8e4a5">
+                    <propertyInstance
+                      Id="27683b18-d62a-4691-845f-8c825b2cf7d9"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2a4b9a68-7f3d-405f-a224-890b49704d72">
+                    <propertyInstance
+                      Id="6d59422e-c2d9-4c60-84af-d2556d9d309f"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d8e8cb11-bdc0-4f44-98d3-66b4077dc335">
+                    <propertyInstance
+                      Id="0bfff987-9a4e-4d59-9c47-8971bf35c74f"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cff065d2-1000-4523-a96d-46fadcc0ad3a">
+                    <propertyInstance
+                      Id="bb404bce-3db1-40a9-9794-7eab1bcfe0c8"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="49830d2a-0c8f-4017-983f-968b43901be4">
+                    <propertyInstance
+                      Id="6eb96905-a591-4d76-bbcb-46d6c103b9b8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </property>
+          <property
+            Id="b87176e1-49ae-4212-9caa-b6b13833ee63"
+            name="ITERATION_INDEX"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="5c54dff6-60c9-4914-8b28-020da08703cf"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3DITERATION_INDEX"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="40a376b6-304e-4b46-b333-8c5c52c77026"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c91be611-1824-4b9d-a146-448fdf385318">
+                    <propertyInstance
+                      Id="e42aa6bc-ad8e-4d6b-a237-7d45f9901aa6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e5ad89f9-d79d-428a-98bd-5c18d5dd7b03">
+                    <propertyInstance
+                      Id="b37656a3-da06-4678-824d-88b3168087f6"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c37d5025-e605-4d8f-ae48-d999407213fb">
+                    <propertyInstance
+                      Id="f8d5ae89-cb65-47d5-8838-5d05c9c4244b"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="de6a69cb-8a0b-4103-a23c-30c84ff4ac55">
+                    <propertyInstance
+                      Id="bc50037e-f3c9-4758-af2c-6452ee6870ae"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="45c44890-94b7-4576-937e-bc467ed9dd9d">
+                    <propertyInstance
+                      Id="b7662829-bff4-4359-9a06-cd0d81e3071a"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </property>
+          <property
+            Id="d26de3f8-ba00-4956-bc11-e21ecb65a086"
+            name="PBKDF2_INDEX"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="56e63135-af1e-49f5-a261-bfa6a5211aa1"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3DPBKDF2_INDEX"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d2b79557-7cba-4ad3-97f1-985b7231eaf1"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a769abed-759c-4b40-bfcc-ae98d89dabfe">
+                    <propertyInstance
+                      Id="0e8440ad-9151-441c-845e-6119828792f8"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4007c901-c5e1-4e2a-a183-f7d22779ebdc">
+                    <propertyInstance
+                      Id="eecd88d1-b479-416f-8108-dadcaa725a1e"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="129eb539-3636-4477-991c-bd7bfa2e7415">
+                    <propertyInstance
+                      Id="81dd2066-2c61-4e9c-a228-03c1159b67d7"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="62e4597b-e691-49e0-922c-4a5b3375f632">
+                    <propertyInstance
+                      Id="de9e2363-8553-4b3b-aa6a-7fc12a919130"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="25056277-ca32-4a7f-a21b-4e6d046c4036">
+                    <propertyInstance
+                      Id="4cc6e7aa-b2b3-40b9-9289-5876498feb04"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </property>
+          <property
+            Id="836fe1c2-75be-402b-a4c6-6d3844c4ebef"
+            name="PBKDF2_ITERATIONS"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="6a6103b1-1259-457f-926d-ec5a1ecaa9c5"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3DPBKDF2_ITERATIONS"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="e014fadd-81d5-4e60-9469-93a42eebf95c"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cdd5e02b-d691-43bf-afb9-e5456bd0d91d">
+                    <propertyInstance
+                      Id="94d8f5b8-cb2c-43c2-a67a-2521f49add42"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="795958fd-f35c-4aaa-adef-b521722e6e78">
+                    <propertyInstance
+                      Id="76a52833-864f-4861-84e2-47e0dacd9b32"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6bdb54ea-ae3e-4d98-9560-442dc653f5ae">
+                    <propertyInstance
+                      Id="3fae7b53-c95d-429e-b0aa-2abdc0b3b5bf"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9598de43-2909-4edd-b7f1-9922e5ce8e9e">
+                    <propertyInstance
+                      Id="8ca543f5-3bfd-432b-8c0a-dd8061797f63"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1e97ee45-de32-495e-9995-30e5d48487d8">
+                    <propertyInstance
+                      Id="15f64b98-5d51-468a-bf3e-0522dab1fb9d"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </property>
+          <property
+            Id="793d23d3-e2f3-4a37-b0fb-5430f95bd65a"
+            name="SALT_BYTE_SIZE"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="9e71fe21-102c-45bf-a44e-e13422ba0d19"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3DSALT_BYTE_SIZE"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="74e8c3f2-1c88-4dca-a068-09bdbfbcb5b3"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="92f2b112-93a2-4558-85c0-ebe90a9cb270">
+                    <propertyInstance
+                      Id="9204237b-0bf8-41de-ab5a-c17e62752c33"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="eb24ab2d-c0de-4747-ac31-c714eb80ce75">
+                    <propertyInstance
+                      Id="375415f8-9b6f-4046-9f4d-5dc8a5956081"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="75589434-38c3-4074-9bfd-0c45321ba351">
+                    <propertyInstance
+                      Id="cdd1f077-a549-4e46-8336-f3cef820be81"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7f91ae1c-0bef-4938-9a70-44bff20dc490">
+                    <propertyInstance
+                      Id="8cac2c6b-da43-4bef-a69a-925d01972891"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f830fe2c-038e-4b12-8257-1711a109cb30">
+                    <propertyInstance
+                      Id="1055cf02-21d0-4d9c-9832-07db3c3b8c97"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </property>
+          <property
+            Id="036b5351-47c2-4ca4-be5e-7a5aed08d5ec"
+            name="SALT_INDEX"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="908d5315-f39f-40fa-a406-cd3c72b69cc0"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3DSALT_INDEX"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="4049528d-19da-416f-ac85-49ca09ca03bf"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="355b78f8-09c9-4199-9abf-6b15065915fa">
+                    <propertyInstance
+                      Id="35abfe91-9d71-4771-8d80-d8896f08608a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="76384bb2-6d26-4de7-a4c2-1e4ed0bfa21e">
+                    <propertyInstance
+                      Id="a6e4c672-5ef1-4832-93e5-b7d80d2309ff"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f0dafc80-2797-4a0d-a92c-22d527152ca2">
+                    <propertyInstance
+                      Id="e9b54bca-acd5-41ec-bf2c-9f30d343f697"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e348f002-1e4c-491f-98ae-d61f67c64884">
+                    <propertyInstance
+                      Id="b12a6d06-1825-4d16-8b01-d915d02e4d2e"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="52ced7ea-cb5e-4883-ab1c-d2d6dea9f0ec">
+                    <propertyInstance
+                      Id="ace5d1cf-8687-4905-a7f7-e506f279c56d"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="f48892e9-2714-488f-8624-63829da913d7"
+            name="CreateHash"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="14391839-8f1b-4382-87f5-f2910e7c9cd4"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3D(Name%3DCreateHash OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="41c781a0-1790-4904-b976-5bb0a26091e4"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="720926c7-6e94-4184-89b3-ca4eb0008031">
+                    <propertyInstance
+                      Id="eb89af46-ea22-4663-bbe0-fc16c3abd469"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e21e5046-84ac-46f1-a3ff-8451cb6f1ef0">
+                    <propertyInstance
+                      Id="b5be8b76-0310-4221-9577-bce3e1d72786"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="abbcceca-5a2a-49ae-8d7d-9aa1b461e449">
+                    <propertyInstance
+                      Id="91750ef8-4c8e-4a6a-ad31-fbf4fc121356"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a1b0ea4f-3774-4be6-801f-d98d4cc4998c">
+                    <propertyInstance
+                      Id="a9a1f9d2-ddbf-47a9-8573-e7d3f535baae"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="242e4def-85be-45a4-a8cd-f614405536d3">
+                    <propertyInstance
+                      Id="812e184e-8755-43bd-afd4-cd6ef7c5c05d"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bb4ecac5-32a8-4020-a272-ab2636476820">
+                    <propertyInstance
+                      Id="79f37f01-468d-4c94-8922-ddc1476be73d"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c566c14d-dae7-4a79-9b87-a6794fd09645"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProjectClient.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3bc215ac-1f0b-40cf-a91c-ede9cf6bd4da"
+                  name="password"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="3e0a81c2-a339-4e89-9d2d-88abf18dcef5"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3D(Name%3DCreateHash OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dpassword"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProjectClient.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="180b5abb-fb1d-4eac-8e5a-bdba45dc82e0"
+            name="PBKDF2"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="5d3cd438-b789-4728-b51c-f6cf4187d721"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3D(Name%3DPBKDF2 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DByte ArrayRank%3D1 ParentType%3DByte))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b6aa4c12-659c-470f-810e-80b6f078c802"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="394cbb29-11b2-4c51-a39f-4b519ff2439e">
+                    <propertyInstance
+                      Id="9471e5db-46c0-43db-ab92-d23d0f1c1faf"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ba3b8b9b-4d7b-4c26-aaae-05c7b76cf9e6">
+                    <propertyInstance
+                      Id="e7d0b324-52c7-4b0f-9105-ce9221b39f20"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9129fc7c-7462-4186-96a2-7ce6d2a7510e">
+                    <propertyInstance
+                      Id="0b0b354b-5786-4f75-a989-a4a4724c2a4c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c8f06dc8-69e1-4957-af79-e956f5457386">
+                    <propertyInstance
+                      Id="ecee1d47-2125-4eeb-8f40-2733b98701b7"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c290871a-efca-4715-a465-085f7875bdd4">
+                    <propertyInstance
+                      Id="db4bf8ee-0231-4b92-a826-2ea2c6a97dec"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="743d4b0d-d5f0-47d5-863d-330961fe529b">
+                    <propertyInstance
+                      Id="275ac3b8-5467-46fe-8146-9f05249b3d21"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bfd88960-e912-44a7-abbb-a8c40e274cd6"
+                  direction="Return"
+                  isOrdered="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="fe01c8c5-16c7-4a72-bf8a-28f6e022e9fe"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="6bfe8051-1ce3-4496-b9e3-d6fd33c3c096"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="e3f32426-00c8-4538-a005-86e5ee755529"
+                      LastKnownName="Byte"
+                      LastKnownLocation="Package1_1641.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4330a112-7462-489c-acda-0ae2befe258a"
+                  name="password"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="d253580f-9c4e-47c8-8153-e4ffd1eefb90"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3D(Name%3DPBKDF2 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DByte ArrayRank%3D1 ParentType%3DByte))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]) ParameterIdentifier%3Dpassword"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProjectClient.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="98c9eb54-ba30-4528-b55b-dadfdbc7922d"
+                  name="salt"
+                  direction="In"
+                  isOrdered="true">
+                  <referencesInternal>
+                    <reference
+                      Id="1eaa5595-03db-4c53-9216-897386617165"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3D(Name%3DPBKDF2 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DByte ArrayRank%3D1 ParentType%3DByte))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]) ParameterIdentifier%3Dsalt"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <lowerValueInternal>
+                    <literalString
+                      Id="1c3704e6-4c4a-454b-981c-f660e19ab583"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="3fad45db-2cc0-4913-974d-6100975e6002"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="e3f32426-00c8-4538-a005-86e5ee755529"
+                      LastKnownName="Byte"
+                      LastKnownLocation="Package1_1641.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="188d7cd8-1bca-49da-8d9f-9693c63af01c"
+                  name="iterations"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="46dc4f83-6230-48fb-8bd9-f730030e157d"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3D(Name%3DPBKDF2 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DByte ArrayRank%3D1 ParentType%3DByte))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]) ParameterIdentifier%3Diterations"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="ModelingProjectClient.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4ec4de57-d227-457d-be83-b476193313ba"
+                  name="outputBytes"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="1d4079f7-aa58-4ad6-b991-dc71a34bc8a7"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3D(Name%3DPBKDF2 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DByte ArrayRank%3D1 ParentType%3DByte))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]) ParameterIdentifier%3DoutputBytes"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="ModelingProjectClient.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="8b998f53-5a87-4978-ab92-f9094f80b43c"
+            name="SlowEquals"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="eb89ef32-0d65-442b-b6c6-a348bf0ff2a6"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3D(Name%3DSlowEquals OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DByte ArrayRank%3D1 ParentType%3DByte))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DByte ArrayRank%3D1 ParentType%3DByte))])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f5164b17-7c33-4ac9-a067-0df78ad66eb8"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6150c328-ce95-4575-8102-1a0a89cc6fe8">
+                    <propertyInstance
+                      Id="36ab0958-fb0d-425c-a005-8f81b9ed708f"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d25bd75b-f069-420f-8465-0cf2a1d42b9f">
+                    <propertyInstance
+                      Id="ec2dd1e5-3757-4288-a97e-0a402afefe6b"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e817b632-0f91-44c4-a352-d527ff98f795">
+                    <propertyInstance
+                      Id="7fe5d15c-7c21-46c6-b8d7-cdd1b24cbd5f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0139efd2-0645-41aa-a963-04e885330c27">
+                    <propertyInstance
+                      Id="935cf8f9-eaab-443f-bfc7-fdb64845da35"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="105f33a0-25e8-42ac-8aeb-6b2437ff966a">
+                    <propertyInstance
+                      Id="d8f0936a-be4d-4a83-b3a2-a03343ba4e20"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ec34d31f-ba94-49d2-bdd7-e25d06302d76">
+                    <propertyInstance
+                      Id="7774e0e7-5e12-4fd0-81c2-2bf59127cc69"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ab3dd5b1-877e-455c-997c-69083fdf2ee4"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProjectClient.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="44e9baeb-8b4c-44a3-a0ea-5bdaf825a3b7"
+                  name="a"
+                  direction="In"
+                  isOrdered="true">
+                  <referencesInternal>
+                    <reference
+                      Id="9d8aa3c6-b617-4e72-a179-61e98c99ce0a"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3D(Name%3DSlowEquals OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DByte ArrayRank%3D1 ParentType%3DByte))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DByte ArrayRank%3D1 ParentType%3DByte))]) ParameterIdentifier%3Da"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <lowerValueInternal>
+                    <literalString
+                      Id="282710d0-eff5-40d8-9895-f003484fb268"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="5f057dd3-4d17-47f4-9de6-87fb4baaf172"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="e3f32426-00c8-4538-a005-86e5ee755529"
+                      LastKnownName="Byte"
+                      LastKnownLocation="Package1_1641.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d2dee5f7-53bc-45ed-8f24-9de040333db9"
+                  name="b"
+                  direction="In"
+                  isOrdered="true">
+                  <referencesInternal>
+                    <reference
+                      Id="53ce2b24-9f45-41a5-8f9c-244a418a1523"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3D(Name%3DSlowEquals OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DByte ArrayRank%3D1 ParentType%3DByte))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DByte ArrayRank%3D1 ParentType%3DByte))]) ParameterIdentifier%3Db"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <lowerValueInternal>
+                    <literalString
+                      Id="d326afe8-fa04-4ef8-8772-f6cb93b7ebd3"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="94f5d985-72be-4d48-8a14-95af2c1a6177"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="e3f32426-00c8-4538-a005-86e5ee755529"
+                      LastKnownName="Byte"
+                      LastKnownLocation="Package1_1641.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="b584f693-59e7-462c-bc7b-2d21bc6dfd64"
+            name="ValidatePassword"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="00706136-d461-4e30-9e24-a68bb81eb1db"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3D(Name%3DValidatePassword OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="dc813751-743a-442a-a62b-54466ea77974"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c7b616b8-60a2-46f5-bc39-c16eb099b7d7">
+                    <propertyInstance
+                      Id="30c0d000-6246-4cb2-bfe2-59d427fc68f6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bc597da6-f23e-4212-a632-107d38033db4">
+                    <propertyInstance
+                      Id="b6724d2e-88d4-4649-b30a-ff2d622d14fd"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="29205a85-003b-48be-a5bd-de4d90fd0cf8">
+                    <propertyInstance
+                      Id="528bf211-9c73-4cb4-b2c8-61fda021c7b3"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1398982e-0613-4093-8628-37262d745b08">
+                    <propertyInstance
+                      Id="f106c2ac-0440-4806-8919-26af282127e4"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6bb41043-e663-4a7f-885d-3e39fb46d1a4">
+                    <propertyInstance
+                      Id="5c155205-1542-4fd3-b535-b2df5b0b452a"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bdaf298c-0be6-4025-a68d-b2ec96d2e739">
+                    <propertyInstance
+                      Id="81bbacb8-0d7c-450c-ae1e-ed1dd3d442d1"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="48210546-c469-4167-8124-c5fdd9865bae"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProjectClient.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ddec93b2-1bd3-45e3-b603-efb6ffd464ba"
+                  name="password"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="d857eb7a-3e43-4b65-8c9e-41dd85f8fc21"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3D(Name%3DValidatePassword OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dpassword"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProjectClient.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b8bf3c6f-f29a-45e4-97fe-af5ab8bbccb0"
+                  name="correctHash"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="081d199f-3aee-44f9-9948-99b45d187b42"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3D(Name%3DValidatePassword OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DcorrectHash"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProjectClient.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="8e409b7f-e4f7-4d79-895f-7084066e6151"
+            name="PasswordHash"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="af2a42dc-413d-49b2-917f-e46c4cdf5ca7"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DCrypto Type%3DPasswordHash Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="67a9354c-0d5c-43f5-aba0-240ae2057024"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="11a220d3-63d0-4ea6-86ca-22ec749675e6">
+                    <propertyInstance
+                      Id="2e4b5273-3d57-4b42-b63a-f2acd93fd8d7"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7d96f607-f49c-45d4-a1d5-4f5aa152ec5d">
+                    <propertyInstance
+                      Id="2ddd45f7-3b65-4154-af2d-d7307d5148d4"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3e6c0f9a-91b1-44a7-8bf1-037fcdf28d6b">
+                    <propertyInstance
+                      Id="ec39691b-6dca-4c2c-ae9e-438fffab0432"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="afd3b10b-c93e-4add-99c1-a6cf23b16860">
+                    <propertyInstance
+                      Id="78ee2975-3588-4ca2-8571-5dc66590cd3c"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f2cc0d54-d67c-4550-920f-ed4e18ce5de4">
+                    <propertyInstance
+                      Id="2f80b6b3-c0a6-4e2d-954a-2daa6a813678"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a5498cda-c6d8-4800-a11d-22373037d625">
+                    <propertyInstance
+                      Id="6f72cc21-bcd5-4ac5-84e8-048246234ab1"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

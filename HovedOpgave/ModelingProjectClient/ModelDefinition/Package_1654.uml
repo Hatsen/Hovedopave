@@ -1,0 +1,686 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="9ec65b4e-050b-4000-ac3d-a8b4b3fb2629"
+  name="Views"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="5174bdbf-562f-44b0-bafc-70ca6b695a6c"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DAdminModule.Views"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="7635ab78-a6d9-4256-ac2c-7da0e58320fb"
+        name="MainWindowView"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="4c6b1dff-42b0-43be-b29c-656df724c86b"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.Views Type%3DMainWindowView"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="1463a770-42a4-4fb6-b4c3-d9657e25b992"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e804f1cc-643b-48a3-8ed3-a452d68e3cb8">
+                <propertyInstance
+                  Id="5836e341-82d9-47c1-b859-15bac3bf1785"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="61e42f2f-1e2e-4605-b683-32d6df7aa355">
+                <propertyInstance
+                  Id="2747443c-d212-47f9-99ba-08fd7b013f2e"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c5d744c9-798a-44c8-ad69-772769fc326f">
+                <propertyInstance
+                  Id="55eccee9-3d40-44da-a15b-0cfa981e9d79"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a01a195e-132f-4f9a-9229-b75a8ffe1b41">
+                <propertyInstance
+                  Id="4cc4ec5e-84d6-48fa-b0a4-2a3d9206aa78"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="996843c3-bd55-4762-9cc8-5d42aee36ffb">
+                <propertyInstance
+                  Id="fe9990e4-6137-42df-9e22-ccfb8cb6957e"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <suppliersInternal>
+          <interfaceRealization
+            Id="bb295f17-1d39-4fab-b9a8-a2827d6827c9">
+            <interfaceMoniker
+              Id="2bb65cc1-dc01-4dcb-a452-b2163fe6b2a4"
+              LastKnownName="IComponentConnector"
+              LastKnownLocation="Package3_1654.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization
+            Id="78a20517-af05-4135-b870-b783e76cbb5e"
+            isSubstitutable="false">
+            <classMoniker
+              Id="cfbdcb51-33c3-466d-8448-f1b358c49ebe"
+              LastKnownName="Window"
+              LastKnownLocation="Package1_1654.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="4d93858e-7797-4960-bf9c-445238eb1ebd"
+            name="_contentLoaded"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="dcb11ab1-ce21-4da8-9bfa-d4b903b5df1c"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.Views Type%3DMainWindowView Member%3D_contentLoaded"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a95c2fa3-3c86-4e57-8ff7-28b42c933943"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a0c3d891-d399-42ad-a8fe-0059435e621e">
+                    <propertyInstance
+                      Id="b7481848-caa3-4f90-951a-411df65b0582"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c313e6ad-eff8-4a5b-bc1f-ab30a2ab7bfe">
+                    <propertyInstance
+                      Id="89986f5d-9faf-499a-b3d5-aacfd823fdc9"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="274ad233-98b1-4d4d-afbb-d2693bdf37cb">
+                    <propertyInstance
+                      Id="3c529173-60ca-4edb-bd13-194a840ecb3c"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f533d9b4-91fe-4ee4-a4e8-6af664c0fb80">
+                    <propertyInstance
+                      Id="01f79a41-1c63-4158-be57-c2bca021348b"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d6c3e87a-5175-433a-b0e1-7adf629738a3">
+                    <propertyInstance
+                      Id="fb07acfe-2bf6-4418-b6dd-dff28c288636"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="ModelingProjectClient.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="d47053e8-9935-4dfe-8fe0-81214dffa008"
+            name="datagridUser"
+            visibility="Package"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="5d538b2c-f0f3-42f7-a30b-a7245b76262d"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.Views Type%3DMainWindowView Member%3DdatagridUser"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="67edcdb7-d1be-4821-9d52-3535f0bda7d3"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2725bd3a-a5e2-430b-a95f-6180b738e6dd">
+                    <propertyInstance
+                      Id="14246c42-719f-4c30-b9af-fa029131dc9d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a5f144b5-19c3-4e6a-9027-7f86d9348401">
+                    <propertyInstance
+                      Id="da9d5dbb-d429-4956-9359-61ed322cc0ae"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9358416f-98fa-4251-9fb6-e29b5a9ee57b">
+                    <propertyInstance
+                      Id="8a12dbd4-b419-4045-877f-47d35b0e3000"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bd699e4e-8ed9-460a-8aa2-07f918d3ef6e">
+                    <propertyInstance
+                      Id="3c15fb7e-3b95-46b7-b879-0bfe3a121b3c"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4666feb8-0a6b-436a-919e-bdfbeff39d3a">
+                    <propertyInstance
+                      Id="f8fa2517-089f-481e-8689-6e301a9b3059"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="0b0e6cf0-37ef-4d14-86dd-2cac81c195c9"
+                LastKnownName="DataGrid"
+                LastKnownLocation="Package2_1654.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="cb1b4923-225a-437c-9b8d-b5f75396e7f5"
+            name="viewmodel"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="5bf33cd9-95d6-4638-af86-a0a2624f60ed"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.Views Type%3DMainWindowView Member%3Dviewmodel"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="aa0619b9-d6a3-4684-9b4b-fd0524a65b83"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a4a04b4c-2b95-4df9-9f2e-3d68d41f77f9">
+                    <propertyInstance
+                      Id="f54c4eee-f24e-4b34-9ac3-b71214deafaf"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5a1dd40e-d956-4fc2-81f7-567e284181c9">
+                    <propertyInstance
+                      Id="4989735e-ec06-4b8e-b246-5fde25de55cb"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e9f109bc-d720-4b30-9f80-1c33447276a1">
+                    <propertyInstance
+                      Id="784800d4-ca52-4888-bb50-32b27edd8752"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="41185dc8-17ef-4cfe-b600-eb994b23fa80">
+                    <propertyInstance
+                      Id="f2c34a24-c27c-4dc2-8b80-e51efc046b41"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="66e162f5-1a68-47b5-ae5c-e908f7911790">
+                    <propertyInstance
+                      Id="88a7f56a-b885-4cd1-b82c-b6c09dd9dcea"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="71fe3a23-2695-493b-b9ea-1f0414f213ee"
+                LastKnownName="MainWindowViewModel"
+                LastKnownLocation="Package_1645.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="f5d2e942-73d4-4c9e-82b0-fb0377571199"
+            name="System‎.Windows‎.Markup‎.IComponentConnector‎.Connect"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="769e6ea3-bb52-4656-b652-042accac1f60"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.Views Type%3DMainWindowView Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="34eb6ec4-c053-48f4-9779-b76b09d9977d"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ef911e14-ceba-4a62-ba4b-dac85819c061">
+                    <propertyInstance
+                      Id="13112dc4-0e94-4b6a-9be2-36af7db88b0b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5907ea07-33cf-4fb0-aa6f-e4ecb34dbc56">
+                    <propertyInstance
+                      Id="f673ed3c-20d2-4af1-970f-dd8a40fb0efc"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6743f06d-7880-479c-951a-1ec8a0f6bb34">
+                    <propertyInstance
+                      Id="65a9bf13-a3ec-4ed0-b961-fb13a4ef04b7"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7ce1ff9b-9764-4ee8-87c3-de24e5084c7f">
+                    <propertyInstance
+                      Id="31c4b98c-a4a3-49c7-adee-d31132e8c8a0"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c6092ada-e19f-4df1-a7a9-d843dbe75beb">
+                    <propertyInstance
+                      Id="0b15e910-7145-4fca-bc24-859b0d337da0"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="442246ce-3e01-492e-b75e-0d018246ac11">
+                    <propertyInstance
+                      Id="51ae1cf7-71aa-4cda-8ab3-66faabcadc95"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ce9dddb8-91e6-4d8c-9613-30a0e2e96cae"
+                  name="connectionId"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="64f35221-6acb-4c4a-86b4-9e47dd0106b0"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.Views Type%3DMainWindowView Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3DconnectionId"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="ModelingProjectClient.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9cdbcb10-ba18-4625-aabc-084b3eaa671a"
+                  name="target"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="ec58493c-0102-41f3-9175-01942289cfca"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.Views Type%3DMainWindowView Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Dtarget"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="2c000a79-9940-4ac8-a82c-6bdde383c797"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package1_1641.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="ce6ced12-198c-4095-a59d-3b232663a30b"
+            name="UpdateDatagrid"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="be3966ff-560e-4a0a-93ec-be86725a16fd"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.Views Type%3DMainWindowView Member%3D(Name%3DUpdateDatagrid OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f553aae5-575d-40fd-892e-c16ff5a1b3e7"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="02ba99ae-b6f6-46c2-922c-8c8e0a1f0be2">
+                    <propertyInstance
+                      Id="a546803b-263c-43a1-ae3e-0897018e99cd"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9edd74dd-8551-418b-b349-cffab2b4e5ea">
+                    <propertyInstance
+                      Id="ebabb649-4f97-4bbc-8a4f-f47ceaf86fa9"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e2820198-751e-4801-89a6-d8ccfea78382">
+                    <propertyInstance
+                      Id="ff8036d7-6451-4855-99c0-73604d16ec7b"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f23e43b3-cc82-4bf8-8ee1-afe80db0983f">
+                    <propertyInstance
+                      Id="c8637e51-4ebe-4d77-933d-1fb6e44d458d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a9253da1-cb5f-4469-b97f-fea8fd24f550">
+                    <propertyInstance
+                      Id="cc3b6dab-de04-4cfe-ae7f-03919d8cff9e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="24f5c302-62b8-46c2-b24e-8128429eaeb6">
+                    <propertyInstance
+                      Id="8ead8e5a-1c06-48e0-9cad-bdfc03ecdeb7"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4fc88cb9-9345-414f-a3b4-3f4adaa517ff"
+                  name="selectedUserString"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="c67696e0-ddf8-42b7-8a39-5bd7a1c90672"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.Views Type%3DMainWindowView Member%3D(Name%3DUpdateDatagrid OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DselectedUserString"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProjectClient.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="58b47e17-4ae6-407d-aca5-8892852bfe5d"
+            name="MainWindowView"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="6f5f4a7f-fb27-47c5-9857-51ab0500dde9"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.Views Type%3DMainWindowView Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="5f7aea94-35e7-4aff-ac0c-54041c86b680"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f039751f-7e10-44b4-a8e8-bd49fa26dfa9">
+                    <propertyInstance
+                      Id="13f10c4c-2c5a-43c1-940b-2ed11a6981b8"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3f05fc5f-2189-43ea-ab9c-aab17c326ae2">
+                    <propertyInstance
+                      Id="963468f2-eba6-4da5-8543-158db7610879"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8dc66c69-e82c-4ab2-b20a-407917ca8852">
+                    <propertyInstance
+                      Id="0174c7d8-d927-44d7-b43f-63cd014d496e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cc0b5412-f453-4536-a105-530a30c78380">
+                    <propertyInstance
+                      Id="10d08ce2-ebc5-4425-a1e2-c05619fe8362"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="36f460ca-a8cb-4129-a2b4-183eb03cce73">
+                    <propertyInstance
+                      Id="f95b17b7-0b0e-4057-b160-335475ef50d9"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="46c44f7b-80d9-43fd-9295-57499f846c75">
+                    <propertyInstance
+                      Id="5cdec56e-69f7-4f9c-bc98-34fefa7d73a4"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="0cd400a8-b4a2-4522-8abe-a3b3eab3c197"
+            name="InitializeComponent"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="b65431da-2f5d-4b92-af9c-760e29b673da"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.Views Type%3DMainWindowView Member%3DInitializeComponent"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a2f7e42f-c301-4759-8536-fb13aebd058f"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4fdffda2-c925-490f-a1db-00aee1518de8">
+                    <propertyInstance
+                      Id="781fca0f-120c-4f22-983c-256b1f2bc59e"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="041d4a39-ec07-4a49-a197-03d5a51709ed">
+                    <propertyInstance
+                      Id="7c707733-4e96-41e8-a45a-9b276de2f528"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="19d6e927-dbc1-48a2-84d1-8003f2c00c1a">
+                    <propertyInstance
+                      Id="e01b7b24-5cee-4057-ba63-3736362f28b8"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ef6513fc-299a-4839-b13b-96b2eb5ebd1e">
+                    <propertyInstance
+                      Id="59c2b718-5506-4dd0-adf1-9c50e93edae7"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="299132a9-1c4b-4548-82f3-7c3ba8b8e8c6">
+                    <propertyInstance
+                      Id="3854ca4b-26bf-4edc-9240-928275a9d15a"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3191d265-d158-4267-9d89-73e023661d27">
+                    <propertyInstance
+                      Id="4e099fa8-33af-4a34-9c2e-044b0eb2dc17"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="adbc10b0-dd65-43f3-953b-077c40377d81"
+            name="InitializeEvents"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="565359b7-63c3-4094-9632-6545090d9290"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.Views Type%3DMainWindowView Member%3DInitializeEvents"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="41aecc41-8e05-44f9-8466-02b1b7967078"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3443db8d-d84f-4135-ab29-d7634cf98d53">
+                    <propertyInstance
+                      Id="f9f390cb-ad34-45cc-9b3e-4354838e1cfb"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9ab925f3-7dbd-4337-ba8f-01b43a999b21">
+                    <propertyInstance
+                      Id="76d55011-1769-44b5-9c88-939cea982664"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a9e64013-6553-4b8e-a80d-1d51cca55810">
+                    <propertyInstance
+                      Id="6589404f-00b0-49c8-a544-d4819e35157b"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="42f0d947-2720-40fa-a0c9-4ec7d9eb5177">
+                    <propertyInstance
+                      Id="4e2158cc-d852-4537-9838-62a4615eff17"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="deae8297-edbe-4c5d-8831-c16e94b03bd8">
+                    <propertyInstance
+                      Id="57d59ed6-5896-4917-9bb1-f10fcd0ba9ed"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="73a3c7ff-16c7-4cb9-983f-c9bd771981f6">
+                    <propertyInstance
+                      Id="8a75b1ef-5921-4723-94a0-28ae68a39ef6"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

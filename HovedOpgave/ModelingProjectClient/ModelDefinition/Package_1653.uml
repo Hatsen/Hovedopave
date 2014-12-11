@@ -1,0 +1,3029 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="d5d936e6-23b4-4907-ac26-914ecca94052"
+  name="DeleteViewModels"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="87f543ec-804d-4363-a742-e631cf3cde1b"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DAdminModule.ViewModels.DeleteViewModels"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="5d5ef1c5-ee22-4062-877e-fcdeb3fc49c5"
+        name="DeleteViewModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="4449cd13-babb-4b5b-a0d9-a1cc65469e4f"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="796c7e30-cf81-4865-a15c-4ae9e482c991"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ce21e245-e361-4066-82c3-442c72ff55a5">
+                <propertyInstance
+                  Id="7a895eae-3fc2-404a-bcf2-ff8b3c7ffd18"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5e18f7d1-de87-4d23-b087-b2eac84c5521">
+                <propertyInstance
+                  Id="4bac2d5a-5c51-4194-8e56-53cd8aa076bb"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5b825db9-bef0-45e5-b672-63475a5b14eb">
+                <propertyInstance
+                  Id="091f7aaa-c733-449e-a95f-47d7d45df322"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9518e6e8-b273-4d16-9414-fcec5e1c35a7">
+                <propertyInstance
+                  Id="2422b81f-48b6-481e-a790-6b794a14b169"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="12361d56-9ded-4c87-9485-3fd3f08390e0">
+                <propertyInstance
+                  Id="67782c81-e3a1-4947-8128-836ed931aaca"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="a86c9893-c712-4181-aa93-47152a7f0582"
+            isSubstitutable="false">
+            <classMoniker
+              Id="dfc2e5b4-d5cf-44e7-ae7a-80cc057124b3"
+              LastKnownName="ViewModelBase"
+              LastKnownLocation="Package_1641.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="a8030c34-7a94-4b8d-a940-d90a2edaac19"
+            isDerived="false"
+            sourceEndRoleName="DeleteViewModel"
+            targetEndRoleName="ChosenClass"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="ae6f25bc-7be0-4904-89ed-0ea0a3f4d903"
+              LastKnownName="ClassEx"
+              LastKnownLocation="Package4_1641.uml" />
+            <description>Property ChosenClass references type ClassEx.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2ccdfe09-2518-42a2-bdcd-3146f80a2363"
+                  name="DeleteViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0e97d816-aee0-4f93-b0b6-29ee0b62ae3b"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="167c7591-dd24-4de3-8786-3c62211429d3"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="374c91b6-03b6-418c-bcc7-8db4782d26ff"
+                  name="ChosenClass"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="2fef0ecb-a199-4c4c-afaf-435ce5cf5f75"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="b6879441-472f-4033-9fe0-d03212583aea"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="08224991-63c9-4c27-a9c5-87a6d335e94e"
+            isDerived="false"
+            sourceEndRoleName="DeleteViewModel"
+            targetEndRoleName="ListofRelatedClassesToTeacher"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="2f0915ee-269f-41e3-a392-15bf0aef8dc2"
+              LastKnownName="List&lt;ClassEx‎&gt;"
+              LastKnownLocation="Package6_1641.uml" />
+            <description>Property ListofRelatedClassesToTeacher references type List&lt;ClassEx‎&gt;.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="231b0f7d-7594-4ab6-b59a-ec4473dbc990"
+                  name="DeleteViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0e2e9120-1a72-4c38-bbdc-6670242701b0"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="89df488a-0bdd-46c7-ad03-1137ce335df4"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0d5e8c54-2154-4a9e-b5fb-a0f9350627ae"
+                  name="ListofRelatedClassesToTeacher"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0a060755-508f-414f-a1ff-a5bca2e62214"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="4551f2e2-3aec-4bfe-8dcf-dffb05c6929f"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="edaf9dd0-1c07-42a5-9d17-b703ab5f846d"
+            isDerived="false"
+            sourceEndRoleName="DeleteViewModel"
+            targetEndRoleName="ListofClassEx"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="2f0915ee-269f-41e3-a392-15bf0aef8dc2"
+              LastKnownName="List&lt;ClassEx‎&gt;"
+              LastKnownLocation="Package6_1641.uml" />
+            <description>Property ListofClassEx references type List&lt;ClassEx‎&gt;.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="72023f33-35ca-4d3e-a695-2451532f9dcb"
+                  name="DeleteViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="36080050-572b-4870-84df-9de131b82f73"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="fe666c48-74c3-4244-b7e7-df15f4d93996"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6aee1d55-bbdc-4d2d-9eaf-edc845fdd5e5"
+                  name="ListofClassEx"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="6e2e006d-1293-4982-b7db-d6bd97f0b6b9"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="51489f78-3b7a-4047-ac7d-0e9ca403a858"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="dfabf913-0b6e-4750-a13f-c702dee5c07b"
+            isDerived="false"
+            sourceEndRoleName="DeleteViewModel"
+            targetEndRoleName="ListofTeacherEx"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="730b3b7f-da7d-4164-a5f4-1936d0142dd9"
+              LastKnownName="List&lt;TeacherEx‎&gt;"
+              LastKnownLocation="Package6_1641.uml" />
+            <description>Property ListofTeacherEx references type List&lt;TeacherEx‎&gt;.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4307d091-7123-42c2-9677-f5a3803f287e"
+                  name="DeleteViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="40176d5f-9c14-458e-9a68-9194978b56f7"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="e3872529-469b-4757-a996-ec97c76d11d4"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d81d5c26-a446-4568-a6d7-24c49920438b"
+                  name="ListofTeacherEx"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="8f29a5f5-7db6-4b6c-b4a2-991ee938248a"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="c25ed7e2-a1bb-412e-9c5e-fe57e3aeae1d"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="4e8aa4dc-c9cf-4bfc-9523-b23733d65d87"
+            isDerived="false"
+            sourceEndRoleName="DeleteViewModel"
+            targetEndRoleName="SelectedTeacherEx"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="293f6bb3-d7c1-4f3e-9c3b-a9f11c3d17ed"
+              LastKnownName="TeacherEx"
+              LastKnownLocation="Package4_1641.uml" />
+            <description>Property SelectedTeacherEx references type TeacherEx.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1491a22e-83cb-4b0c-8857-54bd97037cbb"
+                  name="DeleteViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="f758cbc3-a924-4692-9aa1-1e02ef69eba8"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="ef0bc3c1-f34e-4d4d-b0cb-aa67a9dbd047"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fcf4eb3c-b0ba-4943-a436-99a6765811b7"
+                  name="SelectedTeacherEx"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="5115fd4a-ec98-4084-ae1d-f74da8e63302"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="039c8076-60fa-469a-a6ed-a84e5268cc4d"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="1a291989-3c61-4e2f-a887-ca0e2dde998f"
+            isDerived="false"
+            sourceEndRoleName="DeleteViewModel"
+            targetEndRoleName="CurrentTeacherEx"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="293f6bb3-d7c1-4f3e-9c3b-a9f11c3d17ed"
+              LastKnownName="TeacherEx"
+              LastKnownLocation="Package4_1641.uml" />
+            <description>Property CurrentTeacherEx references type TeacherEx.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="473090e9-d717-4e18-9df3-9e9532acda8d"
+                  name="DeleteViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="b20176fd-10a9-4692-8230-edf2492c9143"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="8e453419-d6ad-4339-bd45-36784900405a"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c2622d13-7633-4a27-84bc-05465f825bfb"
+                  name="CurrentTeacherEx"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="5a2290ed-60f0-4384-835e-6b3cf044b305"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="d98926ac-9bdd-4d42-8748-f2bd7c73e68c"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="da2cb8da-b7ec-47d0-9420-2fb357e5e079"
+            isDerived="false"
+            sourceEndRoleName="DeleteViewModel"
+            targetEndRoleName="AssociateCommand"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="4aa41520-2523-4724-af67-d2d5d26186c6"
+              LastKnownName="DelegateCommand&lt;Object‎&gt;"
+              LastKnownLocation="Package4_1645.uml" />
+            <description>Property AssociateCommand references type DelegateCommand&lt;Object‎&gt;.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5c0a9717-0b86-4d3d-ba9c-cedb0f885490"
+                  name="DeleteViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="1edee003-7329-4a2e-a9a4-c36534a45c9b"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="d6a0b688-b776-4158-a91e-a3f1e2a83386"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ceb73a79-493d-4b88-9cb3-d448500c1c02"
+                  name="AssociateCommand"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="a37de595-1c10-4944-90ad-eb8e8ac4ac7d"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="140b1821-c660-4d3b-a72a-4f8d16529635"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="80604bfe-2781-4179-9449-40a49ed49b8e"
+            isDerived="false"
+            sourceEndRoleName="DeleteViewModel"
+            targetEndRoleName="ConfirmCommand"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="4aa41520-2523-4724-af67-d2d5d26186c6"
+              LastKnownName="DelegateCommand&lt;Object‎&gt;"
+              LastKnownLocation="Package4_1645.uml" />
+            <description>Property ConfirmCommand references type DelegateCommand&lt;Object‎&gt;.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="18314284-058d-48a6-8df6-8afb0cfaf776"
+                  name="DeleteViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="6458dd85-761a-45c4-aae0-a6ba5327cb96"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="58c53ad3-9ffc-48e0-808d-37a0db821cb2"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b7af2990-a197-4849-b879-9d7d5a7fc4a8"
+                  name="ConfirmCommand"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="72e903b9-0ef5-47d1-ab58-9a2f93e53490"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="74259d77-3585-4a39-9792-834b4869df3e"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="cc630aa4-3461-4931-86b6-bb6e50c0e507"
+            isDerived="false"
+            sourceEndRoleName="DeleteViewModel"
+            targetEndRoleName="CancelCommand"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="4aa41520-2523-4724-af67-d2d5d26186c6"
+              LastKnownName="DelegateCommand&lt;Object‎&gt;"
+              LastKnownLocation="Package4_1645.uml" />
+            <description>Property CancelCommand references type DelegateCommand&lt;Object‎&gt;.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fdaecbc3-60d9-4621-9fae-84e88ff11192"
+                  name="DeleteViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="6dcee4ae-8969-42a2-a822-6e0f01060d75"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="140e687e-e8e8-41fd-bb05-de07ae7eb1f3"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5a9b0592-6f24-452f-a800-a013c6828575"
+                  name="CancelCommand"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="980656f9-85fc-4318-b6ff-a4b6d0e73a7a"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="9c071fff-c5fb-45f4-b9b5-2714432f20e1"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="a997b71e-2824-428d-bffe-80a375b3906d"
+            name="ChosenClass"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="69501ad3-2ec1-46c5-9a4e-e612ac02076b"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DChosenClass"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="cf7562da-bb4b-47a9-876e-f2114c2d900c"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e913700c-a7b3-4066-9ea8-c01288ca99a5">
+                    <propertyInstance
+                      Id="7ccb35d9-0f87-45e5-b87e-a20844a3ca31"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="13894a2e-9bac-457a-bfc0-586552e9a15f">
+                    <propertyInstance
+                      Id="a5cb4a04-ccd5-4035-b4de-f220d3297b7c"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a23397c4-e350-4049-a151-2076807b5ce6">
+                    <propertyInstance
+                      Id="a3ac44fc-cc55-4ace-ab42-b31f874f7cdf"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="08fa58c8-d850-487e-8a34-0052bb024c3f">
+                    <propertyInstance
+                      Id="3c1825d2-6879-40bc-98d9-2d638b2534f3"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4431bd49-fcde-4e7c-8866-777b9fbc8726">
+                    <propertyInstance
+                      Id="71e35001-d48d-40f6-ba16-addf63aa3127"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="44d09a42-d8ac-4444-9ddc-543742abe05b">
+                    <propertyInstance
+                      Id="3ab9aece-c0ee-458d-b797-1ef9879c543f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f2324092-6234-4ac3-a319-0947b00811f6">
+                    <propertyInstance
+                      Id="c26a3e96-e8b9-4327-b83e-1da30e78e278"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="ae6f25bc-7be0-4904-89ed-0ea0a3f4d903"
+                LastKnownName="ClassEx"
+                LastKnownLocation="Package4_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="10d1ae38-79b1-43c3-bb3b-20b20696f889"
+            name="ListofRelatedClassesToTeacher"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="b895b087-836b-47e0-a9ea-8613ce158273"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DListofRelatedClassesToTeacher"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="67ef66c5-f717-4ea7-a595-ec3948dffbbe"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b47250e3-c3f4-47bf-abda-47cc49da178b">
+                    <propertyInstance
+                      Id="cba840e9-bb38-4461-9016-c7aac0201e45"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="89452497-e7dd-4d05-9613-86dbdfc0dc5e">
+                    <propertyInstance
+                      Id="228da28a-7f94-43a4-9346-3051ea66d49b"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1c9839f8-c44f-4b26-ba15-511679db652e">
+                    <propertyInstance
+                      Id="5d1dcbe3-ee71-41d0-aef7-e5c910f41579"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e8d97be8-fe80-4461-b6be-93e0959a5141">
+                    <propertyInstance
+                      Id="9e108d58-994a-4dbf-949a-d90dfc339e7e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c0b05ebf-dd11-4b65-940f-87ffa779b85a">
+                    <propertyInstance
+                      Id="3e39f2cf-8575-4988-a0a6-ba516eecc1c0"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="37900d52-3407-4974-8d65-ab2863802ec2">
+                    <propertyInstance
+                      Id="ef5bd963-e44c-4009-a5c9-601ca49aec2f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e031b665-de78-4772-b4b8-a607acb5f45c">
+                    <propertyInstance
+                      Id="c2df8f57-07e6-4573-bc02-92001bd0dec9"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="2f0915ee-269f-41e3-a392-15bf0aef8dc2"
+                LastKnownName="List&lt;ClassEx‎&gt;"
+                LastKnownLocation="Package6_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ada27473-9096-4c30-8c60-f2ac1fbf05a1"
+            name="ListofClassEx"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="90215ef2-9385-4f0d-836d-e815377f7db6"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DListofClassEx"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="62631c8f-dc62-40e1-acc5-d6f85627ebba"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="013d66c1-fe6f-431e-b824-e3b7ae77662e">
+                    <propertyInstance
+                      Id="cf683dd2-6ade-4d19-86ee-3ee92e55baac"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d804d656-26fe-4a95-972d-b78734b93f78">
+                    <propertyInstance
+                      Id="e57b2aa4-db66-41f9-81f7-efa746ca76cc"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b664e1d1-32d3-48d7-9cbc-b5c085c9628c">
+                    <propertyInstance
+                      Id="cd6744db-5089-4fa0-9643-e526d2b3bc6f"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1b5d63b8-3bf8-49ba-8c83-7c02e4995e3f">
+                    <propertyInstance
+                      Id="6be4d7f6-39d9-46f1-a9ab-526dc3ab44d3"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5e1b8905-fc3d-4ea8-84ed-a1da3cfd128d">
+                    <propertyInstance
+                      Id="41c75792-5ee4-4f7d-a83b-0fcbba34e561"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fc6d8d46-244f-4978-b59f-313cdf645290">
+                    <propertyInstance
+                      Id="b109fb93-8dfd-4aff-be4a-2dd81caae091"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="05d970de-0400-4679-bd25-f8eeffbdedf3">
+                    <propertyInstance
+                      Id="baf109ad-82c6-4f8c-8275-46408ae3d0f5"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="2f0915ee-269f-41e3-a392-15bf0aef8dc2"
+                LastKnownName="List&lt;ClassEx‎&gt;"
+                LastKnownLocation="Package6_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e9c1d010-f42a-463d-a3be-cfc2e7ac319b"
+            name="ListofTeacherEx"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="69fce67c-12a7-43ae-b5f0-9dcd94ed07bd"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DListofTeacherEx"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c698ff8a-6ffc-4b9d-98f4-6a53bc8f0ecb"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="87f879ce-bba5-4ec4-adc6-f12f5f769fbc">
+                    <propertyInstance
+                      Id="aa155470-87b2-4c4d-8fb6-33c8e7773116"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8971dfa3-b7e6-4c4f-8627-41f2fc7194eb">
+                    <propertyInstance
+                      Id="2fc655f4-3265-4f9a-bec7-d8b93b11822b"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7c8ed07d-a557-4774-adda-9b00be78159c">
+                    <propertyInstance
+                      Id="1a63b21a-a70c-4d58-8af7-6c2923b9738d"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3356a170-9213-41c9-944d-ec851c06c13b">
+                    <propertyInstance
+                      Id="4658cca8-2ce6-45f3-8796-8981e985d7c3"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3e709a9e-2fba-4962-a9ec-4b028a40acb5">
+                    <propertyInstance
+                      Id="53e9856e-1346-46bd-8026-03a0aafa109f"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5ee75f50-ad0f-4cb1-a86e-125d30f19e93">
+                    <propertyInstance
+                      Id="dc4761d3-6d05-4ae9-8715-b1d72f26e1be"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0a3f31ed-5a18-43c0-9303-a3c4a7cb3b61">
+                    <propertyInstance
+                      Id="8647a85d-7e8a-462f-a5d1-d460fdb774e9"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="730b3b7f-da7d-4164-a5f4-1936d0142dd9"
+                LastKnownName="List&lt;TeacherEx‎&gt;"
+                LastKnownLocation="Package6_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ce79ee8b-8701-480b-8a69-5efe5d4fb01a"
+            name="CurrentClass"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="12d5942f-361c-475f-b43c-c87fef18eb5e"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DCurrentClass"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="0a15511f-1cc5-4c0c-8493-1f082bd8786c"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d472a1a9-dbb4-4c75-9410-00d13e9b48ff">
+                    <propertyInstance
+                      Id="77596470-df4d-4f20-85ab-af48cb57e8ff"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d4b6f842-e82c-486a-8956-bad50fcce527">
+                    <propertyInstance
+                      Id="fa70e18c-b6f6-463c-91e0-c722286d1469"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="da2626e5-12cd-49f7-bdb1-8498019d548e">
+                    <propertyInstance
+                      Id="4ba3bb58-dce3-451e-8068-8dfd8334cbf7"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4e8a5458-3f6b-443d-b83d-f718370fe219">
+                    <propertyInstance
+                      Id="4b8cd04e-7117-4cde-a92e-202f85cdf573"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="78cec195-1b33-45fa-8995-f035bd86886c">
+                    <propertyInstance
+                      Id="ec7c7d9b-a840-4de3-901b-c53a5779fa5a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="757b1193-d924-4c41-b196-e32f9316342e">
+                    <propertyInstance
+                      Id="502f790b-17ea-4e2a-b0c8-ca91a0f57081"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e811468d-5156-41a5-9781-4d5fd36b311c">
+                    <propertyInstance
+                      Id="12442441-57b8-4b7a-a42f-0f647cbf163c"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="ae6f25bc-7be0-4904-89ed-0ea0a3f4d903"
+                LastKnownName="ClassEx"
+                LastKnownLocation="Package4_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="cce7a93a-9371-49ff-b3dd-c054ad811305"
+            name="SelectedClassEx"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="8772c591-959a-4ca0-941c-18260d89f11b"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DSelectedClassEx"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c1979a34-78a2-4134-878e-575ca5b11a91"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="001b5344-ffd4-4a26-9e66-e2c10874b811">
+                    <propertyInstance
+                      Id="2968bd2f-071e-4cbb-b0fb-5d4a6a6e8a41"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="338ad7f9-ce71-4b44-9e2e-3165d7e94281">
+                    <propertyInstance
+                      Id="932a65de-8793-4398-8d38-c12e1358572d"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8c3cb652-a0ac-4dea-b1cc-f383c42c6a67">
+                    <propertyInstance
+                      Id="02cc6bb4-2fe6-4bb8-a046-1d75c1eaaf9c"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1db06677-b57a-410b-9f7e-304d213daf51">
+                    <propertyInstance
+                      Id="884be586-13e7-4cab-91cd-d1cdb29e90c0"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d4888d60-6417-464d-9cdb-9df077ce873f">
+                    <propertyInstance
+                      Id="53b6d389-9b17-445c-b74a-b0e010a96be8"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="52c12796-8eb2-40a8-94d9-dd13c7dc6456">
+                    <propertyInstance
+                      Id="050ccac2-5509-4ee4-926c-c42f7fb0403e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="227dc275-16d3-41f0-a838-ce0ee8643fdd">
+                    <propertyInstance
+                      Id="6cfca228-a258-492f-b2bc-ce7abb268798"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="ae6f25bc-7be0-4904-89ed-0ea0a3f4d903"
+                LastKnownName="ClassEx"
+                LastKnownLocation="Package4_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="fb9fdd58-20fc-4ca0-8dbe-43e8429e88f2"
+            name="SelectedTeacherEx"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="4804a758-17db-4259-8ce1-30524540b252"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DSelectedTeacherEx"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a564dc9e-b187-4a4b-8a00-8a93b7b25524"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="04994575-98ac-4e24-b27c-df36ed61fce7">
+                    <propertyInstance
+                      Id="df698415-2972-4d0b-a2f3-1a85eef7d973"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="68634b51-54ac-472d-8d09-d4011bb643b3">
+                    <propertyInstance
+                      Id="f19173af-a7dd-431a-bbde-52a7dc663180"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1dd85fa1-59b7-4b0c-b52b-00ec0f7be3b1">
+                    <propertyInstance
+                      Id="ec84b9fc-c4ed-4384-88d9-06195f450322"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="64bbc79c-64d1-435b-a069-6d83cd5f3e84">
+                    <propertyInstance
+                      Id="2f3885f7-1709-458c-9141-36d88e4711ca"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cd3b9cb8-5da3-4808-afc8-d2aba7638f21">
+                    <propertyInstance
+                      Id="14ccfede-2268-405e-b9f0-bcf55bf0d023"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="26fa3648-3713-4110-b36c-93a57b46daa4">
+                    <propertyInstance
+                      Id="f3346104-8657-42a9-93ef-2b1d891f96fd"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f0ab7c21-d6cb-4f02-99a3-ab6b1959f974">
+                    <propertyInstance
+                      Id="6af3d9e6-367c-4530-b09d-390338256b37"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="293f6bb3-d7c1-4f3e-9c3b-a9f11c3d17ed"
+                LastKnownName="TeacherEx"
+                LastKnownLocation="Package4_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="9bd88af0-f427-46cb-bfc0-31af29500d88"
+            name="Isloading"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="7ebbc080-7f4f-40bf-9e46-6189924412a3"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DIsloading"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="521dd2a0-2060-4167-aaef-fcede70698ba"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4ba1ae5c-ec9f-44ac-958e-7079baebc225">
+                    <propertyInstance
+                      Id="09223b07-144a-441d-bda7-833194337018"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2c424abe-fb41-44f7-ba9f-25a5095a6099">
+                    <propertyInstance
+                      Id="5c586312-6c6c-49f9-962e-e26396b5c804"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d3d363ee-7fa2-4b9e-a566-64c452b0239d">
+                    <propertyInstance
+                      Id="0b9ea4d1-1916-4dd5-9da3-9ce0fa015ce6"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f564f59b-83e1-4d78-9292-9400c33453f7">
+                    <propertyInstance
+                      Id="af3a857c-6d5b-4f9f-94d8-9390fecafb82"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d830b575-2ba0-4b8c-93fc-22bb686dc678">
+                    <propertyInstance
+                      Id="7cc23bbf-fd66-4940-be03-9b6b6adc9cfe"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8c526bf2-6930-4e33-9e9d-a5dd70259abe">
+                    <propertyInstance
+                      Id="da28d474-4eb0-4599-916d-5a38b3de92db"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cccd7dee-a2b1-48c1-926c-e953d1cea577">
+                    <propertyInstance
+                      Id="e1b8311f-c38a-47e3-a17c-02b4d2f35595"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="ModelingProjectClient.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="2ca9d85f-bd79-492e-b3f4-c477ec62cd0b"
+            name="CurrentTeacherEx"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="749e9cff-75ec-4f67-bddc-dc5add4faf32"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DCurrentTeacherEx"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="bf614130-dda3-483c-a792-3776099ee404"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5851e8e1-86fc-4b0f-ab05-1b729704a4c7">
+                    <propertyInstance
+                      Id="52847414-d2c6-4a8a-b86e-3bb9e1165493"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="20493858-3435-4301-9d46-f27a42d8f906">
+                    <propertyInstance
+                      Id="028594e1-1797-492e-9dd3-33c75e5d7bb4"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a7ffef4e-b919-484e-b858-7a208189fd74">
+                    <propertyInstance
+                      Id="9789d9c6-8a83-47ca-819e-3031ae7b42d4"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f8b7b9b7-f57e-41e8-b687-7603c9d2c0e1">
+                    <propertyInstance
+                      Id="c2dec7a2-9e67-42b4-bfd4-462a6cfb3087"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="10b61e76-a0df-433f-b845-09fd07882f45">
+                    <propertyInstance
+                      Id="04a6721c-0f51-4258-9c7b-65a1d8b73c13"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0d60a8ae-3ffd-4eae-883f-366d8a1f40a8">
+                    <propertyInstance
+                      Id="0c89f425-ef8b-4b22-8d71-5e7dd2c52e56"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ff248c0b-72c6-4e6c-9753-18f2de7cecd0">
+                    <propertyInstance
+                      Id="eb9664dd-5c4c-4f0d-b2e3-db34108d9d12"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="293f6bb3-d7c1-4f3e-9c3b-a9f11c3d17ed"
+                LastKnownName="TeacherEx"
+                LastKnownLocation="Package4_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c71c139e-336e-479d-8eac-21d632913778"
+            name="AssociateCommand"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="068be03b-cc79-4c6e-8495-decd2ccb7018"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DAssociateCommand"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="435fe9d5-17d1-4dd5-bb15-d2d1b9628305"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ae4a9364-03c1-4169-9526-cfeae7497313">
+                    <propertyInstance
+                      Id="2213f846-591f-4181-ad5d-e6cfacaf4620"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fd6c992f-29b3-4564-927e-f17a80e1d4f6">
+                    <propertyInstance
+                      Id="1924897b-6004-46e6-b8dd-89649671df5b"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="90187e6b-4157-4abf-95a7-100ea7de434d">
+                    <propertyInstance
+                      Id="10f5b9c9-0c3c-40c1-8634-d2c9986a03b0"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fb739332-c176-4069-81f8-405234bdc9eb">
+                    <propertyInstance
+                      Id="a50a1964-c3d5-4c45-8b98-41871dd91fd9"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="75371ec8-2b6e-4666-b8a2-9c5b78a179b5">
+                    <propertyInstance
+                      Id="38566dab-bd34-4858-90bf-c6fdfd6e9b45"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e4a2707b-117a-4706-9a6a-3e8fe7c332ef">
+                    <propertyInstance
+                      Id="3868d927-2aac-493e-a018-34a2677f2e04"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1ca03339-f9ca-4de0-bdd4-d99571f5f052">
+                    <propertyInstance
+                      Id="e7a215dc-33df-4cec-aaa0-87cc25158e9f"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="4aa41520-2523-4724-af67-d2d5d26186c6"
+                LastKnownName="DelegateCommand&lt;Object‎&gt;"
+                LastKnownLocation="Package4_1645.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="8f557bf4-04b9-4da1-8755-f74ead1c3dc7"
+            name="ConfirmCommand"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="0006a974-85a8-4648-b68c-d1033430f003"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DConfirmCommand"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="0ccba3f6-5f7f-4481-a4e0-4790574ede3c"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4191ef5f-a830-4f11-92dd-8476775cc08e">
+                    <propertyInstance
+                      Id="9d06e3d3-6515-459c-b34a-9ae61a4c5190"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="59d31d92-443f-4256-b6d2-d9e25897d874">
+                    <propertyInstance
+                      Id="30929bfe-d412-4fc8-91d2-a9425a967e0c"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="976c0a55-4a70-4341-ba04-3d8baec37126">
+                    <propertyInstance
+                      Id="bf6f0ff3-2f31-41b4-a17d-6c3061ee4299"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="76f92169-2942-4587-97e7-0f64becb9844">
+                    <propertyInstance
+                      Id="02e93e83-caa8-4dfd-9db9-21c0b2417420"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1dae47ba-7304-40bc-a1b3-0c6a92f7d370">
+                    <propertyInstance
+                      Id="87ff1870-64df-4cd9-8bfb-5291e7b11986"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="47639325-d236-4deb-83ba-757c5f27f507">
+                    <propertyInstance
+                      Id="5f5b268b-0f28-405a-83f1-dc76fd6ae640"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6f397ea9-4222-4e7a-b246-5f5565fbf487">
+                    <propertyInstance
+                      Id="8d28fea9-1c3a-4884-963b-6d16c4d6f177"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="4aa41520-2523-4724-af67-d2d5d26186c6"
+                LastKnownName="DelegateCommand&lt;Object‎&gt;"
+                LastKnownLocation="Package4_1645.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="16cbd455-57cb-4023-aa59-c068b38d58a1"
+            name="CancelCommand"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="3ff9038d-51ee-4dfd-bcb8-98fe96767ef7"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DCancelCommand"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="63bff4c2-6134-464b-ba7a-dae45b89cf6d"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="59716f66-be77-4ea0-889a-f10aece10e59">
+                    <propertyInstance
+                      Id="44ee90fb-4ebb-474f-92ee-4b022b2c0a79"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3c7b014a-acf1-4da6-b659-7f139725da99">
+                    <propertyInstance
+                      Id="1f9b132c-c542-4119-89b5-fc8baac72f00"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b0eaa099-7dff-4a7d-a04e-f8b4853c7bb2">
+                    <propertyInstance
+                      Id="764e50c6-c13f-43bb-84ea-d02dc1147d5c"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="31581824-a8d4-4e4f-8312-308e3463c998">
+                    <propertyInstance
+                      Id="fa6f6ce4-df74-4c68-b0de-ae6a81c3d99c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2071185d-901c-433c-853d-df25c310a0e2">
+                    <propertyInstance
+                      Id="c1d8cde7-43ae-4daf-a958-6c0b53e64389"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a8da4a53-f4bd-44f7-acdc-6dc3207b92e7">
+                    <propertyInstance
+                      Id="5c36c51c-ba4b-40d3-94f1-1ee4e59be40c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fa50f85c-5804-4df7-ae0b-20138f5ec4c8">
+                    <propertyInstance
+                      Id="7ecdadc6-32e0-4e6b-a545-d915f5f1d38a"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="4aa41520-2523-4724-af67-d2d5d26186c6"
+                LastKnownName="DelegateCommand&lt;Object‎&gt;"
+                LastKnownLocation="Package4_1645.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ffb9755a-23f9-451c-98d0-e145c5de1f01"
+            name="OnDeleteViewClose"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="7c0782ab-f192-43ac-ab57-c877b7529aca"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DOnDeleteViewClose"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="5aaf5a5b-bfec-4388-be0c-787770e259d1"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="697552c5-9cab-4343-8592-cae5b9719e0d">
+                    <propertyInstance
+                      Id="833fe134-0f3f-4f9f-bcc4-357c36ed13a6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3545d26b-cd64-4d56-97ee-c169d81c547b">
+                    <propertyInstance
+                      Id="c43accb0-70f6-4835-9e0c-8b153b8d2b94"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="36372e2e-d699-4a72-ac59-b34ccd66f5bc">
+                    <propertyInstance
+                      Id="0e359c93-47f3-4ed4-bd01-5d5c9d050a45"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="58ca5765-f579-4bd9-9420-164bbf4573d1">
+                    <propertyInstance
+                      Id="63391287-ca61-4283-8ecf-115466fb9e49"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f3cc74ab-661e-410a-978d-f4ce464de383">
+                    <propertyInstance
+                      Id="0254f923-cff9-4fee-b57a-281cbd370714"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="093a73e8-7fbb-4bee-8793-6394a35365e3"
+                LastKnownName="Action"
+                LastKnownLocation="Package1_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="4cfac2bb-9dac-4dbf-ac84-7e1724df9627"
+            name="ViewstateObject"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="33e85b27-3daa-4ba6-a570-7338537001d5"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DViewstateObject"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="73eda65f-20f3-44ab-86e3-b911e1d00891"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c3edfe2a-2179-4e79-8479-05c2062893c5">
+                    <propertyInstance
+                      Id="daeecb6a-ce18-41c4-a8b5-b2ae8c1a5ad0"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8b762bb7-9e55-4770-96ca-bface89b8293">
+                    <propertyInstance
+                      Id="153106f2-c2f8-4dac-8c66-95b8ed0b02bb"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3b8698ef-7cdd-432f-86c6-1f1ae14f69f8">
+                    <propertyInstance
+                      Id="3a4e2e25-f869-4df9-ac1c-8fed0a0ebdfe"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="de12dc3e-98c2-4953-b503-de8c4f6297c4">
+                    <propertyInstance
+                      Id="2e6d3575-2015-4dd2-87b4-a4cf44c61b6b"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d5dbeb07-22d8-494e-b155-689b8d7bb438">
+                    <propertyInstance
+                      Id="a2444f25-2da5-43c7-83a9-a749e0ae84b8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="394680e0-ca1b-4ab8-bd0b-b7a789eb7d2f"
+                LastKnownName="ViewstateObject"
+                LastKnownLocation="Package_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="690c9fcf-09ff-4dac-90a4-ff3dec10303b"
+            name="listofClassExs"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="0a80064d-70ce-4ffd-81c1-430eda54b401"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DlistofClassExs"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8c033816-b7a0-4664-a9ed-79408669ef7b"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="12ba3296-3411-4718-887f-09d725e13fb5">
+                    <propertyInstance
+                      Id="dc99b6d8-d962-48d5-a9e3-52a4d48c0dd4"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="919ef1ed-ea29-4817-bbc5-e7f3777842c2">
+                    <propertyInstance
+                      Id="eefa5c6d-8c6a-4528-bb2a-e1921f85d7f9"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="324a6599-32a4-40d9-916a-70973ff2edff">
+                    <propertyInstance
+                      Id="9a48a97a-ce6f-4cba-b86d-d9008e71ead6"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c4217373-778d-4cfe-898a-00b4c04dc93b">
+                    <propertyInstance
+                      Id="213a549e-bd37-4fa8-80a5-656467027d08"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="eb3c215d-bde8-4ef3-ab3f-8eb651f0f468">
+                    <propertyInstance
+                      Id="25278e10-6730-4b84-bd39-56152f55d377"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="2f0915ee-269f-41e3-a392-15bf0aef8dc2"
+                LastKnownName="List&lt;ClassEx‎&gt;"
+                LastKnownLocation="Package6_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="44a964d4-6bb4-4638-a702-75426c5c4ad3"
+            name="currentClass"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="42aaf105-87e1-49bb-994b-01cde01635ff"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DcurrentClass"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="31c130b6-bdf9-4333-9cfd-bb04e19bdc2f"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a7d12690-fbfc-4ec9-b5a0-656dd49a67f1">
+                    <propertyInstance
+                      Id="db8f781e-e0fc-4fa8-9f04-c7c947ddf2f5"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="86bf983e-9e1e-44db-8c54-5de413cac88c">
+                    <propertyInstance
+                      Id="9e2c83b1-a410-4a75-b565-3aea35d6f530"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c6347ba1-915e-4539-83f1-8dc7370befe8">
+                    <propertyInstance
+                      Id="e5aa35f2-7601-41f8-8e7e-7bc0dc22318c"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="91788ca8-7a3a-4885-acf6-133a2f412a92">
+                    <propertyInstance
+                      Id="421ba848-17b7-46f1-8de5-284ee26f9e47"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a1bf90db-51ba-4116-9d71-9d5f5f127456">
+                    <propertyInstance
+                      Id="ead89191-494c-443e-b136-eedd08b13fb8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="ae6f25bc-7be0-4904-89ed-0ea0a3f4d903"
+                LastKnownName="ClassEx"
+                LastKnownLocation="Package4_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="efeec287-a282-4c45-ac6c-a9309e27ea02"
+            name="selectedClassEx"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="d80f8fd3-e5cc-4e1f-93f9-5e4af8a03dd0"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DselectedClassEx"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1b6930a0-22da-4e5d-b789-f4b367252d12"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1ab35c00-51db-420e-8bed-482bf7e82d32">
+                    <propertyInstance
+                      Id="aa3fcfd5-a6a6-4f35-aeab-41087cd92a18"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="eb28ca0f-94cd-4ef4-9c94-702f25e2e37c">
+                    <propertyInstance
+                      Id="d12aa401-de59-49e4-a3dc-59dbf73910c8"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3c6be4d4-d0a2-41bc-8cff-b24c823f73ff">
+                    <propertyInstance
+                      Id="248d90e0-8898-482e-b459-2d5845060f79"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="15289234-2d81-4029-adfc-05d4d2f9caf7">
+                    <propertyInstance
+                      Id="82aef1e5-c553-4432-aeb2-10871fc1d054"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="acdecf23-8a6a-439e-9dba-923c2908ae3c">
+                    <propertyInstance
+                      Id="64333900-0757-4b63-a319-e416d631fe13"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="ae6f25bc-7be0-4904-89ed-0ea0a3f4d903"
+                LastKnownName="ClassEx"
+                LastKnownLocation="Package4_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="8aed8db0-5014-4e7c-b70d-a4743b6f6f8f"
+            name="chosenClass"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="7326b1c2-d213-45a8-b13d-00c4dc3e4ff6"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DchosenClass"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6b906495-1f17-4644-b6d7-d95a33235335"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e0e24507-6955-4911-b774-805a8012dc99">
+                    <propertyInstance
+                      Id="53f8c294-a451-4673-aaec-ddae51e93624"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3aab5ca5-5e5f-46f7-9f33-36a44390fa4d">
+                    <propertyInstance
+                      Id="3743a6c7-fd77-42aa-8b63-e73d5eabe122"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f4a7240d-dadb-47d2-b263-4e20e5822f15">
+                    <propertyInstance
+                      Id="2f99979d-8bec-4f5f-b508-81ba4f0c255f"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="92347283-4e60-43e9-8f52-7d169eb1ceca">
+                    <propertyInstance
+                      Id="68e5b37c-5895-4edc-b898-5ae4005101cc"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="546b28d0-e875-47a1-8d9a-4c00de9449ed">
+                    <propertyInstance
+                      Id="a67f8603-a4fe-4e0d-8e77-087cc5d439ee"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="ae6f25bc-7be0-4904-89ed-0ea0a3f4d903"
+                LastKnownName="ClassEx"
+                LastKnownLocation="Package4_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="b600e54f-def0-45b0-8538-23a5f8ce172b"
+            name="listofRelatedClassesToTeacher"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="bc8ec384-bfb2-46b3-8f56-9b2bdf0ff74a"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DlistofRelatedClassesToTeacher"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8f4f95aa-deaa-419c-9d5f-f71ee1729c94"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="60342cc8-e823-442c-969a-f5e40e56e40c">
+                    <propertyInstance
+                      Id="a4997792-cf2a-476b-a5fc-58b4f3142e0d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="87831a0b-c0fc-4d11-9d6a-9e532bad151f">
+                    <propertyInstance
+                      Id="b163ffe7-d294-42ae-a50b-cb60e8b013cd"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a9832fb5-fb14-4248-b5b1-8f39ed0afe26">
+                    <propertyInstance
+                      Id="70c77e7c-a230-44f8-b836-a52ff3045cc0"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ce549ed8-761f-46e7-8094-a9e427137872">
+                    <propertyInstance
+                      Id="0b921254-6c05-433c-98ee-bedde9e6f842"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c32ba500-aad3-43f7-afe0-db1b88adf311">
+                    <propertyInstance
+                      Id="2348aaa9-a589-417c-91d5-ff18b4b5528c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="2f0915ee-269f-41e3-a392-15bf0aef8dc2"
+                LastKnownName="List&lt;ClassEx‎&gt;"
+                LastKnownLocation="Package6_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="7ade5747-d7ee-4c4f-9166-fb17c4e810dc"
+            name="selectedTeacherEx"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="6819c1d2-385a-4b3c-b19a-ce491fb1b1ee"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DselectedTeacherEx"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="500af5c7-1861-4a2d-b48d-d4a71382db20"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2864fb76-3c72-48f6-b025-0c7875bd3dc5">
+                    <propertyInstance
+                      Id="a02e7a41-3e28-4502-a52e-58c293199aa3"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="24399976-4afc-4d90-b6e9-7cca5aba67bd">
+                    <propertyInstance
+                      Id="e07561d9-a27b-4171-92b5-09b2ec43a3a7"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4d63e316-9ad8-45fe-95b8-45e04df9e964">
+                    <propertyInstance
+                      Id="0e68dc72-e91c-4ea2-89c4-78a263645e62"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c1cd5568-da5d-4652-8af1-138abf2dcb97">
+                    <propertyInstance
+                      Id="bbae1567-06fc-4fe6-9e6c-8299570711c5"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0cf80daa-8c48-4e27-9313-eeab0ade7ec9">
+                    <propertyInstance
+                      Id="3fdefa72-3c9e-403f-abf0-c4354f287d25"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="293f6bb3-d7c1-4f3e-9c3b-a9f11c3d17ed"
+                LastKnownName="TeacherEx"
+                LastKnownLocation="Package4_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ecb3316a-3655-4d0c-b9cc-93e2710b7a28"
+            name="isLoading"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="092a3bff-a8fe-41cc-88c2-87d3f833100a"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DisLoading"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="de0749d8-6d7e-4b8d-8c8f-143b56128681"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8c9c3e90-c8b3-4feb-b3b0-9f13fc94eba9">
+                    <propertyInstance
+                      Id="ba5e5b27-ac09-4dd0-ae5e-626df651c80d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5bfc4007-a579-481d-b169-335213793d61">
+                    <propertyInstance
+                      Id="9dee225a-3099-44d9-9d27-28f6e6b7f66e"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8cfb5608-1a81-4566-bbfe-bd59bc90a8ee">
+                    <propertyInstance
+                      Id="5c67b109-c688-40ef-aa91-4cb2a246b0f8"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="69d1904d-5e3e-4cf0-9ab7-8811b3094417">
+                    <propertyInstance
+                      Id="99790e2b-abb2-4141-98d0-0885f12c6683"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6f0cb024-3b42-4a57-bcb1-2c7cb7f758b1">
+                    <propertyInstance
+                      Id="d50fb39b-2537-451d-8813-4224790b3e9c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="ModelingProjectClient.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="d59db3a5-68b4-4fc7-a1b5-d9a1bcefa848"
+            name="currentTeacherEx"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="95d562eb-d7a5-443f-87a5-12c4d1a68aa4"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DcurrentTeacherEx"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="e55ec95e-4a69-41d8-acbb-5ec98053a478"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="705d9e7a-bf20-4d14-ba65-600a1cd1c9a7">
+                    <propertyInstance
+                      Id="7f89bcfc-6309-4f14-b711-d25ee83a6b6c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e03d54cb-b93f-4ff8-9c0d-25eee684baf7">
+                    <propertyInstance
+                      Id="e7318c2e-60b2-40f4-885c-668ad8b572e4"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b8364fca-d28d-4cf1-bb23-565791763fc6">
+                    <propertyInstance
+                      Id="c416b8e9-ddcf-4273-a5e3-737ac1b957af"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9316d614-6732-446c-8f67-598643b61885">
+                    <propertyInstance
+                      Id="e3cf936d-00b1-401e-8067-d02fdf6b7137"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bce78b91-e0eb-40ab-8f09-e37cffa61b40">
+                    <propertyInstance
+                      Id="2b91f7a5-e15e-4ca4-b250-5ffdcc0fb956"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="293f6bb3-d7c1-4f3e-9c3b-a9f11c3d17ed"
+                LastKnownName="TeacherEx"
+                LastKnownLocation="Package4_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c626fe63-9ebb-4ad4-b6a5-31f838b4156e"
+            name="listofTeacherExs"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="6e9a6779-04a5-458c-991f-1a954f986976"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DlistofTeacherExs"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8270b37d-4a93-4fbf-a553-6cbe74abc562"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dcafe644-0903-42fe-a764-63a0de570d1e">
+                    <propertyInstance
+                      Id="c97ec774-09a3-4de8-bb51-528e76f85f3e"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="52b42872-87af-487a-9977-1dc0498eec44">
+                    <propertyInstance
+                      Id="a6eeda96-23da-4b5d-9263-69c1bbda9b3e"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="58f852c2-b6c8-4f12-9362-f61312671f2a">
+                    <propertyInstance
+                      Id="13fa1219-bea5-44db-9059-a087d1c5fca3"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1fbcbdf2-99c7-4e74-a823-2e47c8e9baa4">
+                    <propertyInstance
+                      Id="98bc1005-4805-4bc7-807b-a983a57c109b"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="014e8b73-c3ec-40e7-8267-8eb50c1bd844">
+                    <propertyInstance
+                      Id="d3a3eded-0c7b-4040-9a6f-0cab902b5a56"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="730b3b7f-da7d-4164-a5f4-1936d0142dd9"
+                LastKnownName="List&lt;TeacherEx‎&gt;"
+                LastKnownLocation="Package6_1641.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="bb561827-8ee5-48a5-8c19-52d9ae11ad4f"
+            name="goBackToFkTeacherId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="e41be713-1dce-41e6-be91-8476ab9171d1"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DgoBackToFkTeacherId"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d5d425dd-aaf9-4b26-8541-971da319c0e3"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a4f00098-9782-4d76-96cb-6165b4e05f6c">
+                    <propertyInstance
+                      Id="702a0f9f-4e04-422f-acb9-e1c03382ca51"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bbaa81be-14ca-4fbc-a5ba-84789a8716e4">
+                    <propertyInstance
+                      Id="898bbbbc-d2c4-4ef8-9de3-6bbb24de7e00"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="37fbfa54-aaa9-49bc-85c2-89355e696163">
+                    <propertyInstance
+                      Id="5ea9141c-3c2b-4511-a515-c2e4d513da64"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f6411c3c-1258-48e6-9e93-19366ed78ea3">
+                    <propertyInstance
+                      Id="d3c0fa16-a9e4-4b84-81f5-378ae307bc42"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b2219b0f-da5e-4505-91f8-d84fafdb9959">
+                    <propertyInstance
+                      Id="3d1b021a-a39e-4f09-a1ea-afcc6c320c65"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ModelingProjectClient.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="e58a0184-0595-4647-936d-01a277305e4b"
+            name="DeleteViewModel"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="4dd0c53c-10de-4e02-9e8a-157c9ba21692"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="7c673640-98ba-44c0-b12b-f6a499ee0472"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c3f05ed7-fe1b-4bfb-b7f1-0350a930aa9f">
+                    <propertyInstance
+                      Id="41b70b58-d7f9-46fa-aed8-783507c1f590"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7a0f4161-b794-4292-8277-2b8558f70acf">
+                    <propertyInstance
+                      Id="b0593487-8e46-49e6-8fcb-77cecb72f8d6"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2a097b51-32d2-4850-95da-dfdba53c767a">
+                    <propertyInstance
+                      Id="e806e84d-700b-495b-a91d-a99fed404963"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2b8ea8ec-4c6b-4c91-8b01-1dc0f2d8d988">
+                    <propertyInstance
+                      Id="4a177ef1-7fd1-4959-9ece-9ca2b5602c38"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="463d8f11-d40e-46bf-aafa-5ce6c0dc2039">
+                    <propertyInstance
+                      Id="654963a4-c1f1-4893-a0cf-7dfcbc9f27fe"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2e00eed0-c506-4d1b-95e5-34a25dc79ec2">
+                    <propertyInstance
+                      Id="8afdd95c-9539-4532-8653-130ddab13360"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="91019c3e-234c-4109-b971-cbc77177a95d"
+            name="Associate"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="14e587a8-d747-4b9d-9b60-fbd58b20f698"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3D(Name%3DAssociate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2ea1ffeb-df95-4923-8159-1dc71b80b9f6"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ae8acd53-f703-45aa-813e-478e92cc7761">
+                    <propertyInstance
+                      Id="cd595025-2a39-4ab9-af79-f56198150861"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a96f0845-d7cd-4245-89e0-ac72c36a0030">
+                    <propertyInstance
+                      Id="81166d1e-7b55-4b03-8dd4-bd2a833e9e58"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ea09d126-034b-4546-8568-3b28d962b8a8">
+                    <propertyInstance
+                      Id="cd0cc7e1-e1a4-483b-9f99-808623853895"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5ea256fc-bee7-4cf7-a4c0-59f8a6d49757">
+                    <propertyInstance
+                      Id="672363a9-8ec8-46d1-9c04-d08126328cd3"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7fff91ce-3dec-4d51-b360-450fa0a63a10">
+                    <propertyInstance
+                      Id="659068d2-c754-413a-851f-79ee76e37922"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="53b9d3a5-4627-4c43-92f9-10dff202e447">
+                    <propertyInstance
+                      Id="b9fadb46-8b5f-4d7c-a461-1755f2513782"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="913a2e3c-63f3-46c0-83e9-f9b98c0c6afa"
+                  name="o"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="7357370d-a5ce-4f38-a0d3-1b3d489318fe"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3D(Name%3DAssociate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Do"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="2c000a79-9940-4ac8-a82c-6bdde383c797"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package1_1641.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f5b8c463-21fe-4be9-ab1a-9ca927ef8c8c"
+            name="CanAssociate"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="722926b7-a5ba-4ca9-ad0d-9685fe003939"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3D(Name%3DCanAssociate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8479cd42-a6b2-45a1-8bbb-fd62ba26efd7"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="928a41c6-9e69-46e9-91e3-cdbed9b041e3">
+                    <propertyInstance
+                      Id="dab5c19c-a724-44a8-a4fe-e7d52159dfb5"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7e48c43a-3046-4ca2-ae2a-29dc944fcd96">
+                    <propertyInstance
+                      Id="9f67dd80-cbf8-4aa7-9165-0b5207903d4d"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4c04e8ff-81ca-4fdd-abdb-f7cb714346eb">
+                    <propertyInstance
+                      Id="ab1d24b5-1aee-46b7-9588-9bfe85a5169f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9131ee97-ae9c-4fc0-8eda-7a9caad3fa21">
+                    <propertyInstance
+                      Id="5436fcd9-b155-45db-9405-ad523338dc79"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ae866a96-e594-42eb-add5-cbebe25ac349">
+                    <propertyInstance
+                      Id="80eda3b8-12e8-4e7e-bbec-d2b5cf4da6e4"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2a5309a1-a850-4f9a-8fa6-cc059aa31ffa">
+                    <propertyInstance
+                      Id="85e65b85-148c-4e15-b3e7-69f1b08c91d3"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="37b7800b-15b9-42c4-a41d-d740bdda7dcf"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProjectClient.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1b371f43-346e-4efe-ac05-ddd782eb1795"
+                  name="o"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="e1332314-571a-4b34-bc27-a2c651a5dcc5"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3D(Name%3DCanAssociate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Do"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="2c000a79-9940-4ac8-a82c-6bdde383c797"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package1_1641.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="9fdd1cf6-95a6-4624-91cf-66a562e79b87"
+            name="Confirm"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="9137b0ff-a745-431f-9f91-a5585cd7889a"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3D(Name%3DConfirm OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="0075df74-c760-4fd8-a155-e4b66dfa21d3"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b4c442db-44b4-419b-bba4-0d96fb1b1d7e">
+                    <propertyInstance
+                      Id="ede9741f-916e-4ac8-97a1-af4b672eb963"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2ae26a86-6b08-450f-911d-97e214c75a12">
+                    <propertyInstance
+                      Id="b377e30f-ea43-4a89-a626-d137b84330dd"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5880d2f5-a54c-4066-8898-4896f4ac6daf">
+                    <propertyInstance
+                      Id="e664bc0e-5371-491d-a7aa-f4d77b49a7f0"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1b1c13f5-e8dd-4a50-ade6-5ff4484c5088">
+                    <propertyInstance
+                      Id="81888065-c4e0-4d01-a089-bd448fa1cdf4"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f8078908-f9c4-4556-859d-e06d75b46e3d">
+                    <propertyInstance
+                      Id="e7935dd3-6480-4300-af40-94b4e6c8892d"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6ecd69ae-2335-441d-b6ae-787ef6514b7a">
+                    <propertyInstance
+                      Id="e9fa0468-4e8f-4b1b-a75e-28985a0aff8c"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7072b2cf-7ae1-4e15-b32b-75a0d8585fe3"
+                  name="o"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="bb5923a1-4b19-49b9-82a6-c7638b57cdf2"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3D(Name%3DConfirm OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Do"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="2c000a79-9940-4ac8-a82c-6bdde383c797"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package1_1641.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="410d8743-0ffa-49cd-81df-0f31d092f514"
+            name="MayConfirm"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="b9562de1-31f4-4a89-b805-ff1b3b453f24"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3D(Name%3DMayConfirm OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="0674df08-5984-49ee-a59e-e9f2e1f74ca3"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b9677786-052d-4ec4-833b-50193685e97b">
+                    <propertyInstance
+                      Id="a9cae9e2-5a10-4c17-8eba-fa89adaf1bd2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5e703168-afcd-4bed-8566-b56209382e4d">
+                    <propertyInstance
+                      Id="7800f3d3-cb42-49c3-ae98-db22ee0c3e19"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0a14c7a8-f684-4731-9352-1f0923def5ed">
+                    <propertyInstance
+                      Id="84138dff-a97d-4da6-a811-eb3d418eee9f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3343a0bc-45b3-4005-9b5a-1aa0bef4d724">
+                    <propertyInstance
+                      Id="b8b81f57-1c39-465e-ba6f-5b53e31ba898"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dd7e2141-8832-4b5d-bcc9-b2bf909c5358">
+                    <propertyInstance
+                      Id="1d0ee305-f9ec-42d5-9d4b-c58966a73f81"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8a4e62e7-5255-4ede-9ca6-4b293fd7e72e">
+                    <propertyInstance
+                      Id="093acddf-aa99-42fb-a5ad-5968cd77b898"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5833ec82-ac97-460a-99d1-edec44f8d933"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProjectClient.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c0c38243-624b-435d-9323-c58fa8bb8f24"
+                  name="o"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="8a445f55-0973-47dc-abe6-4e5405833d66"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3D(Name%3DMayConfirm OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Do"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="2c000a79-9940-4ac8-a82c-6bdde383c797"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package1_1641.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="fd263d71-e138-4847-a1aa-a5891940baee"
+            name="Cancel"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="e21e99e7-6ae0-4ddb-afb2-3b7786b476de"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3D(Name%3DCancel OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8819297c-c44b-4a6d-8cf6-bd2b1ac77dd9"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="08db8882-36ae-4d02-ba0d-42d82869a32a">
+                    <propertyInstance
+                      Id="d607b9e4-66a8-43d0-9d10-5948b742feb1"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f72f38af-557a-4709-8167-45d61b638639">
+                    <propertyInstance
+                      Id="80c7800d-7037-4ec5-b3ff-520234d9de5a"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="95445019-90ea-424e-b536-4e8a8feaeb10">
+                    <propertyInstance
+                      Id="fc8b2534-4a55-45ef-b1fc-eaf017ee2d5a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8ab93d6c-f14e-48bd-9607-76ce2d5e6a15">
+                    <propertyInstance
+                      Id="755f3336-79c3-4ffb-8e47-b6052fd7ed96"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2ef9ec26-876f-4a1e-bbff-9f9be4f5f9bc">
+                    <propertyInstance
+                      Id="809d5169-430e-4745-ad19-9981d486d9f0"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0759d28f-a643-4b43-923f-f85e4dda7897">
+                    <propertyInstance
+                      Id="14bf103a-b6a3-4ca0-bd06-7e94c6135f26"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="12274e08-9def-49c9-bf7e-3cfe21b037dd"
+                  name="o"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="b02e449c-fb30-4ac3-bc0e-e0074c6f8f1e"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3D(Name%3DCancel OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Do"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="2c000a79-9940-4ac8-a82c-6bdde383c797"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package1_1641.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="26dd25b4-ff76-4ad4-ab01-d599a080fa8d"
+            name="RaiseOnDeleteViewClose"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="f30811a9-be00-402e-8da7-33c8689e5cf8"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FLars Skaaning%2FDocuments%2FGitHub%2FHovedopave%2FHovedOpgave%2FAdminModule%2Fbin%2FDebug%2FAdminModule.exe&quot; Namespace%3DAdminModule.ViewModels.DeleteViewModels Type%3DDeleteViewModel Member%3DRaiseOnDeleteViewClose"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8a9ce21a-2723-4bab-8053-95fcdeadf716"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="aeb5ae27-6c09-4cab-99d9-db92b3610405">
+                    <propertyInstance
+                      Id="5809fa82-4714-41de-b69d-c3de653a5267"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="42d83ae2-65cf-4172-b65c-387b3c74e62e">
+                    <propertyInstance
+                      Id="31981c5b-0563-4122-8f23-5d26b62a894a"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e5f3655b-05f4-4b2b-b7d7-7237d97a6bed">
+                    <propertyInstance
+                      Id="27f20c4b-f70f-453a-9ca5-4223bc8793ba"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ff28f519-9df7-40e2-ad75-babbe4e5b4b1">
+                    <propertyInstance
+                      Id="c94ac56a-c897-4d7c-b1f3-8b3a18a77b97"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3772f371-22e6-4b89-b8ba-6df8db2a8c5c">
+                    <propertyInstance
+                      Id="779944b4-a200-413f-baf4-f7a21fa68cac"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="146fde12-10f1-4a7a-aa97-06dbb7254eb6">
+                    <propertyInstance
+                      Id="18da3191-428d-4d3f-ade8-d3add04fd150"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
