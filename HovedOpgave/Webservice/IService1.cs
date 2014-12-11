@@ -72,7 +72,7 @@ namespace Webservice
 
         #region Student
         [OperationContract]
-        bool InsertStudent(Student parent, EnrollmentEx enrollment = null);
+        bool InsertStudent(Student parent, Enrollment enrollment=null);
 
         [OperationContract]
         List<Student> GetStudents();
@@ -99,7 +99,6 @@ namespace Webservice
 
 
 
-
         #region Enrollment
 
         [OperationContract]
@@ -107,21 +106,18 @@ namespace Webservice
 
 
         [OperationContract]
-        List<EnrollmentEx> GetEnrollments();
+        List<Enrollment> GetEnrollments();
 
 
 
         #endregion
 
 
+        [OperationContract]
+        bool UpdateUserDetails(int id, string city, string address, int phone, string email);
 
-       /* [OperationContract]
-        bool UpdateUserDetails(int id, string city, string address, int phone, string email);*/
-
-    
-
-
-
+      /*  [OperationContract]
+        int GetMostRecentUserId();*/
     }
 
 
