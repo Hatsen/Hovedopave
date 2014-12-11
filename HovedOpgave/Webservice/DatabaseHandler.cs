@@ -1038,6 +1038,28 @@ namespace Webservice
         #endregion
 
 
+        public bool UpdateUserDetails(int id, string city, string address, int phone, string email)
+        {
+            bool success = false;
+
+            try
+            {
+                DB.Open();
+                DB.Exec("UPDATE [User] SET City = '" + city + "', Address = '" + address + "', PhoneNumber = " + phone + ", Email = '" + email + "' WHERE Id = " + id);
+
+                success = true;
+            }
+            catch (SqlException ex)
+            {
+            }
+            finally
+            {
+                DB.Close();
+            }
+
+            return success;
+        }
+
         public int GetTheUserrole(int id)
         {
             int userrole = -1;
