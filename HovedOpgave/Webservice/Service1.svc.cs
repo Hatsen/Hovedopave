@@ -410,14 +410,14 @@ namespace Webservice
 
         public bool GetLoginDetails(string username, string password)
         {
-            HttpContext context = HttpContext.Current;
             bool loggedIn = false;
+            string cleanUsername = username.Replace("'", "");
 
-            DatabaseHandler.Instance.GetLoginDetails(username);
+            DatabaseHandler.Instance.GetLoginDetails(cleanUsername);
             if (Holder.Instance.LoginDetails != null && PasswordHash.ValidatePassword(password, Holder.Instance.LoginDetails.Password) == true)
             {
                 loggedIn = true;
-                DatabaseHandler.Instance.UpdateLastLogin(username, DateTime.Now);
+                DatabaseHandler.Instance.UpdateLastLogin(cleanUsername, DateTime.Now);
             }
             else
             {

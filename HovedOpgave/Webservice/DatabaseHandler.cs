@@ -131,6 +131,9 @@ namespace Webservice
                     user.Password = Convert.ToString(loginDetails[0][7]);
                     user.Lastlogin = Convert.ToDateTime(loginDetails[0][8]);
                     user.Userrole = Convert.ToInt32(loginDetails[0][9]);
+                    user.Phonenumber = Convert.ToInt32(loginDetails[0][10]);
+                    user.Email = Convert.ToString(loginDetails[0][11]);
+                    user.Fkschoolid = Convert.ToInt32(loginDetails[0][12]);
 
                     Holder.Instance.LoginDetails = user;
                 }

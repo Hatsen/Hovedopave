@@ -18,11 +18,11 @@ namespace SMSModule.Intrasystem
             html += "<br />";
             html += "<table id='classlist' align='center'>";
             html += "<tr class='classlistitem'>";
-            html += "<th class='classlistitem'>Navn</th>";
-            html += "<th class='classlistitem'>Adresse</th>";
-            html += "<th class='classlistitem'>By</th>";
-            html += "<th class='classlistitem'>Telefonnummer</th>";
-            html += "<th class='classlistitem'>E-mail</th>";
+            html += "<th class='classlistheaderitem'>Navn</th>";
+            html += "<th class='classlistheaderitem'>Adresse</th>";
+            html += "<th class='classlistheaderitem'>By</th>";
+            html += "<th class='classlistheaderitem'>Telefonnummer</th>";
+            html += "<th class='classlistheaderitem'>E-mail</th>";
             html += "</tr>";
 
             foreach (ClassEx classEx in classList)

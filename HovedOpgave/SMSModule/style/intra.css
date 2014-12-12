@@ -153,6 +153,11 @@
     margin-bottom: 10px;
 }
 
+.classlistheaderitem
+{
+    background-color: #6C97C5;
+}
+
 .classlistitem
 {
     border: 1px solid #000;
