@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Intra.master.cs" Inherits="SMSModule.Intrasystem.Intra" %>
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,9 +13,13 @@
     <header id="banner">
         <a href="Default.aspx" style="text-decoration: none"><h1 id="bannerTitle">Skoleintra</h1></a>
         </header>
-        <nav id="leftMenu">
+        <nav id="leftMenu" runat="server">
             <br />
-            <a class="item" href="Default.aspx">Forside</a>
+                <%
+                    homeControls.InnerHtml = "<a class='item' href='Default.aspx?class=" + Convert.ToString(Session["selectedclass"]) + "'>Forside</a>";
+                %>
+            <div id="homeControls" runat="server">
+            </div>
             <br />
             <br />
             <a class="item" href="ClassList.aspx">Klasseliste</a>
