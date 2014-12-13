@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Webservice.Extended" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Webservice.Extended" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:10643/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Webservice.DB" />
+  <xs:import schemaLocation="http://larsogpatrick.azurewebsites.net/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Webservice.DB" />
   <xs:complexType name="ArrayOfClassEx">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="ClassEx" nillable="true" type="tns:ClassEx" />
@@ -38,6 +38,7 @@
       <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/Webservice.DB" base="q3:Parent">
         <xs:sequence>
           <xs:element minOccurs="0" name="ChildrenList" nillable="true" type="q3:ArrayOfStudent" />
+          <xs:element minOccurs="0" name="EnrollmentsCount" type="xs:int" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -49,4 +50,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfParentEx" nillable="true" type="tns:ArrayOfParentEx" />
+  <xs:complexType name="EnrollmentEx">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/Webservice.DB" base="q4:Enrollment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ParentList" nillable="true" type="tns:ArrayOfParentEx" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EnrollmentEx" nillable="true" type="tns:EnrollmentEx" />
+  <xs:complexType name="ArrayOfEnrollmentEx">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EnrollmentEx" nillable="true" type="tns:EnrollmentEx" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEnrollmentEx" nillable="true" type="tns:ArrayOfEnrollmentEx" />
 </xs:schema>

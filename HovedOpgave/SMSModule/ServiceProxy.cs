@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
-using SMSModule.Webservice;
+using SMSModule.WebServiceDeployed;
 
 /// <summary>
 /// Summary description for ServiceProxy
@@ -13,7 +13,7 @@ namespace SMSModule
 {
     public class ServiceProxy
     {
-        Service1Client service = new Service1Client();
+        WebServiceDeployed.Service1Client service = new Service1Client();
         private static ServiceProxy instance;
 
         public Service1Client Service

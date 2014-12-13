@@ -72,21 +72,51 @@
     <Content Include="Intrasystem\ClassList.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Intrasystem\Intra.Master" />
-    <None Include="Service References\Webservice\Service1.disco" />
-    <None Include="Service References\Webservice\configuration91.svcinfo" />
-    <None Include="Service References\Webservice\configuration.svcinfo" />
-    <None Include="Service References\Webservice\Reference.svcmap">
+    <None Include="Service References\WebServiceDeployed\Service1.wsdl" />
+    <None Include="Service References\WebServiceDeployed\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebServiceDeployed\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebServiceDeployed\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebServiceDeployed\Service13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebServiceDeployed\Service14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\WebServiceDeployed\SMSModule.WebServiceDeployed.Announcement.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WebServiceDeployed\SMSModule.WebServiceDeployed.ClassEx.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WebServiceDeployed\SMSModule.WebServiceDeployed.EnrollmentEx.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WebServiceDeployed\SMSModule.WebServiceDeployed.ParentEx.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WebServiceDeployed\SMSModule.WebServiceDeployed.Student.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WebServiceDeployed\SMSModule.WebServiceDeployed.TeacherEx.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\WebServiceDeployed\Service1.disco" />
+    <None Include="Service References\WebServiceDeployed\configuration91.svcinfo" />
+    <None Include="Service References\WebServiceDeployed\configuration.svcinfo" />
+    <None Include="Service References\WebServiceDeployed\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="style\css.css" />
     <Content Include="style\intra.css" />
     <Content Include="Web.config" />
-    <None Include="Service References\Webservice\Service1.wsdl" />
     <Content Include="MasterPage.master" />
-    <None Include="Service References\Webservice\Service12.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -170,7 +200,7 @@
     </Compile>
     <Compile Include="ObjectHolder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\Webservice\Reference.cs">
+    <Compile Include="Service References\WebServiceDeployed\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -179,33 +209,6 @@
     <Compile Include="UcController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Webservice\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Webservice\Service11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Service References\Webservice\SMSModule.Webservice.Student.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\Webservice\Service13.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Service References\Webservice\SMSModule.Webservice.Announcement.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\Webservice\Service14.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Service References\Webservice\SMSModule.Webservice.ClassEx.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\Webservice\SMSModule.Webservice.ParentEx.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\Webservice\SMSModule.Webservice.TeacherEx.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -217,7 +220,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\Webservice\" />
+    <WCFMetadataStorage Include="Service References\WebServiceDeployed\" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
