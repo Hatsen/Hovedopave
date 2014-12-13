@@ -12,7 +12,8 @@ namespace Webservice
 {
     public class DatabaseHandler
     {
-        SQLDatabase DB = new SQLDatabase("SchoolDB.mdf", "LocalDB", "", "");
+        //SQLDatabase DB = new SQLDatabase("SchoolDB.mdf", "LocalDB", "", "");
+        SQLDatabase DB = new SQLDatabase("", "", "", "");
         private static DatabaseHandler instance;
 
         private DatabaseHandler()
@@ -341,9 +342,6 @@ namespace Webservice
         }
         public List<ParentEx> GetParents(int? parentId = null)
         {
-
-
-
             List<ParentEx> parents = new List<ParentEx>();
 
 
@@ -460,7 +458,7 @@ namespace Webservice
             List<StudentParent> studentParentsList = new List<StudentParent>();
 
 
-            var con = @"Data Source=(LocalDB)\v11.0;;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=1200";
+            var con = @"Data Source=hswcgtr08t.database.windows.net;Initial Catalog=SchoolDB;User ID=larsogpatrick@hswcgtr08t;Password=Kagekage1;Encrypt=true;Trusted_Connection=false;";
             //var con=@"Data Source=(LocalDB)\v11.0;AttachDbFileName=C:\USERS\LarsS\DOCUMENTS\GITHUB\HOVEDOPAVE\HOVEDOPGAVE\WEBSERVICE\APP_DATA\SCHOOLDB.MDF; Integrated Security=SSPI; Connection Timeout=1200";
 
             //(@"Data Source=(LocalDB)\v11.0;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=12000");
@@ -522,18 +520,8 @@ namespace Webservice
             return Convert.ToInt32(getEnrollments[0][0]);
         }
 
-
-
-
-
-
-
-
-
-
         public bool DeleteConnectionBetweenParentAndChild(int parentId, int childId)
         {
-
             int result;
             bool success = true;
 
@@ -932,7 +920,7 @@ namespace Webservice
             {
                 DB.Open();
 
-                string[][] getEnrollments = DB.Query("SELECT * " + " FROM [Enrollment];");
+                string[][] getEnrollments = DB.Query("USE [SchoolDB] SELECT * FROM [Enrollment];");
 
                 for (int i = 0; i < getEnrollments.Length; i++)
                 {
@@ -951,15 +939,49 @@ namespace Webservice
 
                     enrollments.Add(enrollment);
                 }
-            }
-            catch (Exception ex)
-            {
 
+                /*
+                EnrollmentEx enrollment = new EnrollmentEx();
+                enrollment.ChildAddress = "Åbn DB";
+                enrollment.ChildBirthdate = "12/12-12";
+                enrollment.ChildCity = "Vejle";
+                enrollment.ChildFirstname = "fdsf";
+                enrollment.ChildLastname = "fdsfd";
+                enrollment.ChildPhonenumber = 48488894;
+                enrollment.DateCreated = Convert.ToString(DateTime.Now);
+                enrollment.Fkschoolid = 1;
+                enrollments.Add(enrollment);
+                 */
+            }
+            catch (SqlException ex)
+            {
+                EnrollmentEx enrollment = new EnrollmentEx();
+                enrollment.ChildAddress = ex.ToString();
+                enrollment.ChildBirthdate = "12/12-12";
+                enrollment.ChildCity = "Vejle";
+                enrollment.ChildFirstname = "fdsf";
+                enrollment.ChildLastname = "fdsfd";
+                enrollment.ChildPhonenumber = 48488894;
+                enrollment.DateCreated = Convert.ToString(DateTime.Now);
+                enrollment.Fkschoolid = 1;
+                enrollments.Add(enrollment);
             }
             finally
             {
                 DB.Close();
             }
+
+            EnrollmentEx enrollment2 = new EnrollmentEx();
+            enrollment2.ChildAddress = "PISSEGADE";
+            enrollment2.ChildBirthdate = "12/12-12";
+            enrollment2.ChildCity = "Vejle";
+            enrollment2.ChildFirstname = "fdsf";
+            enrollment2.ChildLastname = "fdsfd";
+            enrollment2.ChildPhonenumber = 48488894;
+            enrollment2.DateCreated = Convert.ToString(DateTime.Now);
+            enrollment2.Fkschoolid = 1;
+            enrollments.Add(enrollment2);
+
             return enrollments;
         }
 

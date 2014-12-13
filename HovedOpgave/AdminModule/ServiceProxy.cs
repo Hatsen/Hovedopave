@@ -1,5 +1,6 @@
 ﻿using AdminModule.ViewModels;
-using AdminModule.Webservice;
+//using AdminModule.Webservice;
+using AdminModule.WebServiceDeployed;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace AdminModule
 {
    public class ServiceProxy
     {
-       Service1Client service = new Service1Client();
+       WebServiceDeployed.Service1Client service = new Service1Client();
+       //Service1Client service = new Service1Client();
 
        private static ServiceProxy instance;
 

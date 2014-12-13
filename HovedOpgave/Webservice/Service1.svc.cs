@@ -558,9 +558,7 @@ namespace Webservice
 
         public List<EnrollmentEx> GetEnrollments()
         {
-
             return DatabaseHandler.Instance.GetEnrollments();
-
         }
 
         #endregion

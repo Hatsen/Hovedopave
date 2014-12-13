@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using AdminModule.Views;
 using AdminModule.Views.DeleteView;
-using AdminModule.Webservice;
+//using AdminModule.Webservice;
+using AdminModule.WebServiceDeployed;
 using Microsoft.Practices.Prism.Commands;
 using System.Collections.ObjectModel;
 
@@ -50,7 +51,7 @@ namespace AdminModule.ViewModels
             listofpersons.Add("Forældre");
             PersonStringList = listofpersons;
 
-            SetTimer();
+            //SetTimer();
 
 
         }
@@ -651,6 +652,7 @@ namespace AdminModule.ViewModels
 
         private async Task<bool> GetTeachers() // måske int userrole her. Så kan du hente de ansatte som er relevante
         {
+            //TeacherList = new List<TeacherEx>();
             Isloading = true;
             TeacherList = await ServiceProxy.Instance.GetTeachers();
             ObjectHolder.Instance.TeacherList = TeacherList;

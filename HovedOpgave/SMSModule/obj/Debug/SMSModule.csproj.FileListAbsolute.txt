@@ -25,3 +25,9 @@ C:\Users\Lars Skaaning\Documents\GitHub\Hovedopave\HovedOpgave\SMSModule\bin\SMS
 C:\Users\Lars Skaaning\Documents\GitHub\Hovedopave\HovedOpgave\SMSModule\obj\Debug\SMSModule.csprojResolveAssemblyReference.cache
 C:\Users\Lars Skaaning\Documents\GitHub\Hovedopave\HovedOpgave\SMSModule\obj\Debug\SMSModule.dll
 C:\Users\Lars Skaaning\Documents\GitHub\Hovedopave\HovedOpgave\SMSModule\obj\Debug\SMSModule.pdb
+C:\Users\Patrick\Documents\GitHub\Hovedopave\Azure\Azure\SMSModule\bin\SMSModule.dll.config
+C:\Users\Patrick\Documents\GitHub\Hovedopave\Azure\Azure\SMSModule\bin\SMSModule.dll
+C:\Users\Patrick\Documents\GitHub\Hovedopave\Azure\Azure\SMSModule\bin\SMSModule.pdb
+C:\Users\Patrick\Documents\GitHub\Hovedopave\Azure\Azure\SMSModule\obj\Debug\SMSModule.csprojResolveAssemblyReference.cache
+C:\Users\Patrick\Documents\GitHub\Hovedopave\Azure\Azure\SMSModule\obj\Debug\SMSModule.dll
+C:\Users\Patrick\Documents\GitHub\Hovedopave\Azure\Azure\SMSModule\obj\Debug\SMSModule.pdb
