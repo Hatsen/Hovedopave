@@ -12,6 +12,7 @@ namespace AdminModule
 {
     public class ServiceProxy
     {
+<<<<<<< HEAD
         WebServiceDeployed.Service1Client service = new Service1Client();
         //Service1Client service = new Service1Client();
 
@@ -199,6 +200,164 @@ namespace AdminModule
 
             return tcs.Task;
         }
+=======
+       WebServiceDeployed.Service1Client service = new Service1Client();
+       //Service1Client service = new Service1Client();
+
+       private static ServiceProxy instance;
+
+       private ServiceProxy() { }
+
+       public static ServiceProxy Instance
+       {
+           get
+           {
+               if (instance == null)
+               {
+                   instance = new ServiceProxy();
+               }
+               return instance;
+           }
+
+       }
+
+
+       public Task<List<TeacherEx>> GetTeachers()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       {
+           var tcs = new TaskCompletionSource<List<TeacherEx>>();
+           EventHandler<GetTeachersCompletedEventArgs> handler = null;
+           handler = (sender, args) =>
+           {
+               if (args.UserState == tcs)
+               {
+                  
+                   service.GetTeachersCompleted -= handler;               
+                   if (args.Error != null)
+                   {
+                       tcs.TrySetException(args.Error);
+                 
+                   }
+                   else if (args.Cancelled)
+                   {
+                       tcs.TrySetCanceled();
+                   }
+                   else
+                   {
+                       tcs.TrySetResult(args.Result);
+                  
+                   }
+
+               }
+             
+           };
+          // viewModel.RaiseOnselectedPersonChanged("Underviser");
+           service.GetTeachersCompleted += handler;
+           service.GetTeachersAsync(tcs);
+      
+
+           return tcs.Task;
+          
+       }
+
+
+
+       public Task<List<Student>> GetStudents()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       {
+           var tcs = new TaskCompletionSource<List<Student>>();
+           EventHandler<GetStudentsCompletedEventArgs> handler = null;
+           handler = (sender, args) =>
+           {
+               if (args.UserState == tcs)
+               {
+                   service.GetStudentsCompleted -= handler;
+                   if (args.Error != null)
+                   {
+                       tcs.TrySetException(args.Error);
+                   }
+                   else if (args.Cancelled)
+                   {
+                       tcs.TrySetCanceled();
+                   }
+                   else
+                   {
+                       tcs.TrySetResult(args.Result);
+                   }
+
+               }
+           };
+
+           service.GetStudentsCompleted += handler;
+           service.GetStudentsAsync(tcs);
+
+           return tcs.Task;
+       }
+
+
+
+       public Task<List<ParentEx>> GetParents()//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       {
+           var tcs = new TaskCompletionSource<List<ParentEx>>();
+           EventHandler<GetParentsCompletedEventArgs> handler = null;
+           handler = (sender, args) =>
+           {
+               if (args.UserState == tcs)
+               {
+                   service.GetParentsCompleted -= handler;
+                   if (args.Error != null)
+                   {
+                       tcs.TrySetException(args.Error);
+                   }
+                   else if (args.Cancelled)
+                   {
+                       tcs.TrySetCanceled();
+                   }
+                   else
+                   {
+                       tcs.TrySetResult(args.Result);
+                   }
+
+               }
+           };
+
+           service.GetParentsCompleted += handler;
+           service.GetParentsAsync(tcs);
+
+           return tcs.Task;
+       }
+
+
+
+       public Task<bool> InsertTeacher(TeacherEx teacher)//man gør dette fordi man vil have synkrone kald og ikke asykrone kald.
+       {
+           var tcs = new TaskCompletionSource<bool>();
+           EventHandler<InsertTeacherCompletedEventArgs> handler = null;
+           handler = (sender, args) =>
+           {
+               if (args.UserState == tcs)
+               {
+                   service.InsertTeacherCompleted -= handler;
+                   if (args.Error != null)
+                   {
+                       tcs.TrySetException(args.Error);
+                   }
+                   else if (args.Cancelled)
+                   {
+                       tcs.TrySetCanceled();
+                   }
+                   else
+                   {
+                       tcs.TrySetResult(args.Result);
+                   }
+
+               }
+           };
+
+           service.InsertTeacherCompleted += handler;
+           service.InsertTeacherAsync(teacher, tcs);
+
+           return tcs.Task;
+       }
+>>>>>>> origin/master
 
 
 

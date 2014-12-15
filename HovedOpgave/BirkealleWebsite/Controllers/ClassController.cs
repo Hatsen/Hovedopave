@@ -1,5 +1,5 @@
 ﻿using BirkealleWebsite.Models;
-using BirkealleWebsite.WebService;
+using BirkealleWebsite.WebServiceDeployed;
 using System;
 using System.Collections.Generic;
 using System.Linq;

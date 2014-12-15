@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BirkealleWebsite.WebService;
+using BirkealleWebsite.WebServiceDeployed;
 using System.Threading.Tasks;
 
 namespace BirkealleWebsite.Models
 {
     public class ServiceProxy
     {
-        Service1Client service = new Service1Client();
+        WebServiceDeployed.Service1Client service = new Service1Client();
         private static ServiceProxy instance;
 
         public Service1Client Service
@@ -272,9 +272,6 @@ namespace BirkealleWebsite.Models
 
             return tcs.Task;
         }
-
-
-
 
         public Task<bool> CreateEnrollment(Enrollment enrollment, List<ParentEx> parents)
         {

@@ -9,7 +9,7 @@ namespace SMSModule.Intrasystem
 {
     public partial class WebForm4 : System.Web.UI.Page
     {
-        protected async void Page_Init(object sender, EventArgs e)
+        protected void Page_Init(object sender, EventArgs e)
         {
             txtCity.Text = Session["city"].ToString();
             txtAddress.Text = Session["address"].ToString();
