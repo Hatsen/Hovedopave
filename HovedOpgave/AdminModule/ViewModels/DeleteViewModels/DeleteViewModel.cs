@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using AdminModule.Webservice;
+//using AdminModule.Webservice;
+using AdminModule.WebServiceDeployed;
 using Microsoft.Practices.Prism.Commands;
 
 namespace AdminModule.ViewModels.DeleteViewModels

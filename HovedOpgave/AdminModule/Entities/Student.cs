@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdminModule.Webservice
+namespace AdminModule.WebServiceDeployed
 {
     public partial class Student
     {

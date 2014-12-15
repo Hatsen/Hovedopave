@@ -10,10 +10,13 @@ using System.Text;
 using Crypto;
 using Webservice.DB;
 using Webservice.Extended;
+using System.Data.SqlClient;
+using System.Runtime.Serialization.Json;
+using System.IO;
 
 namespace Webservice
 {
-    public class Service1 : IService1
+    public class Service1 : IService1, IGameService
     {
         #region AnnouncementMethods
         public bool CreateAnnouncement(int creator, string header, string message, int groupID, int classID)
@@ -68,18 +71,12 @@ namespace Webservice
 
         #region TeacherMethods
 
-        /*    public Teacher GetTeacher()
-        {
-            Teacher t = new Teacher();
-            t.Id = 1; t.Firstname = "Hr Jensen";
-
-            return t;
-        }*/
+       
         public List<TeacherEx> GetTeachers()
         {
             List<TeacherEx> listOfTeacherExs = DatabaseHandler.Instance.GetTeachers();
             List<ClassEx> listOfClasses = DatabaseHandler.Instance.GetClasses();
-            //listOfTeacherExs = DatabaseHandler.Instance.GetTeachers();
+            listOfTeacherExs = DatabaseHandler.Instance.GetTeachers();
 
             foreach (TeacherEx teacherEx in listOfTeacherExs)
             {
@@ -225,18 +222,18 @@ namespace Webservice
 
             if (enrollment != null)
             {
-                List<ParentEnrollment> parentenrollmentlist = DatabaseHandler.Instance.GetParentEnrollment(enrollment.Id); 
+                List<ParentEnrollment> parentenrollmentlist = DatabaseHandler.Instance.GetParentEnrollment(enrollment.Id);
 
-               // student.Id = DatabaseHandler.Instance.InsertStudent(student); // hvorfor ikke bare returner string tilbage og så have en commit metode på databasehandler
+                // student.Id = DatabaseHandler.Instance.InsertStudent(student); // hvorfor ikke bare returner string tilbage og så have en commit metode på databasehandler
                 // så kan du sende den samlet sql statement ned til databasen. (Dette behøves ikke når der skal læses/read da den ikke kan ødelægge noget.) transaction
 
-                sqlStatement+= DatabaseHandler.Instance.InsertStudent2(student);
+                sqlStatement += DatabaseHandler.Instance.InsertStudent2(student);
 
 
                 foreach (ParentEnrollment parentenrollment in parentenrollmentlist)
                 {
                     StudentParent association = new StudentParent();
-                    association.Fkparentid=parentenrollment.Fkparentid;
+                    association.Fkparentid = parentenrollment.Fkparentid;
                     association.Fkstudentid = student.Id;
 
                     sqlStatement += DatabaseHandler.Instance.InsertIntoStudentParent2(association); // abner og lukker connection flere gange....
@@ -559,10 +556,70 @@ namespace Webservice
         public List<EnrollmentEx> GetEnrollments()
         {
 
+
+
             return DatabaseHandler.Instance.GetEnrollments();
+        }
+
+
+        #endregion
+
+
+        public List<TeacherEx> get_devices2()
+        {
+            List<TeacherEx> list = new List<TeacherEx>();
+
+            //  for (int i = 0; i < 10; i++)
+            list = DatabaseHandler.Instance.GetTeachers();
+            // list.Add(i.ToString());
+
+
+            return list;
 
         }
 
-        #endregion
+
+        public string get_devices3()
+        {
+            List<string> list = new List<string>();
+
+            for (int i = 0; i < 10; i++)
+                list.Add(i.ToString());
+
+            // Serialize the results as JSON
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(list.GetType());
+            MemoryStream memoryStream = new MemoryStream();
+            serializer.WriteObject(memoryStream, list);
+
+            // Return the results serialized as JSON
+            string json = Encoding.Default.GetString(memoryStream.ToArray());
+
+
+            return json;
+
+        }
+
+        public void InsertEnrollment()
+        {
+
+            List<ParentEx> parents = new List<ParentEx>();
+
+            EnrollmentEx en = new EnrollmentEx();
+
+            en.ChildAddress = "Hejsmukke";
+            en.ChildBirthdate = "android";
+            en.ChildCity = "android";
+            en.ChildFirstname = "android";
+            en.ChildLastname = "android";
+            en.ChildPhonenumber = 232;
+            en.DateCreated = DateTime.Now.ToString();
+            en.Fkschoolid = 1;
+            en.Notes = "notetet";
+
+            DatabaseHandler.Instance.InsertEnrollment(en, parents);
+        }
+
+
+
     }
 }

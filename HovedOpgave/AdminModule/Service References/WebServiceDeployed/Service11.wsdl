@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="Webservice" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="Webservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="Webservice/Imports">
+      <xsd:import schemaLocation="http://larsogpatrick.azurewebsites.net/Service1.svc?xsd=xsd0" namespace="Webservice" />
+      <xsd:import schemaLocation="http://larsogpatrick.azurewebsites.net/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://larsogpatrick.azurewebsites.net/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Webservice.DB" />
+      <xsd:import schemaLocation="http://larsogpatrick.azurewebsites.net/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Webservice.Extended" />
+      <xsd:import schemaLocation="http://larsogpatrick.azurewebsites.net/Service1.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Webservice" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_GetLoginDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoginDetails" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetLoginDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoginDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDetails" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FindParentsChildren_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindParentsChildren" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FindParentsChildren_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindParentsChildrenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetClassDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassDetails" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetClassDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateAnnouncement_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAnnouncement" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateAnnouncement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAnnouncementResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnnouncements_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnouncements" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnnouncements_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnouncementsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnnouncementCreator_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnouncementCreator" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnnouncementCreator_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnouncementCreatorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ChangePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ChangePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertTeacher_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertTeacher" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertTeacher_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertTeacherResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetTeachers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeachers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetTeachers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeachersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertParent_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertParent" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertParent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertParentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetParents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetParents" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetParents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetParentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertStudent_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertStudent" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertStudent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertStudentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetStudents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudents" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetStudents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteStudent_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStudent" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteStudent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStudentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetClasses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClasses" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetClasses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertClass_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertClass" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertClass_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteClass_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteClass" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteClass_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateEnrollment_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEnrollment" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateEnrollment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEnrollmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetEnrollments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEnrollments" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetEnrollments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEnrollmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_get_devices2_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_devices2" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_get_devices2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_devices2Response" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_get_devices3_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_devices3" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_get_devices3_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_devices3Response" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_InsertEnrollment_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertEnrollment" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_InsertEnrollment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertEnrollmentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="GetLoginDetails">
+      <wsdl:input wsaw:Action="Webservice/IService1/GetLoginDetails" message="tns:IService1_GetLoginDetails_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/GetLoginDetailsResponse" message="tns:IService1_GetLoginDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDetails">
+      <wsdl:input wsaw:Action="Webservice/IService1/GetUserDetails" message="tns:IService1_GetUserDetails_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/GetUserDetailsResponse" message="tns:IService1_GetUserDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindParentsChildren">
+      <wsdl:input wsaw:Action="Webservice/IService1/FindParentsChildren" message="tns:IService1_FindParentsChildren_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/FindParentsChildrenResponse" message="tns:IService1_FindParentsChildren_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClassDetails">
+      <wsdl:input wsaw:Action="Webservice/IService1/GetClassDetails" message="tns:IService1_GetClassDetails_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/GetClassDetailsResponse" message="tns:IService1_GetClassDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAnnouncement">
+      <wsdl:input wsaw:Action="Webservice/IService1/CreateAnnouncement" message="tns:IService1_CreateAnnouncement_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/CreateAnnouncementResponse" message="tns:IService1_CreateAnnouncement_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnnouncements">
+      <wsdl:input wsaw:Action="Webservice/IService1/GetAnnouncements" message="tns:IService1_GetAnnouncements_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/GetAnnouncementsResponse" message="tns:IService1_GetAnnouncements_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnnouncementCreator">
+      <wsdl:input wsaw:Action="Webservice/IService1/GetAnnouncementCreator" message="tns:IService1_GetAnnouncementCreator_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/GetAnnouncementCreatorResponse" message="tns:IService1_GetAnnouncementCreator_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input wsaw:Action="Webservice/IService1/ChangePassword" message="tns:IService1_ChangePassword_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/ChangePasswordResponse" message="tns:IService1_ChangePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTeacher">
+      <wsdl:input wsaw:Action="Webservice/IService1/InsertTeacher" message="tns:IService1_InsertTeacher_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/InsertTeacherResponse" message="tns:IService1_InsertTeacher_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeachers">
+      <wsdl:input wsaw:Action="Webservice/IService1/GetTeachers" message="tns:IService1_GetTeachers_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/GetTeachersResponse" message="tns:IService1_GetTeachers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="Webservice/IService1/DeleteUser" message="tns:IService1_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/DeleteUserResponse" message="tns:IService1_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertParent">
+      <wsdl:input wsaw:Action="Webservice/IService1/InsertParent" message="tns:IService1_InsertParent_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/InsertParentResponse" message="tns:IService1_InsertParent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParents">
+      <wsdl:input wsaw:Action="Webservice/IService1/GetParents" message="tns:IService1_GetParents_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/GetParentsResponse" message="tns:IService1_GetParents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertStudent">
+      <wsdl:input wsaw:Action="Webservice/IService1/InsertStudent" message="tns:IService1_InsertStudent_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/InsertStudentResponse" message="tns:IService1_InsertStudent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudents">
+      <wsdl:input wsaw:Action="Webservice/IService1/GetStudents" message="tns:IService1_GetStudents_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/GetStudentsResponse" message="tns:IService1_GetStudents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStudent">
+      <wsdl:input wsaw:Action="Webservice/IService1/DeleteStudent" message="tns:IService1_DeleteStudent_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/DeleteStudentResponse" message="tns:IService1_DeleteStudent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClasses">
+      <wsdl:input wsaw:Action="Webservice/IService1/GetClasses" message="tns:IService1_GetClasses_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/GetClassesResponse" message="tns:IService1_GetClasses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertClass">
+      <wsdl:input wsaw:Action="Webservice/IService1/InsertClass" message="tns:IService1_InsertClass_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/InsertClassResponse" message="tns:IService1_InsertClass_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteClass">
+      <wsdl:input wsaw:Action="Webservice/IService1/DeleteClass" message="tns:IService1_DeleteClass_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/DeleteClassResponse" message="tns:IService1_DeleteClass_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEnrollment">
+      <wsdl:input wsaw:Action="Webservice/IService1/CreateEnrollment" message="tns:IService1_CreateEnrollment_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/CreateEnrollmentResponse" message="tns:IService1_CreateEnrollment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEnrollments">
+      <wsdl:input wsaw:Action="Webservice/IService1/GetEnrollments" message="tns:IService1_GetEnrollments_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/GetEnrollmentsResponse" message="tns:IService1_GetEnrollments_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IGameService">
+    <wsdl:operation name="get_devices2">
+      <wsdl:input wsaw:Action="Webservice/IGameService/get_devices2" message="tns:IGameService_get_devices2_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IGameService/get_devices2Response" message="tns:IGameService_get_devices2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="get_devices3">
+      <wsdl:input wsaw:Action="Webservice/IGameService/get_devices3" message="tns:IGameService_get_devices3_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IGameService/get_devices3Response" message="tns:IGameService_get_devices3_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEnrollment">
+      <wsdl:input wsaw:Action="Webservice/IGameService/InsertEnrollment" message="tns:IGameService_InsertEnrollment_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IGameService/InsertEnrollmentResponse" message="tns:IGameService_InsertEnrollment_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

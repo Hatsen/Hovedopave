@@ -12,9 +12,10 @@ namespace Webservice
 {
     public class DatabaseHandler
     {
-        SQLDatabase DB = new SQLDatabase("SchoolDB.mdf", "LocalDB", "", "");
+        //SQLDatabase DB = new SQLDatabase("SchoolDB.mdf", "LocalDB", "", "");
+        SQLDatabase DB = new SQLDatabase("", "", "", "");
         private static DatabaseHandler instance;
-
+        string connectionString = @"Data Source=hswcgtr08t.database.windows.net;Initial Catalog=SchoolDB;User ID=larsogpatrick@hswcgtr08t;Password=Kagekage1;Encrypt=true;Trusted_Connection=false;";
         private DatabaseHandler()
         {
 
@@ -460,12 +461,12 @@ namespace Webservice
             List<StudentParent> studentParentsList = new List<StudentParent>();
 
 
-            var con = @"Data Source=(LocalDB)\v11.0;;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=1200";
+          
             //var con=@"Data Source=(LocalDB)\v11.0;AttachDbFileName=C:\USERS\LarsS\DOCUMENTS\GITHUB\HOVEDOPAVE\HOVEDOPGAVE\WEBSERVICE\APP_DATA\SCHOOLDB.MDF; Integrated Security=SSPI; Connection Timeout=1200";
 
             //(@"Data Source=(LocalDB)\v11.0;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=12000");
 
-            using (SqlConnection myConnection = new SqlConnection(con))
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
                 string oString = "SELECT * FROM StudentParent WHERE [fk_StudentId]=" + id + "OR [fk_ParentId]=" + id;
                 SqlCommand oCmd = new SqlCommand(oString, myConnection);
@@ -492,10 +493,10 @@ namespace Webservice
             List<ParentEnrollment> Enrollments = new List<ParentEnrollment>();
 
 
-            var con = @"Data Source=(LocalDB)\v11.0;;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=1200";
+           // var connectionString = @"Data Source=(LocalDB)\v11.0;;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=1200";
 
 
-            using (SqlConnection myConnection = new SqlConnection(con))
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
                 string oString = ("Select * FROM [ParentEnrollment] Where [ParentEnrollment].fk_ParentId = " + id + ";");
                 SqlCommand oCmd = new SqlCommand(oString, myConnection);
@@ -889,7 +890,7 @@ namespace Webservice
             int result;
 
 
-            SqlConnection db = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=12000");
+            SqlConnection db = new SqlConnection(connectionString);
             SqlTransaction transaction;
 
             db.Open();
@@ -928,11 +929,30 @@ namespace Webservice
 
             List<EnrollmentEx> enrollments = new List<EnrollmentEx>();
 
+
+            SqlConnection con = new SqlConnection(connectionString);
+
+            con.Open();
+
+            SqlCommand command = new SqlCommand("INSERT INTO [Enrollment](Childfirstname, Childlastname,Childcity,Childaddress,Childbirthdate,ChildphoneNumber,Notes, Datecreated, fk_SchoolId) VALUES ('Cardinalssssss!!!!22', 'Stavanger', 'Norway','s', 's',45,'sds','sss',1);", con);
+            command.ExecuteNonQuery();
+
+            con.Close();
+
+
+
             try
             {
                 DB.Open();
 
-                string[][] getEnrollments = DB.Query("SELECT * " + " FROM [Enrollment];");
+
+
+                //  string connectionstring = "";
+
+
+
+
+                string[][] getEnrollments = DB.Query("USE [SchoolDB] SELECT * FROM [Enrollment];");
 
                 for (int i = 0; i < getEnrollments.Length; i++)
                 {
@@ -951,15 +971,49 @@ namespace Webservice
 
                     enrollments.Add(enrollment);
                 }
-            }
-            catch (Exception ex)
-            {
 
+                /*
+                EnrollmentEx enrollment = new EnrollmentEx();
+                enrollment.ChildAddress = "Åbn DB";
+                enrollment.ChildBirthdate = "12/12-12";
+                enrollment.ChildCity = "Vejle";
+                enrollment.ChildFirstname = "fdsf";
+                enrollment.ChildLastname = "fdsfd";
+                enrollment.ChildPhonenumber = 48488894;
+                enrollment.DateCreated = Convert.ToString(DateTime.Now);
+                enrollment.Fkschoolid = 1;
+                enrollments.Add(enrollment);
+                 */
+            }
+            catch (SqlException ex)
+            {
+                EnrollmentEx enrollment = new EnrollmentEx();
+                enrollment.ChildAddress = ex.ToString();
+                enrollment.ChildBirthdate = "12/12-12";
+                enrollment.ChildCity = "Vejle";
+                enrollment.ChildFirstname = "fdsf";
+                enrollment.ChildLastname = "fdsfd";
+                enrollment.ChildPhonenumber = 48488894;
+                enrollment.DateCreated = Convert.ToString(DateTime.Now);
+                enrollment.Fkschoolid = 1;
+                enrollments.Add(enrollment);
             }
             finally
             {
                 DB.Close();
             }
+
+            EnrollmentEx enrollment2 = new EnrollmentEx();
+            enrollment2.ChildAddress = "PISSEGADE";
+            enrollment2.ChildBirthdate = "12/12-12";
+            enrollment2.ChildCity = "Vejle";
+            enrollment2.ChildFirstname = "fdsf";
+            enrollment2.ChildLastname = "fdsfd";
+            enrollment2.ChildPhonenumber = 48488894;
+            enrollment2.DateCreated = Convert.ToString(DateTime.Now);
+            enrollment2.Fkschoolid = 1;
+            enrollments.Add(enrollment2);
+
             return enrollments;
         }
 
@@ -1208,10 +1262,10 @@ namespace Webservice
             List<ParentEnrollment> studentParentsList = new List<ParentEnrollment>();
 
 
-            var con = @"Data Source=(LocalDB)\v11.0;;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=12000";
+           // var con = connectionString;
 
 
-            using (SqlConnection myConnection = new SqlConnection(con))
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
                 string oString = "SELECT * FROM ParentEnrollment WHERE [fk_EnrollmentId]=" + id + "OR [fk_ParentId]=" + id;
                 SqlCommand oCmd = new SqlCommand(oString, myConnection);

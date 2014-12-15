@@ -11,7 +11,8 @@ using Webservice.Extended;
 
 namespace Webservice
 {
-    [ServiceContract]
+
+    [ServiceContract(Name = "IService1", Namespace = "Webservice")]
     public interface IService1
     {
         [OperationContract]
@@ -39,13 +40,13 @@ namespace Webservice
         bool ChangePassword(int id, string oldPass, string newPass, string confirmPass);
 
         #region Teacher
-    
+
 
         [OperationContract]
         bool InsertTeacher(TeacherEx teacher);
 
-     /*   [OperationContract]
-        Teacher GetTeacher(); // bruges ikke endnu..*/
+        /*   [OperationContract]
+           Teacher GetTeacher(); // bruges ikke endnu..*/
 
         [OperationContract]
         List<TeacherEx> GetTeachers();
@@ -72,7 +73,7 @@ namespace Webservice
 
         #region Student
         [OperationContract]
-        bool InsertStudent(Student parent, Enrollment enrollment=null);
+        bool InsertStudent(Student parent, Enrollment enrollment = null);
 
         [OperationContract]
         List<Student> GetStudents();
@@ -113,16 +114,27 @@ namespace Webservice
         #endregion
 
 
-        [OperationContract]
-        bool UpdateUserDetails(int id, string city, string address, int phone, string email);
+        //[OperationContract]
+        //bool UpdateUserDetails(int id, string city, string address, int phone, string email);
 
-      /*  [OperationContract]
-        int GetMostRecentUserId();*/
+        ///* [OperationContract]
+        // [WebInvoke(Method = "GET",
+        //          RequestFormat = WebMessageFormat.Json,
+        //          ResponseFormat = WebMessageFormat.Json,
+        //          UriTemplate = "Write")]
+        //string Write();
+        // */
+
+     
+
+
+        /*  [OperationContract]
+          int GetMostRecentUserId();*/
     }
 
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
-    [DataContract]
+    /*[DataContract]
     public class CompositeType
     {
         bool boolValue = true;
@@ -141,5 +153,5 @@ namespace Webservice
             get { return stringValue; }
             set { stringValue = value; }
         }
-    }
+    }*/
 }

@@ -67,7 +67,7 @@
                     </DataGrid.ContextMenu>
                 </DataGrid>
 
-
+                <Button Content="Opreeeeet Person" HorizontalAlignment="Left" Margin="535,479,0,-94" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding OpretPerson}"/>
                 <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="192" Height="25" Margin="131,70,0,0" ItemsSource="{Binding PersonStringList, Mode=TwoWay}" SelectedItem="{Binding SelectedStringPerson, Mode=TwoWay}"/>
                 <TextBox HorizontalAlignment="Left" Height="25" Margin="328,70,0,0" TextWrapping="Wrap" Text="Søg..."  VerticalAlignment="Top" Width="117"/>
                 <Button Content="Rediger Person" HorizontalAlignment="Left" Margin="10,206,0,0" VerticalAlignment="Top" Width="105" Height="25" Command="{Binding EditUserCommand}"/>

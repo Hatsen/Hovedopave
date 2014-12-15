@@ -10,9 +10,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using AdminModule.Views;
 using AdminModule.Views.DeleteView;
-using AdminModule.Webservice;
+//using AdminModule.Webservice;
+using AdminModule.WebServiceDeployed;
 using Microsoft.Practices.Prism.Commands;
 using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 
 namespace AdminModule.ViewModels
 {
@@ -43,6 +45,7 @@ namespace AdminModule.ViewModels
             ResetPasswordCommand = new DelegateCommand<object>(ResetPasswordForSelectedUser, MayiEditPerson);
             SeeAssociationsCommand = new DelegateCommand<object>(SeeAssociations);
             ConfirmEnrollmentCommand = new DelegateCommand<object>(ConfirmEnrollment, MayConfirmEnrollment);
+            OpretPerson = new DelegateCommand<object>(OpretPersonnnnn);
 
             List<string> listofpersons = new List<string>();
             listofpersons.Add("Underviser");
@@ -50,7 +53,7 @@ namespace AdminModule.ViewModels
             listofpersons.Add("Forældre");
             PersonStringList = listofpersons;
 
-            SetTimer();
+           // SetTimer();
 
 
         }
@@ -200,13 +203,14 @@ namespace AdminModule.ViewModels
                 selectedStringPerson = value;
 
                 if (selectedStringPerson == "Underviser")
-
-                    GetTeacherCalledFromPropery();
-
-
+                {
+                  // GetTeacherCalledFromPropery();
+                    GetTeachers();
+                }
                 else if (selectedStringPerson == "Elev")
                 {
                     RefreshStudentsAndClasses();
+                    //MessageBox.Show("fardig.");
                 }
                 else if (selectedStringPerson == "Forældre")
                 {
@@ -259,6 +263,7 @@ namespace AdminModule.ViewModels
 
         private async void RefreshStudentsAndClasses()
         {
+            //GetStudents2();
             await GetStudents();
             await GetClasses();
 
@@ -453,6 +458,7 @@ namespace AdminModule.ViewModels
 
         public async void GetClasses(Object o)
         {
+
             await GetTeachers();
             await GetClasses();//overloading.
             SelectedStringPerson = "Underviser";
@@ -586,6 +592,7 @@ namespace AdminModule.ViewModels
 
         public DelegateCommand<object> ConfirmEnrollmentCommand { get; set; }
 
+        public DelegateCommand<object> OpretPerson { get; set; }
 
 
         public async void ConfirmEnrollment(Object o)
@@ -631,6 +638,13 @@ namespace AdminModule.ViewModels
 
 
 
+        public async void OpretPersonnnnn(Object o)
+        {
+         
+
+        }
+
+
         #endregion
 
         #region Methods
@@ -646,11 +660,15 @@ namespace AdminModule.ViewModels
         {
             await GetParents();
 
+           
+
         }
 
 
         private async Task<bool> GetTeachers() // måske int userrole her. Så kan du hente de ansatte som er relevante
         {
+         //  await Task.Delay(3000);
+            //TeacherList = new List<TeacherEx>();
             Isloading = true;
             TeacherList = await ServiceProxy.Instance.GetTeachers();
             ObjectHolder.Instance.TeacherList = TeacherList;
@@ -679,9 +697,23 @@ namespace AdminModule.ViewModels
             return true;
         }
 
+
+
+        private async Task<bool> GetStudents2()
+        {
+            Isloading = true;
+            StudentList = await ServiceProxy.Instance.GetStudents2();
+            ObjectHolder.Instance.StudentList = StudentList;
+            Isloading = false;
+            RaiseOnselectedPersonChanged("Elev");
+            return true;
+        }
+
         private async Task<bool> GetParents()
         {
             Isloading = true;
+           // Thread.Sleep(3000);
+         //  await Task.Delay(3000);
             ParentList = await ServiceProxy.Instance.GetParents();
             ObjectHolder.Instance.StudentList = StudentList;
             Isloading = false;

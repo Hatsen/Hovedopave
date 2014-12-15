@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Activation;
+using System.ServiceModel.Web;
+using System.Text;
+using Webservice.DB;
+using Webservice.Extended;
+
+namespace Webservice
+{
+    [ServiceContract(Name = "IGameService", Namespace = "Webservice")]
+    public interface IGameService
+    {
+
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "/Welcome")]
+        List<TeacherEx> get_devices2();
+
+
+
+        [OperationContract]
+        [WebGet(UriTemplate = "lars", BodyStyle = WebMessageBodyStyle.Bare, ResponseFormat = WebMessageFormat.Json)]
+        string get_devices3();
+
+
+
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "InsertEn")]
+        void InsertEnrollment();
+
+
+    }
+}
