@@ -35,7 +35,7 @@ namespace BirkealleWebsite.Models
                 Student s = new Student();
                 List<ParentEx> parents = new List<ParentEx>();
 
-                Enrollment enrollment = new Enrollment();
+                EnrollmentEx enrollment = new EnrollmentEx();
                 enrollment.ChildFirstname = repository.ChildFirstname;
                 enrollment.ChildLastname = repository.ChildLastname;
                 enrollment.ChildCity = repository.ChildCity;

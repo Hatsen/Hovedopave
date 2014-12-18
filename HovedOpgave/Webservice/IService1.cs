@@ -125,7 +125,25 @@ namespace Webservice
         //string Write();
         // */
 
-     
+
+
+        [OperationContract]
+        bool UpdateUserDetails(int id, string city, string address, int phone, string email);
+
+
+      /*   [OperationContract]
+         [WebInvoke(Method = "GET",
+                  RequestFormat = WebMessageFormat.Json,
+                  ResponseFormat = WebMessageFormat.Json,
+                  UriTemplate = "Write")]
+        bool InsertScore(string time);
+         */
+
+
+
+
+
+
 
 
         /*  [OperationContract]

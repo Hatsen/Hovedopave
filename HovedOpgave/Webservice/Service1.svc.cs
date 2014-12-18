@@ -621,5 +621,42 @@ namespace Webservice
 
 
 
+        public bool InsertScore(string testScore) // int testId, string startDate, string testTime, int testUser, double testResult
+        {
+
+            Score score = new Score();
+
+
+            List<ParentEx> parents = new List<ParentEx>();
+
+            EnrollmentEx en = new EnrollmentEx();
+
+            en.ChildAddress = "Hejsmukke";
+            en.ChildBirthdate = "android";
+            en.ChildCity = "android";
+            en.ChildFirstname = "android";
+            en.ChildLastname = "android";
+            en.ChildPhonenumber = 232;
+            en.DateCreated = DateTime.Now.ToString();
+            en.Fkschoolid = 1;
+            en.Notes = testScore;
+
+          
+
+
+            // dezrialiseres her .
+            
+            /*
+            score.UserId = testUser;
+            score.TestTime = testTime;
+            score.TestDate = startDate;
+            score.Result = testResult;
+            */
+
+
+            return DatabaseHandler.Instance.InsertEnrollment(en, parents);
+            //return true;
+        }
+
     }
 }

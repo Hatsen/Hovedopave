@@ -19,11 +19,11 @@ namespace SMSModule
             return result;
         }
 
-        public async Task<bool> UpdateUserDetails(int id, string city, string address, int phone, string email)
+     /*   public async Task<bool> UpdateUserDetails(int id, string city, string address, int phone, string email)
         {
             bool result = await ServiceProxy.Instance.UpdateUserDetails(id, city, address, phone, email);
             return result;
-        }
+        }*/
 
         public async Task<string> GetUserDetails(int number)
         {

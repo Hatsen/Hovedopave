@@ -30,6 +30,7 @@
     <MetadataFile FileName="Service12.xsd" MetadataType="Schema" ID="ce19174c-1293-48d3-b949-9cd7871a6ff6" SourceId="1" SourceUrl="http://larsogpatrick.azurewebsites.net/Service1.svc?xsd=xsd4" />
     <MetadataFile FileName="Service13.xsd" MetadataType="Schema" ID="77ee7aaa-b734-4eee-8f29-f9858c11ee09" SourceId="1" SourceUrl="http://larsogpatrick.azurewebsites.net/Service1.svc?xsd=xsd2" />
     <MetadataFile FileName="Service14.xsd" MetadataType="Schema" ID="9c542a35-9546-4445-a523-5b02b3352580" SourceId="1" SourceUrl="http://larsogpatrick.azurewebsites.net/Service1.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service11.wsdl" MetadataType="Wsdl" ID="5d1854c6-6ae6-4938-80f0-e620097a4551" SourceId="1" SourceUrl="http://larsogpatrick.azurewebsites.net/Service1.svc?wsdl=wsdl0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

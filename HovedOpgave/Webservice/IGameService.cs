@@ -23,15 +23,21 @@ namespace Webservice
 
 
         [OperationContract]
-        [WebGet(UriTemplate = "lars", BodyStyle = WebMessageBodyStyle.Bare, ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "POST",UriTemplate = "lars", BodyStyle = WebMessageBodyStyle.Bare, ResponseFormat = WebMessageFormat.Json)]
         string get_devices3();
-
 
 
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "InsertEn")]
         void InsertEnrollment();
+
+
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "InsertScore/{testScore}", BodyStyle = WebMessageBodyStyle.Bare, ResponseFormat = WebMessageFormat.Json)] // {testScore}
+        bool InsertScore(string testScore);//int testId, string startDate, string testTime, int testUser, double testResult
+        
 
 
     }

@@ -924,6 +924,46 @@ namespace Webservice
             return success;
         }
 
+
+
+        public bool InsertScore(Score score)
+        {
+            bool success = true;
+            int result;
+
+
+            SqlConnection db = new SqlConnection(connectionString);
+            SqlTransaction transaction;
+
+            db.Open();
+            transaction = db.BeginTransaction();
+            try
+            {
+                string sqlstatment = "INSERT INTO [Score](UserId, TestTime,Result,TestId,TestDate, fk_SchoolId)" +
+                   " VALUES (" + score.UserId + "," + score.TestTime + "," + score.Result + "," + score.TestId + ",'" + score.TestDate + "',"+ score.SchoolId + ");";
+
+                new SqlCommand(sqlstatment, db, transaction)
+                   .ExecuteNonQuery();
+
+                transaction.Commit();
+            }
+            catch (SqlException sqlError)
+            {
+                transaction.Rollback();
+                success = false;
+            }
+
+            db.Close();
+
+            return success;
+        }
+
+
+
+
+
+
+
         public List<EnrollmentEx> GetEnrollments()
         {
 

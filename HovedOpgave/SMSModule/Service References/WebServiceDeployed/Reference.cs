@@ -876,184 +876,176 @@ namespace SMSModule.WebServiceDeployed {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WebServiceDeployed.IService1")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="Webservice", ConfigurationName="WebServiceDeployed.IService1")]
     public interface IService1 {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetLoginDetails", ReplyAction="http://tempuri.org/IService1/GetLoginDetailsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/GetLoginDetails", ReplyAction="Webservice/IService1/GetLoginDetailsResponse")]
         bool GetLoginDetails(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetLoginDetails", ReplyAction="http://tempuri.org/IService1/GetLoginDetailsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/GetLoginDetails", ReplyAction="Webservice/IService1/GetLoginDetailsResponse")]
         System.IAsyncResult BeginGetLoginDetails(string username, string password, System.AsyncCallback callback, object asyncState);
         
         bool EndGetLoginDetails(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserDetails", ReplyAction="http://tempuri.org/IService1/GetUserDetailsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/GetUserDetails", ReplyAction="Webservice/IService1/GetUserDetailsResponse")]
         string GetUserDetails(int number);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetUserDetails", ReplyAction="http://tempuri.org/IService1/GetUserDetailsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/GetUserDetails", ReplyAction="Webservice/IService1/GetUserDetailsResponse")]
         System.IAsyncResult BeginGetUserDetails(int number, System.AsyncCallback callback, object asyncState);
         
         string EndGetUserDetails(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/FindParentsChildren", ReplyAction="http://tempuri.org/IService1/FindParentsChildrenResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/FindParentsChildren", ReplyAction="Webservice/IService1/FindParentsChildrenResponse")]
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.Student> FindParentsChildren(int id);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/FindParentsChildren", ReplyAction="http://tempuri.org/IService1/FindParentsChildrenResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/FindParentsChildren", ReplyAction="Webservice/IService1/FindParentsChildrenResponse")]
         System.IAsyncResult BeginFindParentsChildren(int id, System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.Student> EndFindParentsChildren(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetClassDetails", ReplyAction="http://tempuri.org/IService1/GetClassDetailsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/GetClassDetails", ReplyAction="Webservice/IService1/GetClassDetailsResponse")]
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.ClassEx> GetClassDetails(int id, int userrole);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetClassDetails", ReplyAction="http://tempuri.org/IService1/GetClassDetailsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/GetClassDetails", ReplyAction="Webservice/IService1/GetClassDetailsResponse")]
         System.IAsyncResult BeginGetClassDetails(int id, int userrole, System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.ClassEx> EndGetClassDetails(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateAnnouncement", ReplyAction="http://tempuri.org/IService1/CreateAnnouncementResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/CreateAnnouncement", ReplyAction="Webservice/IService1/CreateAnnouncementResponse")]
         bool CreateAnnouncement(int creator, string header, string message, int group, int classID);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/CreateAnnouncement", ReplyAction="http://tempuri.org/IService1/CreateAnnouncementResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/CreateAnnouncement", ReplyAction="Webservice/IService1/CreateAnnouncementResponse")]
         System.IAsyncResult BeginCreateAnnouncement(int creator, string header, string message, int group, int classID, System.AsyncCallback callback, object asyncState);
         
         bool EndCreateAnnouncement(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAnnouncements", ReplyAction="http://tempuri.org/IService1/GetAnnouncementsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/GetAnnouncements", ReplyAction="Webservice/IService1/GetAnnouncementsResponse")]
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.Announcement> GetAnnouncements(int group, int classID);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetAnnouncements", ReplyAction="http://tempuri.org/IService1/GetAnnouncementsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/GetAnnouncements", ReplyAction="Webservice/IService1/GetAnnouncementsResponse")]
         System.IAsyncResult BeginGetAnnouncements(int group, int classID, System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.Announcement> EndGetAnnouncements(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAnnouncementCreator", ReplyAction="http://tempuri.org/IService1/GetAnnouncementCreatorResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/GetAnnouncementCreator", ReplyAction="Webservice/IService1/GetAnnouncementCreatorResponse")]
         string GetAnnouncementCreator(int id);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetAnnouncementCreator", ReplyAction="http://tempuri.org/IService1/GetAnnouncementCreatorResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/GetAnnouncementCreator", ReplyAction="Webservice/IService1/GetAnnouncementCreatorResponse")]
         System.IAsyncResult BeginGetAnnouncementCreator(int id, System.AsyncCallback callback, object asyncState);
         
         string EndGetAnnouncementCreator(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ChangePassword", ReplyAction="http://tempuri.org/IService1/ChangePasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/ChangePassword", ReplyAction="Webservice/IService1/ChangePasswordResponse")]
         bool ChangePassword(int id, string oldPass, string newPass, string confirmPass);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/ChangePassword", ReplyAction="http://tempuri.org/IService1/ChangePasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/ChangePassword", ReplyAction="Webservice/IService1/ChangePasswordResponse")]
         System.IAsyncResult BeginChangePassword(int id, string oldPass, string newPass, string confirmPass, System.AsyncCallback callback, object asyncState);
         
         bool EndChangePassword(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertTeacher", ReplyAction="http://tempuri.org/IService1/InsertTeacherResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/InsertTeacher", ReplyAction="Webservice/IService1/InsertTeacherResponse")]
         bool InsertTeacher(SMSModule.WebServiceDeployed.TeacherEx teacher);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/InsertTeacher", ReplyAction="http://tempuri.org/IService1/InsertTeacherResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/InsertTeacher", ReplyAction="Webservice/IService1/InsertTeacherResponse")]
         System.IAsyncResult BeginInsertTeacher(SMSModule.WebServiceDeployed.TeacherEx teacher, System.AsyncCallback callback, object asyncState);
         
         bool EndInsertTeacher(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTeachers", ReplyAction="http://tempuri.org/IService1/GetTeachersResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/GetTeachers", ReplyAction="Webservice/IService1/GetTeachersResponse")]
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.TeacherEx> GetTeachers();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetTeachers", ReplyAction="http://tempuri.org/IService1/GetTeachersResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/GetTeachers", ReplyAction="Webservice/IService1/GetTeachersResponse")]
         System.IAsyncResult BeginGetTeachers(System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.TeacherEx> EndGetTeachers(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteUser", ReplyAction="http://tempuri.org/IService1/DeleteUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/DeleteUser", ReplyAction="Webservice/IService1/DeleteUserResponse")]
         string DeleteUser(int id);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/DeleteUser", ReplyAction="http://tempuri.org/IService1/DeleteUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/DeleteUser", ReplyAction="Webservice/IService1/DeleteUserResponse")]
         System.IAsyncResult BeginDeleteUser(int id, System.AsyncCallback callback, object asyncState);
         
         string EndDeleteUser(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertParent", ReplyAction="http://tempuri.org/IService1/InsertParentResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/InsertParent", ReplyAction="Webservice/IService1/InsertParentResponse")]
         bool InsertParent(SMSModule.WebServiceDeployed.ParentEx parent);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/InsertParent", ReplyAction="http://tempuri.org/IService1/InsertParentResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/InsertParent", ReplyAction="Webservice/IService1/InsertParentResponse")]
         System.IAsyncResult BeginInsertParent(SMSModule.WebServiceDeployed.ParentEx parent, System.AsyncCallback callback, object asyncState);
         
         bool EndInsertParent(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetParents", ReplyAction="http://tempuri.org/IService1/GetParentsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/GetParents", ReplyAction="Webservice/IService1/GetParentsResponse")]
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.ParentEx> GetParents();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetParents", ReplyAction="http://tempuri.org/IService1/GetParentsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/GetParents", ReplyAction="Webservice/IService1/GetParentsResponse")]
         System.IAsyncResult BeginGetParents(System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.ParentEx> EndGetParents(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertStudent", ReplyAction="http://tempuri.org/IService1/InsertStudentResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/InsertStudent", ReplyAction="Webservice/IService1/InsertStudentResponse")]
         bool InsertStudent(SMSModule.WebServiceDeployed.Student parent, SMSModule.WebServiceDeployed.Enrollment enrollment);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/InsertStudent", ReplyAction="http://tempuri.org/IService1/InsertStudentResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/InsertStudent", ReplyAction="Webservice/IService1/InsertStudentResponse")]
         System.IAsyncResult BeginInsertStudent(SMSModule.WebServiceDeployed.Student parent, SMSModule.WebServiceDeployed.Enrollment enrollment, System.AsyncCallback callback, object asyncState);
         
         bool EndInsertStudent(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetStudents", ReplyAction="http://tempuri.org/IService1/GetStudentsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/GetStudents", ReplyAction="Webservice/IService1/GetStudentsResponse")]
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.Student> GetStudents();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetStudents", ReplyAction="http://tempuri.org/IService1/GetStudentsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/GetStudents", ReplyAction="Webservice/IService1/GetStudentsResponse")]
         System.IAsyncResult BeginGetStudents(System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.Student> EndGetStudents(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteStudent", ReplyAction="http://tempuri.org/IService1/DeleteStudentResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/DeleteStudent", ReplyAction="Webservice/IService1/DeleteStudentResponse")]
         bool DeleteStudent(int id);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/DeleteStudent", ReplyAction="http://tempuri.org/IService1/DeleteStudentResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/DeleteStudent", ReplyAction="Webservice/IService1/DeleteStudentResponse")]
         System.IAsyncResult BeginDeleteStudent(int id, System.AsyncCallback callback, object asyncState);
         
         bool EndDeleteStudent(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetClasses", ReplyAction="http://tempuri.org/IService1/GetClassesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/GetClasses", ReplyAction="Webservice/IService1/GetClassesResponse")]
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.ClassEx> GetClasses();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetClasses", ReplyAction="http://tempuri.org/IService1/GetClassesResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/GetClasses", ReplyAction="Webservice/IService1/GetClassesResponse")]
         System.IAsyncResult BeginGetClasses(System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.ClassEx> EndGetClasses(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertClass", ReplyAction="http://tempuri.org/IService1/InsertClassResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/InsertClass", ReplyAction="Webservice/IService1/InsertClassResponse")]
         bool InsertClass(SMSModule.WebServiceDeployed.ClassEx theClass);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/InsertClass", ReplyAction="http://tempuri.org/IService1/InsertClassResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/InsertClass", ReplyAction="Webservice/IService1/InsertClassResponse")]
         System.IAsyncResult BeginInsertClass(SMSModule.WebServiceDeployed.ClassEx theClass, System.AsyncCallback callback, object asyncState);
         
         bool EndInsertClass(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteClass", ReplyAction="http://tempuri.org/IService1/DeleteClassResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/DeleteClass", ReplyAction="Webservice/IService1/DeleteClassResponse")]
         bool DeleteClass(int id);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/DeleteClass", ReplyAction="http://tempuri.org/IService1/DeleteClassResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/DeleteClass", ReplyAction="Webservice/IService1/DeleteClassResponse")]
         System.IAsyncResult BeginDeleteClass(int id, System.AsyncCallback callback, object asyncState);
         
         bool EndDeleteClass(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateEnrollment", ReplyAction="http://tempuri.org/IService1/CreateEnrollmentResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/CreateEnrollment", ReplyAction="Webservice/IService1/CreateEnrollmentResponse")]
         bool CreateEnrollment(SMSModule.WebServiceDeployed.EnrollmentEx entollment, System.Collections.Generic.List<SMSModule.WebServiceDeployed.ParentEx> parents);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/CreateEnrollment", ReplyAction="http://tempuri.org/IService1/CreateEnrollmentResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/CreateEnrollment", ReplyAction="Webservice/IService1/CreateEnrollmentResponse")]
         System.IAsyncResult BeginCreateEnrollment(SMSModule.WebServiceDeployed.EnrollmentEx entollment, System.Collections.Generic.List<SMSModule.WebServiceDeployed.ParentEx> parents, System.AsyncCallback callback, object asyncState);
         
         bool EndCreateEnrollment(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEnrollments", ReplyAction="http://tempuri.org/IService1/GetEnrollmentsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/GetEnrollments", ReplyAction="Webservice/IService1/GetEnrollmentsResponse")]
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.EnrollmentEx> GetEnrollments();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetEnrollments", ReplyAction="http://tempuri.org/IService1/GetEnrollmentsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/GetEnrollments", ReplyAction="Webservice/IService1/GetEnrollmentsResponse")]
         System.IAsyncResult BeginGetEnrollments(System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.EnrollmentEx> EndGetEnrollments(System.IAsyncResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateUserDetails", ReplyAction="http://tempuri.org/IService1/UpdateUserDetailsResponse")]
-        bool UpdateUserDetails(int id, string city, string address, int phone, string email);
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/UpdateUserDetails", ReplyAction="http://tempuri.org/IService1/UpdateUserDetailsResponse")]
-        System.IAsyncResult BeginUpdateUserDetails(int id, string city, string address, int phone, string email, System.AsyncCallback callback, object asyncState);
-        
-        bool EndUpdateUserDetails(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1461,25 +1453,6 @@ namespace SMSModule.WebServiceDeployed {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UpdateUserDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public UpdateUserDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public bool Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class Service1Client : System.ServiceModel.ClientBase<SMSModule.WebServiceDeployed.IService1>, SMSModule.WebServiceDeployed.IService1 {
         
         private BeginOperationDelegate onBeginGetLoginDetailsDelegate;
@@ -1608,12 +1581,6 @@ namespace SMSModule.WebServiceDeployed {
         
         private System.Threading.SendOrPostCallback onGetEnrollmentsCompletedDelegate;
         
-        private BeginOperationDelegate onBeginUpdateUserDetailsDelegate;
-        
-        private EndOperationDelegate onEndUpdateUserDetailsDelegate;
-        
-        private System.Threading.SendOrPostCallback onUpdateUserDetailsCompletedDelegate;
-        
         public Service1Client() {
         }
         
@@ -1674,8 +1641,6 @@ namespace SMSModule.WebServiceDeployed {
         public event System.EventHandler<CreateEnrollmentCompletedEventArgs> CreateEnrollmentCompleted;
         
         public event System.EventHandler<GetEnrollmentsCompletedEventArgs> GetEnrollmentsCompleted;
-        
-        public event System.EventHandler<UpdateUserDetailsCompletedEventArgs> UpdateUserDetailsCompleted;
         
         public bool GetLoginDetails(string username, string password) {
             return base.Channel.GetLoginDetails(username, password);
@@ -2740,63 +2705,352 @@ namespace SMSModule.WebServiceDeployed {
             }
             base.InvokeAsync(this.onBeginGetEnrollmentsDelegate, null, this.onEndGetEnrollmentsDelegate, this.onGetEnrollmentsCompletedDelegate, userState);
         }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="Webservice", ConfigurationName="WebServiceDeployed.IGameService")]
+    public interface IGameService {
         
-        public bool UpdateUserDetails(int id, string city, string address, int phone, string email) {
-            return base.Channel.UpdateUserDetails(id, city, address, phone, email);
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IGameService/get_devices2", ReplyAction="Webservice/IGameService/get_devices2Response")]
+        System.Collections.Generic.List<SMSModule.WebServiceDeployed.TeacherEx> get_devices2();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IGameService/get_devices2", ReplyAction="Webservice/IGameService/get_devices2Response")]
+        System.IAsyncResult Beginget_devices2(System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<SMSModule.WebServiceDeployed.TeacherEx> Endget_devices2(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IGameService/get_devices3", ReplyAction="Webservice/IGameService/get_devices3Response")]
+        string get_devices3();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IGameService/get_devices3", ReplyAction="Webservice/IGameService/get_devices3Response")]
+        System.IAsyncResult Beginget_devices3(System.AsyncCallback callback, object asyncState);
+        
+        string Endget_devices3(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IGameService/InsertEnrollment", ReplyAction="Webservice/IGameService/InsertEnrollmentResponse")]
+        void InsertEnrollment();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IGameService/InsertEnrollment", ReplyAction="Webservice/IGameService/InsertEnrollmentResponse")]
+        System.IAsyncResult BeginInsertEnrollment(System.AsyncCallback callback, object asyncState);
+        
+        void EndInsertEnrollment(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IGameService/InsertTime", ReplyAction="Webservice/IGameService/InsertTimeResponse")]
+        bool InsertTime(string time);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IGameService/InsertTime", ReplyAction="Webservice/IGameService/InsertTimeResponse")]
+        System.IAsyncResult BeginInsertTime(string time, System.AsyncCallback callback, object asyncState);
+        
+        bool EndInsertTime(System.IAsyncResult result);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameServiceChannel : SMSModule.WebServiceDeployed.IGameService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class get_devices2CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public get_devices2CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<SMSModule.WebServiceDeployed.TeacherEx> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<SMSModule.WebServiceDeployed.TeacherEx>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class get_devices3CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public get_devices3CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class InsertTimeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public InsertTimeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GameServiceClient : System.ServiceModel.ClientBase<SMSModule.WebServiceDeployed.IGameService>, SMSModule.WebServiceDeployed.IGameService {
+        
+        private BeginOperationDelegate onBeginget_devices2Delegate;
+        
+        private EndOperationDelegate onEndget_devices2Delegate;
+        
+        private System.Threading.SendOrPostCallback onget_devices2CompletedDelegate;
+        
+        private BeginOperationDelegate onBeginget_devices3Delegate;
+        
+        private EndOperationDelegate onEndget_devices3Delegate;
+        
+        private System.Threading.SendOrPostCallback onget_devices3CompletedDelegate;
+        
+        private BeginOperationDelegate onBeginInsertEnrollmentDelegate;
+        
+        private EndOperationDelegate onEndInsertEnrollmentDelegate;
+        
+        private System.Threading.SendOrPostCallback onInsertEnrollmentCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginInsertTimeDelegate;
+        
+        private EndOperationDelegate onEndInsertTimeDelegate;
+        
+        private System.Threading.SendOrPostCallback onInsertTimeCompletedDelegate;
+        
+        public GameServiceClient() {
+        }
+        
+        public GameServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public GameServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public event System.EventHandler<get_devices2CompletedEventArgs> get_devices2Completed;
+        
+        public event System.EventHandler<get_devices3CompletedEventArgs> get_devices3Completed;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> InsertEnrollmentCompleted;
+        
+        public event System.EventHandler<InsertTimeCompletedEventArgs> InsertTimeCompleted;
+        
+        public System.Collections.Generic.List<SMSModule.WebServiceDeployed.TeacherEx> get_devices2() {
+            return base.Channel.get_devices2();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginUpdateUserDetails(int id, string city, string address, int phone, string email, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginUpdateUserDetails(id, city, address, phone, email, callback, asyncState);
+        public System.IAsyncResult Beginget_devices2(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Beginget_devices2(callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public bool EndUpdateUserDetails(System.IAsyncResult result) {
-            return base.Channel.EndUpdateUserDetails(result);
+        public System.Collections.Generic.List<SMSModule.WebServiceDeployed.TeacherEx> Endget_devices2(System.IAsyncResult result) {
+            return base.Channel.Endget_devices2(result);
         }
         
-        private System.IAsyncResult OnBeginUpdateUserDetails(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            int id = ((int)(inValues[0]));
-            string city = ((string)(inValues[1]));
-            string address = ((string)(inValues[2]));
-            int phone = ((int)(inValues[3]));
-            string email = ((string)(inValues[4]));
-            return this.BeginUpdateUserDetails(id, city, address, phone, email, callback, asyncState);
+        private System.IAsyncResult OnBeginget_devices2(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.Beginget_devices2(callback, asyncState);
         }
         
-        private object[] OnEndUpdateUserDetails(System.IAsyncResult result) {
-            bool retVal = this.EndUpdateUserDetails(result);
+        private object[] OnEndget_devices2(System.IAsyncResult result) {
+            System.Collections.Generic.List<SMSModule.WebServiceDeployed.TeacherEx> retVal = this.Endget_devices2(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnUpdateUserDetailsCompleted(object state) {
-            if ((this.UpdateUserDetailsCompleted != null)) {
+        private void Onget_devices2Completed(object state) {
+            if ((this.get_devices2Completed != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.UpdateUserDetailsCompleted(this, new UpdateUserDetailsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.get_devices2Completed(this, new get_devices2CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void UpdateUserDetailsAsync(int id, string city, string address, int phone, string email) {
-            this.UpdateUserDetailsAsync(id, city, address, phone, email, null);
+        public void get_devices2Async() {
+            this.get_devices2Async(null);
         }
         
-        public void UpdateUserDetailsAsync(int id, string city, string address, int phone, string email, object userState) {
-            if ((this.onBeginUpdateUserDetailsDelegate == null)) {
-                this.onBeginUpdateUserDetailsDelegate = new BeginOperationDelegate(this.OnBeginUpdateUserDetails);
+        public void get_devices2Async(object userState) {
+            if ((this.onBeginget_devices2Delegate == null)) {
+                this.onBeginget_devices2Delegate = new BeginOperationDelegate(this.OnBeginget_devices2);
             }
-            if ((this.onEndUpdateUserDetailsDelegate == null)) {
-                this.onEndUpdateUserDetailsDelegate = new EndOperationDelegate(this.OnEndUpdateUserDetails);
+            if ((this.onEndget_devices2Delegate == null)) {
+                this.onEndget_devices2Delegate = new EndOperationDelegate(this.OnEndget_devices2);
             }
-            if ((this.onUpdateUserDetailsCompletedDelegate == null)) {
-                this.onUpdateUserDetailsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdateUserDetailsCompleted);
+            if ((this.onget_devices2CompletedDelegate == null)) {
+                this.onget_devices2CompletedDelegate = new System.Threading.SendOrPostCallback(this.Onget_devices2Completed);
             }
-            base.InvokeAsync(this.onBeginUpdateUserDetailsDelegate, new object[] {
-                        id,
-                        city,
-                        address,
-                        phone,
-                        email}, this.onEndUpdateUserDetailsDelegate, this.onUpdateUserDetailsCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginget_devices2Delegate, null, this.onEndget_devices2Delegate, this.onget_devices2CompletedDelegate, userState);
+        }
+        
+        public string get_devices3() {
+            return base.Channel.get_devices3();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult Beginget_devices3(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.Beginget_devices3(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public string Endget_devices3(System.IAsyncResult result) {
+            return base.Channel.Endget_devices3(result);
+        }
+        
+        private System.IAsyncResult OnBeginget_devices3(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.Beginget_devices3(callback, asyncState);
+        }
+        
+        private object[] OnEndget_devices3(System.IAsyncResult result) {
+            string retVal = this.Endget_devices3(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void Onget_devices3Completed(object state) {
+            if ((this.get_devices3Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.get_devices3Completed(this, new get_devices3CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void get_devices3Async() {
+            this.get_devices3Async(null);
+        }
+        
+        public void get_devices3Async(object userState) {
+            if ((this.onBeginget_devices3Delegate == null)) {
+                this.onBeginget_devices3Delegate = new BeginOperationDelegate(this.OnBeginget_devices3);
+            }
+            if ((this.onEndget_devices3Delegate == null)) {
+                this.onEndget_devices3Delegate = new EndOperationDelegate(this.OnEndget_devices3);
+            }
+            if ((this.onget_devices3CompletedDelegate == null)) {
+                this.onget_devices3CompletedDelegate = new System.Threading.SendOrPostCallback(this.Onget_devices3Completed);
+            }
+            base.InvokeAsync(this.onBeginget_devices3Delegate, null, this.onEndget_devices3Delegate, this.onget_devices3CompletedDelegate, userState);
+        }
+        
+        public void InsertEnrollment() {
+            base.Channel.InsertEnrollment();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginInsertEnrollment(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginInsertEnrollment(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndInsertEnrollment(System.IAsyncResult result) {
+            base.Channel.EndInsertEnrollment(result);
+        }
+        
+        private System.IAsyncResult OnBeginInsertEnrollment(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginInsertEnrollment(callback, asyncState);
+        }
+        
+        private object[] OnEndInsertEnrollment(System.IAsyncResult result) {
+            this.EndInsertEnrollment(result);
+            return null;
+        }
+        
+        private void OnInsertEnrollmentCompleted(object state) {
+            if ((this.InsertEnrollmentCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.InsertEnrollmentCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void InsertEnrollmentAsync() {
+            this.InsertEnrollmentAsync(null);
+        }
+        
+        public void InsertEnrollmentAsync(object userState) {
+            if ((this.onBeginInsertEnrollmentDelegate == null)) {
+                this.onBeginInsertEnrollmentDelegate = new BeginOperationDelegate(this.OnBeginInsertEnrollment);
+            }
+            if ((this.onEndInsertEnrollmentDelegate == null)) {
+                this.onEndInsertEnrollmentDelegate = new EndOperationDelegate(this.OnEndInsertEnrollment);
+            }
+            if ((this.onInsertEnrollmentCompletedDelegate == null)) {
+                this.onInsertEnrollmentCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnInsertEnrollmentCompleted);
+            }
+            base.InvokeAsync(this.onBeginInsertEnrollmentDelegate, null, this.onEndInsertEnrollmentDelegate, this.onInsertEnrollmentCompletedDelegate, userState);
+        }
+        
+        public bool InsertTime(string time) {
+            return base.Channel.InsertTime(time);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginInsertTime(string time, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginInsertTime(time, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public bool EndInsertTime(System.IAsyncResult result) {
+            return base.Channel.EndInsertTime(result);
+        }
+        
+        private System.IAsyncResult OnBeginInsertTime(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string time = ((string)(inValues[0]));
+            return this.BeginInsertTime(time, callback, asyncState);
+        }
+        
+        private object[] OnEndInsertTime(System.IAsyncResult result) {
+            bool retVal = this.EndInsertTime(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnInsertTimeCompleted(object state) {
+            if ((this.InsertTimeCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.InsertTimeCompleted(this, new InsertTimeCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void InsertTimeAsync(string time) {
+            this.InsertTimeAsync(time, null);
+        }
+        
+        public void InsertTimeAsync(string time, object userState) {
+            if ((this.onBeginInsertTimeDelegate == null)) {
+                this.onBeginInsertTimeDelegate = new BeginOperationDelegate(this.OnBeginInsertTime);
+            }
+            if ((this.onEndInsertTimeDelegate == null)) {
+                this.onEndInsertTimeDelegate = new EndOperationDelegate(this.OnEndInsertTime);
+            }
+            if ((this.onInsertTimeCompletedDelegate == null)) {
+                this.onInsertTimeCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnInsertTimeCompleted);
+            }
+            base.InvokeAsync(this.onBeginInsertTimeDelegate, new object[] {
+                        time}, this.onEndInsertTimeDelegate, this.onInsertTimeCompletedDelegate, userState);
         }
     }
 }

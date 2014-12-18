@@ -233,6 +233,7 @@
     <None Include="Service References\WebServiceDeployed\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\WebServiceDeployed\Service11.wsdl" />
     <None Include="Service References\WebServiceDeployed\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -245,7 +246,9 @@
     <None Include="Service References\WebServiceDeployed\Service14.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

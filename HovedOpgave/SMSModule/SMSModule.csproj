@@ -76,6 +76,7 @@
     <None Include="Service References\WebServiceDeployed\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\WebServiceDeployed\Service11.wsdl" />
     <None Include="Service References\WebServiceDeployed\Service11.xsd">
       <SubType>Designer</SubType>
     </None>

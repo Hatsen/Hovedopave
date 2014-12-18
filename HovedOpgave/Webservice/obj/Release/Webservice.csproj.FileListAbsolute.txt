@@ -16,3 +16,12 @@ C:\Users\Lars Skaaning\Desktop\Azure\Webservice\bin\WPFToolkit.dll
 C:\Users\Lars Skaaning\Desktop\Azure\Webservice\obj\Release\Webservice.csprojResolveAssemblyReference.cache
 C:\Users\Lars Skaaning\Desktop\Azure\Webservice\obj\Release\Webservice.dll
 C:\Users\Lars Skaaning\Desktop\Azure\Webservice\obj\Release\Webservice.pdb
+C:\Users\Lars Skaaning\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\Webservice.dll.config
+C:\Users\Lars Skaaning\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\Webservice.dll
+C:\Users\Lars Skaaning\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\Webservice.pdb
+C:\Users\Lars Skaaning\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\System.Windows.Controls.Input.Toolkit.dll
+C:\Users\Lars Skaaning\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\System.Windows.Controls.Layout.Toolkit.dll
+C:\Users\Lars Skaaning\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\bin\WPFToolkit.dll
+C:\Users\Lars Skaaning\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\obj\Release\Webservice.csprojResolveAssemblyReference.cache
+C:\Users\Lars Skaaning\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\obj\Release\Webservice.dll
+C:\Users\Lars Skaaning\Documents\GitHub\Hovedopave\HovedOpgave\Webservice\obj\Release\Webservice.pdb

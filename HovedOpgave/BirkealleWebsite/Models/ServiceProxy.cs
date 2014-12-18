@@ -273,7 +273,7 @@ namespace BirkealleWebsite.Models
             return tcs.Task;
         }
 
-        public Task<bool> CreateEnrollment(Enrollment enrollment, List<ParentEx> parents)
+        public Task<bool> CreateEnrollment(EnrollmentEx enrollment, List<ParentEx> parents)
         {
             var tcs = new TaskCompletionSource<bool>();
             EventHandler<CreateEnrollmentCompletedEventArgs> handler = null;

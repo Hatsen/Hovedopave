@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="Webservice" elementFormDefault="qualified" targetNamespace="Webservice" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://larsogpatrick.azurewebsites.net/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Webservice.DB" />
   <xs:import schemaLocation="http://larsogpatrick.azurewebsites.net/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Webservice.Extended" />
   <xs:import schemaLocation="http://larsogpatrick.azurewebsites.net/Service1.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Webservice" />
@@ -299,21 +299,51 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdateUserDetails">
+  <xs:element name="get_devices2">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="get_devices2Response">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
-        <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="phone" type="xs:int" />
-        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Webservice.Extended" minOccurs="0" name="get_devices2Result" nillable="true" type="q16:ArrayOfTeacherEx" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdateUserDetailsResponse">
+  <xs:element name="get_devices3">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="get_devices3Response">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="UpdateUserDetailsResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="get_devices3Result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertEnrollment">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertEnrollmentResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertTime">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="time" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertTimeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertTimeResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
