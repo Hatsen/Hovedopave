@@ -1,20 +1,20 @@
-﻿@model IEnumerable<BirkealleWebsite.WebService.ClassEx>
+﻿@model IEnumerable<birkeallewebsite.webservicedeployed.classex>
 
-@{
-    ViewBag.Title = "Klasseliste";
-}
+    @{
+        ViewBag.Title = "Klasseliste";
+    }
 
-@foreach (var item in Model)
-{
-    <h2>Elever i: @item.Name</h2>
-    <table class="table">
-        <tr>
-        <th>Fornavn</th>
-        <th>Efternavn</th>
-        <th>Adresse</th>
-        <th>By</th>
-        <th>Telefonnummer</th>
-        </tr>
+    @foreach (var item in Model)
+    {
+        <h2>Elever i: @item.Name</h2>
+        <table class="table">
+            <tr>
+                <th>Fornavn</th>
+                <th>Efternavn</th>
+                <th>Adresse</th>
+                <th>By</th>
+                <th>Telefonnummer</th>
+            </tr>
             @foreach (var student in item.StudentsList)
             {
                 <tr>
@@ -25,7 +25,7 @@
                     <td>@student.Phonenumber</td>
                 </tr>
             }
-    </table>
-    
-    <b>Der er i alt: @item.StudentsList.Count elever i klassen.</b>
-}
+        </table>
+
+        <b>Der er i alt: @item.StudentsList.Count elever i klassen.</b>
+    }
