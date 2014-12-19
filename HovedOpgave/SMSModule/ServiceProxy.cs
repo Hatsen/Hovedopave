@@ -66,7 +66,7 @@ namespace SMSModule
             return tcs.Task;
         }
 
-      /*  public Task<bool> UpdateUserDetails(int id, string city, string address, int phone, string email)
+        public Task<bool> UpdateUserDetails(int id, string city, string address, int phone, string email)
         {
             var tcs = new TaskCompletionSource<bool>();
             EventHandler<UpdateUserDetailsCompletedEventArgs> handler = null;
@@ -94,7 +94,7 @@ namespace SMSModule
             service.UpdateUserDetailsAsync(id, city, address, phone, email, tcs);
 
             return tcs.Task;
-        }*/
+        }
 
          public Task<string> GetUserDetails(int number)
          {

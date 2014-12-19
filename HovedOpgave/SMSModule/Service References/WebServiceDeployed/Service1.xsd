@@ -299,6 +299,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateUserDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phone" type="xs:int" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateUserDetailsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="get_devices2">
     <xs:complexType>
       <xs:sequence />
@@ -333,17 +351,17 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="InsertTime">
+  <xs:element name="InsertScore">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="time" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="testScore" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="InsertTimeResponse">
+  <xs:element name="InsertScoreResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="InsertTimeResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="InsertScoreResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
