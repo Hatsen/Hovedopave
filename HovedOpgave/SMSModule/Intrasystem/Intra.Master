@@ -46,7 +46,7 @@
             <br />
             <br />
             <%     
-                List<SMSModule.Webservice.ClassEx> classList = (List<SMSModule.Webservice.ClassEx>)Session["classid"];
+                List<SMSModule.WebServiceDeployed.ClassEx> classList = (List<SMSModule.WebServiceDeployed.ClassEx>)Session["classid"];
                 if (classList.Count <= 1)
                 {
                     checkSelector.InnerHtml = "";
