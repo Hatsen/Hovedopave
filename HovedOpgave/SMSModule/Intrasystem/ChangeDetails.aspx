@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Async="true" Language="C#" MasterPageFile="~/Intrasystem/Intra.Master" AutoEventWireup="true" CodeBehind="ChangeDetails.aspx.cs" Inherits="SMSModule.Intrasystem.WebForm4" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-    .auto-style1 {
-        width: 85%;
+        .auto-style1 {
+        width: 43%;
     }
         .auto-style2 {
             height: 31px;

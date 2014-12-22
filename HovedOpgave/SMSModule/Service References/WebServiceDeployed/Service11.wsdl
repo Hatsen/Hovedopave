@@ -135,6 +135,12 @@
   <wsdl:message name="IService1_GetEnrollments_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetEnrollmentsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_UpdateUserDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserDetails" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateUserDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserDetailsResponse" />
+  </wsdl:message>
   <wsdl:message name="IGameService_get_devices2_InputMessage">
     <wsdl:part name="parameters" element="tns:get_devices2" />
   </wsdl:message>
@@ -153,11 +159,11 @@
   <wsdl:message name="IGameService_InsertEnrollment_OutputMessage">
     <wsdl:part name="parameters" element="tns:InsertEnrollmentResponse" />
   </wsdl:message>
-  <wsdl:message name="IGameService_InsertTime_InputMessage">
-    <wsdl:part name="parameters" element="tns:InsertTime" />
+  <wsdl:message name="IGameService_InsertScore_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertScore" />
   </wsdl:message>
-  <wsdl:message name="IGameService_InsertTime_OutputMessage">
-    <wsdl:part name="parameters" element="tns:InsertTimeResponse" />
+  <wsdl:message name="IGameService_InsertScore_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertScoreResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetLoginDetails">
@@ -244,6 +250,10 @@
       <wsdl:input wsaw:Action="Webservice/IService1/GetEnrollments" message="tns:IService1_GetEnrollments_InputMessage" />
       <wsdl:output wsaw:Action="Webservice/IService1/GetEnrollmentsResponse" message="tns:IService1_GetEnrollments_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateUserDetails">
+      <wsdl:input wsaw:Action="Webservice/IService1/UpdateUserDetails" message="tns:IService1_UpdateUserDetails_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IService1/UpdateUserDetailsResponse" message="tns:IService1_UpdateUserDetails_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IGameService">
     <wsdl:operation name="get_devices2">
@@ -258,9 +268,9 @@
       <wsdl:input wsaw:Action="Webservice/IGameService/InsertEnrollment" message="tns:IGameService_InsertEnrollment_InputMessage" />
       <wsdl:output wsaw:Action="Webservice/IGameService/InsertEnrollmentResponse" message="tns:IGameService_InsertEnrollment_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="InsertTime">
-      <wsdl:input wsaw:Action="Webservice/IGameService/InsertTime" message="tns:IGameService_InsertTime_InputMessage" />
-      <wsdl:output wsaw:Action="Webservice/IGameService/InsertTimeResponse" message="tns:IGameService_InsertTime_OutputMessage" />
+    <wsdl:operation name="InsertScore">
+      <wsdl:input wsaw:Action="Webservice/IGameService/InsertScore" message="tns:IGameService_InsertScore_InputMessage" />
+      <wsdl:output wsaw:Action="Webservice/IGameService/InsertScoreResponse" message="tns:IGameService_InsertScore_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

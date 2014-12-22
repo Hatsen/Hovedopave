@@ -1046,6 +1046,14 @@ namespace SMSModule.WebServiceDeployed {
         System.IAsyncResult BeginGetEnrollments(System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<SMSModule.WebServiceDeployed.EnrollmentEx> EndGetEnrollments(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/UpdateUserDetails", ReplyAction="Webservice/IService1/UpdateUserDetailsResponse")]
+        bool UpdateUserDetails(int id, string city, string address, int phone, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/UpdateUserDetails", ReplyAction="Webservice/IService1/UpdateUserDetailsResponse")]
+        System.IAsyncResult BeginUpdateUserDetails(int id, string city, string address, int phone, string email, System.AsyncCallback callback, object asyncState);
+        
+        bool EndUpdateUserDetails(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1453,6 +1461,25 @@ namespace SMSModule.WebServiceDeployed {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UpdateUserDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public UpdateUserDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class Service1Client : System.ServiceModel.ClientBase<SMSModule.WebServiceDeployed.IService1>, SMSModule.WebServiceDeployed.IService1 {
         
         private BeginOperationDelegate onBeginGetLoginDetailsDelegate;
@@ -1581,6 +1608,12 @@ namespace SMSModule.WebServiceDeployed {
         
         private System.Threading.SendOrPostCallback onGetEnrollmentsCompletedDelegate;
         
+        private BeginOperationDelegate onBeginUpdateUserDetailsDelegate;
+        
+        private EndOperationDelegate onEndUpdateUserDetailsDelegate;
+        
+        private System.Threading.SendOrPostCallback onUpdateUserDetailsCompletedDelegate;
+        
         public Service1Client() {
         }
         
@@ -1641,6 +1674,8 @@ namespace SMSModule.WebServiceDeployed {
         public event System.EventHandler<CreateEnrollmentCompletedEventArgs> CreateEnrollmentCompleted;
         
         public event System.EventHandler<GetEnrollmentsCompletedEventArgs> GetEnrollmentsCompleted;
+        
+        public event System.EventHandler<UpdateUserDetailsCompletedEventArgs> UpdateUserDetailsCompleted;
         
         public bool GetLoginDetails(string username, string password) {
             return base.Channel.GetLoginDetails(username, password);
@@ -2705,6 +2740,64 @@ namespace SMSModule.WebServiceDeployed {
             }
             base.InvokeAsync(this.onBeginGetEnrollmentsDelegate, null, this.onEndGetEnrollmentsDelegate, this.onGetEnrollmentsCompletedDelegate, userState);
         }
+        
+        public bool UpdateUserDetails(int id, string city, string address, int phone, string email) {
+            return base.Channel.UpdateUserDetails(id, city, address, phone, email);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginUpdateUserDetails(int id, string city, string address, int phone, string email, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUpdateUserDetails(id, city, address, phone, email, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public bool EndUpdateUserDetails(System.IAsyncResult result) {
+            return base.Channel.EndUpdateUserDetails(result);
+        }
+        
+        private System.IAsyncResult OnBeginUpdateUserDetails(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            string city = ((string)(inValues[1]));
+            string address = ((string)(inValues[2]));
+            int phone = ((int)(inValues[3]));
+            string email = ((string)(inValues[4]));
+            return this.BeginUpdateUserDetails(id, city, address, phone, email, callback, asyncState);
+        }
+        
+        private object[] OnEndUpdateUserDetails(System.IAsyncResult result) {
+            bool retVal = this.EndUpdateUserDetails(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnUpdateUserDetailsCompleted(object state) {
+            if ((this.UpdateUserDetailsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UpdateUserDetailsCompleted(this, new UpdateUserDetailsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UpdateUserDetailsAsync(int id, string city, string address, int phone, string email) {
+            this.UpdateUserDetailsAsync(id, city, address, phone, email, null);
+        }
+        
+        public void UpdateUserDetailsAsync(int id, string city, string address, int phone, string email, object userState) {
+            if ((this.onBeginUpdateUserDetailsDelegate == null)) {
+                this.onBeginUpdateUserDetailsDelegate = new BeginOperationDelegate(this.OnBeginUpdateUserDetails);
+            }
+            if ((this.onEndUpdateUserDetailsDelegate == null)) {
+                this.onEndUpdateUserDetailsDelegate = new EndOperationDelegate(this.OnEndUpdateUserDetails);
+            }
+            if ((this.onUpdateUserDetailsCompletedDelegate == null)) {
+                this.onUpdateUserDetailsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdateUserDetailsCompleted);
+            }
+            base.InvokeAsync(this.onBeginUpdateUserDetailsDelegate, new object[] {
+                        id,
+                        city,
+                        address,
+                        phone,
+                        email}, this.onEndUpdateUserDetailsDelegate, this.onUpdateUserDetailsCompletedDelegate, userState);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2735,13 +2828,13 @@ namespace SMSModule.WebServiceDeployed {
         
         void EndInsertEnrollment(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IGameService/InsertTime", ReplyAction="Webservice/IGameService/InsertTimeResponse")]
-        bool InsertTime(string time);
+        [System.ServiceModel.OperationContractAttribute(Action="Webservice/IGameService/InsertScore", ReplyAction="Webservice/IGameService/InsertScoreResponse")]
+        bool InsertScore(string testScore);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IGameService/InsertTime", ReplyAction="Webservice/IGameService/InsertTimeResponse")]
-        System.IAsyncResult BeginInsertTime(string time, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IGameService/InsertScore", ReplyAction="Webservice/IGameService/InsertScoreResponse")]
+        System.IAsyncResult BeginInsertScore(string testScore, System.AsyncCallback callback, object asyncState);
         
-        bool EndInsertTime(System.IAsyncResult result);
+        bool EndInsertScore(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2788,11 +2881,11 @@ namespace SMSModule.WebServiceDeployed {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class InsertTimeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class InsertScoreCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public InsertTimeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public InsertScoreCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2827,11 +2920,11 @@ namespace SMSModule.WebServiceDeployed {
         
         private System.Threading.SendOrPostCallback onInsertEnrollmentCompletedDelegate;
         
-        private BeginOperationDelegate onBeginInsertTimeDelegate;
+        private BeginOperationDelegate onBeginInsertScoreDelegate;
         
-        private EndOperationDelegate onEndInsertTimeDelegate;
+        private EndOperationDelegate onEndInsertScoreDelegate;
         
-        private System.Threading.SendOrPostCallback onInsertTimeCompletedDelegate;
+        private System.Threading.SendOrPostCallback onInsertScoreCompletedDelegate;
         
         public GameServiceClient() {
         }
@@ -2858,7 +2951,7 @@ namespace SMSModule.WebServiceDeployed {
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> InsertEnrollmentCompleted;
         
-        public event System.EventHandler<InsertTimeCompletedEventArgs> InsertTimeCompleted;
+        public event System.EventHandler<InsertScoreCompletedEventArgs> InsertScoreCompleted;
         
         public System.Collections.Generic.List<SMSModule.WebServiceDeployed.TeacherEx> get_devices2() {
             return base.Channel.get_devices2();
@@ -3003,54 +3096,54 @@ namespace SMSModule.WebServiceDeployed {
             base.InvokeAsync(this.onBeginInsertEnrollmentDelegate, null, this.onEndInsertEnrollmentDelegate, this.onInsertEnrollmentCompletedDelegate, userState);
         }
         
-        public bool InsertTime(string time) {
-            return base.Channel.InsertTime(time);
+        public bool InsertScore(string testScore) {
+            return base.Channel.InsertScore(testScore);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginInsertTime(string time, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginInsertTime(time, callback, asyncState);
+        public System.IAsyncResult BeginInsertScore(string testScore, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginInsertScore(testScore, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public bool EndInsertTime(System.IAsyncResult result) {
-            return base.Channel.EndInsertTime(result);
+        public bool EndInsertScore(System.IAsyncResult result) {
+            return base.Channel.EndInsertScore(result);
         }
         
-        private System.IAsyncResult OnBeginInsertTime(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string time = ((string)(inValues[0]));
-            return this.BeginInsertTime(time, callback, asyncState);
+        private System.IAsyncResult OnBeginInsertScore(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string testScore = ((string)(inValues[0]));
+            return this.BeginInsertScore(testScore, callback, asyncState);
         }
         
-        private object[] OnEndInsertTime(System.IAsyncResult result) {
-            bool retVal = this.EndInsertTime(result);
+        private object[] OnEndInsertScore(System.IAsyncResult result) {
+            bool retVal = this.EndInsertScore(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnInsertTimeCompleted(object state) {
-            if ((this.InsertTimeCompleted != null)) {
+        private void OnInsertScoreCompleted(object state) {
+            if ((this.InsertScoreCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.InsertTimeCompleted(this, new InsertTimeCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.InsertScoreCompleted(this, new InsertScoreCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void InsertTimeAsync(string time) {
-            this.InsertTimeAsync(time, null);
+        public void InsertScoreAsync(string testScore) {
+            this.InsertScoreAsync(testScore, null);
         }
         
-        public void InsertTimeAsync(string time, object userState) {
-            if ((this.onBeginInsertTimeDelegate == null)) {
-                this.onBeginInsertTimeDelegate = new BeginOperationDelegate(this.OnBeginInsertTime);
+        public void InsertScoreAsync(string testScore, object userState) {
+            if ((this.onBeginInsertScoreDelegate == null)) {
+                this.onBeginInsertScoreDelegate = new BeginOperationDelegate(this.OnBeginInsertScore);
             }
-            if ((this.onEndInsertTimeDelegate == null)) {
-                this.onEndInsertTimeDelegate = new EndOperationDelegate(this.OnEndInsertTime);
+            if ((this.onEndInsertScoreDelegate == null)) {
+                this.onEndInsertScoreDelegate = new EndOperationDelegate(this.OnEndInsertScore);
             }
-            if ((this.onInsertTimeCompletedDelegate == null)) {
-                this.onInsertTimeCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnInsertTimeCompleted);
+            if ((this.onInsertScoreCompletedDelegate == null)) {
+                this.onInsertScoreCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnInsertScoreCompleted);
             }
-            base.InvokeAsync(this.onBeginInsertTimeDelegate, new object[] {
-                        time}, this.onEndInsertTimeDelegate, this.onInsertTimeCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginInsertScoreDelegate, new object[] {
+                        testScore}, this.onEndInsertScoreDelegate, this.onInsertScoreCompletedDelegate, userState);
         }
     }
 }
