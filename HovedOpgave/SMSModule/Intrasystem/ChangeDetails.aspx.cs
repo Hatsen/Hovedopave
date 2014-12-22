@@ -30,7 +30,7 @@ namespace SMSModule.Intrasystem
 
         protected async void btnSubmit_Click1(object sender, EventArgs e)
         {
-           bool success = await ObjectHolder.Instance.UcController.UpdateUserDetails(Convert.ToInt32(Session["userid"]), txtCity.Text, txtAddress.Text, Convert.ToInt32(txtPhone.Text), txtEmail.Text);
+            bool success = await ObjectHolder.Instance.UcController.UpdateUserDetails(Convert.ToInt32(Session["userid"]), txtCity.Text, txtAddress.Text, Convert.ToInt32(txtPhone.Text), txtEmail.Text);
 
             if (success == true)
             {
