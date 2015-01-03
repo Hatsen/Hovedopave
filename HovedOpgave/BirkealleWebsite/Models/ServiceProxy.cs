@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BirkealleWebsite.WebServiceDeployed;
+using BirkealleWebsite.Webservice;
 using System.Threading.Tasks;
 
 namespace BirkealleWebsite.Models
 {
     public class ServiceProxy
     {
-        WebServiceDeployed.Service1Client service = new Service1Client();
+        Webservice.Service1Client service = new Service1Client();
         private static ServiceProxy instance;
 
         public Service1Client Service

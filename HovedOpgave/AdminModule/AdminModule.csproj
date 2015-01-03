@@ -123,7 +123,7 @@
     <Compile Include="Enums.cs" />
     <Compile Include="ObjectHolder.cs" />
     <Compile Include="PasswordHash.cs" />
-    <Compile Include="Service References\WebServiceDeployed\Reference.cs">
+    <Compile Include="Service References\Webservice\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -207,39 +207,39 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\WebServiceDeployed\AdminModule.WebServiceDeployed.Announcement.datasource">
+    <None Include="Service References\Webservice\AdminModule.Webservice.Announcement.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WebServiceDeployed\AdminModule.WebServiceDeployed.ClassEx.datasource">
+    <None Include="Service References\Webservice\AdminModule.Webservice.ClassEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WebServiceDeployed\AdminModule.WebServiceDeployed.EnrollmentEx.datasource">
+    <None Include="Service References\Webservice\AdminModule.Webservice.EnrollmentEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WebServiceDeployed\AdminModule.WebServiceDeployed.ParentEx.datasource">
+    <None Include="Service References\Webservice\AdminModule.Webservice.ParentEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WebServiceDeployed\AdminModule.WebServiceDeployed.Student.datasource">
+    <None Include="Service References\Webservice\AdminModule.Webservice.Student.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WebServiceDeployed\AdminModule.WebServiceDeployed.TeacherEx.datasource">
+    <None Include="Service References\Webservice\AdminModule.Webservice.TeacherEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WebServiceDeployed\Service1.wsdl" />
-    <None Include="Service References\WebServiceDeployed\Service1.xsd">
+    <None Include="Service References\Webservice\Service1.wsdl" />
+    <None Include="Service References\Webservice\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WebServiceDeployed\Service11.wsdl" />
-    <None Include="Service References\WebServiceDeployed\Service11.xsd">
+    <None Include="Service References\Webservice\Service11.wsdl" />
+    <None Include="Service References\Webservice\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WebServiceDeployed\Service12.xsd">
+    <None Include="Service References\Webservice\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WebServiceDeployed\Service13.xsd">
+    <None Include="Service References\Webservice\Service13.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WebServiceDeployed\Service14.xsd">
+    <None Include="Service References\Webservice\Service14.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -250,19 +250,19 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\WebServiceDeployed\" />
+    <WCFMetadataStorage Include="Service References\Webservice\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WebServiceDeployed\Service1.disco" />
+    <None Include="Service References\Webservice\Service1.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WebServiceDeployed\configuration91.svcinfo" />
+    <None Include="Service References\Webservice\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WebServiceDeployed\configuration.svcinfo" />
+    <None Include="Service References\Webservice\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WebServiceDeployed\Reference.svcmap">
+    <None Include="Service References\Webservice\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

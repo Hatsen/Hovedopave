@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using AdminModule.Webservice;
-using AdminModule.WebServiceDeployed;
+using AdminModule.Webservice;
 
 namespace AdminModule
 {

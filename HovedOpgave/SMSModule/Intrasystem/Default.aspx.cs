@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using SMSModule.WebServiceDeployed;
+using SMSModule.Webservice;
 
 namespace SMSModule.Intrasystem
 {
@@ -30,7 +30,7 @@ namespace SMSModule.Intrasystem
                 else if (classEx.Id == Convert.ToInt32(Request.QueryString["class"]))
                 {
                     Session["selectedclass"] = classEx.Id;
-                    helloMessageArea.InnerHtml = "<h2> Hej " + Session["firstname"].ToString() + " " + Session["lastname"].ToString() + " - " + classEx.Name + "</h2>";
+                    helloMessageArea.InnerHtml = "<h2>   Hej " + Session["firstname"].ToString() + " " + Session["lastname"].ToString() + " - " + classEx.Name + "</h2>";
                 }
             }
 

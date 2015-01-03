@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdminModule.WebServiceDeployed // ændret namespace for at tilgå proxyklasserne
+namespace AdminModule.Webservice // ændret namespace for at tilgå proxyklasserne
 {
    public partial class Teacher
    {

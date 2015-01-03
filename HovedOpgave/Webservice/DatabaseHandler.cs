@@ -12,10 +12,11 @@ namespace Webservice
 {
     public class DatabaseHandler
     {
-        //SQLDatabase DB = new SQLDatabase("SchoolDB.mdf", "LocalDB", "", "");
-        SQLDatabase DB = new SQLDatabase("", "", "", "");
+        SQLDatabase DB = new SQLDatabase("SchoolDB.mdf", "LocalDB", "", "");
+        //SQLDatabase DB = new SQLDatabase("", "", "", "");
         private static DatabaseHandler instance;
-        string connectionString = @"Data Source=hswcgtr08t.database.windows.net;Initial Catalog=SchoolDB;User ID=larsogpatrick@hswcgtr08t;Password=Kagekage1;Encrypt=true;Trusted_Connection=false;";
+        //string connectionString = @"Data Source=hswcgtr08t.database.windows.net;Initial Catalog=SchoolDB;User ID=larsogpatrick@hswcgtr08t;Password=Kagekage1;Encrypt=true;Trusted_Connection=false;";
+        string connectionString = @"Data Source=(LocalDB)\v11.0;AttachDbFileName=|DataDirectory|\SchoolDB.mdf; Integrated Security=SSPI; Connection Timeout=30";
         private DatabaseHandler()
         {
 

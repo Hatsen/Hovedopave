@@ -1,5 +1,5 @@
 ﻿using BirkealleWebsite.Models;
-using BirkealleWebsite.WebServiceDeployed;
+using BirkealleWebsite.Webservice;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,19 +20,19 @@ namespace BirkealleWebsite.Controllers
 
         public async Task<ActionResult> DisplaySpecifiedClass(int id)
         {
-            List<ClassEx> selectedList = new List<ClassEx>();
+            ClassEx selectedClass = new ClassEx();
             List<ClassEx> classList = await BusinessLogic.Instance.GetClasses();
 
             foreach (ClassEx classEx in classList)
             {
                 if (classEx.Id == id)
                 {
-                    selectedList.Add(classEx);
+                    selectedClass = classEx;
                 }
             }
 
             ViewData["title"] = id;
-            return View(selectedList);
+            return View(selectedClass);
         }
     }
 }

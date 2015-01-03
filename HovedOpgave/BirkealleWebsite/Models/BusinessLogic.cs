@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
-using BirkealleWebsite.WebServiceDeployed;
+using BirkealleWebsite.Webservice;
 
 namespace BirkealleWebsite.Models
 {

@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using AdminModule.Views;
-//using AdminModule.Webservice;
-using AdminModule.WebServiceDeployed;
+using AdminModule.Webservice;
 using Microsoft.Practices.Prism.Commands;
 
 namespace AdminModule.ViewModels

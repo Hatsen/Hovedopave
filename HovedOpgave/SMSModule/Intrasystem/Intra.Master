@@ -38,6 +38,8 @@
               } 
             %>
             <div id="adminControls" runat="server">
+            <br />
+            <br />
             <a class="item" href="CreateAnnouncement.aspx">Opret meddelelse</a>
             <br />
             <br />
@@ -46,7 +48,7 @@
             <br />
             <br />
             <%     
-                List<SMSModule.WebServiceDeployed.ClassEx> classList = (List<SMSModule.WebServiceDeployed.ClassEx>)Session["classid"];
+                List<SMSModule.Webservice.ClassEx> classList = (List<SMSModule.Webservice.ClassEx>)Session["classid"];
                 if (classList.Count <= 1)
                 {
                     checkSelector.InnerHtml = "";

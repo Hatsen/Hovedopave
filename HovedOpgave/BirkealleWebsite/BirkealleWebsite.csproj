@@ -174,7 +174,7 @@
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\ServiceProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\WebServiceDeployed\Reference.cs">
+    <Compile Include="Service References\Webservice\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -204,47 +204,30 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Service References\WebServiceDeployed\BirkealleWebsite.WebServiceDeployed.Announcement.datasource">
+    <Content Include="Service References\Webservice\BirkealleWebsite.Webservice.Announcement.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\WebServiceDeployed\BirkealleWebsite.WebServiceDeployed.ClassEx.datasource">
+    <Content Include="Service References\Webservice\BirkealleWebsite.Webservice.ClassEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\WebServiceDeployed\BirkealleWebsite.WebServiceDeployed.EnrollmentEx.datasource">
+    <Content Include="Service References\Webservice\BirkealleWebsite.Webservice.EnrollmentEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\WebServiceDeployed\BirkealleWebsite.WebServiceDeployed.ParentEx.datasource">
+    <Content Include="Service References\Webservice\BirkealleWebsite.Webservice.ParentEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\WebServiceDeployed\BirkealleWebsite.WebServiceDeployed.Student.datasource">
+    <Content Include="Service References\Webservice\BirkealleWebsite.Webservice.Student.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\WebServiceDeployed\BirkealleWebsite.WebServiceDeployed.TeacherEx.datasource">
+    <Content Include="Service References\Webservice\BirkealleWebsite.Webservice.TeacherEx.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\WebServiceDeployed\Service1.disco" />
-    <None Include="Service References\WebServiceDeployed\configuration91.svcinfo" />
-    <None Include="Service References\WebServiceDeployed\configuration.svcinfo" />
-    <None Include="Service References\WebServiceDeployed\Reference.svcmap">
+    <None Include="Service References\Webservice\Service1.disco" />
+    <None Include="Service References\Webservice\configuration91.svcinfo" />
+    <None Include="Service References\Webservice\configuration.svcinfo" />
+    <None Include="Service References\Webservice\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\WebServiceDeployed\Service1.wsdl" />
-    <None Include="Service References\WebServiceDeployed\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\WebServiceDeployed\Service11.wsdl" />
-    <None Include="Service References\WebServiceDeployed\Service11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\WebServiceDeployed\Service12.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\WebServiceDeployed\Service13.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\WebServiceDeployed\Service14.xsd">
-      <SubType>Designer</SubType>
     </None>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -276,6 +259,23 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\LoginFail.cshtml" />
     <Content Include="Views\Shared\NotParent.cshtml" />
+    <None Include="Service References\Webservice\Service1.wsdl" />
+    <None Include="Service References\Webservice\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Webservice\Service11.wsdl" />
+    <None Include="Service References\Webservice\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Webservice\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Webservice\Service13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Webservice\Service14.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -291,7 +291,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\WebServiceDeployed\" />
+    <WCFMetadataStorage Include="Service References\Webservice\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -58,7 +58,6 @@ namespace Webservice
                     }
                 }
             }
-
             return announcements;
         }
 

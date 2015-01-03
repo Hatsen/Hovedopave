@@ -37,9 +37,8 @@ namespace Webservice
         {
             try
             {
-                //this.dbConn = new SqlConnection(@"Data Source=(" + dbServer + @")\v11.0;AttachDbFileName=|DataDirectory|\" + dbNavn + "; Integrated Security=SSPI; Connection Timeout=12000");
-                //this.dbConn = new SqlConnection("Server=tcp:hswcgtr08t.database.windows.net,1433;Database=SchoolDB;User ID=larsogpatrick@hswcgtr08t;Password=Kagekage1;Trusted_Connection=False;Encrypt=True;Connection Timeout=120;");
-                this.dbConn = new SqlConnection("Data Source=hswcgtr08t.database.windows.net;Initial Catalog=SchoolDB;User ID=larsogpatrick@hswcgtr08t;Password=Kagekage1;Encrypt=true;Trusted_Connection=false;");
+                this.dbConn = new SqlConnection(@"Data Source=(" + dbServer + @")\v11.0;AttachDbFileName=|DataDirectory|\" + dbNavn + "; Integrated Security=SSPI; Connection Timeout=30");
+                //this.dbConn = new SqlConnection("Data Source=hswcgtr08t.database.windows.net;Initial Catalog=SchoolDB;User ID=larsogpatrick@hswcgtr08t;Password=Kagekage1;Encrypt=true;Trusted_Connection=false;");
                 this.dbConn.Open();
 
                 return true;

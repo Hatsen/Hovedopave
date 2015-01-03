@@ -1,4 +1,4 @@
-﻿using SMSModule.WebServiceDeployed;
+﻿using SMSModule.Webservice;
 using System;
 using System.Collections.Generic;
 using System.Linq;
