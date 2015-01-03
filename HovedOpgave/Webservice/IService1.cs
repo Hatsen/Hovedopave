@@ -73,7 +73,7 @@ namespace Webservice
 
         #region Student
         [OperationContract]
-        bool InsertStudent(Student parent, Enrollment enrollment = null);
+        bool InsertStudent(Student parent, EnrollmentEx enrollment = null);
 
         [OperationContract]
         List<Student> GetStudents();

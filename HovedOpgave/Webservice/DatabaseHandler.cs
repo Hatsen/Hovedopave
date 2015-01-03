@@ -181,8 +181,8 @@ namespace Webservice
             DB.Open();
             // this works very well !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            result = DB.Exec("BEGIN TRANSACTION BEGIN TRY DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,fk_SchoolId)" +
-                "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + 1 + "','" + teacher.Password + "','" + teacher.Lastlogin.ToString() + "'," + teacher.Userrole + ", " + teacher.Phonenumber + "," + 1 + ");" +
+            result = DB.Exec("BEGIN TRANSACTION BEGIN TRY DECLARE @Id INT INSERT INTO [User](Firstname, Lastname,City,Address,Birthdate,Username,Password,Lastlogin,Userrole,PhoneNumber,Email, fk_SchoolId)" +
+                "VALUES('" + teacher.Firstname + "','" + teacher.Lastname + "','" + teacher.City + "','" + teacher.Address + "','" + teacher.Birthdate + "','" + 1 + "','" + teacher.Password + "','" + teacher.Lastlogin.ToString() + "'," + teacher.Userrole + ", " + teacher.Phonenumber + ",'"+teacher.Email +"',"+ 1 + ");" +
                 "  SET @Id = SCOPE_IDENTITY() UPDATE [User] SET [User].Username='Te_'+CAST(@Id AS NVARCHAR) WHERE [User].Id=@Id; INSERT INTO [Teacher](Id)VALUES(@Id) COMMIT TRANSACTION   END TRY  BEGIN CATCH  ROLLBACK TRANSACTION  END CATCH");
 
 
@@ -201,7 +201,7 @@ namespace Webservice
             {
                 DB.Open();
                 DB.Exec("UPDATE [User] SET Firstname ='" + teacher.Firstname + "', Lastname='" + teacher.Lastname + "', City='" + teacher.City + "', Address='" + teacher.Address + "'," +
-                  "Birthdate='" + teacher.Birthdate + "', Username='" + teacher.Username + "', Password='" + teacher.Password + "', Lastlogin ='" + teacher.Lastlogin.ToString() + "', Userrole=" + teacher.Userrole + ", PhoneNumber=" + teacher.Phonenumber + " WHERE Id=" + teacher.Id + ";");
+                  "Birthdate='" + teacher.Birthdate + "', Username='" + teacher.Username + "', Password='" + teacher.Password + "', Lastlogin ='" + teacher.Lastlogin.ToString() + "', Userrole=" + teacher.Userrole + ", PhoneNumber=" + teacher.Phonenumber + ", Email='"+teacher.Email+"' WHERE Id=" + teacher.Id + ";");
                 DB.Exec("UPDATE [Teacher] SET [Rank]=" + teacher.Rank + " WHERE Id=" + teacher.Id + ";");
             }
             catch (Exception)
@@ -222,7 +222,7 @@ namespace Webservice
                 DB.Open();
 
                 string[][] getTeachers = DB.Query("SELECT [User].Id, [USER].Firstname, [User].Lastname,[User].City, [User].Address," +
-                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole, [User].PhoneNumber" +
+                                                  " [User].Birthdate,[User].Username, [User].Password, [User].Lastlogin, [User].Userrole, [User].PhoneNumber, [User].Email" +
                                                   " FROM [Teacher] INNER JOIN [User] ON  [Teacher].Id=[User].Id ORDER BY [User].Firstname;");
 
                 for (int i = 0; i < getTeachers.Length; i++)
@@ -245,6 +245,7 @@ namespace Webservice
                     teacher.Lastlogin = Convert.ToDateTime(getTeachers[i][8]);
                     teacher.Userrole = Convert.ToInt32(getTeachers[i][9]);
                     teacher.Phonenumber = Convert.ToInt32(getTeachers[i][10]);
+                    teacher.Email = getTeachers[i][11];
                     teachers.Add(teacher);
                 }
             }
@@ -971,29 +972,11 @@ namespace Webservice
             List<EnrollmentEx> enrollments = new List<EnrollmentEx>();
 
 
-            SqlConnection con = new SqlConnection(connectionString);
-
-            con.Open();
-
-            SqlCommand command = new SqlCommand("INSERT INTO [Enrollment](Childfirstname, Childlastname,Childcity,Childaddress,Childbirthdate,ChildphoneNumber,Notes, Datecreated, fk_SchoolId) VALUES ('Cardinalssssss!!!!22', 'Stavanger', 'Norway','s', 's',45,'sds','sss',1);", con);
-            command.ExecuteNonQuery();
-
-            con.Close();
-
-
-
             try
             {
                 DB.Open();
 
-
-
-                //  string connectionstring = "";
-
-
-
-
-                string[][] getEnrollments = DB.Query("USE [SchoolDB] SELECT * FROM [Enrollment];");
+                string[][] getEnrollments = DB.Query("SELECT * FROM [Enrollment];");
 
                 for (int i = 0; i < getEnrollments.Length; i++)
                 {
@@ -1013,47 +996,15 @@ namespace Webservice
                     enrollments.Add(enrollment);
                 }
 
-                /*
-                EnrollmentEx enrollment = new EnrollmentEx();
-                enrollment.ChildAddress = "Åbn DB";
-                enrollment.ChildBirthdate = "12/12-12";
-                enrollment.ChildCity = "Vejle";
-                enrollment.ChildFirstname = "fdsf";
-                enrollment.ChildLastname = "fdsfd";
-                enrollment.ChildPhonenumber = 48488894;
-                enrollment.DateCreated = Convert.ToString(DateTime.Now);
-                enrollment.Fkschoolid = 1;
-                enrollments.Add(enrollment);
-                 */
             }
             catch (SqlException ex)
             {
-                EnrollmentEx enrollment = new EnrollmentEx();
-                enrollment.ChildAddress = ex.ToString();
-                enrollment.ChildBirthdate = "12/12-12";
-                enrollment.ChildCity = "Vejle";
-                enrollment.ChildFirstname = "fdsf";
-                enrollment.ChildLastname = "fdsfd";
-                enrollment.ChildPhonenumber = 48488894;
-                enrollment.DateCreated = Convert.ToString(DateTime.Now);
-                enrollment.Fkschoolid = 1;
-                enrollments.Add(enrollment);
+               
             }
             finally
             {
                 DB.Close();
             }
-
-            EnrollmentEx enrollment2 = new EnrollmentEx();
-            enrollment2.ChildAddress = "PISSEGADE";
-            enrollment2.ChildBirthdate = "12/12-12";
-            enrollment2.ChildCity = "Vejle";
-            enrollment2.ChildFirstname = "fdsf";
-            enrollment2.ChildLastname = "fdsfd";
-            enrollment2.ChildPhonenumber = 48488894;
-            enrollment2.DateCreated = Convert.ToString(DateTime.Now);
-            enrollment2.Fkschoolid = 1;
-            enrollments.Add(enrollment2);
 
             return enrollments;
         }

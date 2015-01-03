@@ -39,7 +39,7 @@ namespace AdminModule
 
             MailMessage msg = new MailMessage();
 
-            msg.From = new MailAddress("Lars.s.jensen92@gmail.com");
+            msg.From = new MailAddress("");
             msg.To.Add(toUserEmail);
             msg.Subject = "test";
             msg.Body = "Test Content";
@@ -47,7 +47,7 @@ namespace AdminModule
 
             SmtpClient client = new SmtpClient();
 
-            client.Credentials = new NetworkCredential("Lars.s.jensen92@gmail.com", "Mfg86nrgMetvww8d", "smtp.gmail.com");
+            client.Credentials = new NetworkCredential("", "", "smtp.gmail.com");
             client.Host = "smtp.gmail.com";
             client.Port = 587;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;

@@ -195,7 +195,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="parent" nillable="true" type="q8:Student" />
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Webservice.DB" minOccurs="0" name="enrollment" nillable="true" type="q9:Enrollment" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Webservice.Extended" minOccurs="0" name="enrollment" nillable="true" type="q9:EnrollmentEx" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -213,7 +213,7 @@ namespace Webservice
         #region StudentMethods
 
 
-        public bool InsertStudent(Student student, Enrollment enrollment = null)
+        public bool InsertStudent(Student student, EnrollmentEx enrollment = null)
         {
 
             bool success = false;

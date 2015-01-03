@@ -984,10 +984,10 @@ namespace AdminModule.Webservice {
         System.Collections.Generic.List<AdminModule.Webservice.ParentEx> EndGetParents(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="Webservice/IService1/InsertStudent", ReplyAction="Webservice/IService1/InsertStudentResponse")]
-        bool InsertStudent(AdminModule.Webservice.Student parent, AdminModule.Webservice.Enrollment enrollment);
+        bool InsertStudent(AdminModule.Webservice.Student parent, AdminModule.Webservice.EnrollmentEx enrollment);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="Webservice/IService1/InsertStudent", ReplyAction="Webservice/IService1/InsertStudentResponse")]
-        System.IAsyncResult BeginInsertStudent(AdminModule.Webservice.Student parent, AdminModule.Webservice.Enrollment enrollment, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginInsertStudent(AdminModule.Webservice.Student parent, AdminModule.Webservice.EnrollmentEx enrollment, System.AsyncCallback callback, object asyncState);
         
         bool EndInsertStudent(System.IAsyncResult result);
         
@@ -2343,12 +2343,12 @@ namespace AdminModule.Webservice {
             base.InvokeAsync(this.onBeginGetParentsDelegate, null, this.onEndGetParentsDelegate, this.onGetParentsCompletedDelegate, userState);
         }
         
-        public bool InsertStudent(AdminModule.Webservice.Student parent, AdminModule.Webservice.Enrollment enrollment) {
+        public bool InsertStudent(AdminModule.Webservice.Student parent, AdminModule.Webservice.EnrollmentEx enrollment) {
             return base.Channel.InsertStudent(parent, enrollment);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginInsertStudent(AdminModule.Webservice.Student parent, AdminModule.Webservice.Enrollment enrollment, System.AsyncCallback callback, object asyncState) {
+        public System.IAsyncResult BeginInsertStudent(AdminModule.Webservice.Student parent, AdminModule.Webservice.EnrollmentEx enrollment, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginInsertStudent(parent, enrollment, callback, asyncState);
         }
         
@@ -2359,7 +2359,7 @@ namespace AdminModule.Webservice {
         
         private System.IAsyncResult OnBeginInsertStudent(object[] inValues, System.AsyncCallback callback, object asyncState) {
             AdminModule.Webservice.Student parent = ((AdminModule.Webservice.Student)(inValues[0]));
-            AdminModule.Webservice.Enrollment enrollment = ((AdminModule.Webservice.Enrollment)(inValues[1]));
+            AdminModule.Webservice.EnrollmentEx enrollment = ((AdminModule.Webservice.EnrollmentEx)(inValues[1]));
             return this.BeginInsertStudent(parent, enrollment, callback, asyncState);
         }
         
@@ -2376,11 +2376,11 @@ namespace AdminModule.Webservice {
             }
         }
         
-        public void InsertStudentAsync(AdminModule.Webservice.Student parent, AdminModule.Webservice.Enrollment enrollment) {
+        public void InsertStudentAsync(AdminModule.Webservice.Student parent, AdminModule.Webservice.EnrollmentEx enrollment) {
             this.InsertStudentAsync(parent, enrollment, null);
         }
         
-        public void InsertStudentAsync(AdminModule.Webservice.Student parent, AdminModule.Webservice.Enrollment enrollment, object userState) {
+        public void InsertStudentAsync(AdminModule.Webservice.Student parent, AdminModule.Webservice.EnrollmentEx enrollment, object userState) {
             if ((this.onBeginInsertStudentDelegate == null)) {
                 this.onBeginInsertStudentDelegate = new BeginOperationDelegate(this.OnBeginInsertStudent);
             }

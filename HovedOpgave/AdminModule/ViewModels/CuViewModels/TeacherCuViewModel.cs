@@ -40,7 +40,7 @@ namespace AdminModule.ViewModels
         private List<string> ranks;
         private TeacherEx currentTeacher;
         private string selectedRank;
-
+        private string email;
         private bool isLoading;
         private int phonenumber;
 
@@ -65,6 +65,7 @@ namespace AdminModule.ViewModels
                 Address = currentTeacher.Address;
                 Birthdate = currentTeacher.Birthdate;
                 Phonenumber = currentTeacher.Phonenumber;
+                Email = currentTeacher.Email;
 
                 if (currentTeacher.Userrole == (int)Enums.Rank.Principal) // lige her skal jeg kende til værdierne for enums
                 {
@@ -161,6 +162,17 @@ namespace AdminModule.ViewModels
         }
 
 
+        public string Email
+        {
+            get { return email; }
+            set
+            {
+                email = value;
+                OnPropertyChanged("Email");
+                ConfirmCommand.RaiseCanExecuteChanged();
+            }
+        }
+
 
         public bool Isloading
         {
@@ -224,6 +236,7 @@ namespace AdminModule.ViewModels
 
                // teacher.Userrole = (int)Enums.Userrole.Teacher; // it's in the view of teacher meaning the userrole will be 1.
                 teacher.Phonenumber = phonenumber;
+                teacher.Email = email;
 
                 success = await BusinessLogic.Instance.CreateTeacher(teacher);
             }
@@ -249,6 +262,7 @@ namespace AdminModule.ViewModels
                     CurrentTeacher.Userrole = (int)Enums.Rank.Principal;
 
                 CurrentTeacher.Phonenumber = phonenumber;
+                CurrentTeacher.Email = email;
 
                 success = await BusinessLogic.Instance.UpdateTeacher(CurrentTeacher);
 

@@ -16,8 +16,8 @@
                 <TextBox Height="23" TextWrapping="Wrap" Text="{Binding City, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
                 <Label Content="Adresse:"/>
                 <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0"/>
-                <Label Content="Fødselsdag:"/>
-                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0"/>
+                <Label Content="Telefonnummer:"/>
+                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Phonenumber, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0"/>
                 <Label Content="Fødselsdag:"/>
                 <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Birthdate, UpdateSourceTrigger=PropertyChanged}"  Margin="5,0,5,0"/>
                 <Label Content="Email:"/>

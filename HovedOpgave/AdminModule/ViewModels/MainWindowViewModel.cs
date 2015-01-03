@@ -44,7 +44,6 @@ namespace AdminModule.ViewModels
             ResetPasswordCommand = new DelegateCommand<object>(ResetPasswordForSelectedUser, MayiEditPerson);
             SeeAssociationsCommand = new DelegateCommand<object>(SeeAssociations);
             ConfirmEnrollmentCommand = new DelegateCommand<object>(ConfirmEnrollment, MayConfirmEnrollment);
-            OpretPerson = new DelegateCommand<object>(OpretPersonnnnn);
 
             List<string> listofpersons = new List<string>();
             listofpersons.Add("Underviser");
@@ -52,7 +51,7 @@ namespace AdminModule.ViewModels
             listofpersons.Add("Forældre");
             PersonStringList = listofpersons;
 
-           // SetTimer();
+            SetTimer();
 
 
         }
@@ -591,13 +590,12 @@ namespace AdminModule.ViewModels
 
         public DelegateCommand<object> ConfirmEnrollmentCommand { get; set; }
 
-        public DelegateCommand<object> OpretPerson { get; set; }
-
 
         public async void ConfirmEnrollment(Object o)
         {
             string[] succesList = new string[SelectedEnrollment.ParentList.Count];
             int i = 0;
+
             bool success = await BusinessLogic.Instance.CreateStudent(SelectedEnrollment.ChildFirstname, SelectedEnrollment.ChildLastname, SelectedEnrollment.ChildCity, SelectedEnrollment.ChildAddress, SelectedEnrollment.ChildBirthdate, SelectedEnrollment.ChildPhonenumber, "empty", SelectedClass.Id, SelectedEnrollment);
 
             if (success)
@@ -610,21 +608,23 @@ namespace AdminModule.ViewModels
                     if (succesList[i] != "Succes")
                             MessageBox.Show("Noget gik galt under transmission af email til forældren "+parent.Firstname+". Ring venligst til forældren og fortæl af barnet er oprettet i systemet!/nNummeret er:"+parent.Phonenumber);
                   
-                    
                     i++;
                 }
 
-             
+                EnrollmentList.Remove(SelectedEnrollment);
+                SelectedEnrollment = null;
+                SelectedClass = null;
             }
             else
                 MessageBox.Show("Kunne ikke oprette indmeldelse! Kontakt support.");
 
           if(succesList.All(obj=> obj =="Succes"))
                 MessageBox.Show("Indmeldelse bekræftiget!");
-        
 
+          
         }
 
+        
         private bool MayConfirmEnrollment(Object o)
         {
             bool boolen = false;
@@ -637,13 +637,6 @@ namespace AdminModule.ViewModels
 
 
 
-        public async void OpretPersonnnnn(Object o)
-        {
-         
-
-        }
-
-
         #endregion
 
         #region Methods
@@ -651,7 +644,6 @@ namespace AdminModule.ViewModels
         private async void GetTeacherCalledFromPropery()
         {
             await GetTeachers();
-
         }
 
 
@@ -659,15 +651,11 @@ namespace AdminModule.ViewModels
         {
             await GetParents();
 
-           
-
         }
 
 
         private async Task<bool> GetTeachers() // måske int userrole her. Så kan du hente de ansatte som er relevante
         {
-         //  await Task.Delay(3000);
-            //TeacherList = new List<TeacherEx>();
             Isloading = true;
             TeacherList = await ServiceProxy.Instance.GetTeachers();
             ObjectHolder.Instance.TeacherList = TeacherList;
@@ -682,7 +670,6 @@ namespace AdminModule.ViewModels
             ClassList = await ServiceProxy.Instance.GetClasses();
             ObjectHolder.Instance.ClassList = ClassList;
             Isloading = false;
-
             return true;
         }
 
@@ -711,8 +698,6 @@ namespace AdminModule.ViewModels
         private async Task<bool> GetParents()
         {
             Isloading = true;
-           // Thread.Sleep(3000);
-         //  await Task.Delay(3000);
             ParentList = await ServiceProxy.Instance.GetParents();
             ObjectHolder.Instance.StudentList = StudentList;
             Isloading = false;
