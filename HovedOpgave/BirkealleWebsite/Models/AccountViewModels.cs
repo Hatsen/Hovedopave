@@ -1,4 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+
+
+/**
+* Copyright (c) 2013 Patrick Larsen
+*
+* The terms of use for this and related files can be read in
+* the fictional LICENSE file, which do not exist!
+*/
+/**
+* Author: Patrick Larsen
+* Location: Erhvervsakademiet Lillebælt, DAT12A
+*/
+
+using System.ComponentModel.DataAnnotations;
 
 namespace BirkealleWebsite.Models
 {

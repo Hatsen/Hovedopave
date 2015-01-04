@@ -1,4 +1,19 @@
-﻿using System;
+﻿
+
+/**
+* Copyright (c) 2013 Lars Skaaning Jensen, Patrick Larsen
+*
+* The terms of use for this and related files can be read in
+* the fictional LICENSE file, which do not exist!
+*/
+/**
+* Author: Lars Skaaning Jensen, Patrick Larsen
+* Location: Erhvervsakademiet Lillebælt, DAT12A
+*/
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
