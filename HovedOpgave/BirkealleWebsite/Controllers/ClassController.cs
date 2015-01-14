@@ -37,19 +37,19 @@ namespace BirkealleWebsite.Controllers
 
         public async Task<ActionResult> DisplaySpecifiedClass(int id)
         {
-            ClassEx selectedClass = new ClassEx();
+            List<ClassEx> selectedList = new List<ClassEx>();
             List<ClassEx> classList = await BusinessLogic.Instance.GetClasses();
 
             foreach (ClassEx classEx in classList)
             {
                 if (classEx.Id == id)
                 {
-                    selectedClass = classEx;
+                    selectedList.Add(classEx);
                 }
             }
 
             ViewData["title"] = id;
-            return View(selectedClass);
+            return View(selectedList);
         }
     }
 }
